@@ -311,11 +311,16 @@ a.github {
 }
 
 a.tools {
-	background: url(../images/tools.png) no-repeat 1px;
+	background: url(../images/tools.png) no-repeat 0px;
 }
 
 a.plain {
+	-webkit-font-smoothing: antialiased;
 	background: none;
+	font-weight: normal;
+	text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0;
+	padding: 2px 2px 2px 22px;
+	height: 30px;
 }
 
 a.buttons:hover {
