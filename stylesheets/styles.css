@@ -314,6 +314,10 @@ a.tools {
 	background: url(../images/tools.png) no-repeat 1px;
 }
 
+a.plain {
+	background: none;
+}
+
 a.buttons:hover {
 	color: #fff;
 	text-decoration: none;
