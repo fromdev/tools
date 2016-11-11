@@ -440,11 +440,12 @@ a.button {
     background-color: #C30000; /* red */
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 5px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+	font-weight: normal;
 	cursor: pointer;
 	background: #AF0011;
 	background: -moz-linear-gradient(top, #AF0011 0%, #820011 100%);
