@@ -429,3 +429,10 @@ footer {
     color:#444;
   }
 }
+/* Start Addition by Sachin for Custom elements */
+textarea {	
+	padding: 5px;
+	border: 3px solid #dfdfdf;
+}
+
+/* End Addition by Sachin for Custom elements */
