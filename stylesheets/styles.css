@@ -469,4 +469,7 @@ a.button:hover {
   background: -ms-linear-gradient(top, #C3001D 0%,#950119 100%);
   background: linear-gradient(top, #C3001D 0%,#950119 100%);
 }
+div.subsection {
+	padding:5px;
+}
 /* End Addition by Sachin for Custom elements */
