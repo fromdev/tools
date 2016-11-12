@@ -1,0 +1,70 @@
+---
+title: This is my title
+layout: post
+--- 
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Word Counter | Character Counter Online | Developer Tools</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      {% include header.html %}
+      <section>
+        <h1>Word Counter and Character Counter Tool</h1>
+	      <textarea cols="100" rows="20" id="inputText" autofocus></textarea>
+	      <div class="subsection">
+          <div id="result"></div>
+	      </div>
+      </section>
+	<section>
+		<h3>About Word Counter Tool</h3>
+	        <p>This is a free online tool to do simple word count in a large paragraph or content. You can copy/paste your desired text in below text field and it will automatically display the word count, character count and character count without spaces.</p>
+		<h3>Why Word Counter Is Needed?</h3>
+		<p>Word counting is a common need for most bloggers and guest authors. This tool is usually available in all text editors however, if you can not find one you can easily use this online tool to do the counting for you.</p>		
+	</section>
+      <footer>
+        
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>		
+    <script src="https://fromdev.github.io/fromdev-static/javascripts/jquery.selectOnFocus.js"></script>
+	  <script>
+ function wordCount( val ){
+    var wom = val.match(/\S+/g);
+    return {
+        charactersNoSpaces : val.replace(/\s+/g, '').length,
+        characters         : val.length,
+        words              : wom ? wom.length : 0,
+        lines              : val.split(/\r*\n/).length
+    };
+}
+
+
+var textarea = document.getElementById("inputText");
+var result   = document.getElementById("result");
+
+textarea.addEventListener("input", function(){
+  var v = wordCount( this.value );
+  result.innerHTML = (
+      "<br>Characters (no spaces):  "+ v.charactersNoSpaces +
+      "<br>Characters (and spaces): "+ v.characters +
+      "<br>Words: "+ v.words +
+      "<br>Lines: "+ v.lines
+  );
+}, false);
+ 
+	</script>
+
+	</body>
+</html>
