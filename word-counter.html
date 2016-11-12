@@ -54,13 +54,13 @@ layout: post
 var textarea = document.getElementById("inputText");
 var result   = document.getElementById("result");
 
-textarea.addEventListener("input", function(){
-  var v = wordCount( this.value );
+textarea.addEventListener("input", function() {
+  var v = wordCount(this.value);
   result.innerHTML = (
-      "<br>Characters (no spaces):  "+ v.charactersNoSpaces +
-      "<br>Characters (and spaces): "+ v.characters +
-      "<br>Words: "+ v.words +
-      "<br>Lines: "+ v.lines
+    "<code>Words: <b>" + v.words +
+    "</b> </code> <code>Characters (no spaces): <b>" + v.charactersNoSpaces +
+    "</b> </code><code>Characters: <b>" + v.characters +
+    "</b> </code><code>Lines: <b>" + v.lines + "</b></code>"
   );
 }, false);
  
