@@ -70,19 +70,32 @@ layout: post
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>		
     <script src="https://fromdev.github.io/fromdev-static/javascripts/jquery.selectOnFocus.js"></script>
 	  <script>
+ var escapeIt = function(txt) {
+  return $("<div>").text(txt).html();
+};
+
+var unescapeIt = function(txt) {
+  var unescaped = $("<textarea/>").html(txt).text();
+  if (escapeIt(unescaped) == txt) {
+    return unescaped;
+  } else {
+    return txt;
+  }
+};
+
 $(document).ready(function() {
   $("#escape").click(function() {
     var resultTextArea = $("#inputText");
     var txt = resultTextArea.val();
-    resultTextArea.val($("<div>").text(txt).html());
+    resultTextArea.val(escapeIt(txt));
   });
-  
+
   $("#unescape").click(function() {
     var resultTextArea = $("#inputText");
     var txt = resultTextArea.val();
-    resultTextArea.val($("<textarea/>").html(txt).text());
+    resultTextArea.val(unescapeIt(txt));
   });
-$("#inputText").selectOnFocus();	
+	$("#inputText").selectOnFocus();
 });
  
 	</script>
