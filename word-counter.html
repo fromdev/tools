@@ -25,7 +25,7 @@ layout: post
 	      <div class="subsection">
           	<div id="result">
 			<table><tbody>
-  				<tr><th>Words</th><td>0</td><th>Lines</th><td>0</td></tr>
+  				<tr><th>Words</th><td width='100px'>0</td><th>Lines</th><td>0</td></tr>
   				<tr><th>Characters</th><td>0</td><th>Characters(no spaces)</th><td>0</td></tr>
 			</tbody></table>
 		</div>
@@ -62,7 +62,7 @@ var result   = document.getElementById("result");
 textarea.addEventListener("input", function() {
   var v = wordCount(this.value);
   result.innerHTML = (
-    "<table><tbody><tr><th>Words</th><td>" + v.words + 
+    "<table><tbody><tr><th>Words</th><td width='100px'>" + v.words + 
     "</td><th>Lines</th><td>" +  v.lines  + "</td></tr>" + 
     "<tr><th>Characters</th><td>" + v.characters +
     "</td><th>Characters(no spaces)</th><td>" + v.charactersNoSpaces + "</td></tr></tbody></table>"
