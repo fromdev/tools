@@ -1,0 +1,69 @@
+---
+title: This is my title
+layout: post
+--- 
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>String Camelcase | Lowercase | Uppercase Util Online | Developer Tools</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      {% include header.html %}
+      <section>
+        <h1>String Case Change Utility</h1>
+	      <textarea cols="100" rows="20" id="inputText" autofocus>test Some SpeCial Kond a AdnTadf asd </textarea>
+        <a class="button" id="camelcase">Camel Case</a>
+        <a class="button" id="uppercase">Upper case</a>
+        <a class="button" id="lowercase">Lower case</a>
+	      </div>
+      </section>
+	<section>
+			
+	</section>
+      <footer>
+        
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>		
+    <script src="https://fromdev.github.io/fromdev-static/javascripts/jquery.selectOnFocus.js"></script>
+	  <script>
+    String.prototype.toCamelCase = function () {
+    return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+};
+
+$(document).ready(function() {
+  $("#camelcase").click(function() {
+    var resultTextArea = $("#inputText");
+    var txt = resultTextArea.val();
+    resultTextArea.val(txt.toCamelCase());
+  });
+
+  $("#uppercase").click(function() {
+    var resultTextArea = $("#inputText");
+    var txt = resultTextArea.val();
+    resultTextArea.val(txt.toUpperCase());
+  });
+  
+    $("#lowercase").click(function() {
+    var resultTextArea = $("#inputText");
+    var txt = resultTextArea.val();
+    resultTextArea.val(txt.toLowerCase());
+  });
+  $("#inputText").selectOnFocus();
+});
+ 
+	</script>
+
+	</body>
+</html>
