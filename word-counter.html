@@ -62,10 +62,10 @@ var result   = document.getElementById("result");
 textarea.addEventListener("input", function() {
   var v = wordCount(this.value);
   result.innerHTML = (
-    "The input text has <code>" + v.words + " words</code>, <code>" + 
-    v.lines  + " lines</code>, <code>" + 
-    v.characters + " characters</code>, and <code>"
-    + v.charactersNoSpaces + " characters(excluding spaces)</code>"
+    "<div><code>" + v.words + " words </code>, <code>" + 
+    v.lines  + " lines </code></div><div><code>" + 
+    v.characters + " characters </code><code>"
+    + v.charactersNoSpaces + " characters(excluding spaces) </code></div>"
   );
 }, false);
  
