@@ -474,6 +474,13 @@ div.subsection {
 	padding:7px;
 }
 
+code {
+  padding: 0 5px 2px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
 code b {
   font-weight:bold;
   color:#AF0011;
