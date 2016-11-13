@@ -1,0 +1,110 @@
+---
+title: This is my title
+layout: post
+--- 
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>XML Escape | UnEscape Online | Developer Tools</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      {% include header.html %}
+      <section>
+        <h1>XML Escape and UnEscape</h1>
+	      <textarea cols="100" rows="20" id="inputText" autofocus></textarea>
+	      <div class="subsection">
+		<a class="button" id="escape">Escape</a>
+		<a class="button" id="unescape">UnEscape</a>
+	      </div>
+      </section>
+	<section>
+		<h3>About XML Escape and UnEscape Tool</h3>
+	        <p>This is a free online tool to escape and unescape XML markup. You can copy/paste your desired XML in below text field and hit Escape or UnEscape button.</p>
+		<h3>What is XML Escaping</h3>
+		<p>HTML escaping is used to represent special meaning characters in a XML code. e.g. less than symbol <code>&lt;</code> has a special meaning in XML markup language. But in case your data contains a less than symbol <code>&lt;</code> and you want to send it without confusing the browser then you need to send it as &amplt; instead of <code>&lt;</code> . Simlarly there are many other special characters that can be used as part of XML markup. Below sample list can give you a idea of what this means.</p>
+		<table>
+			<tr>
+				<th>Character</th>
+				<th>XML Escape Value</th>
+			</tr>			
+			<tr>
+				<td>quote (")</td>
+				<td>&quot;</td>
+			</tr>			
+			<tr>
+				<td>amphersand (&amp;)</td>
+				<td>&amp;</td>
+			</tr>
+			<tr>
+				<td>less than symbol (&lt;)</td>
+				<td>&lt;</td>
+			</tr>
+			<tr>
+				<td>greater than symbol (&gt;)</td>
+				<td>&gt;</td>
+			</tr>
+      <tr>
+				<td>single quote (&apos;)</td>
+				<td>&amp;apos;</td>
+			</tr>
+		</table>
+		<h3>Want To Know What Is The XML Escaped Value of a Character?</h3>
+		<p>That is easy. Just type the character or a full string in the text box above and hit Escape button. You should be able to see the escaped value.</p>
+		<h3>What is HTML UnEscaping</h3>
+		<p>XML UnEscaping is the reverse process of escaping. This is used by the browser and client side programming languages to get the real data value from escaped string.</p>
+		<h3>What Characters Need To Be Escaped?</h3>
+		<p>Only few special meaning character need to be escaped. These characters have special use in XML markup language. </p>
+		
+	</section>
+      {% include footer.html %}
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>		
+    <script src="https://fromdev.github.io/fromdev-static/javascripts/jquery.selectOnFocus.js"></script>
+	  <script>
+if (!String.prototype.encodeHTML) {
+  String.prototype.encodeHTML = function () {
+    return this.replace(/&/g, '&amp;')
+               .replace(/</g, '&lt;')
+               .replace(/>/g, '&gt;')
+               .replace(/"/g, '&quot;')
+               .replace(/'/g, '&apos;');
+  };
+}
+
+if (!String.prototype.decodeHTML) {
+  String.prototype.decodeHTML = function () {
+    return this.replace(/&apos;/g, "'")
+               .replace(/&quot;/g, '"')
+               .replace(/&gt;/g, '>')
+               .replace(/&lt;/g, '<')
+               .replace(/&amp;/g, '&');
+  };
+}
+
+$(document).ready(function() {
+  $("#escape").click(function(){
+  	var inputTextArea = $("#inputText");
+    inputTextArea.val(inputTextArea.val().encodeHTML());
+  });
+  $("#unescape").click(function(){
+  	var inputTextArea = $("#inputText");
+    inputTextArea.val(inputTextArea.val().decodeHTML());
+  });
+});
+
+ 
+	</script>
+
+	</body>
+</html>
