@@ -1,0 +1,70 @@
+---
+title: This is my title
+layout: post
+--- 
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Calculate MD5 Hash Online | Developer Tools</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      {% include header.html %}
+      <section>
+        <h1>Calculate MD5 Hash</h1>
+	      <textarea cols="100" rows="20" id="inputText" autofocus></textarea>
+	      <div class="subsection">
+		<a class="button" id="calculate">Calculate MD5 Hash</a>
+	      </div>
+      </section>
+	<section>
+		<h3>About MD5 Calculation Tool</h3>
+	    <p>This is a free online tool to generate MD5 hash of any give string. You can copy/paste your desired string/text in below text field and hit Calculate MD5 button.</p>
+		<h3>What is MD5 Hashing?</h3>
+		<p>MD5 (Message Digest algorithm 5) hashing is a algorithm to calculate one way hash of a given text. It is a 32 digit hexadecimal number representing a string. It was created by Ronald Rivest in 1991. Hashing is popular way to store passwords. It produces 128 bit hash value of a string.</p>
+		<h3>Want To Know What Is The MD5 Value of a Character?</h3>
+		<p>That is easy. Just type the character or a full string in the text box above and hit <b>Calculate MD5 Hash</b> button. You should be able to see the MD5 hash value.</p>
+		<h3>Can I Recover Original String From MD5 Hash?</h3>
+		<p>MD5 is a one way hashing algorithm. This means you can convert a string to hash but there is not mathematical way to reverse generate the orignial string. </p>
+		<p>At the same time it is not impossible to know the respective string value for a given hash. You can generate MD5 hash of all possible combination of strings and match them. This is very popular to guess MD5 value of common passwords. For example search this string on google <code>5f4dcc3b5aa765d61d8327deb882cf99</code> and you will be able to find the string value of it is "password" </p>
+		<h3>Is MD5 Secure Enough?</h3>
+		<p>MD5 is highly secure algorithm however, it is not recommended to use it for saving passwords. MD5 is a very fast algorithm that makes it easy for a hacker to calculate MD5 hash of billions of strings in short time. This can serve as a simple lookup table for hacker to find actual string value. </p>
+		<h3>Is MD5 Good for storing passwords?</h3>
+		<p>No, MD5 is not good enough to store passwords. MD5 does not require <code>salt</code> therefore its easier to crack. You need to use stronger hashing algorithm with <code>salt</code> like SHA-256 or better instead.</p>
+		<h3>Where Should I Use MD5?</h3>		
+		<p>MD5 algorithm can be used for following use cases. </p>
+		<ul>
+			<li>MD5 is heavily used file and data integrity checks.</li>
+			<li>MD5 is 32 digit code, therefore it can be useful for fixed length token requirements, e.g. license key.</li>
+		</ul>		
+	</section>
+      {% include footer.html %}
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>		
+    <script src="https://fromdev.github.io/fromdev-static/javascripts/jquery.selectOnFocus.js"></script>
+     <script src="javascripts/md5.min.js"></script>
+
+	  <script>
+
+$(document).ready(function() {
+  $("#calculate").click(function(){
+  	var inputTextArea = $("#inputText");
+    inputTextArea.val(md5(inputTextArea.val()));
+  });
+});
+
+ 
+	</script>
+
+	</body>
+</html>
