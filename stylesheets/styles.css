@@ -486,4 +486,19 @@ code b {
   color:#AF0011;
 }
 
+div.table {
+	display: table-cell;
+}
+
+div.row {
+	display: table-row;
+}
+
+div.cell {
+	display: table-cell;
+	vertical-align: middle;
+	padding:20px;
+}
+
+
 /* End Addition by Sachin for Custom elements */
