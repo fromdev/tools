@@ -1,0 +1,123 @@
+---
+title: This is my title
+layout: post
+---
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>JavaScript String Escape Online | Developer Tools</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      {% include header.html %}
+      <section>
+        <h1>JavaScript Escape String Tool</h1>
+	      <textarea cols="100" rows="20" id="inputText" autofocus></textarea>
+	      <div class="subsection">
+		        <a class="button" id="escape">Escape</a>
+	      </div>
+      </section>
+	<section>
+		<h3>About JavaScript String Escape Tool</h3>
+	  <p>This is a free online tool to escape JavaScript strings. You can copy/paste your desired string in below text field and hit Escape button.</p>
+		<h3>What is JavaScript Escaping</h3>
+		<p>HTML escaping is used to represent special meaning characters in a JavaScript code. e.g. less than symbol <code>&lt;</code> has a special meaning in JavaScript programming language. But in case your data contains a less than symbol <code>&lt;</code> and you want to send it without confusing the browser then you need to send it as &amplt; instead of <code>&lt;</code> . Simlarly there are many other special characters that can be used as part of JavaScript programming. Below sample list can give you a idea of what this means.</p>
+		<table>
+			<tr>
+				<th>Character</th>
+				<th>JavaScript Escape Value</th>
+			</tr>
+			<tr>
+				<td>quote (")</td>
+				<td>\"</td>
+			</tr>
+      <tr>
+				<td>single quote (')</td>
+				<td>\'</td>
+			</tr>
+			<tr>
+				<td>Nul char</td>
+				<td>\0</td>
+			</tr>
+			<tr>
+				<td>Horizontal Tab</td>
+				<td>\t</td>
+			</tr>
+			<tr>
+				<td>Vertical Tab</td>
+				<td>\u000B or \v</td>
+			</tr>
+      <tr>
+				<td>New line</td>
+				<td>\n</td>
+			</tr>
+      <tr>
+				<td>Carriage return</td>
+				<td>\r</td>
+			</tr>
+      <tr>
+				<td>Backslash</td>
+				<td>\\</td>
+			</tr>
+		</table>
+		<h3>Want To Know What Is The JavaScript Escaped Value of a Character?</h3>
+		<p>That is easy. Just type the character or a full string in the text box above and hit Escape button. You should be able to see the escaped value.</p>
+		<h3>What Characters Need To Be Escaped?</h3>
+		<p>Only few special meaning character need to be escaped. These characters have special use in JavaScript programming language. </p>
+    <h3>Some Key Things To Note About Escaping In JavaScript</h3>
+    <ul>
+      <li>Note that the javascript escaped string is not necessarily valid JSON, since control characters are considered illegal in JSON.</li>
+      <li>Note that the  <code>\'</code> , <code>\v</code> and <code>\0</code> escapes are considered illegal in JSON and are not allowed strings.</li>
+      <li>Note that Internet Explorer versions older than 9 takes <code>\v</code> as <code>v</code> instead of a vertical tab <code>\x0B</code>.</li>
+    </ul>
+	</section>
+      {% include footer.html %}
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://fromdev.github.io/fromdev-static/javascripts/jquery.selectOnFocus.js"></script>
+	  <script>
+    var escapeIt = function (string) {
+      return ('' + string).replace(/["'\\\n\r\u2028\u2029\u000B]/g, function (character) {
+        // Escape all characters not included in SingleStringCharacters and
+        // DoubleStringCharacters on
+        // http://www.ecma-international.org/ecma-262/5.1/#sec-7.8.4
+        switch (character) {
+          case '"':
+          case "'":
+          case '\\':
+            return '\\' + character
+          // Four possible LineTerminator characters need to be escaped:
+          case '\n':
+            return '\\n'
+          case '\r':
+            return '\\r'
+          case '\u2028':
+            return '\\u2028'
+          case '\u2029':
+            return '\\u2029'
+          case '\u000B' :
+            return '\\u000B'
+        }
+      })
+    };
+    $(document).ready(function() {
+        $("#escape").click(function(){
+        	var inputTextArea = $("#inputText");
+          inputTextArea.val(escapeIt(inputTextArea.val()));
+        });
+      $("#inputText").selectOnFocus();
+    });
+	</script>
+
+	</body>
+</html>
