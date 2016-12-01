@@ -430,7 +430,7 @@ footer {
   }
 }
 /* Start Addition by Sachin for Custom elements */
-textarea {	
+textarea, input {
 	padding: 5px;
 	border: 3px solid #dfdfdf;
 	font-size: 18px;
@@ -470,7 +470,7 @@ a.button:hover {
   background: -ms-linear-gradient(top, #C3001D 0%,#950119 100%);
   background: linear-gradient(top, #C3001D 0%,#950119 100%);
 }
-div.subsection {
+div.subsection, div.form {
 	padding:7px;
 }
 
@@ -500,5 +500,8 @@ div.cell {
 	padding:20px;
 }
 
-
+div.form input {
+  width: 100%;
+  clear: both;
+}
 /* End Addition by Sachin for Custom elements */
