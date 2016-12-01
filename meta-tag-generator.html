@@ -1,1 +1,68 @@
 
+---
+title: This is my title
+layout: post
+--- 
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Meta Tag Generator | Developer Tools</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      {% include header.html %}
+      <section>
+        <h1>Meta Tag Generator Tool</h1>
+	      <textarea cols="100" rows="20" id="inputText" autofocus></textarea>
+	      <div class="subsection">
+	      </div>
+      </section>
+	<section>
+		<h3>About Meta Tag Generator Tool</h3>
+	  <p>This is a free online tool to do simple Meta tag generation for your search engine optimization needs. You can copy/paste your desired text in the text fields and hit Generate button.   This will display the well formatted HTML meta tags in the text box.</p>
+		<h3>WhyMeta Tag Generator Is Needed?</h3>
+		<p>Meta Tag Generator is a common need for most bloggers, SEO experts and website owners. This tool can simplify your tag creation by a intuitive interface. Even if you do not know HTML you can generate these tags with the help of this tool.</p>		
+	</section>
+	{% include footer.html %}
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>		
+    <script src="https://fromdev.github.io/fromdev-static/javascripts/jquery.selectOnFocus.js"></script>
+	  <script>
+ function wordCount( val ){
+    var wom = val.match(/\S+/g);
+    return {
+        charactersNoSpaces : val.replace(/\s+/g, '').length,
+        characters         : val.length,
+        words              : wom ? wom.length : 0,
+        lines              : val.split(/\r*\n/).length
+    };
+}
+
+
+var textarea = document.getElementById("inputText");
+var result   = document.getElementById("result");
+
+textarea.addEventListener("input", function() {
+  var v = wordCount(this.value);
+  result.innerHTML = (
+    "<div><code>" + v.words + " words </code><code>" + 
+    v.lines  + " lines </code></div><div><code>" + 
+    v.characters + " characters </code><code>"
+    + v.charactersNoSpaces + " characters(excluding spaces) </code></div>"
+  );
+}, false);
+ 
+	</script>
+
+	</body>
+</html>
