@@ -2,7 +2,7 @@
 ---
 title: This is my title
 layout: post
---- 
+---
 <html>
   <head>
     <meta charset="utf-8">
@@ -22,46 +22,95 @@ layout: post
       {% include header.html %}
       <section>
         <h1>Meta Tag Generator Tool</h1>
-	      <textarea cols="100" rows="20" id="inputText" autofocus></textarea>
-	      <div class="subsection">
+        <div class="form">
+          <label for="title">Title</label>
+          <input id="title" name="title" placeholder="Enter Page Title" autofocus>
+          <label for="description">Description</label>
+          <textarea id="description" name="description" cols="69" rows="7" placeholder="Enter a web page description here"></textarea>
+          <label for="keywords">Keywords (Comma separated)</label>
+          <input id="keywords" name="keywords" placeholder="Comma separated keywords">
+          <label for="language">Language (Default English)</label>
+          <input id="language" name="language" placeholder="English" value="English">
+          <label for="revisit-after">Revisit After (Duration in days)</label>
+          <input id="revisit-after" name="revisit-after"  value="1">
+          <label for="author">Author Name</label>
+          <input id="author" name="author"  placeholder="Author full name">
+          <label for="charset">Charset (Default UTF-8)</label>
+          <input id="charset" name="charset"  value="UTF-8">
+          <label for="canonical">Canonical URL</label>
+          <input id="canonical" name="canonical"  placeholder="www.fromdev.com">
+        </div>
+        <div class="subsection">
+          <a class="button" id="submit">Generate Meta Tags</a>
+          <a class="button" id="clear">Clear</a>
+        </div>
+        <div class="subsection">
+          <textarea name="result" id="result" cols="100" rows="20" placeholder="Copy code from here"></textarea>
 	      </div>
       </section>
 	<section>
 		<h3>About Meta Tag Generator Tool</h3>
 	  <p>This is a free online tool to do simple Meta tag generation for your search engine optimization needs. You can copy/paste your desired text in the text fields and hit Generate button.   This will display the well formatted HTML meta tags in the text box.</p>
-		<h3>WhyMeta Tag Generator Is Needed?</h3>
-		<p>Meta Tag Generator is a common need for most bloggers, SEO experts and website owners. This tool can simplify your tag creation by a intuitive interface. Even if you do not know HTML you can generate these tags with the help of this tool.</p>		
+		<h3>Why Meta Tag Generator Is Needed?</h3>
+		<p>Meta Tag Generator is a common need for most web developers, bloggers, SEO experts and website owners. This tool can simplify your tag creation by a intuitive interface. Even if you do not know HTML you can generate these tags with the help of this tool.</p>
 	</section>
 	{% include footer.html %}
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>		
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://fromdev.github.io/fromdev-static/javascripts/jquery.selectOnFocus.js"></script>
 	  <script>
- function wordCount( val ){
-    var wom = val.match(/\S+/g);
-    return {
-        charactersNoSpaces : val.replace(/\s+/g, '').length,
-        characters         : val.length,
-        words              : wom ? wom.length : 0,
-        lines              : val.split(/\r*\n/).length
+    var metaTagByName = function(name, value) {
+       if(value) {
+         return '<meta name="' +  name + '" content="' + value + '" />\n'
+       } else {
+         return '';
+       }
     };
-}
 
+    var linkTagByName = function(name, value) {
+       if(value) {
+         return '<link rel="' +  name + '" href="' + value + '" />\n'
+       } else {
+         return '';
+       }
+    };
 
-var textarea = document.getElementById("inputText");
-var result   = document.getElementById("result");
+      $(document).ready(function() {
+        $("#submit").click(function() {
+          $("#result").val('');
+            var title = $('#title').val();
+            if(title) {
+              $("#result").val('<title>'+ title + '</title>\n');
+            }
 
-textarea.addEventListener("input", function() {
-  var v = wordCount(this.value);
-  result.innerHTML = (
-    "<div><code>" + v.words + " words </code><code>" + 
-    v.lines  + " lines </code></div><div><code>" + 
-    v.characters + " characters </code><code>"
-    + v.charactersNoSpaces + " characters(excluding spaces) </code></div>"
-  );
-}, false);
- 
+            $("#result").val($("#result").val() + metaTagByName("description",$('#description').val()));
+            $("#result").val($("#result").val() + metaTagByName("keywords",$('#keywords').val()));
+            $("#result").val($("#result").val() + metaTagByName("language",$('#language').val()));
+            $("#result").val($("#result").val() + metaTagByName("revisit-after",$('#revisit-after').val()));
+            $("#result").val($("#result").val() + metaTagByName("charset",$('#charset').val()));
+            $("#result").val($("#result").val() + linkTagByName("canonical",$('#canonical').val()));
+            $("#result").val($("#result").val() + linkTagByName("author",$('#author').val()));
+
+        });
+        $("#clear").click(function() {
+          $('#title').val('');
+          $('#title').focus();
+          $('#description').val('');
+          $('#keywords').val('');
+          $('#revisit-after').val('1');
+          $('#language').val('English');
+          $('#canonical').val('');
+          $('#charset').val('UTF-8');
+          $('#author').val('');
+          $("#result").val('');
+        });
+        $("#result").selectOnFocus();
+        $("#language").selectOnFocus();
+        $("#charset").selectOnFocus();
+        $("#revisit-after").selectOnFocus();
+      });
+
 	</script>
 
 	</body>
