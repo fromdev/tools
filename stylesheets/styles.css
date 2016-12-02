@@ -430,7 +430,7 @@ footer {
   }
 }
 /* Start Addition by Sachin for Custom elements */
-textarea, input {
+textarea, input, select {
 	padding: 5px;
 	border: 3px solid #dfdfdf;
 	font-size: 18px;
