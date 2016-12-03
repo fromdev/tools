@@ -431,10 +431,9 @@ footer {
 }
 /* Start Addition by Sachin for Custom elements */
 textarea, input, select {
-	padding: 7px;
+	padding: 5px;
 	border: 3px solid #dfdfdf;
 	font-size: 18px;
-	margin-top: 10px;
 }
 
 a.button {
@@ -504,5 +503,18 @@ div.cell {
 div.form input {
   width: 100%;
   clear: both;
+}
+
+span.green {
+  color : #28c350;
+  font-weight:bold;
+}
+span.red {
+  color: #ff0000;
+  font-weight:bold;
+}
+span.orange {
+  color : #ff9d00;
+  font-weight:bold;
 }
 /* End Addition by Sachin for Custom elements */
