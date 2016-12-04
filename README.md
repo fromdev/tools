@@ -1,9 +1,11 @@
 # Developer Tools
 Free Developer Tools Developed by Fromdev http://tools.fromdev.com/
 
-This is open source collection of developer tools that can be run on browser. The vision is to have a online tools website where all small tools can be present for developers or freelancers. 
+This is open source collection of developer tools that can be run on browser. The vision is to have a online tools website where all small tools can be present for developers or freelancers. Most of these tools are developed in JavaScript since we want them to run directly inside the browser. 
 
 I have worked as freelancer for long time and have used many websites for different kind of tools. This project brings best of all tools at one place for free.
+
+The tools can be really small and handy and should help automate repeated work.
 
 # How I Keep It Free and Open Source 
 I have two key things that keep me motivated and help these tool running.
