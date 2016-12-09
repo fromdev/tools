@@ -22,7 +22,6 @@ layout: post
       <section>
         <h1>URL Encoder and Decoder</h1>
 	      <textarea cols="100" rows="20" id="inputText" autofocus>
-       		        &lt;script src=\"https://code.jquery.com/jquery-3.1.1.min.js\" integrity=\"sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=\" crossorigin=\"anonymous\"&gt;&lt;/script&gt;		\n \n&lt;script&gt;\n   $(document).ready(function() {\n     \n   });\n&lt;/script&gt;\n        
         	</textarea>
 	      <div class="subsection">
 		    </div>
@@ -40,7 +39,8 @@ layout: post
     <script src="https://fromdev.github.io/fromdev-static/javascripts/jquery.selectOnFocus.js"></script>
 	  <script>
 	 $(document).ready(function() {
-     $("#inputText").selectOnFocus();
+		$("#inputText).val("<script src=\"https://code.jquery.com/jquery-3.1.1.min.js\" integrity=\"sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=\" crossorigin=\"anonymous\"></script>");
+     		$("#inputText").selectOnFocus();
    });
  
 	</script>
