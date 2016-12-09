@@ -87,7 +87,7 @@ layout: post
     <script src="https://fromdev.github.io/fromdev-static/javascripts/jquery.selectOnFocus.js"></script>
 	  <script>
     var escapeIt = function (string) {
-      return ('' + string).replace(/["'\\\n\r\u2028\u2029\u000B]/g, function (character) {
+      return ('' + string).replace(/["'\\\n\r\/\u2028\u2029\u000B]/g, function (character) {
         // Escape all characters not included in SingleStringCharacters and
         // DoubleStringCharacters on
         // http://www.ecma-international.org/ecma-262/5.1/#sec-7.8.4
@@ -95,6 +95,7 @@ layout: post
           case '"':
           case "'":
           case '\\':
+	  case '\/':		
             return '\\' + character
           // Four possible LineTerminator characters need to be escaped:
           case '\n':
