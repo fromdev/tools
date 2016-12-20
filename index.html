@@ -1,48 +1,117 @@
 ---
-title: This is my title
+title: Online Developer Tools | FromDev
 layout: post
 --- 
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="google-site-verification" content="1o1e0ua6-FNTnb7NXZtWB7lfmLB-y68A1Iex4duLO9c" />
-	<title>Online Developer Tools By Fromdev</title>
-	<meta name="description" content="This is open source collection of online tools for developers and programmers to stay productive on their job." />
-	<meta name="keywords" content="online,tool,developer,programming,web,opensource" />
-	<meta name="language" content="English" />
-	<meta name="revisit-after" content="1" />
-	<link rel="canonical" href="http://tools.fromdev.com" />
-	<link rel="author" href="Sachin Joshi" />
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      {% include header.html %}
-      <section>
-        <h1>Online Developer Tools Website By Fromdev.</h1>
-     
-<p>Welcome to Online Developer Tools Website By Fromdev. This website is dedicated to online tools for developer. There are many small tools that can be used everyday by developers. Having them online makes it more convenient. These tools are not extraordinary however, they can help you stay productive by speeding up small repeatitive small tasks that are often required. </p>
 
-<h3>What Tools Do We Have?</h3>
-	<div class="separator" style="clear: both; text-align: center;">
-		<img border="0" height="480" src="images/dev-tools.png" width="640" />
-	</div> 
-<p>We have tried to add tools that are easily used online in any browser. This includes some of the tools listed below</p>
-	      <ul>
-		      <li><a href="https://fromdev.github.io/tools/url-encode-decode.html">HTTP URL Encoding and Decoding Tools</a></li>
-		      <li>More Tools to come. Bookmark this page....</li>
-	      </ul>
-      </section>
-      {% include footer.html %}
+<head>
+   {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is open source collection of online tools for developers and programmers to stay productive on their job." />
+    <meta name="keywords" content="online,tool,developer,programming,web,opensource" />
+
+    {% include theme-css %}
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+{% include theme-header %}
+{% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>Online Developer Tools Website By Fromdev.</h1>
+            </section>
+            <!-- Main content -->
+              <section class="content">
+                <!-- Default box -->
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Welcome</h3>
+                    </div>
+                    <div class="box-body">
+                        <p>This website is dedicated to online tools for developer. There are many small tools that can be used everyday by developers. Having them online makes it more convenient. These tools are not extraordinary however, they can help
+                            you stay productive by speeding up small repeatitive tasks that are often required. </p>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+                <!-- /.box -->
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+
+                        <div class="info-box">
+                            <a href="string-util.html">
+                                <span class="info-box-icon bg-aqua"><i class="fa fa-edit"></i></span>
+                            </a>
+                            <div class="info-box-content">
+                                <span class="info-box-text">String Utility</span>
+                                <span class="info-box-number">Escape, Unescape &amp; more...</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-red"><i class="fa fa-shield"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Security</span>
+                                <span class="info-box-number">Password generation, MD5 &amp; more...</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-yellow"><i class="fa fa-bullseye"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">SEO</span>
+                                <span class="info-box-number">Meta tag, title suggestion &amp; more...</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-green"><i class="fa fa-star-o"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Other Tools</span>
+                                <span class="info-box-number">QR Code generator &amp; more...</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+{% include theme-footer %}
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
-  </body>
+    <!-- ./wrapper -->
+{% include theme-bottom-js %}
+
+</body>
 </html>
