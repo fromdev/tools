@@ -1,0 +1,31 @@
+        <!-- =============================================== -->
+
+        <!-- Left side column. contains the sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-edit text-aqua"></i> <span>String Utility</span>
+                            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="html-escape-unescape.html"><i class="fa fa-circle-o text-aqua"></i> HTML Escape</a></li>
+                            <li><a href="javascript-escape-unescape.html"><i class="fa fa-circle-o text-aqua"></i> JavaScript Escape</a></li>
+                            <li><a href="xml-escape-unescape.html"><i class="fa fa-circle-o text-aqua"></i> XML Escape</a></li>
+                            <li><a href="url-encode-decode.html"><i class="fa fa-circle-o text-aqua"></i> URL Encode | Decode</a></li>
+                            <li><a href="string-util.html"><i class="fa fa-circle-o text-aqua"></i> Change Case</a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- =============================================== -->
