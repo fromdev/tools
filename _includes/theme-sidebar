@@ -30,9 +30,9 @@
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="secure-password-generator.html"><i class="fa fa-circle-o text-aqua"></i> Password Generator</a></li>
-                            <li><a href="memorable-secure-password-generator.html"><i class="fa fa-circle-o text-aqua"></i> Memorable Password</a></li>
-                            <li><a href="md5.html"><i class="fa fa-circle-o text-aqua"></i> Calculate MD5</a></li>
+                            <li><a href="secure-password-generator.html"><i class="fa fa-circle-o text-red"></i> Password Generator</a></li>
+                            <li><a href="memorable-secure-password-generator.html"><i class="fa fa-circle-o text-red"></i> Memorable Password</a></li>
+                            <li><a href="md5.html"><i class="fa fa-circle-o text-red"></i> Calculate MD5</a></li>
                         </ul>
                     </li>
                 </ul>
