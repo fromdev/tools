@@ -22,7 +22,19 @@
                         </ul>
                     </li>
 
-
+                <li class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-shield text-red"></i> <span>Security &amp Privacy</span>
+                            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="secure-password-generator.html"><i class="fa fa-circle-o text-aqua"></i> Password Generator</a></li>
+                            <li><a href="memorable-secure-password-generator.html"><i class="fa fa-circle-o text-aqua"></i> Memorable Password</a></li>
+                            <li><a href="md5.html"><i class="fa fa-circle-o text-aqua"></i> Calculate MD5</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </section>
             <!-- /.sidebar -->
