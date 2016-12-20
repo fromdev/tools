@@ -35,6 +35,18 @@
                             <li><a href="md5.html"><i class="fa fa-circle-o text-red"></i> Calculate MD5</a></li>
                         </ul>
                     </li>
+                    <li class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-bullseye text-yellow"></i> <span>SEO</span>
+                            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="title-maker.html"><i class="fa fa-circle-o text-yellow"></i> Title Maker</a></li>
+                            <li><a href="meta-tag-generator.html"><i class="fa fa-circle-o text-yellow"></i> Meta Tags</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </section>
             <!-- /.sidebar -->
