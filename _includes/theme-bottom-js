@@ -1,4 +1,8 @@
     <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="plugins/jQueryUI/jquery-ui.min.js"></script>
+    <script>
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
     <!-- Bootstrap 3.3.6 -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- SlimScroll -->
