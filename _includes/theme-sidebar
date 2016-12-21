@@ -47,6 +47,18 @@
                             <li><a href="meta-tag-generator.html"><i class="fa fa-circle-o text-yellow"></i> Meta Tags</a></li>
                         </ul>
                     </li>
+                    <li class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-star text-green"></i> <span>Other Tools</span>
+                            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="qr-code-generator.html"><i class="fa fa-circle-o text-green"></i> QR Code Generator</a></li>
+                            <li><a href="jquery-quickstart-snippet.html"><i class="fa fa-circle-o text-green"></i> jQuery Grabber</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </section>
             <!-- /.sidebar -->
