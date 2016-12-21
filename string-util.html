@@ -1,68 +1,141 @@
 ---
-title: This is my title
+title: String Camelcase | Lowercase | Uppercase Util Online | Developer Tools
 layout: post
---- 
+---
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>String Camelcase | Lowercase | Uppercase Util Online | Developer Tools</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
+<head>
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is open source tool for programmers to convert a string to uppercase, lowercase, camelcase or title case format" />
+    <meta name="keywords" content="online,tool,string,camelcase,lowercase,uppercase,convert,change case,opensource,text,title case" />
+    {% include theme-css %}
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
     <div class="wrapper">
-      {% include header.html %}
-      <section>
-        <h1>String Case Change Utility</h1>
-	      <textarea cols="100" rows="20" id="inputText" autofocus></textarea>
-	      <div class="subsection">
-			<a class="button" id="camelcase">Camel Case</a>
-			<a class="button" id="uppercase">Upper case</a>
-			<a class="button" id="lowercase">Lower case</a>
-	      </div>
-      </section>
-	<section>
-			
-	</section>
-      {% include footer.html %}
+
+        {% include theme-header %} {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h1 class="box-title">String Case Change Utility</h1>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="20" placeholder="Copy/Paste text here to convert the string" id="inputText" autofocus></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-xs-1">
+                                <button type="button" class="btn btn-success" id="camelcase">Camel Case</button>
+                            </div>
+                            <div class="col-xs-1">
+                                <button type="button" class="btn btn-info" id="uppercase">Upper case</button>
+                            </div>
+                            <div class="col-xs-1">
+                                <button type="button" class="btn btn-warn" id="lowercase">Lower case</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About String Case Change Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This is a free online tool to change case of a text or string. You can copy/paste your desired text in below text field and hit one the buttons. The entire text will be changed to required format/case.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why This Utility is Required?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>String case change is required at many places. This is also supported by almost all text editors. This tool is mainly helping us keep this utility availble online withtout need of installing a text editor just for this purpose.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h3 class="box-title">HTML Escaping Characters</h3>
+                    </div>
+                </div>
+                <!-- /.box -->
+
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is Camelcase or Title Case?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Camelcase is also called as title case. It is commonly used for page headlines. It is popular to highlight certain text. To convert a text to camel case we need to convert first letter of each word in text to uppercase. This utility
+                            is not very common in text editors. Below example shows a sample of regular text to camelcase conversion.</p>
+                        <h4>Original Text</h4>
+                        <p>a quick brown fox jumped over a lazy frog.</p>
+                        <h4>Camelcase Text</h4>
+                        <p>A Quick Brown Fox Jumped Over A Lazy Frog.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>		
-    <script src="https://fromdev.github.io/fromdev-static/javascripts/jquery.selectOnFocus.js"></script>
-	  <script>
-    String.prototype.toCamelCase = function () {
-    return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-};
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
 
-$(document).ready(function() {
-  $("#camelcase").click(function() {
-    var resultTextArea = $("#inputText");
-    var txt = resultTextArea.val();
-    resultTextArea.val(txt.toCamelCase());
-  });
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script>
+    String.prototype.toCamelCase = function() {
+        return this.replace(/\w\S*/g, function(txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
+    };
 
-  $("#uppercase").click(function() {
-    var resultTextArea = $("#inputText");
-    var txt = resultTextArea.val();
-    resultTextArea.val(txt.toUpperCase());
-  });
-  
-    $("#lowercase").click(function() {
-    var resultTextArea = $("#inputText");
-    var txt = resultTextArea.val();
-    resultTextArea.val(txt.toLowerCase());
-  });
-  $("#inputText").selectOnFocus();
-});
- 
-	</script>
+    $(document).ready(function() {
+        $("#camelcase").click(function() {
+            var resultTextArea = $("#inputText");
+            var txt = resultTextArea.val();
+            resultTextArea.val(txt.toCamelCase());
+        });
 
-	</body>
+        $("#uppercase").click(function() {
+            var resultTextArea = $("#inputText");
+            var txt = resultTextArea.val();
+            resultTextArea.val(txt.toUpperCase());
+        });
+
+        $("#lowercase").click(function() {
+            var resultTextArea = $("#inputText");
+            var txt = resultTextArea.val();
+            resultTextArea.val(txt.toLowerCase());
+        });
+        $("#inputText").selectOnFocus();
+    });
+</script>
+
 </html>
