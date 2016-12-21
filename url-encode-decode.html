@@ -1,105 +1,202 @@
 ---
-title: This is my title
+title: URL Encoder | Decoder Online | Developer Tools
 layout: post
---- 
+---
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>URL Encoder | Decoder Online | Developer Tools</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
+<head>
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is open source tool for programmers to escape or unescape a String value for HTML use." />
+    <meta name="keywords" content="online,tool,html,escape,unescape,encode,decode,web,opensource,http" /> {% include theme-css %} {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
     <div class="wrapper">
-      {% include header.html %}
-      <section>
-        <h1>URL Encoder and Decoder</h1>
-	      <textarea cols="100" rows="20" id="inputText" autofocus></textarea>
-	      <div class="subsection">
-		<a class="button" id="encode">Encode</a>
-		<a class="button" id="decode">Decode</a>
-	      </div>
-      </section>
-	<section>
-		<h3>About URL Encoder and Decoder Tool</h3>
-	        <p>This is a free online tool to encode and decode http URLs. You can copy/paste your desired URL in below text field and hit Encode or Decode button.</p>
-		<h3>What is URL Encoding</h3>
-		<p>URL encoding is used to represent special meaning characters in a URL. e.g. forward slash has a special meaning in HTTP URL. But in case your data contains a forward slash (/) and you want to send it without confusing the HTTP server then you need to send it as %2F instead of / . Simlarly there are many other special characters that cab used as part of HTTP URL format. Below sample list can give you a idea of what this means.</p>
-		<table>
-			<tr>
-				<th>Character</th>
-				<th>URL Encoded Value</th>
-			</tr>			
-			<tr>
-				<td>backspace</td>
-				<td>%08</td>
-			</tr>			
-			<tr>
-				<td>space</td>
-				<td>%20</td>
-			</tr>
-			<tr>
-				<td>forward slash (/)</td>
-				<td>%2f</td>
-			</tr>
-			<tr>
-				<td>back slash (\)</td>
-				<td>%5c</td>
-			</tr>
-			<tr>
-				<td>@</td>
-				<td>%40</td>
-			</tr>
-			<tr>
-				<td>"</td>
-				<td>%22</td>
-			</tr>
-		</table>
-		<h3>Want To Know What Is The URL Encoded Value of a Character?</h3>
-		<p>That is easy. Just type the character or a full string in the text box above and hit Encode button. You should be able to see the encoded value.</p>
-		<h3>What is URL Decoding</h3>
-		<p>URL decoding is the reverse process of encoding. This is used by the HTTP server to get the real data value from encoded string.</p>
-		<h3>Can I Decode Everything Encoded?</h3>
-		<p>Yes, everything encoded must be easily decoded as long as you know the characters used for encoding. In general any encoding/decoding (including URL encoding/decoding) is reversible both ways. Below are some key relations to rememeber about encoding and decoding.</p>
-		<ul>
-			<li>There is always a one to one mapping of encoding to decoding. </li>
-			<li>Anything encoded can be decoded and anything decoded can be encoded.</li>			
-		</ul>
-		<h3>Is Encoding Secure?</h3>
-		<p>No, the purpose of encoding is not security. It is used for avoiding ambiguity. If you require security of data consider encryption after encoding.</p>
-		<h3>Where Is URL Encoding and Decoding Used?</h3>
-		<p>URL encoding is used for transfer of data using HTTP protocol. This is very common in any HTTP interaction using get method call.</p>
-		
-	</section>
-      {% include footer.html %}
+
+        {% include theme-header %} {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h1 class="box-title">URL Encoder and Decoder</h1>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="20" placeholder="Copy/Paste text here to encode or decode" id="inputText" autofocus></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-xs-1">
+                                <button type="button" class="btn btn-success" id="encode"> Encode </button>
+                            </div>
+                            <div class="col-xs-1">
+                                <button type="button" class="btn btn-info" id="decode">Decode</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About URL Encoder and Decoder Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This is a free online tool to encode and decode http URLs. You can copy/paste your desired URL in below text field and hit Encode or Decode button.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is URL Encoding?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>URL encoding is used to represent special meaning characters in a URL. e.g. forward slash has a special meaning in HTTP URL. But in case your data contains a forward slash (/) and you want to send it without confusing the HTTP
+                            server then you need to send it as %2F instead of / . Simlarly there are many other special characters that cab used as part of HTTP URL format. Below sample list can give you a idea of what this means.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h3 class="box-title">URL Encoding Characters</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <th>Character</th>
+                                    <th>URL Encoded Value</th>
+                                </tr>
+                                <tr>
+                                    <td>backspace</td>
+                                    <td>%08</td>
+                                </tr>
+                                <tr>
+                                    <td>space</td>
+                                    <td>%20</td>
+                                </tr>
+                                <tr>
+                                    <td>forward slash (/)</td>
+                                    <td>%2f</td>
+                                </tr>
+                                <tr>
+                                    <td>back slash (\)</td>
+                                    <td>%5c</td>
+                                </tr>
+                                <tr>
+                                    <td>@</td>
+                                    <td>%40</td>
+                                </tr>
+                                <tr>
+                                    <td>"</td>
+                                    <td>%22</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Want To Know What Is The URL Encoded Value of a Character?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>That is easy. Just type the character or a full string in the text box above and hit Encode button. You should be able to see the encoded value.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is URL Decoding?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>URL decoding is the reverse process of encoding. This is used by the HTTP server to get the real data value from encoded string.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Can I Decode Everything Encoded?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Yes, everything encoded must be easily decoded as long as you know the characters used for encoding. In general any encoding/decoding (including URL encoding/decoding) is reversible both ways. Below are some key relations to rememeber
+                            about encoding and decoding.</p>
+                        <ul>
+                            <li>There is always a one to one mapping of encoding to decoding. </li>
+                            <li>Anything encoded can be decoded and anything decoded can be encoded.</li>
+                        </ul>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Is Encoding Secure?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>No, the purpose of encoding is not security. It is used for avoiding ambiguity. If you require security of data consider encryption after encoding.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Where Is URL Encoding and Decoding Used?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>URL encoding is used for transfer of data using HTTP protocol. This is very common in any HTTP interaction using get method call.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>		
-    <script src="https://fromdev.github.io/fromdev-static/javascripts/jquery.selectOnFocus.js"></script>
-	  <script>
-	 $(document).ready(function() {
-  $("#encode").click(function() {
-    var inputTextArea = $("#inputText");
-    console.log(inputTextArea.val());
-    inputTextArea.val(encodeURIComponent(inputTextArea.val()).replace(/'/g, "%27").replace(/"/g, "%22"));
-  });
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
 
-  $("#decode").click(function() {
-    var inputTextArea = $("#inputText");
-    console.log(inputTextArea.val());
-    inputTextArea.val(decodeURIComponent(inputTextArea.val().replace(/\+/g, " ")));
-  });
-	$("#inputText").selectOnFocus();
-});
- 
-	</script>
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#encode").click(function() {
+            var inputTextArea = $("#inputText");
+            console.log(inputTextArea.val());
+            inputTextArea.val(encodeURIComponent(inputTextArea.val()).replace(/'/g, "%27").replace(/"/g, "%22"));
+        });
 
-	</body>
+        $("#decode").click(function() {
+            var inputTextArea = $("#inputText");
+            console.log(inputTextArea.val());
+            inputTextArea.val(decodeURIComponent(inputTextArea.val().replace(/\+/g, " ")));
+        });
+        $("#inputText").selectOnFocus();
+    });
+</script>
+
 </html>
