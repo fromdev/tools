@@ -1,48 +1,102 @@
 ---
-title: This is my title
+<!-- markup text for github pages start -->
+title: jQuery Quickstart Code Snippet Grabber| Developer Tools
+<!-- add more variable separated by line -->
 layout: post
---- 
+<!-- markup text for github pages start -->
+---
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>jQuery Quickstart Code Snippet Grabber| Developer Tools</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to grab jQuery code snippet for doing a quickstart of your project. Helpful for occasional jQuery users to start using it quickly." />
+    <meta name="keywords" content="online,jquery,code,snippet,quickstart,web,opensource" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
     <div class="wrapper">
-      {% include header.html %}
-      <section>
-        <h1>jQuery Quickstart Code Snippet Grabber</h1>
-	      <textarea cols="100" rows="20" id="inputText"></textarea>
-      </section>
-	<section>
-		<h3>About jQuery Quickstart Code Snippet</h3>
-	        <p>This is a free online page to grab a jQuery quickstart code. It is just for copy and paste in a javascript or HTML file where you want to add jQuery library.</p>
-		<h3>Why is this needed?</h3>
-		<p>The purpose of this page is to provide a quickstart snippet for irregular jQuery developers. It is usually difficult to remember the url and starting syntax. I use it a lot of times to develop more tools for this project itself. </p>
-		<h3>Where Can I run it?</h3>
-		<p>You can run it in a online javascript editor like jsfiddle. </p>
-	</section>
-      {% include footer.html %}
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>		
-    <script src="https://fromdev.github.io/fromdev-static/javascripts/jquery.selectOnFocus.js"></script>
-	  <script>
-	 $(document).ready(function() {
-		$("#inputText").val('<script src=\"https://code.jquery.com/jquery-3.1.1.min.js\"><\/script>\n<script>\n	 $(document).ready(function() {\n		\n   	});\n<\/script>');
-     		$("#inputText").selectOnFocus();
-   	});
- 
-	</script>
 
-	</body>
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h1 class="box-title">jQuery Quickstart Code Snippet Grabber</h1>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="title">Quick start code snippet</label>
+                                <textarea class="form-control" cols="100" rows="20" id="inputText"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About jQuery Quickstart Code Snippet</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This is a free online page to grab a jQuery quickstart code. It is just for copy and paste in a javascript or HTML file where you want to add jQuery library.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why is this needed?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>The purpose of this page is to provide a quickstart snippet for irregular jQuery developers. It is usually difficult to remember the url and starting syntax. I use it a lot of times to develop more tools for this project itself.
+                            </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Where Can I run it?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>You can run it in a online javascript editor like jsfiddle and other free <a href="http://www.fromdev.com/2015/01/websites-to-test-javascript-code.html">Javascript editors</a>. </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#inputText").val('<script src=\"https://code.jquery.com/jquery-3.1.1.min.js\"><\/script>\n<script>\n	 $(document).ready(function() {\n		\n   	});\n<\/script>');
+        $("#inputText").selectOnFocus();
+    });
+</script>
+
 </html>
