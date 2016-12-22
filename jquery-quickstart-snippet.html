@@ -59,7 +59,11 @@ layout: post
                         <form role="form">
                             <div class="form-group">
                                 <label for="title">Blank Plugin Quick start code snippet</label>
-                                <textarea class="form-control" rows="7" id="plugin-snippet"></textarea>
+                                <textarea class="form-control" rows="7" id="pluginSnippet"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Plugin name</label>
+                                <input class="form-control" type="text" value="helloWorld" id="pluginName"/>
                             </div>
                         </form>
                     </div>
@@ -108,11 +112,19 @@ layout: post
 </body>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script>
+    var updatePluginSnippet = function() {
+      var pluginName = $("#pluginName").val();
+      $("#pluginSnippet").val('(function($) {\n    $.fn.' + pluginName + ' = function(options) {\n        \/\/start here\n        \n    }\n}(jQuery));\n');
+    };
+
     $(document).ready(function() {
         $("#inputText").val('<script src=\"https://code.jquery.com/jquery-3.1.1.min.js\"><\/script>\n<script>\n	 $(document).ready(function() {\n		\n   	});\n<\/script>');
         $("#inputText").selectOnFocus();
-        $("#plugin-snippet").val('(function($) {\n    $.fn.helloWorld = function(options) {\n        \/\/start here\n        \n    }\n}(jQuery));\n');
-        $("#plugin-snippet").selectOnFocus();
+        updatePluginSnippet();
+        $('#pluginName').on('input', function(e) {
+            updatePluginSnippet();
+        });
+        $("#pluginSnippet").selectOnFocus();
     });
 </script>
 
