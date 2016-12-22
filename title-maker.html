@@ -1,81 +1,156 @@
 ---
-title: This is my title
-layout: post
+title: Blog Article Title Generator | Content Tools
+layout: post 
 ---
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Blog Article Title Generator | Content Tools</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to use open source tool to generate a intersting title for your content. Helpful for bloggers to come up with titles that are attractive for readers." />
+    <meta name="keywords" content="online,tool,title,seo,blog,web,opensource" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
     <div class="wrapper">
-      {% include header.html %}
-      <section>
-        <h1>Blog Article Title Generator Tool</h1>
-          <input type="text" size="45" id="singleTitle" readonly style="width:100%;font-weight:bold;color:#C30000;font-size: 24px;border-style:none;border-color:Transparent;overflow:auto;"/>
-          <hr style="border-top: 2px dashed #8c8b8b;"/>
-      </section>
-      <section>
-        <div class="subsection">
-          <input style="font-size: 20px;line-height: 1.5em;" type="text" name="inputText" id="inputText" value="" placeholder="Enter subject here" autofocus/>
-  	      <a class="button" id="submit">Suggest Title</a>
-	      </div>
-      </section>
-	<section>
-		<h3>About Blog Article Title Generator Tool</h3>
-	  <p>This is a free online tool to generate article title headline based on your subject input. You can enter your desired subject in the text field and hit Suggest title button.</p>
-		<h3>What is the use of this title Generator?</h3>
-		<p>Coming up with a good blog article topic requires a lot of efforts. This page can suggest you some popular style of article titles to get quick start. Many times the title suggested by this tool may sound bogus however a little change in sentense may improve it and save you a lot of time.</p>
-    <p>These title can also be used for an existing article to be shared on different social networks. This may give you a keyword variation opportunity to boost SEO. </p>
-		<h3>Want To Get An Idea For You Next Article?</h3>
-		<p>That is easy. Just type the subject in input text box above and hit Suggest Title button. You should be able to see one randomly selected title for your next article. </p>
-		<h3>Can I Copy The Title and Use it?</h3>
-		<p>The title suggested by this tool are absolutely free for you to use. You can easily copy it from the suggestion text box and use any way you like. </p>
-    <h3>I do not like the article suggested by this. What should I do?</h3>
-    <p>The idea suggested in this tool may not always be relvant. In such cases just hit the "Suggest Title" button again and you can see a new title suggestion. Keep trying until you really discover your favorite title.</p>
-	</section>
-      {% include footer.html %}
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h1 class="box-title">Blog Article Title Generator Tool</h1>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="result">Memorable password</label>
+                                <input class="form-control" type="text" id="singleTitle" readonly="true" placeholder="Copy title from here" />
+                            </div>
+                            <div class="form-group">
+                                <label for="result">Memorable password</label>
+                                <input class="form-control" name="result" id="result" type="text" placeholder="Enter subject here" autofocus="true" />
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-xs-1">
+                                <button type="button" class="btn btn-success" id="submit">Suggest Title</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About Blog Article Title Generator Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This is a free online tool to generate article title headline based on your subject input. You can enter your desired subject in the text field and hit Suggest title button.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is the use of this title Generator?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Coming up with a good blog article topic requires a lot of efforts. This page can suggest you some popular style of article titles to get quick start. Many times the title suggested by this tool may sound bogus however a little
+                            change in sentense may improve it and save you a lot of time.</p>
+                        <p>These title can also be used for an existing article to be shared on different social networks. This may give you a keyword variation opportunity to boost SEO. </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Want To Get An Idea For You Next Article?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>That is easy. Just type the subject in input text box above and hit Suggest Title button. You should be able to see one randomly selected title for your next article. </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Can I Copy The Title and Use it?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>The title suggested by this tool are absolutely free for you to use. You can easily copy it from the suggestion text box and use any way you like. </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">I Do Not Like The Article Suggested By This. What Should I Do?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>The idea suggested in this tool may not always be relvant. In such cases just hit the "Suggest Title" button again and you can see a new title suggestion. Keep trying until you really discover your favorite title.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://fromdev.github.io/fromdev-static/javascripts/jquery.selectOnFocus.js"></script>
-    <script type="text/javascript" src="javascripts/title-maker.js?v1"></script>
-    <script type="text/javascript" src="javascripts/title-templates.js?v1"></script>
-    <script>
-      var $singleTitle = $("#singleTitle");
-      $(document).ready(function() {
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script type="text/javascript" src="javascripts/title-maker.js?v1"></script>
+<script type="text/javascript" src="javascripts/title-templates.js?v1"></script>
+<script>
+    var $singleTitle = $("#singleTitle");
+    $(document).ready(function() {
         $("#submit").click(function() {
-          var inputVal = $('#inputText').val();
-          if(inputVal) {
-            var targets = ["iPhone", "iOS", "iPad"];
-            var topics = [];
-            var counts = ["10","11","12","13","14","15","16","17","18","19","20"];
-            targets = inputVal.split("\n");
-            topics = targets;
-            log('len = ' + targets.length);
-            var titleArray = generateTitlesRandom(targets, topics, counts);
-            // showArray(titleArray);
-            if($singleTitle) {
-              $singleTitle.val(titleArray[getRandomInt(0, titleArray.length - 1)]);
+            var inputVal = $('#inputText').val();
+            if (inputVal) {
+                var targets = ["iPhone", "iOS", "iPad"];
+                var topics = [];
+                var counts = ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];
+                targets = inputVal.split("\n");
+                topics = targets;
+                log('len = ' + targets.length);
+                var titleArray = generateTitlesRandom(targets, topics, counts);
+                // showArray(titleArray);
+                if ($singleTitle) {
+                    $singleTitle.val(titleArray[getRandomInt(0, titleArray.length - 1)]);
+                }
             }
-          }
         });
         $("#inputText").selectOnFocus();
-        if($singleTitle) {
-          $singleTitle.selectOnFocus();
+        if ($singleTitle) {
+            $singleTitle.selectOnFocus();
         }
-      });
+    });
+</script>
 
-	  </script>
-
-	</body>
 </html>
