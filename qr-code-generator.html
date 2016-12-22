@@ -1,92 +1,184 @@
 ---
-title: This is my title
+<!-- markup text for github pages start -->
+title: QR Code Generator | Developer Tools
+<!-- add more variable separated by line -->
 layout: post
---- 
+<!-- markup text for github pages start -->
+---
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>QR Code Generator | Developer Tools</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to use open source tool to generate meta tags for HTML pages. This can help you add SEO boost in search engine rankings." />
+    <meta name="keywords" content="online,tool,meta,tags,seo,blog,web,opensource" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
     <div class="wrapper">
-      {% include header.html %}
-      <section>
-        <h1>Generate QR Code</h1>
-        <div class="table"> 	
-	      <div class="row"> 
-	      	<div class="cell">
-	      		<textarea cols="40" rows="14" id="inputText" placeholder="Enter your text here" autofocus></textarea>
-	      	</div>
-	      	<div class="cell">
-	      		<div id="result">
-	      			<canvas width="256" height="256"></canvas>
-	      		</div>
-	      	</div>
-	      	</div>
-	      </div>
-	      <div class="subsection">
-			<a class="button" id="generate">Generate QR Code</a>
-			<a class="button" id="download">Download QR Code</a>
-	      </div>
-      </section>
-	<section>
-		<h3>About QR Code Generator Tool</h3>
-	        <p>This is a free online tool to generate QR code for any text. You can copy/paste your desired text/string in above text field and hit Generate QR Code button.</p>
-		<h3>What is a QR Code?</h3>
-		<p>QR code stands for quick response code. It is a visual code that can be read by machines using camera. It is commonly used in mobile phones to read the URL from a printed media like message board or visiting card.</p>
-		<h3>Want To Know What Is The QR Code of a Character or String?</h3>
-		<p>That is easy. Just type the character or a full string in the text box above and hit Generate QR Code button. You should be able to see the QR Code Image on right side.</p>
-		<h3>How To Download QR Code Image?</h3>
-		<p>The QR code generated on this page can be downloaded using Download QR code button. You can also download it (on most browsers except safari) by doing right click on image and choosing save image menu option.</p>
-		<h3>Can I Print this QR Code?</h3>
-		<p>Yes, the generated QR code is absolutely free to use for personal or business purposes. You can print it on a paper, visiting card, t-shirt or anywhere you like.</p>		
-	</section>
-      {% include footer.html %}
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <div class="box box-warning">
+                            <div class="box-header with-border">
+                                <h1 class="box-title">Generate QR Code</h1>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="title">Text for QR Code</label>
+                                        <textarea class="form-control" cols="40" rows="14" id="inputText" placeholder="Enter your text here" autofocus></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <button type="button" class="btn btn-success" id="generate">Generate QR Code</button>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <button type="button" class="btn btn-info" id="download">Download QR Code</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box box-warning">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Download Your QR Code From Here</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div id="result">
+                                        <canvas width="256" height="256"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About QR Code Generator Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This is a free online tool to generate QR code for any text. You can copy/paste your desired text/string in above text field and hit Generate QR Code button.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is a QR Code?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>QR code stands for quick response code. It is a visual code that can be read by machines using camera. It is commonly used in mobile phones to read the URL from a printed media like message board or visiting card.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Want To Know What Is The QR Code of a Character or String?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>That is easy. Just type the character or a full string in the text box above and hit Generate QR Code button. You should be able to see the QR Code Image on right side.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">How To Download QR Code Image?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>The QR code generated on this page can be downloaded using Download QR code button. You can also download it (on most browsers except safari) by doing right click on image and choosing save image menu option.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Can I Print this QR Code?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Yes, the generated QR code is absolutely free to use for personal or business purposes. You can print it on a paper, visiting card, t-shirt or anywhere you like.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>		
-    <script src="https://fromdev.github.io/fromdev-static/javascripts/jquery.selectOnFocus.js"></script>
-    <script type="text/javascript" src="javascripts/jquery.qrcode.min.js"></script>
-	<script type="text/javascript" src="javascripts/reimg.js"></script>
-	  <script>
-var resultDiv = $("#result");
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
 
-var clearResultDiv = function(d) {
-	d.empty();
-	d.text("QR code will be displayed here!");
-};
-$(document).ready(function() {
-  $("#generate").click(function() {  	
-  	resultDiv.empty();
-    resultDiv.qrcode({text:$("#inputText").val()});
-  });
-  
-  $("#download").click(function() {  	
-  	resultDiv.empty();
-  	var txt = $("#inputText").val();
-    resultDiv.qrcode({text:txt});
-    ReImg.fromCanvas($("#result canvas")[0]).downloadPng("qrcode.png")
-  });
-  
-  $('#inputText').on('input',function(e){
-	  clearResultDiv(resultDiv);
-  });
- // clearResultDiv(resultDiv);
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script type="text/javascript" src="javascripts/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="javascripts/reimg.js"></script>
+<script>
+    var resultDiv = $("#result");
 
-  $("#inputText").selectOnFocus();
- 
-});
- 
-	</script>
+    var clearResultDiv = function(d) {
+        d.empty();
+        d.text("QR code will be displayed here!");
+    };
+    $(document).ready(function() {
+        $("#generate").click(function() {
+            resultDiv.empty();
+            resultDiv.qrcode({
+                text: $("#inputText").val()
+            });
+        });
 
-	</body>
+        $("#download").click(function() {
+            resultDiv.empty();
+            var txt = $("#inputText").val();
+            resultDiv.qrcode({
+                text: txt
+            });
+            ReImg.fromCanvas($("#result canvas")[0]).downloadPng("qrcode.png")
+        });
+
+        $('#inputText').on('input', function(e) {
+            clearResultDiv(resultDiv);
+        });
+        // clearResultDiv(resultDiv);
+
+        $("#inputText").selectOnFocus();
+
+    });
+</script>
+
 </html>
