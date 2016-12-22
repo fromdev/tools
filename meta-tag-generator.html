@@ -1,116 +1,182 @@
 ---
-title: This is my title
+<!-- markup text for github pages start -->
+title: Meta Tag Generator for SEO | Developer Tools
+<!-- add more variable separated by line -->
 layout: post
+<!-- markup text for github pages start -->
 ---
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Meta Tag Generator | Developer Tools</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to use open source tool to generate meta tags for HTML pages. This can help you add SEO boost in search engine rankings." />
+    <meta name="keywords" content="online,tool,meta,tags,seo,blog,web,opensource" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
     <div class="wrapper">
-      {% include header.html %}
-      <section>
-        <h1>Meta Tag Generator Tool</h1>
-        <div class="form">
-          <label for="title">Title</label>
-          <input id="title" name="title" placeholder="Enter Page Title" autofocus>
-          <label for="description">Description</label>
-          <textarea id="description" name="description" cols="69" rows="7" placeholder="Enter a web page description here"></textarea>
-          <label for="keywords">Keywords (Comma separated)</label>
-          <input id="keywords" name="keywords" placeholder="Comma separated keywords">
-          <label for="language">Language (Default English)</label>
-          <input id="language" name="language" placeholder="English" value="English">
-          <label for="revisit-after">Revisit After (Duration in days)</label>
-          <input id="revisit-after" name="revisit-after"  value="1">
-          <label for="author">Author Name</label>
-          <input id="author" name="author"  placeholder="Author full name">
-          <label for="charset">Charset (Default UTF-8)</label>
-          <input id="charset" name="charset"  value="UTF-8">
-          <label for="canonical">Canonical URL</label>
-          <input id="canonical" name="canonical"  placeholder="www.fromdev.com">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h1 class="box-title">Meta Tag Generator Tool</h1>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input class="form-control" id="title" name="title" placeholder="Enter Page Title" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="7" placeholder="Enter a web page description here"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="keywords">Keywords (Comma separated)</label>
+                                <input class="form-control" id="keywords" name="keywords" placeholder="Comma separated keywords">
+                            </div>
+                            <div class="form-group">
+                                <label for="language">Language (Default English)</label>
+                                <input class="form-control" id="language" name="language" placeholder="English" value="English">
+                            </div>
+                            <div class="form-group">
+                                <label for="revisit-after">Revisit After (Duration in days)</label>
+                                <input class="form-control" id="revisit-after" name="revisit-after" value="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="author">Author Name</label>
+                                <input class="form-control" id="author" name="author" placeholder="Author full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="charset">Charset (Default UTF-8)</label>
+                                <input class="form-control" id="charset" name="charset" value="UTF-8">
+                            </div>
+                            <div class="form-group">
+                                <label for="canonical">Canonical URL</label>
+                                <input class="form-control" id="canonical" name="canonical" placeholder="www.fromdev.com">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="result" id="result" rows="20" placeholder="Copy code from here"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-xs-1">
+                                <button type="button" class="btn btn-success" id="submit">Generate Meta Tags</button>
+                            </div>
+                            <div class="col-xs-1">
+                                <button type="button" class="btn btn-info" id="clear">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About Meta Tag Generator Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This is a free online tool to do simple Meta tag generation for your search engine optimization needs. You can copy/paste your desired text in the text fields and hit Generate button. This will display the well formatted HTML meta
+                            tags in the text box.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why Meta Tag Generator Is Needed?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Meta Tag Generator is a common need for most web developers, bloggers, SEO experts and website owners. This tool can simplify your tag creation by a intuitive interface. Even if you do not know HTML you can generate these tags
+                            with the help of this tool.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
         </div>
-        <div class="subsection">
-          <a class="button" id="submit">Generate Meta Tags</a>
-          <a class="button" id="clear">Clear</a>
-        </div>
-        <div class="subsection">
-          <textarea name="result" id="result" cols="100" rows="20" placeholder="Copy code from here"></textarea>
-	      </div>
-      </section>
-	<section>
-		<h3>About Meta Tag Generator Tool</h3>
-	  <p>This is a free online tool to do simple Meta tag generation for your search engine optimization needs. You can copy/paste your desired text in the text fields and hit Generate button.   This will display the well formatted HTML meta tags in the text box.</p>
-		<h3>Why Meta Tag Generator Is Needed?</h3>
-		<p>Meta Tag Generator is a common need for most web developers, bloggers, SEO experts and website owners. This tool can simplify your tag creation by a intuitive interface. Even if you do not know HTML you can generate these tags with the help of this tool.</p>
-	</section>
-	{% include footer.html %}
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://fromdev.github.io/fromdev-static/javascripts/jquery.selectOnFocus.js"></script>
-	  <script>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script>
     var metaTagByName = function(name, value) {
-       if(value) {
-         return '<meta name="' +  name + '" content="' + value + '" />\n'
-       } else {
-         return '';
-       }
+        if (value) {
+            return '<meta name="' + name + '" content="' + value + '" />\n'
+        } else {
+            return '';
+        }
     };
 
     var linkTagByName = function(name, value) {
-       if(value) {
-         return '<link rel="' +  name + '" href="' + value + '" />\n'
-       } else {
-         return '';
-       }
+        if (value) {
+            return '<link rel="' + name + '" href="' + value + '" />\n'
+        } else {
+            return '';
+        }
     };
 
-      $(document).ready(function() {
+    $(document).ready(function() {
         $("#submit").click(function() {
-          $("#result").val('');
+            $("#result").val('');
             var title = $('#title').val();
-            if(title) {
-              $("#result").val('<title>'+ title + '</title>\n');
+            if (title) {
+                $("#result").val('<title>' + title + '</title>\n');
             }
 
-            $("#result").val($("#result").val() + metaTagByName("description",$('#description').val()));
-            $("#result").val($("#result").val() + metaTagByName("keywords",$('#keywords').val()));
-            $("#result").val($("#result").val() + metaTagByName("language",$('#language').val()));
-            $("#result").val($("#result").val() + metaTagByName("revisit-after",$('#revisit-after').val()));
-            $("#result").val($("#result").val() + metaTagByName("charset",$('#charset').val()));
-            $("#result").val($("#result").val() + linkTagByName("canonical",$('#canonical').val()));
-            $("#result").val($("#result").val() + linkTagByName("author",$('#author').val()));
+            $("#result").val($("#result").val() + metaTagByName("description", $('#description').val()));
+            $("#result").val($("#result").val() + metaTagByName("keywords", $('#keywords').val()));
+            $("#result").val($("#result").val() + metaTagByName("language", $('#language').val()));
+            $("#result").val($("#result").val() + metaTagByName("revisit-after", $('#revisit-after').val()));
+            $("#result").val($("#result").val() + metaTagByName("charset", $('#charset').val()));
+            $("#result").val($("#result").val() + linkTagByName("canonical", $('#canonical').val()));
+            $("#result").val($("#result").val() + linkTagByName("author", $('#author').val()));
 
         });
         $("#clear").click(function() {
-          $('#title').val('');
-          $('#title').focus();
-          $('#description').val('');
-          $('#keywords').val('');
-          $('#revisit-after').val('1');
-          $('#language').val('English');
-          $('#canonical').val('');
-          $('#charset').val('UTF-8');
-          $('#author').val('');
-          $("#result").val('');
+            $('#title').val('');
+            $('#title').focus();
+            $('#description').val('');
+            $('#keywords').val('');
+            $('#revisit-after').val('1');
+            $('#language').val('English');
+            $('#canonical').val('');
+            $('#charset').val('UTF-8');
+            $('#author').val('');
+            $("#result").val('');
         });
         $("#result").selectOnFocus();
         $("#language").selectOnFocus();
         $("#charset").selectOnFocus();
         $("#revisit-after").selectOnFocus();
-      });
+    });
+</script>
 
-	</script>
-
-	</body>
 </html>
