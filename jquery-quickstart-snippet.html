@@ -43,8 +43,23 @@ layout: post
                     <div class="box-body">
                         <form role="form">
                             <div class="form-group">
-                                <label for="title">Simple jQuery Document Ready Quickstart Code Snippet</label>
+                                <label for="title">Quick start code snippet</label>
                                 <textarea class="form-control" rows="7" id="inputText"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h1 class="box-title">jQuery Plugin Quickstart Code Snippet</h1>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="title">Blank Plugin Quick start code snippet</label>
+                                <textarea class="form-control" rows="7" id="plugin-snippet"></textarea>
                             </div>
                         </form>
                     </div>
@@ -67,7 +82,7 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>The purpose of this page is to provide a quickstart snippet for occasional jQuery developers. It is usually difficult to remember the url and starting syntax. I use it a lot of times to develop more tools for this project itself.
+                        <p>The purpose of this page is to provide a quickstart snippet for irregular jQuery developers. It is usually difficult to remember the url and starting syntax. I use it a lot of times to develop more tools for this project itself.
                             </p>
                     </div>
                     <!-- /.box-body -->
@@ -96,6 +111,8 @@ layout: post
     $(document).ready(function() {
         $("#inputText").val('<script src=\"https://code.jquery.com/jquery-3.1.1.min.js\"><\/script>\n<script>\n	 $(document).ready(function() {\n		\n   	});\n<\/script>');
         $("#inputText").selectOnFocus();
+        $("#plugin-snippet").val('(function($) {\n    $.fn.helloWorld = function(options) {\n        \/\/start here\n        \n    }\n}(jQuery));\n');
+        $("#plugin-snippet").selectOnFocus();
     });
 </script>
 
