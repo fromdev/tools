@@ -140,6 +140,8 @@ layout: post
     };
     $(document).ready(function() {
         $("#convert2table").click(function() {
+            $("#htmlTable").empty();
+            $("#displayTable").empty();
             var input = $("#csv").val();
             if (input) {
                 var json = Papa.parse(input, parseconfig);
