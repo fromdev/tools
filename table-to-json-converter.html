@@ -129,7 +129,8 @@ layout: post
 <script>
     $(document).ready(function() {
         $("#convert2json").click(function() {
-             $("#json").empty();
+              $("#json").empty();
+              $('#hidden').empty();
               $('#hidden').append($('#htmlTable').val());
               var tbl = $('#hidden table');
               var json = $(tbl).tableToJSON();
