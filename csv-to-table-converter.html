@@ -134,22 +134,22 @@ layout: post
         comments: "#"
     };
     var tidyoptions = {
-  "indent":"auto",
-  "indent-spaces":2,
-  "wrap":80,
-  "markup":true,
-  "output-xml":false,
-  "numeric-entities":true,
-  "quote-marks":true,
-  "quote-nbsp":false,
-  "show-body-only":true,
-  "quote-ampersand":false,
-  "break-before-br":true,
-  "uppercase-tags":false,
-  "uppercase-attributes":false,
-  "drop-font-tags":true,
-  "tidy-mark":false
-};
+        "indent": "auto",
+        "indent-spaces": 1,
+        "wrap": 80,
+        "markup": true,
+        "output-xml": false,
+        "numeric-entities": true,
+        "quote-marks": true,
+        "quote-nbsp": false,
+        "show-body-only": true,
+        "quote-ampersand": false,
+        "break-before-br": true,
+        "uppercase-tags": false,
+        "uppercase-attributes": false,
+        "drop-font-tags": true,
+        "tidy-mark": false
+    };
     $(document).ready(function() {
         $("#convert2table").click(function() {
             var input = $("#csv").val();
@@ -157,7 +157,10 @@ layout: post
                 var json = Papa.parse(input, parseconfig);
                 if (json) {
                     if (json.errors.length < 1) {
-                        $.jsontotable(json.data, { id: "#displayTable", header: true });
+                        $.jsontotable(json.data, {
+                            id: "#displayTable",
+                            header: true
+                        });
                         var result = tidy_html5($("#displayTable").html(), tidyoptions);
                         $("#htmlTable").val(result);
                         console.log(json.data);
