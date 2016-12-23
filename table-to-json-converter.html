@@ -48,7 +48,9 @@ layout: post
                                     <div class="form-group">
                                         <label for="csv">CSV Data</label>
                                         <textarea class="form-control" rows="10" id="htmlTable" placeholder="Enter your HTML Table Code here" autofocus></textarea>
-                                        <div id="hidden" style="display:hidden;"></div>
+                                        <div style="display:hidden;">
+                                          <div id="hidden" style="display:hidden;"></div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -128,8 +130,8 @@ layout: post
     $(document).ready(function() {
         $("#convert2json").click(function() {
              $("#json").empty();
-              var $tbl = $('#hidden').html($('#htmlTable').val());
-              var json = $tbl.tableToJSON();
+              var tbl = $('#hidden').html($('#htmlTable').val());
+              var json = $(tbl).tableToJSON();
               if (json) {
                 $('#json').val(JSON.stringify(json));
               }
