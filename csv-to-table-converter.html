@@ -127,11 +127,29 @@ layout: post
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script src="javascripts/papaparse.min.js"></script>
 <script src="plugins/jsonTable/jquery.jsontotable.min.js"></script>
+<script src='http://lovasoa.github.io/tidy-html5/tidy.js'></script>
 <script>
     var parseconfig = {
         header: false,
         comments: "#"
     };
+    var tidyoptions = {
+  "indent":"auto",
+  "indent-spaces":2,
+  "wrap":80,
+  "markup":true,
+  "output-xml":false,
+  "numeric-entities":true,
+  "quote-marks":true,
+  "quote-nbsp":false,
+  "show-body-only":true,
+  "quote-ampersand":false,
+  "break-before-br":true,
+  "uppercase-tags":false,
+  "uppercase-attributes":false,
+  "drop-font-tags":true,
+  "tidy-mark":false
+};
     $(document).ready(function() {
         $("#convert2table").click(function() {
             var input = $("#csv").val();
@@ -140,7 +158,8 @@ layout: post
                 if (json) {
                     if (json.errors.length < 1) {
                         $.jsontotable(json.data, { id: "#displayTable", header: true });
-                        $("#htmlTable").val($("#displayTable").html());
+                        var result = tidy_html5($("#displayTable").html(), tidyoptions);
+                        $("#htmlTable").val(result);
                         console.log(json.data);
                     } else {
                         if (json.errors) {
