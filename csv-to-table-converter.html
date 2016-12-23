@@ -133,7 +133,7 @@ layout: post
                 var json = Papa.parse(input, parseconfig);
                 if (json) {
                     if (json.errors.length < 1) {
-                        $("#htmlTable").val(json.data);
+                        $("#htmlTable").val(JSON.stringify(json.data));
                         console.log(json.data);
                     } else {
                         if (json.errors) {
