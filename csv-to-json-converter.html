@@ -46,7 +46,7 @@ layout: post
                             <div class="box-body">
                                 <form role="form">
                                     <div class="form-group">
-                                        <label for="title">CSV Data</label>
+                                        <label for="csv">CSV Data</label>
                                         <textarea class="form-control" rows="10" id="csv" placeholder="Enter your CSV data here" autofocus></textarea>
                                     </div>
                                 </form>
@@ -70,6 +70,7 @@ layout: post
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
+                                  <label for="json">JSON Data</label>
                                     <textarea class="form-control" id="json" rows="10" placeholder="Enter your JSON data here"></textarea>
                                 </div>
                             </div>
@@ -150,7 +151,14 @@ layout: post
           var input = $("#csv").val();
           if(input) {
             var json = Papa.parse(input, parseconfig);
-            $("#json").val(JSON.stringify(json));
+            if(json) {
+              if(json.errors.length<1) {
+                $("#json").val(JSON.stringify(json.data));
+              } else {
+                $("#json").val("Error Parsing CSV Data " + JSON.stringify(json.errors));
+              }
+
+            }
           }
       });
    	});
