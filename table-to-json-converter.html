@@ -127,7 +127,8 @@ layout: post
     $(document).ready(function() {
         $("#convert2json").click(function() {
             $("#json").empty();
-              var json = $('#htmlTable').tableToJSON();
+              var $tbl = $('<div/>').html($('#htmlTable').val()).contents();
+              var json = $tbl.tableToJSON();
               if (json) {
                 $('#json').val(JSON.stringify(json));
               }
