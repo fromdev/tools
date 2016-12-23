@@ -130,8 +130,7 @@ layout: post
 <script>
     var parseconfig = {
         header: false,
-        comments: "#",
-        className : "table table-striped"
+        comments: "#"
     };
     $(document).ready(function() {
         $("#convert2table").click(function() {
@@ -142,7 +141,8 @@ layout: post
                     if (json.errors.length < 1) {
                         $.jsontotable(json.data, {
                             id: "#displayTable",
-                            header: true
+                            header: true,
+                            className : "table table-striped"
                         });
                         $("#htmlTable").val($("#displayTable").html());
                         console.log(json.data);
