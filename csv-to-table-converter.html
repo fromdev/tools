@@ -78,17 +78,16 @@ layout: post
 
                     </div>
                 </div>
-                <div class="row">
-                  <div class="box">
-                    <div class="box-header">
-                      <h3 class="box-title">HTML Formatted Table View</h3>
+
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">HTML Formatted Table View</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body no-padding">
-                      <div id="displayTable"></div>
+                        <div id="displayTable"></div>
                     </div>
                     <!-- /.box-body -->
-                  </div>
                 </div>
             </section>
             <section class="content">
@@ -149,7 +148,7 @@ layout: post
                         $.jsontotable(json.data, {
                             id: "#displayTable",
                             header: true,
-                            className : "table table-striped"
+                            className: "table table-striped"
                         });
                         $("#htmlTable").val($("#displayTable").html());
                         console.log(json.data);
