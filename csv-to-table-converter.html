@@ -149,8 +149,8 @@ layout: post
                             id: "#displayTable",
                             header: true
                         });
-                        $("#displayTable table").addClass("table table-striped");
                         $("#htmlTable").val($("#displayTable").html());
+                        $("#displayTable table").addClass("table table-striped");
                     } else {
                         if (json.errors) {
                             $("#htmlTable").val(json.errors[0].message + " on row " + json.errors[0].row);
