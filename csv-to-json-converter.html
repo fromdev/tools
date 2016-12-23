@@ -155,12 +155,23 @@ layout: post
               if(json.errors.length<1) {
                 $("#json").val(JSON.stringify(json.data));
               } else {
-                $("#json").val("Error Parsing CSV Data " + JSON.stringify(json.errors));
+                $("#json").val(json.errors.toString());
               }
 
             }
           }
       });
+      $("#convert2csv").click(function(){
+          var input = $("#json").val();
+          if(input) {
+            var csv = Papa.unparse(input, parseconfig);
+            if(csv) {
+                $("#csv").val(csv);
+            }
+          }
+      });
+      $("#convert2json").selectOnFocus();
+      $("#convert2csv").selectOnFocus();
    	});
 </script>
 </html>
