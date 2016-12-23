@@ -70,8 +70,8 @@ layout: post
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                  <label for="json">HTML Table</label>
-                                    <textarea class="form-control" id="htmlTable" rows="10" ></textarea>
+                                    <label for="json">HTML Table</label>
+                                    <textarea class="form-control" id="htmlTable" rows="10"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -122,31 +122,40 @@ layout: post
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script src="javascripts/papaparse.min.js"></script>
 <script>
-  var parseconfig = {
-    header: false,
-    comments: "#"
-  };
-	 $(document).ready(function() {
-      $("#convert2table").click(function(){
-          var input = $("#csv").val();
-          if(input) {
-            var json = Papa.parse(input, parseconfig);
-            if(json) {
-              if(json.errors.length<1) {
-                $("#htmlTable").val(JSON.stringify(json.data));
-              } else {
-                if(json.errors) {
-                  $("#htmlTable").val(json.errors[0].message + " on row " +  json.errors[0].row);
-                } else {
-                  $("#htmlTable").val("Invalid JSON data, unable to parse");
-                }
-              }
-            }
-          }
-      });
+    var parseconfig = {
+        header: false,
+        comments: "#"
+    };
+    $(document).ready(function() {
+        $("#convert2table").click(function() {
+            var input = $("#csv").val();
+            if (input) {
+                var json = Papa.parse(input, parseconfig);
+                if (json) {
+                    if (json.errors.length < 1) {
 
-      $("#csv").selectOnFocus();
-      $("#htmlTable").selectOnFocus();
-   	});
+                        $.each(json.data, function(i, item) {
+                            var $tr = $('<tr>').append(
+                                $('<td>').text(item.rank),
+                                $('<td>').text(item.content),
+                                $('<td>').text(item.UID)
+                            ); //.appendTo('#records_table');
+                            $("#htmlTable").val($tr.wrap('<p>').html());
+                        });
+                    } else {
+                        if (json.errors) {
+                            $("#htmlTable").val(json.errors[0].message + " on row " + json.errors[0].row);
+                        } else {
+                            $("#htmlTable").val("Invalid JSON data, unable to parse");
+                        }
+                    }
+                }
+            }
+        });
+
+        $("#csv").selectOnFocus();
+        $("#htmlTable").selectOnFocus();
+    });
 </script>
+
 </html>
