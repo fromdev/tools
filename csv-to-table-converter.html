@@ -147,11 +147,10 @@ layout: post
                     if (json.errors.length < 1) {
                         $.jsontotable(json.data, {
                             id: "#displayTable",
-                            header: true,
-                            className: "table table-striped"
+                            header: true
                         });
+                        $("#displayTable table").addClass("table table-striped");
                         $("#htmlTable").val($("#displayTable").html());
-                        console.log(json.data);
                     } else {
                         if (json.errors) {
                             $("#htmlTable").val(json.errors[0].message + " on row " + json.errors[0].row);
