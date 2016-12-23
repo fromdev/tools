@@ -136,9 +136,9 @@ layout: post
 
                         $.each(json.data, function(i, item) {
                             var $tr = $('<tr>').append(
-                                $('<td>').text(item.rank),
-                                $('<td>').text(item.content),
-                                $('<td>').text(item.UID)
+                                $('<td>').text(item),
+                                $('<td>').text(item),
+                                $('<td>').text(item)
                             ); //.appendTo('#records_table');
                             var htmlTbl = $tr.wrap('<p>').html();
                             console.log(htmlTbl);
