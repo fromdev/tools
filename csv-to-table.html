@@ -1,0 +1,152 @@
+---
+<!-- markup text for github pages start -->
+title: CSV to HTML Table Converter | Developer Tools
+<!-- add more variable separated by line -->
+layout: post
+<!-- markup text for github pages start -->
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to use open source tool convert CSV to HTML table online. " />
+    <meta name="keywords" content="online,tool,csv,html,table,convert,converter,web,opensource" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h1 class="box-title">Convert CSV Data To HTML Table Format</h1>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="csv">CSV Data</label>
+                                        <textarea class="form-control" rows="10" id="csv" placeholder="Enter your CSV data here" autofocus></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <button type="button" class="btn btn-info" id="convert2table">Convert to Table</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Copy Your JSON Data From Here</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                  <label for="json">JSON Data</label>
+                                    <textarea class="form-control" id="htmlTable" rows="10" ></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About CSV to HTML Table Converter Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This is a free online tool to convert a CSV data into a HTML table. The CSV delimiter is detected automatically.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is a CSV?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>CSV or Comma Separated Values is a popular format to store large data tables. Tools like microsoft excell and many other software export data in this format. </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why Convert From CSV to HTML table?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>CSV data can be difficult to display on HTML page. When you need to show the data on a HTML page you can convert it to HTML table tags.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script src="javascripts/papaparse.min.js"></script>
+<script>
+  var parseconfig = {
+    header: true,
+    comments: "#"
+  };
+	 $(document).ready(function() {
+      $("#convert2table").click(function(){
+          var input = $("#csv").val();
+          if(input) {
+            var json = Papa.parse(input, parseconfig);
+            if(json) {
+              if(json.errors.length<1) {
+                $("#json").val(JSON.stringify(json.data));
+              } else {
+                if(json.errors) {
+                  $("#json").val(json.errors[0].message + " on row " +  json.errors[0].row);
+                } else {
+                  $("#json").val("Invalid JSON data, unable to parse");
+                }
+              }
+            }
+          }
+      });
+
+      $("#csv").selectOnFocus();
+      $("#htmlTable").selectOnFocus();
+   	});
+</script>
+</html>
