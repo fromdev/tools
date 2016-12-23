@@ -133,12 +133,12 @@ layout: post
             var json = Papa.parse(input, parseconfig);
             if(json) {
               if(json.errors.length<1) {
-                $("#json").val(JSON.stringify(json.data));
+                $("#htmlTable").val(JSON.stringify(json.data));
               } else {
                 if(json.errors) {
-                  $("#json").val(json.errors[0].message + " on row " +  json.errors[0].row);
+                  $("#htmlTable").val(json.errors[0].message + " on row " +  json.errors[0].row);
                 } else {
-                  $("#json").val("Invalid JSON data, unable to parse");
+                  $("#htmlTable").val("Invalid JSON data, unable to parse");
                 }
               }
             }
