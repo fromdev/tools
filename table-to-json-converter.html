@@ -1,0 +1,141 @@
+---
+<!-- markup text for github pages start -->
+title: HTML Table to JSON Data Converter | Developer Tools
+<!-- add more variable separated by line -->
+layout: post
+<!-- markup text for github pages start -->
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to use open source tool to convert HTML table into JSON data online. " />
+    <meta name="keywords" content="online,tool,json,html,table,convert,converter,web,opensource" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h1 class="box-title">Convert HTML Table Data To JSON Format</h1>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="csv">CSV Data</label>
+                                        <textarea class="form-control" rows="10" id="htmlTable" placeholder="Enter your HTML Table Code here" autofocus></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <button type="button" class="btn btn-info" id="convert2json">Convert to JSON</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Copy Your JSON Formatted Data From Here</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="json">JSON Converted Data</label>
+                                    <textarea class="form-control" id="json" rows="10"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About HTML Table to JSON Converter Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This is a free online tool to convert a HTML table formatted data to JSON. This can be useful for webscraping needs. You can convert any HTML table on web pages to JSON and use as input for other software.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is a JSON?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>JSON (JavaScript Object Notation) is a popular format used to transfer data between applications. It is very common object format in web applications. JavaScript applications do not require any speciall handling for this type of data since its is already an object of javascript format. </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why Convert From HTML table to JSON?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>There is a lot of information on web that can used to develop other tools and information. JSON is a easy to consume data for dynamic web applications. If you find a web page with HTML table fromatted data then you can easily convert it using this tool and use it in your application.  </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script src="javascripts/papaparse.min.js"></script>
+<script src="plugins/tabletojson/jquery.tabletojson.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#convert2json").click(function() {
+            $("#json").empty();
+              var json = $('#htmlTable').tableToJSON();
+              if (json) {
+                $('#json').val(JSON.stringify(json));
+              }
+        });
+
+        $("#json").selectOnFocus();
+        $("#htmlTable").selectOnFocus();
+    });
+</script>
+
+</html>
