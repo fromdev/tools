@@ -145,7 +145,7 @@ layout: post
       $("#convert2json").click(function(){
           var input = $("#csv").val();
           if(input) {
-            var json = Papa.parse(input, config);
+            var json = Papa.parse(input, {});
             $("#json").val(JSON.stringify(json));
           }
       });
