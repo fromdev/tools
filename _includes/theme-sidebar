@@ -51,16 +51,28 @@
                     </li>
                     <li class="treeview active">
                         <a href="#">
-                            <i class="fa fa-star text-green"></i> <span>Other Tools</span>
+                            <i class="fa fa-star text-green"></i> <span>Converters</span>
                             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="qr-code-generator.html"><i class="fa fa-circle-o text-green"></i> QR Code Generator</a></li>
-                            <li><a href="jquery-quickstart-snippet.html"><i class="fa fa-circle-o text-green"></i> jQuery Grabber</a></li>
                             <li><a href="csv-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> CSV To JSON</a></li>
-                        
+                            <li><a href="csv-to-table-converter.html"><i class="fa fa-circle-o text-green"></i> CSV To HTML Table</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-star"></i> <span>Other Tools</span>
+                            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="qr-code-generator.html"><i class="fa fa-circle-o"></i> QR Code Generator</a></li>
+                            <li><a href="jquery-quickstart-snippet.html"><i class="fa fa-circle-o"></i> jQuery Grabber</a></li>
+                            
                         </ul>
                     </li>
                 </ul>
