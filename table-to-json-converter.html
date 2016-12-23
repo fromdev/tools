@@ -130,7 +130,8 @@ layout: post
     $(document).ready(function() {
         $("#convert2json").click(function() {
              $("#json").empty();
-              var tbl = $('#hidden').html($('#htmlTable').val());
+              $('#hidden').append($('#htmlTable').val());
+              var tbl = $('#hidden table');
               var json = $(tbl).tableToJSON();
               if (json) {
                 $('#json').val(JSON.stringify(json));
