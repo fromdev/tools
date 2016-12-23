@@ -75,6 +75,7 @@ layout: post
                                 <div class="form-group">
                                     <label for="json">JSON Converted Data</label>
                                     <textarea class="form-control" id="json" rows="10"></textarea>
+                                    <pre id="prettyJson"></pre>
                                 </div>
                             </div>
                         </div>
@@ -134,7 +135,9 @@ layout: post
               var tbl = $('#hidden table');
               var json = $(tbl).tableToJSON();
               if (json) {
-                $('#json').val(JSON.stringify(json));
+                var jsonString = JSON.stringify(json);
+                $('#json').val(jsonString);
+                $('#prettyJson').html(jsonString);
               }
         });
 
