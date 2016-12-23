@@ -155,7 +155,11 @@ layout: post
               if(json.errors.length<1) {
                 $("#json").val(JSON.stringify(json.data));
               } else {
-                $("#json").val(json.errors.toString());
+                if(json.errors) {
+                  $("#json").val(json.errors.toString());
+                } else {
+                  $("#json").val("Invalid JSON data, unable to parse");
+                }
               }
 
             }
