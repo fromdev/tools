@@ -139,8 +139,8 @@ layout: post
                 var json = Papa.parse(input, parseconfig);
                 if (json) {
                     if (json.errors.length < 1) {
-                        var htmlTable = $.jsontotable(json.data, { id: "#displayTable", header: true });
-                        $("#htmlTable").val(htmlTable);
+                        $.jsontotable(json.data, { id: "#displayTable", header: true });
+                        $("#htmlTable").val($("#displayTable").html());
                         console.log(json.data);
                     } else {
                         if (json.errors) {
