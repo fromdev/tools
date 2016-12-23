@@ -78,6 +78,11 @@ layout: post
 
                     </div>
                 </div>
+                <div class="row">
+                    <div id="displayTable">
+
+                    </div>
+                </div>
             </section>
             <section class="content">
                 <div class="box box-success">
@@ -121,6 +126,7 @@ layout: post
 </body>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script src="javascripts/papaparse.min.js"></script>
+<script src="jsonTable/jquery.jsontotable.min.js"></script>
 <script>
     var parseconfig = {
         header: false,
@@ -133,6 +139,7 @@ layout: post
                 var json = Papa.parse(input, parseconfig);
                 if (json) {
                     if (json.errors.length < 1) {
+                        $.jsontotable(arr, { id: "#displayTable", header: true });
                         $("#htmlTable").val(JSON.stringify(json.data));
                         console.log(json.data);
                     } else {
