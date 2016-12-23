@@ -133,17 +133,8 @@ layout: post
                 var json = Papa.parse(input, parseconfig);
                 if (json) {
                     if (json.errors.length < 1) {
-
-                        $.each(json.data, function(i, item) {
-                            var $tr = $('<tr>').append(
-                                $('<td>').text(item),
-                                $('<td>').text(item),
-                                $('<td>').text(item)
-                            ); //.appendTo('#records_table');
-                            var htmlTbl = $tr.wrap('<p>').html();
-                            console.log(htmlTbl);
-                            $("#htmlTable").val(htmlTbl);
-                        });
+                        $("#htmlTable").val(json.data);
+                        console.log(json.data);
                     } else {
                         if (json.errors) {
                             $("#htmlTable").val(json.errors[0].message + " on row " + json.errors[0].row);
