@@ -68,11 +68,11 @@ var scorePassword = function(pass) {
 var checkPassStrength = function (pass) {
     var score = scorePassword(pass);
     if (score > 80)
-        return "<span class='green'>Strong</span>";
+        return "<span class='label label-success'> Strong </span>";
     if (score > 60)
-        return "<span class='orange'>Good</span>";
+        return "<span class='label label-warning'> Good </span>";
     if (score >= 30)
-        return "<span class='red'>Weak</span>";
+        return "<span class='label label-danger'> Weak </span>";
 
     return "";
 };
