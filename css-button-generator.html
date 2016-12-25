@@ -1,0 +1,134 @@
+---
+<!-- markup text for github pages start -->
+title: CSS Button Generator | HTML Tools
+<!-- add more variable separated by line -->
+layout: post
+<!-- markup text for github pages start -->
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to use open source tool to generate CSS HTML button code for web pages." />
+    <meta name="keywords" content="online,tool,css,button,tag,html,web,opensource" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h1 class="box-title">Generate CSS Button Code</h1>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="title">Background Color</label>
+                                        <input class="form-control" id="background-color" value="#4CAF50"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="title">Button Text</label>
+                                        <input class="form-control" id="button-text" value="Button"/>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Preview Your Button Here</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div id="result">
+                                      <button>Button</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About CSS Button Generator Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This is a free online tool to generate CSS styled beautiful looking HTML button code for any web page. You can customize your button as per your website design and use the code.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is a CSS?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>CSS (Cascading StyleSheet) is a language for HTML page beautification. A very plain HTML page can be transformed with simple CSS code into a really beautiful and highly usable page. It helps user by making page more readable and good for use.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script>
+	 $(document).ready(function() {
+     var btn = $("#result button");
+     $("#background-color").on("input", function() {
+           btn.css("background-color",this.val());
+       });
+       reset();
+   	});
+
+    var reset = function(btn) {
+      btn.css("background-color","#4CAF50");
+      btn.css("border","none");
+      btn.css("color","white");
+      btn.css("padding","15px 32px");
+      btn.css("text-align","center");
+      btn.css("text-decoration","none");
+      btn.css("display","inline-block");
+      btn.css("font-size","16px");
+      btn.css("margin","4px 2px");
+      btn.css("cursor","pointer");
+    }
+</script>
+
+</html>
