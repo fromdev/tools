@@ -59,7 +59,6 @@ layout: post
                                     <div class="form-group">
                                         <label for="title">Font Size(px)</label>
                                         <input class="slider form-control" value="16" id="font-size" data-slider-id='font-size' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="16" />
-                                        <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200" data-slider-step="5" data-slider-value="1" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="red">
                                     </div>
                                 </form>
                             </div>
@@ -140,11 +139,8 @@ layout: post
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 
 <script>
-$(function () {
-    /* BOOTSTRAP SLIDER */
-    $('.slider').slider();
-  });
     $(document).ready(function() {
+       $('.slider').slider();
         var btn = $("#result button");
         registerColorPicker("background-color", btn);
         registerColorPicker("color", btn);
