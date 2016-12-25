@@ -140,7 +140,7 @@ layout: post
 
 <script>
     $(document).ready(function() {
-       $('.slider').slider();
+        $('.slider').slider();
         var btn = $("#result button");
         registerColorPicker("background-color", btn);
         registerColorPicker("color", btn);
@@ -152,6 +152,8 @@ layout: post
         });
         reset(btn);
         resetCSS();
+        $("#resultCodeCSS").selectOnFocus();
+        $("#resultCodeHTML").selectOnFocus();
     });
 
     var reset = function(btn) {
@@ -167,8 +169,10 @@ layout: post
         btn.css("cursor", "pointer");
     };
     var resetCSS = function() {
-      var css = ".button {\n    background-color: #4CAF50;\n    border: none;\n    color: white;\n    padding: 15px 32px;\n    text-align: center;\n    text-decoration: none;\n    display: inline-block;\n    font-size: 16px;\n}";
-      $("#resultCodeCSS").val(css);
+        var newLineNTab = "\n    ";
+        var css = ".button {" + newLineNTab + "background-color: " + $("#background-color").val() +";" + newLineNTab + "border: none;" + newLineNTab + "color: white;" + newLineNTab + "padding: 15px 32px;" + newLineNTab + "text-align: center;" + newLineNTab +
+            "text-decoration: none;" + newLineNTab + "display: inline-block;" + newLineNTab + "font-size: 16px;" + "\n" + "}";
+        $("#resultCodeCSS").val(css);
     };
 
     var registerColorPicker = function(itemId, btn) {
@@ -176,9 +180,11 @@ layout: post
         $(elementId).colorpicker().on('changeColor',
             function(ev) {
                 btn.css(itemId, $(elementId).val());
+                resetCSS();
             });
         $(elementId).on("input", function() {
             btn.css(itemId, $(elementId).val());
+            resetCSS();
         });
     };
 </script>
