@@ -173,8 +173,8 @@ layout: post
     };
     var resetCSS = function() {
         var newLineNTab = "\n    ";
-        var css = ".button {" + newLineNTab + "background-color: " + $("#background-color").val() +";" + newLineNTab + "border: none;" + newLineNTab + "color: "+ $("#color").val() + ";" + newLineNTab + "padding: 15px 32px;" + newLineNTab + "text-align: center;" + newLineNTab +
-            "text-decoration: none;" + newLineNTab + "display: inline-block;" + newLineNTab + "font-size: " + $("#font-size").val() + "px;" + "\n" + "}";
+        var css = "<style>\n.button {" + newLineNTab + "background-color: " + $("#background-color").val() +";" + newLineNTab + "border: none;" + newLineNTab + "color: "+ $("#color").val() + ";" + newLineNTab + "padding: 15px 32px;" + newLineNTab + "text-align: center;" + newLineNTab +
+            "text-decoration: none;" + newLineNTab + "display: inline-block;" + newLineNTab + "font-size: " + $("#font-size").val() + "px;" + "\n" + "}\n<\/style>";
         $("#resultCodeCSS").val(css);
     };
 
