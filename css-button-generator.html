@@ -146,9 +146,11 @@ layout: post
         registerColorPicker("color", btn);
         $("#button-text").on("input", function() {
             btn.text($("#button-text").val());
+            resetHTML();
         });
         $("#font-size").on("input", function() {
             btn.css("font-size", $("#font-size").val() + "px");
+            resetCSS();
         });
         reset(btn);
         resetCSS();
@@ -171,8 +173,13 @@ layout: post
     var resetCSS = function() {
         var newLineNTab = "\n    ";
         var css = ".button {" + newLineNTab + "background-color: " + $("#background-color").val() +";" + newLineNTab + "border: none;" + newLineNTab + "color: white;" + newLineNTab + "padding: 15px 32px;" + newLineNTab + "text-align: center;" + newLineNTab +
-            "text-decoration: none;" + newLineNTab + "display: inline-block;" + newLineNTab + "font-size: 16px;" + "\n" + "}";
+            "text-decoration: none;" + newLineNTab + "display: inline-block;" + newLineNTab + "font-size: " + $("#font-size").val() + "px;" + "\n" + "}";
         $("#resultCodeCSS").val(css);
+    };
+
+    var resetHTML = function() {
+      var html = "<button class=\"button\">"+ $("#button-text").val() + "<\/button>";
+      $("#resultCodeHTML").val(html);
     };
 
     var registerColorPicker = function(itemId, btn) {
