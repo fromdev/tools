@@ -111,7 +111,10 @@ layout: post
 <script>
 	 $(document).ready(function() {
      var btn = $("#result button");
-     $("#background-color").colorpicker();
+     $("#background-color").colorpicker().on('changeColor',
+            function(ev) {
+                btn.css("background-color", $("#background-color").val());
+            });
      $("#background-color").on("input", function() {
            btn.css("background-color", $("#background-color").val());
      });
