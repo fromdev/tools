@@ -111,13 +111,7 @@ layout: post
 <script>
 	 $(document).ready(function() {
      var btn = $("#result button");
-     $("#background-color").colorpicker().on('changeColor',
-            function(ev) {
-                btn.css("background-color", $("#background-color").val());
-            });
-     $("#background-color").on("input", function() {
-           btn.css("background-color", $("#background-color").val());
-     });
+     registerColorPicker("background-color",btn);
      $("#button-text").on("input", function() {
            btn.text($("#button-text").val());
      });
@@ -135,6 +129,17 @@ layout: post
       btn.css("font-size","16px");
       btn.css("margin","4px 2px");
       btn.css("cursor","pointer");
+    }
+
+    var registerColorPicker(itemId, btn) {
+      var elementId = "#" + itemId;
+      $(elementId).colorpicker().on('changeColor',
+             function(ev) {
+                 btn.css(itemId, $(elementId).val());
+             });
+      $(elementId).on("input", function() {
+            btn.css(itemId, $(elementId).val());
+      });
     }
 </script>
 
