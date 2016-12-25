@@ -151,6 +151,7 @@ layout: post
             btn.css("font-size", $("#font-size").val() + "px");
         });
         reset(btn);
+        resetCSS();
     });
 
     var reset = function(btn) {
@@ -164,6 +165,10 @@ layout: post
         btn.css("font-size", "16px");
         btn.css("margin", "4px 2px");
         btn.css("cursor", "pointer");
+    };
+    var resetCSS = function() {
+      var css = ".button {\n    background-color: #4CAF50; \/* Green *\/\n    border: none;\n    color: white;\n    padding: 15px 32px;\n    text-align: center;\n    text-decoration: none;\n    display: inline-block;\n    font-size: 16px;\n}";
+      $("#resultCodeCSS").val(css);
     };
 
     var registerColorPicker = function(itemId, btn) {
