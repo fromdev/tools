@@ -110,8 +110,11 @@ layout: post
      var btn = $("#result button");
      $("#background-color").on("input", function() {
            btn.css("background-color", $("#background-color").val());
-       });
-       reset(btn);
+     });
+     $("#background-text").on("input", function() {
+           btn.text($("#background-text").val());
+     });
+     reset(btn);
    	});
 
     var reset = function(btn) {
