@@ -58,7 +58,6 @@ layout: post
                                     <div class="form-group">
                                         <label for="title">Font Size(px)</label>
                                         <input class="form-control" id="font-size" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="16"/>
-                                        <input id="ex8" />
                                     </div>
                                 </form>
                             </div>
@@ -144,11 +143,11 @@ layout: post
      $("#button-text").on("input", function() {
            btn.text($("#button-text").val());
      });
-     $('#font-size').slider();
      $("#font-size").on("input", function() {
            btn.css("font-size",$("#font-size").val() + "px");
      });
      reset(btn);
+     $('#font-size').slider();
    	});
 
     var reset = function(btn) {
