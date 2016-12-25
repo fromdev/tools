@@ -14,6 +14,7 @@ layout: post
     <meta name="keywords" content="online,tool,css,button,tag,html,web,opensource" />
     <!-- CSS for the site theme -->
     {% include theme-css %}
+    <link rel="stylesheet" href="colorpicker/bootstrap-colorpicker.min.css">
     <!-- Annoying IE fixes -->
     {% include ie-fixes %}
 </head>
@@ -104,7 +105,9 @@ layout: post
     {% include theme-bottom-js %}
 
 </body>
+<script src="plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+
 <script>
 	 $(document).ready(function() {
      var btn = $("#result button");
