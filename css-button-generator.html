@@ -1,7 +1,4 @@
----
-title: CSS Button Generator | HTML Tools
-layout: post
----
+--- title: CSS Button Generator | HTML Tools layout: post ---
 <html>
 
 <head>
@@ -45,19 +42,19 @@ layout: post
                                 <form role="form">
                                     <div class="form-group">
                                         <label for="title">Background Color</label>
-                                        <input class="form-control background-color colorpicker-element" id="background-color" value="#4CAF50"/>
+                                        <input class="form-control background-color colorpicker-element" id="background-color" value="#4CAF50" />
                                     </div>
                                     <div class="form-group">
                                         <label for="title">Text Color</label>
-                                        <input class="form-control color colorpicker-element" id="color" value="#ffffff"/>
+                                        <input class="form-control color colorpicker-element" id="color" value="#ffffff" />
                                     </div>
                                     <div class="form-group">
                                         <label for="title">Button Text</label>
-                                        <input class="form-control" id="button-text" value="Button"/>
+                                        <input class="form-control" id="button-text" value="Button" />
                                     </div>
                                     <div class="form-group">
                                         <label for="title">Font Size(px)</label>
-                                        <input class="form-control" id="font-size" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="16"/>
+                                        <input class="form-control" id="font-size" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="16" />
                                     </div>
                                 </form>
                             </div>
@@ -73,7 +70,7 @@ layout: post
                             <div class="box-body">
                                 <div class="form-group">
                                     <div id="result">
-                                      <button>Button</button>
+                                        <button>Button</button>
                                     </div>
                                 </div>
                             </div>
@@ -86,14 +83,14 @@ layout: post
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                  <div class="form-group">
-                                      <label for="title">HTML Code For This Button</label>
-                                      <textarea class="form-control" rows="3" id="resultCodeHTML"></textarea>
-                                  </div>
-                                  <div class="form-group">
-                                      <label for="title">CSS Code For This Button</label>
-                                      <textarea class="form-control" rows="3" id="resultCodeCSS"></textarea>
-                                  </div>
+                                    <div class="form-group">
+                                        <label for="title">HTML Code For This Button</label>
+                                        <textarea class="form-control" rows="3" id="resultCodeHTML"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="title">CSS Code For This Button</label>
+                                        <textarea class="form-control" rows="3" id="resultCodeCSS"></textarea>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /.box-body -->
@@ -119,7 +116,8 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>CSS (Cascading StyleSheet) is a language for HTML page beautification. A very plain HTML page can be transformed with simple CSS code into a really beautiful and highly usable page. It helps user by making page more readable and good for use.</p>
+                        <p>CSS (Cascading StyleSheet) is a language for HTML page beautification. A very plain HTML page can be transformed with simple CSS code into a really beautiful and highly usable page. It helps user by making page more readable and
+                            good for use.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -136,44 +134,47 @@ layout: post
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 
 <script>
-	 $(document).ready(function() {
-     var btn = $("#result button");
-     registerColorPicker("background-color",btn);
-     registerColorPicker("color",btn);
-     $("#button-text").on("input", function() {
-           btn.text($("#button-text").val());
-     });
-     $("#font-size").on("input", function() {
-           btn.css("font-size",$("#font-size").val() + "px");
-     });
-     reset(btn);
-     $('#font-size').slider();
-   	});
+    $(document).ready(function() {
+        var btn = $("#result button");
+        registerColorPicker("background-color", btn);
+        registerColorPicker("color", btn);
+        $("#button-text").on("input", function() {
+            btn.text($("#button-text").val());
+        });
+        $("#font-size").on("input", function() {
+            btn.css("font-size", $("#font-size").val() + "px");
+        });
+        reset(btn);
+        $('#font-size').slider({
+            formatter: function(value) {
+                return value + 'px';
+            }
+        });
+    });
 
     var reset = function(btn) {
-      btn.css("background-color","#4CAF50");
-      btn.css("border","none");
-      btn.css("color","white");
-      btn.css("padding","15px 32px");
-      btn.css("text-align","center");
-      btn.css("text-decoration","none");
-      btn.css("display","inline-block");
-      btn.css("font-size","16px");
-      btn.css("margin","4px 2px");
-      btn.css("cursor","pointer");
+        btn.css("background-color", "#4CAF50");
+        btn.css("border", "none");
+        btn.css("color", "white");
+        btn.css("padding", "15px 32px");
+        btn.css("text-align", "center");
+        btn.css("text-decoration", "none");
+        btn.css("display", "inline-block");
+        btn.css("font-size", "16px");
+        btn.css("margin", "4px 2px");
+        btn.css("cursor", "pointer");
     };
 
     var registerColorPicker = function(itemId, btn) {
-      var elementId = "#" + itemId;
-      $(elementId).colorpicker().on('changeColor',
-             function(ev) {
-                 btn.css(itemId, $(elementId).val());
-             });
-      $(elementId).on("input", function() {
+        var elementId = "#" + itemId;
+        $(elementId).colorpicker().on('changeColor',
+            function(ev) {
+                btn.css(itemId, $(elementId).val());
+            });
+        $(elementId).on("input", function() {
             btn.css(itemId, $(elementId).val());
-      });
+        });
     };
-
 </script>
 
 </html>
