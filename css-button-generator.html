@@ -109,7 +109,7 @@ layout: post
 	 $(document).ready(function() {
      var btn = $("#result button");
      $("#background-color").on("input", function() {
-           btn.css("background-color",this.val());
+           btn.css("background-color", $("#background-color").val());
        });
        reset(btn);
    	});
