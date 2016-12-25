@@ -55,6 +55,10 @@ layout: post
                                         <label for="title">Button Text</label>
                                         <input class="form-control" id="button-text" value="Button"/>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="title">Font Size(px)</label>
+                                        <input class="form-control" id="font-size" value="16"/>
+                                    </div>
                                 </form>
                             </div>
                             <!-- /.box-body -->
@@ -119,6 +123,9 @@ layout: post
      registerColorPicker("color",btn);
      $("#button-text").on("input", function() {
            btn.text($("#button-text").val());
+     });
+     $("#font-size").on("input", function() {
+           btn.css("font-size",$("#font-size").val() + "px");
      });
      reset(btn);
    	});
