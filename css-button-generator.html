@@ -129,9 +129,9 @@ layout: post
       btn.css("font-size","16px");
       btn.css("margin","4px 2px");
       btn.css("cursor","pointer");
-    }
+    };
 
-    var registerColorPicker(itemId, btn) {
+    var registerColorPicker = function(itemId, btn) {
       var elementId = "#" + itemId;
       $(elementId).colorpicker().on('changeColor',
              function(ev) {
@@ -140,7 +140,8 @@ layout: post
       $(elementId).on("input", function() {
             btn.css(itemId, $(elementId).val());
       });
-    }
+    };
+    
 </script>
 
 </html>
