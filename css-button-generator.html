@@ -135,11 +135,15 @@ layout: post
     {% include theme-bottom-js %}
 
 </body>
-<script src="plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <script src="plugins/bootstrap-slider/bootstrap-slider.js"></script>
+<script src="plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 
 <script>
+$(function () {
+    /* BOOTSTRAP SLIDER */
+    $('.slider').slider();
+  });
     $(document).ready(function() {
         var btn = $("#result button");
         registerColorPicker("background-color", btn);
@@ -151,7 +155,6 @@ layout: post
             btn.css("font-size", $("#font-size").val() + "px");
         });
         reset(btn);
-        $('.slider').slider();
     });
 
     var reset = function(btn) {
