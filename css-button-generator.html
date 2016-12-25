@@ -150,11 +150,7 @@ layout: post
             btn.css("font-size", $("#font-size").val() + "px");
         });
         reset(btn);
-        $('#font-size').slider({
-            formatter: function(value) {
-                return value + 'px';
-            }
-        });
+        $('#font-size').slider();
     });
 
     var reset = function(btn) {
