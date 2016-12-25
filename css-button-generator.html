@@ -80,6 +80,25 @@ layout: post
                             </div>
                             <!-- /.box-body -->
                         </div>
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Copy Code Here</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                  <div class="form-group">
+                                      <label for="title">HTML Code For This Button</label>
+                                      <textarea class="form-control" rows="3" id="resultCodeHTML"></textarea>
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="title">CSS Code For This Button</label>
+                                      <textarea class="form-control" rows="3" id="resultCodeCSS"></textarea>
+                                  </div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
 
                     </div>
                 </div>
@@ -125,7 +144,7 @@ layout: post
      $("#button-text").on("input", function() {
            btn.text($("#button-text").val());
      });
-     var slider = new Slider('#font-size');
+     $('#font-size').slider();
      $("#font-size").on("input", function() {
            btn.css("font-size",$("#font-size").val() + "px");
      });
