@@ -181,7 +181,8 @@ layout: post
 
     var reset = function(btn) {
         btn.css("background-color", "#4CAF50");
-        btn.css("border", "none");
+        btn.css("border-style", "none");
+        btn.css("border-width", "0px");
         btn.css("color", "white");
         btn.css("padding", "15px 32px");
         btn.css("text-align", "center");
@@ -193,7 +194,7 @@ layout: post
     };
     var resetCSS = function() {
         var newLineNTab = "\n    ";
-        var css = "<style>\n.button {" + newLineNTab + "background-color: " + $("#background-color").val() +";" + newLineNTab + "border-width: " + $("#border-width").children("option").filter(":selected").text() + ";" + newLineNTab + "color: "+ $("#color").val() + ";" + newLineNTab + "padding: 15px 32px;" + newLineNTab + "text-align: center;" + newLineNTab +
+        var css = "<style>\n.button {" + newLineNTab + "background-color: " + $("#background-color").val() +";" + newLineNTab + "border-style: " + $("#border-style").children("option").filter(":selected").text() + ";" + newLineNTab + "border-width: " + $("#border-width").val() + "px;" + newLineNTab + "color: "+ $("#color").val() + ";" + newLineNTab + "padding: 15px 32px;" + newLineNTab + "text-align: center;" + newLineNTab +
             "text-decoration: none;" + newLineNTab + "display: inline-block;" + newLineNTab + "font-size: " + $("#font-size").val() + "px;" + "\n" + "}\n<\/style>";
         $("#resultCodeCSS").val(css);
     };
