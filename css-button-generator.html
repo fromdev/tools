@@ -75,8 +75,8 @@ layout: post
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="border-size">Border Size(px)</label>
-                                        <input class="slider form-control" value="0" id="border-size" data-slider-id='border-size' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="16" />
+                                        <label for="border-width">Border Width(px)</label>
+                                        <input class="slider form-control" value="0" id="border-width" data-slider-id='border-width' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="16" />
                                     </div>
                                 </form>
                             </div>
@@ -167,7 +167,7 @@ layout: post
             resetHTML();
         });
         registerSizeAttribute("font-size",btn);
-        registerSizeAttribute("border-size",btn);
+        registerSizeAttribute("border-width",btn);
         $("#border-style").on("change", function() {
             btn.css("border-style", this.value);
             resetCSS();
@@ -193,7 +193,7 @@ layout: post
     };
     var resetCSS = function() {
         var newLineNTab = "\n    ";
-        var css = "<style>\n.button {" + newLineNTab + "background-color: " + $("#background-color").val() +";" + newLineNTab + "border-style: " + $("#border-style option:selected").text() + ";" + newLineNTab + "color: "+ $("#color").val() + ";" + newLineNTab + "padding: 15px 32px;" + newLineNTab + "text-align: center;" + newLineNTab +
+        var css = "<style>\n.button {" + newLineNTab + "background-color: " + $("#background-color").val() +";" + newLineNTab + "border-width: " + $("#border-width option:selected").text() + ";" + newLineNTab + "color: "+ $("#color").val() + ";" + newLineNTab + "padding: 15px 32px;" + newLineNTab + "text-align: center;" + newLineNTab +
             "text-decoration: none;" + newLineNTab + "display: inline-block;" + newLineNTab + "font-size: " + $("#font-size").val() + "px;" + "\n" + "}\n<\/style>";
         $("#resultCodeCSS").val(css);
     };
