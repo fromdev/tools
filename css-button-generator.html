@@ -216,7 +216,7 @@ layout: post
         });
     };
 
-    var registerSizeAttribute(itemId,btn) {
+    var registerSizeAttribute = function(itemId,btn) {
       var elementId = "#" + itemId;
       $(elementId).on("input", function() {
           btn.css(itemId, $(elementId).val() + "px");
