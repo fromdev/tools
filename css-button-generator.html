@@ -193,7 +193,7 @@ layout: post
     };
     var resetCSS = function() {
         var newLineNTab = "\n    ";
-        var css = "<style>\n.button {" + newLineNTab + "background-color: " + $("#background-color").val() +";" + newLineNTab + "border-width: " + $("#border-width option:selected").text() + ";" + newLineNTab + "color: "+ $("#color").val() + ";" + newLineNTab + "padding: 15px 32px;" + newLineNTab + "text-align: center;" + newLineNTab +
+        var css = "<style>\n.button {" + newLineNTab + "background-color: " + $("#background-color").val() +";" + newLineNTab + "border-width: " + $("#border-width").children("option").filter(":selected").text() + ";" + newLineNTab + "color: "+ $("#color").val() + ";" + newLineNTab + "padding: 15px 32px;" + newLineNTab + "text-align: center;" + newLineNTab +
             "text-decoration: none;" + newLineNTab + "display: inline-block;" + newLineNTab + "font-size: " + $("#font-size").val() + "px;" + "\n" + "}\n<\/style>";
         $("#resultCodeCSS").val(css);
     };
