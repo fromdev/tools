@@ -64,16 +64,19 @@ layout: post
                                         <label for="border-style">Border Style</label>
                                         <select class="form-control" id="border-style" >
                                             <option value="none" selected="selected">None</option>
-                                            <option value="dotted">dotted</option>
-                                            <option value="dashed">dashed</option>
-                                            <option value="solid">solid</option>
-                                            <option value="double">double</option>
-                                            <option value="groove">groove</option>
-                                            <option value="ridge">ridge</option>
-                                            <option value="inset">inset</option>
-                                            <option value="outset">outset</option>
+                                            <option value="dotted">Dotted</option>
+                                            <option value="dashed">Dashed</option>
+                                            <option value="solid">Solid</option>
+                                            <option value="double">Double</option>
+                                            <option value="groove">Groove</option>
+                                            <option value="ridge">Ridge</option>
+                                            <option value="inset">Inset</option>
+                                            <option value="outset">Outset</option>
                                         </select>
-
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="border-size">Border Size(px)</label>
+                                        <input class="slider form-control" value="0" id="border-size" data-slider-id='border-size' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="16" />
                                     </div>
                                 </form>
                             </div>
@@ -163,10 +166,8 @@ layout: post
             btn.text($("#button-text").val());
             resetHTML();
         });
-        $("#font-size").on("input", function() {
-            btn.css("font-size", $("#font-size").val() + "px");
-            resetCSS();
-        });
+        registerSizeAttribute("font-size",btn);
+        registerSizeAttribute("border-size",btn);
         $("#border-style").on("change", function() {
             btn.css("border-style", this.value);
             resetCSS();
@@ -213,6 +214,14 @@ layout: post
             btn.css(itemId, $(elementId).val());
             resetCSS();
         });
+    };
+
+    var registerSizeAttribute(itemId,btn) {
+      var elementId = "#" + itemId;
+      $(elementId).on("input", function() {
+          btn.css(itemId, $(elementId).val() + "px");
+          resetCSS();
+      });
     };
 </script>
 
