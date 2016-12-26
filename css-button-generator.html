@@ -45,20 +45,35 @@ layout: post
                             <div class="box-body">
                                 <form role="form">
                                     <div class="form-group">
-                                        <label for="title">Background Color</label>
+                                        <label for="background-color">Background Color</label>
                                         <input class="form-control background-color colorpicker-element" id="background-color" value="#4CAF50" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="title">Text Color</label>
+                                        <label for="color">Text Color</label>
                                         <input class="form-control color colorpicker-element" id="color" value="#ffffff" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="title">Button Text</label>
+                                        <label for="button-text">Button Text</label>
                                         <input class="form-control" id="button-text" value="Button" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="title">Font Size(px)</label>
+                                        <label for="font-size">Font Size(px)</label>
                                         <input class="slider form-control" value="16" id="font-size" data-slider-id='font-size' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="16" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="border-style">Border Style</label>
+                                        <select class="form-control" id="border-style" >
+                                            <option value="none" selected="selected">None</option>
+                                            <option value="dotted">dotted</option>
+                                            <option value="dashed">dashed</option>
+                                            <option value="solid">solid</option>
+                                            <option value="double">double</option>
+                                            <option value="groove">groove</option>
+                                            <option value="ridge">ridge</option>
+                                            <option value="inset">inset</option>
+                                            <option value="outset">outset</option>
+                                        </select>
+
                                     </div>
                                 </form>
                             </div>
@@ -152,6 +167,10 @@ layout: post
             btn.css("font-size", $("#font-size").val() + "px");
             resetCSS();
         });
+        $("#border-style").on("change", function() {
+            btn.css("border-style", this.value);
+            resetCSS();
+        });
         reset(btn);
         resetCSS();
         resetHTML();
@@ -173,7 +192,7 @@ layout: post
     };
     var resetCSS = function() {
         var newLineNTab = "\n    ";
-        var css = "<style>\n.button {" + newLineNTab + "background-color: " + $("#background-color").val() +";" + newLineNTab + "border: none;" + newLineNTab + "color: "+ $("#color").val() + ";" + newLineNTab + "padding: 15px 32px;" + newLineNTab + "text-align: center;" + newLineNTab +
+        var css = "<style>\n.button {" + newLineNTab + "background-color: " + $("#background-color").val() +";" + newLineNTab + "border-style: " + $("#border-style option:selected").text() + ";" + newLineNTab + "color: "+ $("#color").val() + ";" + newLineNTab + "padding: 15px 32px;" + newLineNTab + "text-align: center;" + newLineNTab +
             "text-decoration: none;" + newLineNTab + "display: inline-block;" + newLineNTab + "font-size: " + $("#font-size").val() + "px;" + "\n" + "}\n<\/style>";
         $("#resultCodeCSS").val(css);
     };
