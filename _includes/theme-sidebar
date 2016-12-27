@@ -51,7 +51,7 @@
                     </li>
                     <li class="treeview active">
                         <a href="#">
-                            <i class="fa fa-star text-green"></i> <span>Converters</span>
+                            <i class="fa fa-exchange text-green"></i> <span>Converters</span>
                             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -64,7 +64,7 @@
                     </li>
                      <li class="treeview active">
                         <a href="#">
-                            <i class="fa fa-star"></i> <span>Code Generators</span>
+                            <i class="fa fa-wrench"></i> <span>Code Generators</span>
                             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
