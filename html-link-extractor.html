@@ -161,13 +161,29 @@ layout: post
         });
         return uniques;
     };
+    var baseUrl = 'http://tools.fromdev.com/';
+    var cleanLinks = function(arr, originalText) {
+      var cleanLinks = [];
+      $.each(arr, function(i, el) {
+          if(originalText.indexOf(el) !== -1) {
+            cleanLinks.push(el);
+          } else if(el.indexOf(baseUrl) !== -1){
+             if(baseUrl.length < el.length-1) {
+               var cleaned = el.substring(baseUrl.length,el.length-1);
+               cleanLinks.push(cleaned);
+             }
+          }
+      });
+
+      return cleanLinks;
+    };
     $(document).ready(function() {
         $("#extracturl").click(function() {
             var links = [];
             $($("#htm").val()).find('a').each(function() {
                 links.push(this.href);
             });
-            var uniqueLinks = removeDuplicates(links);
+            var uniqueLinks = cleanLinks(removeDuplicates(links));
             if (uniqueLinks) {
                 $("#urls").val(uniqueLinks.join("\r\n"));
                 $("#count").text(uniqueLinks.length);
