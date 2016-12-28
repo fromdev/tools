@@ -172,6 +172,7 @@ layout: post
                     cleanLinks.push(el);
                 } else if (el.indexOf(baseUrl) !== -1) {
                     if (baseUrl.length < el.length - 1) {
+                        console.log('stripping ' + baseUrl + ' from ' + el);
                         var cleaned = el.substring(baseUrl.length, el.length - 1);
                         cleanLinks.push(cleaned);
                     }
