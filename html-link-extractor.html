@@ -168,6 +168,7 @@ layout: post
         $.each(arr, function(i, el) {
             el = el.trim();
             if (el) {
+                el = el.toLowerCase().startsWith('javascript:') ? '' : el;
                 if (originalText.indexOf(el) !== -1) {
                     cleanLinks.push(el);
                 } else if (el.indexOf(baseUrl) !== -1) {
