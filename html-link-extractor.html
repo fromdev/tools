@@ -67,10 +67,10 @@ layout: post
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
-                              <div class="form-group">
-                                  <label for="count">Unique URL Count</label>
-                                  <h4 class='text-green' id="count"> 0 </h4>
-                              </div>
+                                <div class="form-group">
+                                    <label for="count">Unique URL Count</label>
+                                    <h4 class='text-green' id="count"> 0 </h4>
+                                </div>
                                 <div class="form-group">
                                     <label for="urls">Extracted Links</label>
                                     <textarea class="form-control" id="urls" rows="15" placeholder="Copy your text data from here"></textarea>
@@ -119,7 +119,8 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>Extracting the URL from HTML pages can be done for many reasons. I like to do it for web scraping and content research. HTML is powerful language for browsers, however, human can not easily read HTML pages. This page can easily extract all reference link from a HTML page and you can use them as you like.</p>
+                        <p>Extracting the URL from HTML pages can be done for many reasons. I like to do it for web scraping and content research. HTML is powerful language for browsers, however, human can not easily read HTML pages. This page can easily
+                            extract all reference link from a HTML page and you can use them as you like.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -163,19 +164,22 @@ layout: post
     };
     var baseUrl = 'http://tools.fromdev.com/';
     var cleanLinks = function(arr, originalText) {
-      var cleanLinks = [];
-      $.each(arr, function(i, el) {
-          if(originalText.indexOf(el) !== -1) {
-            cleanLinks.push(el);
-          } else if(el.indexOf(baseUrl) !== -1){
-             if(baseUrl.length < el.length-1) {
-               var cleaned = el.substring(baseUrl.length,el.length-1);
-               cleanLinks.push(cleaned);
-             }
-          }
-      });
+        var cleanLinks = [];
+        $.each(arr, function(i, el) {
+            el = el.trim();
+            if (el) {
+                if (originalText.indexOf(el) !== -1) {
+                    cleanLinks.push(el);
+                } else if (el.indexOf(baseUrl) !== -1) {
+                    if (baseUrl.length < el.length - 1) {
+                        var cleaned = el.substring(baseUrl.length, el.length - 1);
+                        cleanLinks.push(cleaned);
+                    }
+                }
+            }
+        });
 
-      return cleanLinks;
+        return cleanLinks;
     };
     $(document).ready(function() {
         $("#extracturl").click(function() {
@@ -184,7 +188,7 @@ layout: post
             $(originalText).find('a').each(function() {
                 links.push(this.href);
             });
-            var uniqueLinks = cleanLinks(removeDuplicates(links),originalText);
+            var uniqueLinks = cleanLinks(removeDuplicates(links), originalText);
             if (uniqueLinks) {
                 $("#urls").val(uniqueLinks.join("\r\n"));
                 $("#count").text(uniqueLinks.length);
