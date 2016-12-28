@@ -180,10 +180,11 @@ layout: post
     $(document).ready(function() {
         $("#extracturl").click(function() {
             var links = [];
-            $($("#htm").val()).find('a').each(function() {
+            var originalText = $("#htm").val();
+            $(originalText).find('a').each(function() {
                 links.push(this.href);
             });
-            var uniqueLinks = cleanLinks(removeDuplicates(links));
+            var uniqueLinks = cleanLinks(removeDuplicates(links),originalText);
             if (uniqueLinks) {
                 $("#urls").val(uniqueLinks.join("\r\n"));
                 $("#count").text(uniqueLinks.length);
