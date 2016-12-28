@@ -60,6 +60,7 @@
                             <li><a href="csv-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> CSV To JSON</a></li>
                             <li><a href="csv-to-table-converter.html"><i class="fa fa-circle-o text-green"></i> CSV To HTML Table</a></li>
                             <li><a href="table-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> HTML Table To JSON</a></li>
+                            <li><a href="html-to-text-converter.html"><i class="fa fa-circle-o text-green"></i> HTML To Text</a></li>
                         </ul>
                     </li>
                      <li class="treeview">
