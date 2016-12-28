@@ -24,7 +24,7 @@
                         </ul>
                     </li>
 
-                <li class="treeview active">
+                <li class="treeview">
                         <a href="#">
                             <i class="fa fa-shield text-red"></i> <span>Security &amp Privacy</span>
                             <span class="pull-right-container">
@@ -37,7 +37,7 @@
                             <li><a href="md5.html"><i class="fa fa-circle-o text-red"></i> Calculate MD5</a></li>
                         </ul>
                     </li>
-                    <li class="treeview active">
+                    <li class="treeview">
                         <a href="#">
                             <i class="fa fa-bullseye text-yellow"></i> <span>SEO</span>
                             <span class="pull-right-container">
@@ -49,7 +49,7 @@
                             <li><a href="meta-tag-generator.html"><i class="fa fa-circle-o text-yellow"></i> Meta Tags</a></li>
                         </ul>
                     </li>
-                    <li class="treeview active">
+                    <li class="treeview">
                         <a href="#">
                             <i class="fa fa-exchange text-green"></i> <span>Converters</span>
                             <span class="pull-right-container">
@@ -62,7 +62,7 @@
                             <li><a href="table-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> HTML Table To JSON</a></li>
                         </ul>
                     </li>
-                     <li class="treeview active">
+                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-wrench"></i> <span>Code Generators</span>
                             <span class="pull-right-container">
