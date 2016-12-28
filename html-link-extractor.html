@@ -140,7 +140,7 @@ layout: post
     $(document).ready(function() {
         $("#extracturl").click(function() {
             var links = [];
-            $($("#htm").val()).find('a')..each(function() {
+            $($("#htm").val()).find('a').each(function() {
                 links.push(this.href);
             });
             var uniqueLinks = removeDuplicates(links);
