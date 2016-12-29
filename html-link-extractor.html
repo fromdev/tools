@@ -68,12 +68,16 @@ layout: post
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="count">Unique URL Count</label>
-                                    <h4 class='text-green' id="count"> 0 </h4>
+                                    <label for="urls">Extracted Unique Links</label>
+                                    <textarea class="form-control" id="urls" rows="15" placeholder="Copy your text data from here"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="urls">Extracted Links</label>
-                                    <textarea class="form-control" id="urls" rows="15" placeholder="Copy your text data from here"></textarea>
+                                    <label for="count">Total URL Count</label>
+                                    <h4 class='text-aqua' id="totalcount"> 0 </h4>
+                                </div>
+                                <div class="form-group">
+                                    <label for="count">Unique URL Count</label>
+                                    <h4 class='text-green' id="count"> 0 </h4>
                                 </div>
                             </div>
                             <!-- /.box-body -->
@@ -194,6 +198,7 @@ layout: post
             if (uniqueLinks) {
                 $("#urls").val(uniqueLinks.join("\r\n"));
                 $("#count").text(uniqueLinks.length);
+                $("#totalcount").text(links.length);
             }
         });
         $("#urls").selectOnFocus();
