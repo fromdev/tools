@@ -72,12 +72,16 @@ layout: post
                                     <textarea class="form-control" id="urls" rows="15" placeholder="Copy your text data from here"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="count">Total URL Count</label>
+                                    <label for="totalcount">Total URL Count</label>
                                     <h4 class='text-aqua' id="totalcount"> 0 </h4>
                                 </div>
                                 <div class="form-group">
                                     <label for="count">Unique URL Count</label>
                                     <h4 class='text-green' id="count"> 0 </h4>
+                                </div>
+                                <div class="form-group">
+                                    <label for="uniqueDomainCount">Unique Domain Count</label>
+                                    <h4 class='text-green' id="uniqueDomainCount"> 0 </h4>
                                 </div>
                             </div>
                             <!-- /.box-body -->
@@ -159,6 +163,25 @@ layout: post
 </body>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script>
+    var extractDomain = function(url) {
+        var domain;
+        //find & remove protocol (http, ftp, etc.) and get domain
+        if (url.indexOf("://") > -1) {
+            domain = url.split('/')[2];
+        } else {
+            domain = url.split('/')[0];
+        }
+        //find & remove port number
+        domain = domain.split(':')[0];
+        return domain;
+    };
+    var extractDomainList = function(arr) {
+        var domains = [];
+        $.each(arr, function(i, el) {
+            domains.push(extractDomain(el));
+        });
+        return uniques;
+    };
     var removeDuplicates = function(arr) {
         var uniques = [];
         $.each(arr, function(i, el) {
@@ -199,6 +222,8 @@ layout: post
                 $("#urls").val(uniqueLinks.join("\r\n"));
                 $("#count").text(uniqueLinks.length);
                 $("#totalcount").text(links.length);
+                var uniqueDomains = removeDuplicates(extractDomainList(links));
+                $("#uniqueDomainCount").text(uniqueDomains.length);
             }
         });
         $("#urls").selectOnFocus();
