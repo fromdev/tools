@@ -194,17 +194,13 @@ layout: post
         var cleanLinks = [];
         $.each(arr, function(i, el) {
             el = el.trim();
+            el = (el && el.toLowerCase().startsWith('javascript:')) ? '' : el;
+            if (el && originalText.indexOf(el) === -1 && el.indexOf(baseUrl) !== -1 && baseUrl.length < el.length - 1) {
+                console.log('stripping ' + baseUrl + ' from ' + el);
+                el = el.substring(baseUrl.length, el.length - 1);
+            }
             if (el) {
-                el = el.toLowerCase().startsWith('javascript:') ? '' : el;
-                if (originalText.indexOf(el) !== -1) {
-                    cleanLinks.push(el);
-                } else if (el.indexOf(baseUrl) !== -1) {
-                    if (baseUrl.length < el.length - 1) {
-                        console.log('stripping ' + baseUrl + ' from ' + el);
-                        var cleaned = el.substring(baseUrl.length, el.length - 1);
-                        cleanLinks.push(cleaned);
-                    }
-                }
+              cleanLinks.push(el);
             }
         });
 
