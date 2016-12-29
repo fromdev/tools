@@ -165,7 +165,6 @@ layout: post
 <script src="javascripts/urlUtil.js"></script>
 <script src="javascripts/arrayUtil.js"></script>
 <script>
-    var pageCategory = 'converters-category';
     var baseUrl = 'http://tools.fromdev.com/';
     var cleanLinks = function(arr, originalText) {
         var cleanLinks = [];
@@ -201,7 +200,7 @@ layout: post
         });
         $("#urls").selectOnFocus();
         $("#htm").selectOnFocus();
-        $('#'+pageCategory).addCss('active');
+        $('#converters-category').addClass('active');
     });
 </script>
 
