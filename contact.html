@@ -101,6 +101,7 @@ layout: post
         var success = getUrlParam("success");
         if (success) {
             $("#success-messsage").text("Thank You for connecting with us . \nWe will get back to you shortly.")
+            setTimeout(function(){ $("#success-messsage").text(''); },3000);
         }
     });
 </script>
