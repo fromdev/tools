@@ -36,44 +36,41 @@ layout: post
                     <!-- /.box-header -->
                     <!-- form start -->
                     <div class="box-body">
-                        <div class="widget ContactForm" id="ContactForm1">
-                            <div class="contact-form-widget">
-                                <div class="form">
-                                    <script type="text/javascript">
-                                        var submitted = false;
-                                    </script><iframe id="hidden_iframe" name="hidden_iframe" onload="if(submitted){window.location='http://tools.fromdev.com/contact.html';}" style="display: none;"></iframe>
-                                    <form name="contact-form" action="https://docs.google.com/a/fromdev.com/forms/d/e/1FAIpQLSfSRWi5KNcNy7PbBL0NdYwjH2Aaq4p4vlYL5NIv5AzlxGlpig/formResponse" target="hidden_iframe" method="POST" id="mG61Hd" onsubmit="submitted=true;">
+                        <h3 class="text-green" id="success-messsage"></h3>
+                        <div class="form">
+                            <script type="text/javascript">
+                                var submitted = false;
+                            </script><iframe id="hidden_iframe" name="hidden_iframe" onload="if(submitted){window.location='http://tools.fromdev.com/contact.html?success=y';}" style="display: none;"></iframe>
+                            <form name="contact-form" action="https://docs.google.com/a/fromdev.com/forms/d/e/1FAIpQLSfSRWi5KNcNy7PbBL0NdYwjH2Aaq4p4vlYL5NIv5AzlxGlpig/formResponse" target="hidden_iframe" method="POST" id="mG61Hd" onsubmit="submitted=true;">
 
-                                        <p></p>
-                                        Name
-                                        <br />
-                                        <input class="form-control" id="entry_1000000" name="entry.1000000" size="30" type="text" value="" required="" />
-                                        <p></p>
-                                        Email
-                                        <span style="font-weight: bolder;">*</span>
-                                        <br />
-                                        <input class="form-control" id="entry_1000001" name="entry.1000001" size="30" type="text" value="" required="" />
-                                        <p></p>
-                                        Subject
-                                        <span style="font-weight: bolder;">*</span>
-                                        <br />
-                                        <select class="form-control" aria-label="Subject  " aria-required="true" id="entry_1000004" name="entry.1000004" required=""><option value="Advertise" />Advertise<option value="Feedback" />Feedback</select>
-                                        <p></p>
-                                        Message
-                                        <span style="font-weight: bolder;">*</span>
-                                        <br />
-                                        <textarea class="form-control" cols="25" id="entry_1000002" name="entry.1000002" rows="5" required=""></textarea>
-                                        <input name="pageHistory" type="hidden" value="0" /> <input name="fvv" type="hidden" value="0" /> <input name="fbzx" type="hidden" value="-6469887714227403977" />
-                                        <p></p>
-                                        <input class="btn btn-info" id="ss-submit" name="submit" type="submit" value="Send" />
-                                        <p></p>
-                                        <div style="text-align: center; max-width: 222px; width: 100%">
-                                            <p class="contact-form-error-message" id="ContactForm1_contact-form-error-message"></p>
-                                            <p class="contact-form-success-message" id="ContactForm1_contact-form-success-message"></p>
-                                        </div>
-                                    </form>
+                                <p></p>
+                                Name
+                                <br />
+                                <input class="form-control" id="entry_1000000" name="entry.1000000" size="30" type="text" value="" required="" />
+                                <p></p>
+                                Email
+                                <span style="font-weight: bolder;">*</span>
+                                <br />
+                                <input class="form-control" id="entry_1000001" name="entry.1000001" size="30" type="text" value="" required="" />
+                                <p></p>
+                                Subject
+                                <span style="font-weight: bolder;">*</span>
+                                <br />
+                                <select class="form-control" aria-label="Subject  " aria-required="true" id="entry_1000004" name="entry.1000004" required=""><option value="Advertise" />Advertise<option value="Feedback" />Feedback</select>
+                                <p></p>
+                                Message
+                                <span style="font-weight: bolder;">*</span>
+                                <br />
+                                <textarea class="form-control" cols="25" id="entry_1000002" name="entry.1000002" rows="5" required=""></textarea>
+                                <input name="pageHistory" type="hidden" value="0" /> <input name="fvv" type="hidden" value="0" /> <input name="fbzx" type="hidden" value="-6469887714227403977" />
+                                <p></p>
+                                <input class="btn btn-info" id="ss-submit" name="submit" type="submit" value="Send" />
+                                <p></p>
+                                <div style="text-align: center; max-width: 222px; width: 100%">
+                                    <p class="contact-form-error-message" id="ContactForm1_contact-form-error-message"></p>
+                                    <p class="contact-form-success-message" id="ContactForm1_contact-form-success-message"></p>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
 
@@ -87,6 +84,25 @@ layout: post
     {% include theme-bottom-js %}
 
 </body>
+<script type="text/javascript">
+    var getUrlParam = {
+        if (!url) {
+            url = window.location.href;
+        }
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    };
 
+    $(document).ready(function() {
+        var success = getUrlParam("success");
+        if (success) {
+            $("#success-messsage").text("Thank You for connecting with us . \nWe will get back to you shortly.")
+        }
+    });
+</script>
 
 </html>
