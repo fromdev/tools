@@ -210,7 +210,7 @@ layout: post
         var asin = Utils.amazon.extractASIN(url);
         $('#asin').val(asin);
         $('#taggedurl').val(url);
-        $('#cleanurl').val(makeCleanURL(url, asin, affiliateTag));
+        $('#cleanurl').val(Utils.amazon.createCleanAffiliateURL(url, asin, affiliateTag));
         $('#openurl').attr('href', url);
         $('#openurl').text('Open Link (in new window)');
     };
@@ -225,13 +225,6 @@ layout: post
             vars[hash[0]] = hash[1];
         }
         return vars;
-    };
-
-    var makeCleanURL = function(url, asin, tag) {
-        var asinEnd = url.indexOf(asin) + asin.length;
-        var cleanurl = url.substring(0, asinEnd) + '?tag=' + tag;
-        return cleanurl;
-
     };
 
     var isValidURL = function(s) {
