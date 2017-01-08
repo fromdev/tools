@@ -10,7 +10,7 @@ Utils.amazon = {
         }
         return '';
     },
-    isValidASIN = function(input) {
+    isValidASIN: function(input) {
         return onlyASINRegex.test(input);
     }
 
