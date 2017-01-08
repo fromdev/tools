@@ -13,11 +13,27 @@ Utils.amazon = {
     isValidASIN: function(input) {
         return onlyASINRegex.test(input);
     },
-    createCleanAffiliateURL : function(url, asin, tag) {
+    createCleanAffiliateURL: function(url, asin, tag) {
         var asinEnd = url.indexOf(asin) + asin.length;
         var cleanurl = url.substring(0, asinEnd) + '?tag=' + tag;
         return cleanurl;
 
     }
 
+};
+//wrapper around storage to use only if supported
+Utils.storage = {
+    setItem: function(key, value) {
+        if (typeof(Storage) !== "undefined") {
+            // Store
+            localStorage.setItem(key, value);
+        }
+    },
+
+    getItem: function(key) {
+        if (typeof(Storage) !== "undefined") {
+            return localStorage.getItem(key);
+        }
+        return '';
+    }
 };
