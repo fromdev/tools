@@ -207,26 +207,12 @@ layout: post
         } else {
             url = url.replace('?', '?tag=' + affiliateTag + '&');
         }
-        var asin = extractASIN(url);
+        var asin = Utils.amazon.extractASIN(url);
         $('#asin').val(asin);
         $('#taggedurl').val(url);
         $('#cleanurl').val(makeCleanURL(url, asin, affiliateTag));
         $('#openurl').attr('href', url);
         $('#openurl').text('Open Link (in new window)');
-    };
-    var extractASIN = function(url) {
-        var regex = new RegExp("/([a-zA-Z0-9]{10})(?:[/?]|$)");
-        var m = url.match(regex);
-        if (m) {
-            return m[0].replace(new RegExp('\/', 'g'), '');
-        }
-        return '';
-    };
-
-    var onlyASINRegex = new RegExp("([a-zA-Z0-9]{10})");
-
-    var isValidASIN = function(input) {
-        return onlyASINRegex.test(input);
     };
 
     var getUrlVars = function() {
