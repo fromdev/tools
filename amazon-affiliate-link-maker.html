@@ -186,12 +186,12 @@ layout: post
         var affiliateTag = $('#affiliateTag').val();
 
         if (!affiliateTag) {
-            affiliateTag = getFromBrowserStore("affiliateTag");
+            affiliateTag = Utils.storage.getItem("affiliateTag");
             if (!affiliateTag) {
                 affiliateTag = 'fromdevtools-20';
             }
         }
-        saveInBrowserStore("affiliateTag", affiliateTag);
+        Utils.storage.setItem("affiliateTag", affiliateTag);
         $('#affiliateTag').val(affiliateTag);
         return affiliateTag;
     };
@@ -238,20 +238,6 @@ layout: post
         $('#cleanurl').val('');
         $('#openurl').attr('href', '');
         $('#openurl').text('');
-    };
-
-    var saveInBrowserStore = function(key, value) {
-        if (typeof(Storage) !== "undefined") {
-            // Store
-            localStorage.setItem(key, value);
-        }
-    };
-
-    var getFromBrowserStore = function(key) {
-        if (typeof(Storage) !== "undefined") {
-            return localStorage.getItem(key);
-        }
-        return '';
     };
 </script>
 
