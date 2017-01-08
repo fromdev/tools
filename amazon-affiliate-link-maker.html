@@ -181,6 +181,9 @@ layout: post
                 processUrl(input, affiliateTag);
             }
         });
+        $('#asin').selectOnFocus();
+        $('#taggedurl').selectOnFocus();
+        $('#cleanurl').selectOnFocus();
     });
     var getAffiliateTag = function() {
         var affiliateTag = $('#affiliateTag').val();
