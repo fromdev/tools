@@ -224,16 +224,16 @@ layout: post
         $('#cleanurl').val(Utils.amazon.createCleanAffiliateURL(url, asin, affiliateTag));
         $('#openurl').attr('href', url);
         $('#openurl').text('Open Link (in new window)');
-        $('#linkhtml').val(getLinkCode());
+        $('#linkhtml').val(getLinkCode(url));
     };
-    var getLinkCode = function() {
+    var getLinkCode = function(url) {
       var linkText = $('#linktext').val();
       if(!linkText){
         linkText = 'Click Here';
       }
       var linkCode = '<a href="' + url + '" ' + ' title="' + linkText + ' alt="' + linkText   + '"'+ '>'+ linkText + '</a>';
     };
-    
+
     var getUrlVars = function() {
         var vars = [],
             hash;
