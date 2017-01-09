@@ -231,7 +231,7 @@ layout: post
       if(!linkText){
         linkText = 'Click Here';
       }
-      var linkCode = '<a href="' + url + '" ' + ' title="' + linkText + ' alt="' + linkText   + '"'+ '>'+ linkText + '</a>';
+      return '<a href="' + url + '" ' + ' title="' + linkText + ' alt="' + linkText   + '"'+ '>'+ linkText + '</a>';
     };
 
     var getUrlVars = function() {
