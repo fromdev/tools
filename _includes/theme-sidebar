@@ -75,7 +75,7 @@
                             <li><a href="css-button-generator.html"><i class="fa fa-circle-o"></i> CSS Button Generator</a></li>
                             <li><a href="qr-code-generator.html"><i class="fa fa-circle-o"></i> QR Code Generator</a></li>
                             <li><a href="jquery-quickstart-snippet.html"><i class="fa fa-circle-o"></i> jQuery Code Grabber</a></li> 
-                            <li><a href="amazon-affiliate-link-maker.html"><i class="fa fa-circle-o text-green"></i> Amazon Link Maker</a></li>                            
+                            <li><a href="amazon-affiliate-link-maker.html"><i class="fa fa-circle-o"></i> Amazon Link Maker</a></li>                            
                         </ul>
                     </li>
                     <li><a href="contact.html"><i class="fa fa-circle-o text-aqua"></i> <span>Feedback</span></a></li>
