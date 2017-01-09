@@ -193,10 +193,10 @@ layout: post
         $('#taggedurl').selectOnFocus();
         $('#cleanurl').selectOnFocus();
         $('#linkhtml').selectOnFocus();
+        $('#input').selectOnFocus();
     });
     var getAffiliateTag = function() {
         var affiliateTag = $('#affiliateTag').val();
-
         if (!affiliateTag) {
             affiliateTag = Utils.storage.getItem("affiliateTag");
             if (!affiliateTag) {
