@@ -45,12 +45,16 @@ layout: post
                             <div class="box-body">
                                 <form role="form">
                                     <div class="form-group">
-                                        <label for="background-color">Amazon URL</label>
+                                        <label for="input">Amazon URL</label>
                                         <input class="form-control" id="input" value="" placeholder="Enter Amazon URL here" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="color">Amazon Affilate Tag</label>
+                                        <label for="affiliateTag">Amazon Affilate Tag</label>
                                         <input class="form-control" id="affiliateTag" type="text" value="" placeholder="Enter amazon affiliate tag" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="linktext">Link Text</label>
+                                        <input class="form-control" id="linktext" type="text" value="" placeholder="Enter display text for HTML code" />
                                     </div>
                                 </form>
                             </div>
@@ -74,20 +78,24 @@ layout: post
                             <div class="box-body">
                                 <div class="form-group">
                                     <div class="form-group">
-                                        <label for="title">Amazon URL with Affiliate Tag</label>
+                                        <label for="taggedurl">Amazon URL with Affiliate Tag</label>
                                         <input class="form-control" id="taggedurl" type="text" placeholder="Original URL with Tag" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="title">Clean Amazon URL with Affiliate Tag</label>
+                                        <label for="cleanurl">Clean Amazon URL with Affiliate Tag</label>
                                         <input class="form-control" id="cleanurl" type="text" placeholder="Clean URL" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="title">Extracted ASIN (Unique Product Id on Amazon) </label>
+                                        <label for="asin">Extracted ASIN (Unique Product Id on Amazon) </label>
                                         <input class="form-control" id="asin" type="text" placeholder="Exracted ASIN" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="title">Clickable URL</label>
+                                        <label for="openurl">Clickable URL</label>
                                         <div class="form-control" > <a id="openurl" target="_blank"></a></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="linkhtml">HTML Formatted Code For Link</label>
+                                        <textarea class="form-control" rows="3" id="linkhtml" readonly="readonly" placeholder="HTML Formatted Code For Link"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -216,8 +224,16 @@ layout: post
         $('#cleanurl').val(Utils.amazon.createCleanAffiliateURL(url, asin, affiliateTag));
         $('#openurl').attr('href', url);
         $('#openurl').text('Open Link (in new window)');
+        $('#linkhtml').val(getLinkCode());
     };
-
+    var getLinkCode = function() {
+      var linkText = $('#linktext').val();
+      if(!linkText){
+        linkText = 'Click Here';
+      }
+      var linkCode = '<a href="' + url + '" ' + ' title="' + linkText + ' alt="' + linkText   + '"'+ '>'+ linkText + '</a>';
+    };
+    
     var getUrlVars = function() {
         var vars = [],
             hash;
@@ -241,6 +257,7 @@ layout: post
         $('#cleanurl').val('');
         $('#openurl').attr('href', '');
         $('#openurl').text('');
+        $('#linkhtml').text('');
     };
 </script>
 
