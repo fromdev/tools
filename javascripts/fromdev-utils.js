@@ -6,9 +6,7 @@ Utils.amazon = {
         var regex = new RegExp("/([a-zA-Z0-9]{10})(?:[/?]|$)");
         var m = url.match(regex);
         if (m) {
-            m[0] = m[0].replace(new RegExp('\/', 'g'), '');
-            m[0] = m[0].replace(new RegExp('\?', 'g'), '');
-            return m[0];
+            return m[0].replace(new RegExp('\/|\\?', 'g'), '');
         }
         return '';
     },
