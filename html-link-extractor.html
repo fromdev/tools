@@ -163,8 +163,7 @@ layout: post
 
 </body>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
-<script src="javascripts/urlUtil.js"></script>
-<script src="javascripts/arrayUtil.js"></script>
+<script src="javascripts/fromdev-utils.js"></script>
 <script>
     var baseUrl = 'http://tools.fromdev.com/';
     var cleanLinks = function(arr, originalText) {
@@ -190,12 +189,12 @@ layout: post
             $(originalText).find('a').each(function() {
                 links.push(this.href);
             });
-            var uniqueLinks = cleanLinks(removeDuplicates(links), originalText);
+            var uniqueLinks = cleanLinks(ArrayUtils.removeDuplicates(links), originalText);
             if (uniqueLinks) {
                 $("#urls").val(uniqueLinks.join("\r\n"));
                 $("#count").text(uniqueLinks.length);
                 $("#totalcount").text(links.length);
-                var uniqueDomains = removeDuplicates(extractDomainList(links));
+                var uniqueDomains = ArrayUtils.removeDuplicates(UrlUtils.extractDomainList(links));
                 $("#uniqueDomainCount").text(uniqueDomains.length);
             }
         });
