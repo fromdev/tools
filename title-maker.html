@@ -40,11 +40,11 @@ layout: post
                     <div class="box-body">
                         <form role="form">
                             <div class="form-group">
-                                <label for="result">Title Suggestion</label>
+                                <label for="singleTitle">Title Suggestion</label>
                                 <input class="form-control input-lg" type="text" id="singleTitle" readonly="true" placeholder="Copy title from here" />
                             </div>
                             <div class="form-group">
-                                <label for="result">Subject / Topic</label>
+                                <label for="inputText">Subject / Topic</label>
                                 <input class="form-control" name="inputText" id="inputText" type="text" placeholder="Enter subject here" autofocus="true" />
                             </div>
                         </form>
@@ -157,7 +157,7 @@ layout: post
                 var counts = ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];
                 targets = inputVal.split("\n");
                 topics = targets;
-                log('len = ' + targets.length);
+                LogUtils.log('len = ' + targets.length);
                 var titleArray = generateTitlesRandom(targets, topics, counts);
                 // showArray(titleArray);
                 if ($singleTitle) {
