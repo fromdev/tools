@@ -19,6 +19,13 @@ I have two key things that keep me motivated and help these tool running.
 2. Test it on all possible browsers - inlcuding chrome, firefox, safari and IE. 
 3. Raise a Pull Request to merge it into master. 
 
+# How To Test Your Changes
+1. We use Jasmine for doing unit testing on any Javascript functions and utilities.
+2. Add test cases in project for every new code in JavaScript.
+3. Run [SpecRunner.html](http://tools.fromdev.com/test/SpecRunner.html) to see your tests passing.
+4. Add a new Spec file in <code>test/spec</code> folder for any new JavaScript file you contribute.
+
+
 # How To Contribute As a User
 
 1. Send us feedback using email on sachin [at] fromdev [dot] com 
