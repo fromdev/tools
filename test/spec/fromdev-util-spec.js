@@ -101,7 +101,7 @@ describe('Fromdev Util JS Test Suite', function () {
         it('Should return a random number in range', function(){
             expect(RandomUtils.getRandomInt(1,10)).toBeGreaterThan(0);
             expect(RandomUtils.getRandomInt(1,10)).toBeLessThan(11);
-            expect(RandomUtils.getRandomInt()).toBeGreaterThan(0);
+            expect(RandomUtils.getRandomInt()).toBeGreaterThan(-1);
             expect(RandomUtils.getRandomInt()).toBeLessThan(11);
         });
 
