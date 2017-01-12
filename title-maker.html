@@ -161,7 +161,7 @@ layout: post
                 var titleArray = generateTitlesRandom(targets, topics, counts);
                 // showArray(titleArray);
                 if ($singleTitle) {
-                    $singleTitle.val(titleArray[getRandomInt(0, titleArray.length - 1)]);
+                    $singleTitle.val(titleArray[RandomUtils.getRandomInt(0, titleArray.length - 1)]);
                 }
             }
         });
