@@ -125,9 +125,28 @@ layout: post
 
 </body>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
-<script type="text/javascript" src="javascripts/title-maker.js?v1"></script>
+<script type="text/javascript" src="javascripts/fromdev-utils.js"></script>
 <script type="text/javascript" src="javascripts/title-templates.js?v1"></script>
 <script>
+    var debug = false;
+
+    var generateTitlesRandom = function(targets, topics,counts) {
+        var titleArray = new Array();
+        if(templates) {
+            var step;
+            var currentTitle;
+            for (step = 0; step < 75; step++) {
+                currentTitle = (' ' + templates[RandomUtils.getRandomInt(0, templates.length - 1)]).slice(1);
+                currentTitle = currentTitle.replace("TARGET", targets[RandomUtils.getRandomInt(0, targets.length - 1)]);
+                currentTitle = currentTitle.replace("TOPIC", topics[RandomUtils.getRandomInt(0, topics.length - 1)]);
+                currentTitle = currentTitle.replace("COUNT", counts[RandomUtils.getRandomInt(0, counts.length - 1)]);
+                titleArray.push(currentTitle);
+                LogUtils.log(currentTitle);
+            }
+        }
+        return titleArray;
+    };
+
     var $singleTitle = $("#singleTitle");
     $(document).ready(function() {
         $("#submit").click(function() {
