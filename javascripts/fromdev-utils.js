@@ -11,13 +11,23 @@ Utils.amazon = {
         return '';
     },
     isValidASIN: function(input) {
-        return onlyASINRegex.test(input);
+        return input && input.length == 10  && this.onlyASINRegex.test(input);
     },
     createCleanAffiliateURL: function(url, asin, tag) {
-        var asinEnd = url.indexOf(asin) + asin.length;
-        var cleanurl = url.substring(0, asinEnd) + '?tag=' + tag;
+        tag = tag || 'fromdevtools-20';
+        return this.getCleanURL(url) + '?tag=' + tag;
+    },
+    getCleanURL : function(url, asin) {
+        var cleanurl = url;
+        asin = asin || this.extractASIN(url);
+        if (asin) {
+            var asinIndex = url.indexOf(asin);
+            if (asinIndex > -1) {
+                var asinEnd = asinIndex + asin.length;
+                cleanurl = url.substring(0, asinEnd);
+            }
+        }
         return cleanurl;
-
     }
 
 };
@@ -37,3 +47,86 @@ Utils.storage = {
         return '';
     }
 };
+
+Utils.arrayutil = {
+    removeDuplicates : function(arr) {
+        var uniques = [];
+        if(arr) {
+            arr.forEach(function(item) {
+                if(uniques.indexOf(item) < 0) {
+                    uniques.push(item);
+                }
+            });
+        }
+        return uniques;
+
+    },
+    shuffle : function(array) {
+        var counter = array.length;
+
+        // While there are elements in the array
+        while (counter > 0) {
+            // Pick a random index
+            var index = Math.floor(Math.random() * counter);
+
+            // Decrease counter by 1
+            counter--;
+
+            // And swap the last element with it
+            var temp = array[counter];
+            array[counter] = array[index];
+            array[index] = temp;
+        }
+
+        return array;
+    }
+};
+
+Utils.urlutil = {
+    extractDomain : function(url) {
+        var domain = '';
+        if(url) {
+            //find & remove protocol (http, ftp, etc.) and get domain
+            if (url.indexOf("://") > -1) {
+                domain = url.split('/')[2];
+            } else {
+                domain = url.split('/')[0];
+            }
+            //find & remove port number
+            domain = domain.split(':')[0];
+        }
+        return domain;
+    },
+    extractDomainList : function(arr) {
+        var domains = [];
+        if(arr) {
+            arr.forEach(function(item) {
+                domains.push(Utils.urlutil.extractDomain(item));
+            });
+        }
+        return domains;
+    }
+};
+
+Utils.randomutil = {
+    getRandomInt : function(min, max) {
+        min = min || 1;
+        max = max || 10;
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+};
+
+Utils.logutil = {
+    log : function(msg) {
+        if (debug) {
+            console.log(msg);
+        }
+    }
+};
+
+var AmazonUtils = Utils.amazon;
+var StorageUtils = Utils.storage;
+var ArrayUtils = Utils.arrayutil;
+var UrlUtils = Utils.urlutil;
+var RandomUtils = Utils.randomutil;
+var LogUtils = Utils.logutil;
