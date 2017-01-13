@@ -128,6 +128,16 @@ layout: post
                 </div>
                 <div class="box box-success">
                     <div class="box-header with-border">
+                        <h3 class="box-title">Can I Convert a ATOM Feed Data To JSON?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Yes, ATOM feed is a valid xml format and this tool can convert ATOM feed data to a JSON format data. You just need to copy/paste the ATOM Feed content into our XML input box and it can convert it.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
                         <h3 class="box-title">Why Convert From XML to JSON?</h3>
                     </div>
                     <!-- /.box-header -->
@@ -169,7 +179,7 @@ layout: post
       $("#convert2xml").click(function(){
           var input = $("#json").val();
           if(input) {
-            var xml = x2js.json2xml_str(input);
+            var xml = x2js.json2xml(input);
             if(xml) {
                 $("#xml").val(xml);
             }
