@@ -186,9 +186,9 @@ layout: post
       $("#convert2xml").click(function(){
           var input = $("#json").val();
           if(input) {
-            var xml = x2js.json2xml_str(input);
+            var xml = x2js.json2xml_str($.parseJSON(input));
             if(xml) {
-                $("#xml").val(unescapeIt(xml));
+                $("#xml").val(xml);
             }
           }
       });
