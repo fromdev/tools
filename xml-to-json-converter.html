@@ -151,16 +151,9 @@ layout: post
           if(input) {
             var json = x2js.xml_str2json(input);
             if(json) {
-              if(json.errors.length<1) {
                 $("#json").val(JSON.stringify(json.data));
-              } else {
-                if(json.errors) {
-                  $("#json").val(json.errors[0].message + " on row " +  json.errors[0].row);
-                } else {
-                  $("#json").val("Invalid JSON data, unable to parse");
-                }
-              }
-
+            } else {
+                console.log("Invalid JSON data, unable to parse");
             }
           }
       });
