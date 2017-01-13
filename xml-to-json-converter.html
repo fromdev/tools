@@ -158,12 +158,16 @@ layout: post
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script src="plugins//xml2json/xml2json.min.js"></script>
 <script>
+    var unescapeIt = function(txt) {
+        var unescaped = $("<textarea/>").html(txt).text();
+        if (escapeIt(unescaped) == txt) {
+            return unescaped;
+        } else {
+            return txt;
+        }
+    };
     var x2js = new X2JS();
 
-    var parseconfig = {
-    header: true,
-    comments: "#"
-  };
 	 $(document).ready(function() {
       $("#convert2json").click(function(){
           var input = $("#xml").val();
@@ -179,9 +183,9 @@ layout: post
       $("#convert2xml").click(function(){
           var input = $("#json").val();
           if(input) {
-            var xml = x2js.json2xml(input);
+            var xml = x2js.json2xml_str(input);
             if(xml) {
-                $("#xml").val(xml);
+                $("#xml").val(unescapeIt(xml));
             }
           }
       });
