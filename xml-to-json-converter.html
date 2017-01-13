@@ -169,6 +169,15 @@ layout: post
             return txt;
         }
     };
+    var parseJsonSafe = function(input) {
+        var parsed;
+        try {
+            parsed =  $.parseJSON(input);
+        }catch(e) {
+            console.log('Invalid JSON');
+        }
+        return parsed;
+    };
     var x2js = new X2JS();
 
 	 $(document).ready(function() {
@@ -184,9 +193,9 @@ layout: post
           }
       });
       $("#convert2xml").click(function(){
-          var input = $("#json").val();
+          var input = parseJsonSafe($("#json").val());
           if(input) {
-            var xml = x2js.json2xml_str($.parseJSON(input));
+            var xml = x2js.json2xml_str(input);
             if(xml) {
                 $("#xml").val(xml);
             }
