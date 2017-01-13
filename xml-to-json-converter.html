@@ -91,8 +91,7 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>This is a free online tool to convert a XML file into a JSON array. You can also use it to convert from JSON to XML. The default XML delimiter is assumed to be comma, however you can changed it by selecting delimiter from drop
-                            down menu.</p>
+                        <p>This is a free online tool to convert a XML format data into a JavaScript JSON object. You can also use the same tool to convert it back from JSON to XML. The XML input needs to be valid otherwise JSON translation will not happen.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -102,7 +101,7 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>XML or Comma Separated Values is a popular format to store large data tables. Tools like microsoft excell and many other software export data in this format. </p>
+                        <p>XML or eXtended Markup Language is a popular format to store and transfer data. Many web services provide data in XML format. A popular format of XML is RSS feeds. Almost all blogs and website offer RSS feeds that are xml format data.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -114,6 +113,16 @@ layout: post
                     <div class="box-body">
                         <p>JSON (JavaScript Object Notation) is way to represent data in JavaScript object format. It is popular for programming purposes. Many application programs interact using JSON format data. Most of REST API development is preferred
                             in this format. </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Can I Convert a RSS Feed Data To JSON?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Yes, RSS feed is a valid xml format and this tool can convert rss feed data to a JSON format data. You just need to copy/paste the RSS Feed content into our XML input box and it can convert it.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -151,7 +160,7 @@ layout: post
           if(input) {
             var json = x2js.xml_str2json(input);
             if(json) {
-                $("#json").val(JSON.stringify(json.data));
+                $("#json").val(JSON.stringify(json));
             } else {
                 console.log("Invalid JSON data, unable to parse");
             }
