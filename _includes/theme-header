@@ -1,4 +1,6 @@
-        <header class="main-header">
+       <!-- Go to www.addthis.com/dashboard to customize your tools --> 
+       <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-587c47a0d75086b8"></script> 
+       <header class="main-header">
             <!-- Logo -->
             <a href="/" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
