@@ -1,5 +1,9 @@
-<!-- Go to www.addthis.com/dashboard to customize your tools --> 
-<div class="addthis_inline_share_toolbox"></div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <!-- Go to www.addthis.com/dashboard to customize your tools --> 
+                        <div class="addthis_inline_share_toolbox"></div>
+                    </div>
+                </div>
         <footer class="main-footer">
             <strong>Copyright &copy; <a href="http://www.fromdev.com">FromDev</a>.</strong> All rights reserved.
         </footer>
