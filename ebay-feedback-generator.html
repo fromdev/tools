@@ -40,12 +40,12 @@ layout: post
                     <div class="box-body">
                         <form role="form">
                             <div class="form-group">
-                                <label for="singleTitle">eBay Feedback Suggestion</label>
-                                <input class="form-control input-lg" type="text" id="singleTitle" readonly="true" placeholder="Copy Feedback from here" />
+                                <label for="buyerFeedback">eBay Buyer Feedback Suggestion</label>
+                                <input class="form-control input-lg" type="text" id="buyerFeedback" readonly="true" placeholder="Copy Buyer Feedback from here" />
                             </div>
                             <div class="form-group">
-                                <label for="inputText">Subject / Topic</label>
-                                <input class="form-control" name="inputText" id="inputText" type="text" placeholder="Enter subject here" autofocus="true" />
+                                <label for="sellerFeedback">eBay Buyer Feedback Suggestion</label>
+                                <input class="form-control input-lg" type="text" id="sellerFeedback" readonly="true" placeholder="Copy Seller Feedback from here" />
                             </div>
                         </form>
                     </div>
@@ -125,13 +125,14 @@ layout: post
 </body>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script type="text/javascript" src="javascripts/fromdev-utils.js"></script>
-<script type="text/javascript" src="javascripts/feedback-templates.js?v2"></script>
+<script type="text/javascript" src="javascripts/buyer-feedback-templates.js"></script>
+<script type="text/javascript" src="javascripts/seller-feedback-templates.js"></script>
 <script>
     var debug = false;
 
-    var generateTitlesRandom = function(targets, topics,counts) {
+    var generateTitlesRandom = function(targets, topics,counts, inputTemplate) {
         var titleArray = new Array();
-        if(templates) {
+        if(inputTemplate) {
             var step;
             var currentTitle;
             for (step = 0; step < 75; step++) {
@@ -146,7 +147,8 @@ layout: post
         return titleArray;
     };
 
-    var $singleTitle = $("#singleTitle");
+    var $buyerFeedback = $("#buyerFeedback");
+    var $sellerFeedback = $("#sellerFeedback");
     $(document).ready(function() {
         $("#submit").click(function() {
             var inputVal = $('#inputText').val();
@@ -157,18 +159,26 @@ layout: post
                 targets = inputVal.split("\n");
                 topics = targets;
                 LogUtils.log('len = ' + targets.length);
-                var titleArray = generateTitlesRandom(targets, topics, counts);
+                var buyerFeedbackArray = generateTitlesRandom(targets, topics, counts,buyerTemplates);
                 // showArray(titleArray);
-                if ($singleTitle) {
-                    $singleTitle.val(titleArray[RandomUtils.getRandomInt(0, titleArray.length - 1)]);
+                if ($buyerFeedback) {
+                    $buyerFeedback.val(buyerFeedbackArray[RandomUtils.getRandomInt(0, buyerFeedbackArray.length - 1)]);
+                }
+                var sellerFeedbackArray = generateTitlesRandom(targets, topics, counts, sellerTemplates);
+                // showArray(titleArray);
+                if ($sellerFeedback) {
+                    $sellerFeedback.val(sellerFeedbackArray[RandomUtils.getRandomInt(0, sellerFeedbackArray.length - 1)]);
                 }
             }
         });
         $("#inputText").selectOnFocus();
-        if ($singleTitle) {
-            $singleTitle.selectOnFocus();
+        if ($buyerFeedback) {
+            $buyerFeedback.selectOnFocus();
         }
-        $('#seo-category').addClass('active');
+        if ($sellerFeedback) {
+            $sellerFeedback.selectOnFocus();
+        }
+        $('#generators-category').addClass('active');
     });
 </script>
 
