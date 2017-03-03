@@ -1,6 +1,6 @@
 ---
 title: eBay Feedback Text Generator | Content Tools
-layout: post 
+layout: post
 ---
 <html>
 
@@ -10,8 +10,9 @@ layout: post
     <title>{{ page.title }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="description" content="This is easy to use open source tool to generate a random &amp; unique positive feedback for ebay buyer or seller. Helpful for regular ebay sellers and buyers to keep good ebay relations and reach up to top rated seller level." />
-    <meta name="keywords" content="online,tool,feedback,ebay,buyer,seller,sample" />
+    <meta name="description"
+          content="This is easy to use open source tool to generate a random &amp; unique positive feedback for ebay buyer or seller. Helpful for regular ebay sellers and buyers to keep good ebay relations and reach up to top rated seller level."/>
+    <meta name="keywords" content="online,tool,feedback,ebay,buyer,seller,sample"/>
     <!-- CSS for the site theme -->
     {% include theme-css %}
     <!-- Annoying IE fixes -->
@@ -19,108 +20,118 @@ layout: post
 </head>
 
 <body class="hold-transition skin-green sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
+<!-- Site wrapper -->
+<div class="wrapper">
 
-        <!-- header tag from theme -->
-        {% include theme-header %}
-        <!-- Sidebar for the whole website -->
-        {% include theme-sidebar %}
+    <!-- header tag from theme -->
+    {% include theme-header %}
+    <!-- Sidebar for the whole website -->
+    {% include theme-sidebar %}
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Main content -->
-            <section class="content">
-                <div class="box box-warning">
-                    <div class="box-header with-border">
-                        <h1 class="box-title">eBay Feedback Generator Tool</h1>
-                    </div>
-                    <!-- /.box-header -->
-                    <!-- form start -->
-                    <div class="box-body">
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="buyerFeedback">eBay Buyer Feedback Suggestion</label>
-                                <input class="form-control input-lg" type="text" id="buyerFeedback" readonly="true" placeholder="Copy Buyer Feedback from here" />
-                            </div>
-                            <div class="form-group">
-                                <label for="sellerFeedback">eBay Buyer Feedback Suggestion</label>
-                                <input class="form-control input-lg" type="text" id="sellerFeedback" readonly="true" placeholder="Copy Seller Feedback from here" />
-                            </div>
-                        </form>
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer">
-                        <div class="row">
-                            <div class="col-xs-1">
-                                <button type="button" class="btn btn-success" id="submit">Suggest Feedback</button>
-                            </div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h1 class="box-title">eBay Feedback Generator Tool</h1>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <div class="box-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="buyerFeedback">eBay Buyer Feedback Suggestion</label>
+                            <input class="form-control input-lg" type="text" id="buyerFeedback" readonly="true"
+                                   placeholder="Copy Buyer Feedback from here"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="sellerFeedback">eBay Seller Feedback Suggestion</label>
+                            <input class="form-control input-lg" type="text" id="sellerFeedback" readonly="true"
+                                   placeholder="Copy Seller Feedback from here"/>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-xs-1">
+                            <button type="button" class="btn btn-success" id="submit">Suggest Feedback</button>
                         </div>
                     </div>
-                    <!-- /.box-footer -->
                 </div>
-            </section>
-            <section class="content">
-                <div class="box box-warning">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">About eBay Feedback Generator Tool</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p>This is a free online tool to generate a short positive feedback for a ebay user. This tool takes care of randomly picking a good feedback from list of various different text.</p>
-                    </div>
-                    <!-- /.box-body -->
+                <!-- /.box-footer -->
+            </div>
+        </section>
+        <section class="content">
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">About eBay Feedback Generator Tool</h3>
                 </div>
-                <div class="box box-warning">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">What is the use of this eBay Feedback Generator?</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p>As a ebay user (buyer or seller) I do a lot of interaction with people. I often come across awesome folks that deserve a positive feedback. At times it is difficult to think about some text to write. </p>
-                        <p>I have collected many awesome feedback and created this tool to randomly pick a feedback. This makes my life easier and I can post multiple feedback in few seconds.</p>
-                    </div>
-                    <!-- /.box-body -->
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <p>This is a free online tool to generate a short positive feedback for a ebay user. This tool takes
+                        care of randomly picking a good feedback from list of various different text.</p>
                 </div>
-                <div class="box box-warning">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Want To Get An Idea For Writing Feedback?</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p>That is easy. Just hit the Suggest Feedback button and the tool will suggest you a completely new random and awesome feedback. </p>
-                    </div>
-                    <!-- /.box-body -->
+                <!-- /.box-body -->
+            </div>
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">What is the use of this eBay Feedback Generator?</h3>
                 </div>
-                <!-- /.box -->
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <p>As a ebay user (buyer or seller) I do a lot of interaction with people. I often come across
+                        awesome folks that deserve a positive feedback. At times it is difficult to think about some
+                        text to write. </p>
+                    <p>I have collected many awesome feedback and created this tool to randomly pick a feedback. This
+                        makes my life easier and I can post multiple feedback in few seconds.</p>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Want To Get An Idea For Writing Feedback?</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <p>That is easy. Just hit the Suggest Feedback button and the tool will suggest you a completely new
+                        random and awesome feedback. </p>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
 
-                <div class="box box-warning">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Can I Copy The Feedback and Use it?</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p>The feedback suggested by this tool are absolutely free for you to use. You can easily copy it from the suggestion text box and use any way you like. </p>
-                    </div>
-                    <!-- /.box-body -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Can I Copy The Feedback and Use it?</h3>
                 </div>
-                <div class="box box-warning">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">I Do Not Like The Feedback Suggested By This. What Should I Do?</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p>The feedback idea suggested in this tool may not always be relevant. In such cases just hit the "Suggest Feedback" button again and you can see a new feedback suggestion. Keep trying until you really discover your favorite feedback text.</p>
-                    </div>
-                    <!-- /.box-body -->
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <p>The feedback suggested by this tool are absolutely free for you to use. You can easily copy it
+                        from the suggestion text box and use any way you like. </p>
                 </div>
-            </section>
-        </div>
-        <!-- /.content-wrapper -->
-        {% include theme-footer %}
+                <!-- /.box-body -->
+            </div>
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">I Do Not Like The Feedback Suggested By This. What Should I Do?</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <p>The feedback idea suggested in this tool may not always be relevant. In such cases just hit the
+                        "Suggest Feedback" button again and you can see a new feedback suggestion. Keep trying until you
+                        really discover your favorite feedback text.</p>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </section>
     </div>
-    <!-- ./wrapper -->
-    {% include theme-bottom-js %}
+    <!-- /.content-wrapper -->
+    {% include theme-footer %}
+</div>
+<!-- ./wrapper -->
+{% include theme-bottom-js %}
 
 </body>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
@@ -130,9 +141,9 @@ layout: post
 <script>
     var debug = false;
 
-    var generateTitlesRandom = function(targets, topics,counts, inputTemplate) {
+    var generateTitlesRandom = function (targets, topics, counts, inputTemplate) {
         var titleArray = new Array();
-        if(inputTemplate) {
+        if (inputTemplate) {
             var step;
             var currentTitle;
             for (step = 0; step < 75; step++) {
@@ -149,26 +160,22 @@ layout: post
 
     var $buyerFeedback = $("#buyerFeedback");
     var $sellerFeedback = $("#sellerFeedback");
-    $(document).ready(function() {
-        $("#submit").click(function() {
-            var inputVal = $('#inputText').val();
-            if (inputVal) {
-                var targets = ["iPhone", "iOS", "iPad"];
-                var topics = [];
-                var counts = ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];
-                targets = inputVal.split("\n");
-                topics = targets;
-                LogUtils.log('len = ' + targets.length);
-                var buyerFeedbackArray = generateTitlesRandom(targets, topics, counts,buyerTemplates);
-                // showArray(titleArray);
-                if ($buyerFeedback) {
-                    $buyerFeedback.val(buyerFeedbackArray[RandomUtils.getRandomInt(0, buyerFeedbackArray.length - 1)]);
-                }
-                var sellerFeedbackArray = generateTitlesRandom(targets, topics, counts, sellerTemplates);
-                // showArray(titleArray);
-                if ($sellerFeedback) {
-                    $sellerFeedback.val(sellerFeedbackArray[RandomUtils.getRandomInt(0, sellerFeedbackArray.length - 1)]);
-                }
+    $(document).ready(function () {
+        $("#submit").click(function () {
+            var targets = ["iPhone", "iOS", "iPad"];
+            var topics = [];
+            var counts = ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];
+            topics = targets;
+            LogUtils.log('len = ' + targets.length);
+            var buyerFeedbackArray = generateTitlesRandom(targets, topics, counts, buyerTemplates);
+            // showArray(titleArray);
+            if ($buyerFeedback) {
+                $buyerFeedback.val(buyerFeedbackArray[RandomUtils.getRandomInt(0, buyerFeedbackArray.length - 1)]);
+            }
+            var sellerFeedbackArray = generateTitlesRandom(targets, topics, counts, sellerTemplates);
+            // showArray(titleArray);
+            if ($sellerFeedback) {
+                $sellerFeedback.val(sellerFeedbackArray[RandomUtils.getRandomInt(0, sellerFeedbackArray.length - 1)]);
             }
         });
         $("#inputText").selectOnFocus();
