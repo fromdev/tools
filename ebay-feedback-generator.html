@@ -182,25 +182,28 @@ layout: post
 
     var $buyerFeedback = $("#buyerFeedback");
     var $sellerFeedback = $("#sellerFeedback");
+    function generateFeedback() {
+        var targets = ["iPhone", "iOS", "iPad"];
+        var topics = [];
+        var counts = ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];
+        topics = targets;
+        LogUtils.log('len = ' + targets.length);
+        var buyerFeedbackArray = generateTitlesRandom(targets, topics, counts, buyerTemplates);
+        // showArray(titleArray);
+        if ($buyerFeedback) {
+            $buyerFeedback.val(buyerFeedbackArray[RandomUtils.getRandomInt(0, buyerFeedbackArray.length - 1)]);
+        }
+        var sellerFeedbackArray = generateTitlesRandom(targets, topics, counts, sellerTemplates);
+        // showArray(titleArray);
+        if ($sellerFeedback) {
+            $sellerFeedback.val(sellerFeedbackArray[RandomUtils.getRandomInt(0, sellerFeedbackArray.length - 1)]);
+        }
+    }
     $(document).ready(function () {
         $("#submit").click(function () {
-            var targets = ["iPhone", "iOS", "iPad"];
-            var topics = [];
-            var counts = ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];
-            topics = targets;
-            LogUtils.log('len = ' + targets.length);
-            var buyerFeedbackArray = generateTitlesRandom(targets, topics, counts, buyerTemplates);
-            // showArray(titleArray);
-            if ($buyerFeedback) {
-                $buyerFeedback.val(buyerFeedbackArray[RandomUtils.getRandomInt(0, buyerFeedbackArray.length - 1)]);
-            }
-            var sellerFeedbackArray = generateTitlesRandom(targets, topics, counts, sellerTemplates);
-            // showArray(titleArray);
-            if ($sellerFeedback) {
-                $sellerFeedback.val(sellerFeedbackArray[RandomUtils.getRandomInt(0, sellerFeedbackArray.length - 1)]);
-            }
+            generateFeedback();
         });
-        $("#inputText").selectOnFocus();
+        generateFeedback();
         if ($buyerFeedback) {
             $buyerFeedback.selectOnFocus();
         }
@@ -208,6 +211,7 @@ layout: post
             $sellerFeedback.selectOnFocus();
         }
         $('#generators-category').addClass('active');
+
     });
 </script>
 
