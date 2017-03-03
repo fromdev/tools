@@ -147,7 +147,7 @@ layout: post
             var step;
             var currentTitle;
             for (step = 0; step < 75; step++) {
-                currentTitle = (' ' + templates[RandomUtils.getRandomInt(0, templates.length - 1)]).slice(1);
+                currentTitle = (' ' + inputTemplate[RandomUtils.getRandomInt(0, inputTemplate.length - 1)]).slice(1);
                 currentTitle = currentTitle.replace("TARGET", targets[RandomUtils.getRandomInt(0, targets.length - 1)]);
                 currentTitle = currentTitle.replace("TOPIC", topics[RandomUtils.getRandomInt(0, topics.length - 1)]);
                 currentTitle = currentTitle.replace("COUNT", counts[RandomUtils.getRandomInt(0, counts.length - 1)]);
