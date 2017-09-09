@@ -62,6 +62,7 @@
                             <li><a href="table-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> HTML Table To JSON</a></li>
                             <li><a href="html-to-text-converter.html"><i class="fa fa-circle-o text-green"></i> HTML To Text</a></li>
                             <li><a href="html-link-extractor.html"><i class="fa fa-circle-o text-green"></i> HTML Link Extractor</a></li>
+                            <li><a href="create-html-link.html"><i class="fa fa-circle-o text-green"></i> Create HTML Link</a></li>
                             <li><a href="xml-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> XML To JSON</a></li>
                         </ul>
                     </li>
