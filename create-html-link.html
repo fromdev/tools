@@ -1,0 +1,205 @@
+---
+title: Create Proper HTML Link | URL Tools
+layout: post
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to use open source tool to create a valid HTML link from an existing URL." />
+    <meta name="keywords" content="online,tool,html,url,link,maker,builder,creator,generator,opensource" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <link rel="stylesheet" href="plugins/colorpicker/bootstrap-colorpicker.min.css">
+    <link rel="stylesheet" href="plugins/bootstrap-slider/slider.css">
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <!-- header tag from theme -->
+    {% include theme-header %}
+    <!-- Sidebar for the whole website -->
+    {% include theme-sidebar %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-6">
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h1 class="box-title">Generate Proper HTML Link Code</h1>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="input">URL</label>
+                                    <input class="form-control" id="input" value="" placeholder="Enter URL here" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="linktext">Link Text</label>
+                                    <input class="form-control" id="linktext" type="text" value="" placeholder="Enter display text for HTML link" />
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <button type="button" class="btn btn-info" id="convert">Generate Link <i class="fa fa-fw fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-footer -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Copy Link Here</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label for="openurl">Clickable URL</label>
+                                    <div class="form-control" > <a id="openurl" target="_blank"></a></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="linkhtml">HTML Formatted Code For Link</label>
+                                    <textarea class="form-control" rows="3" id="linkhtml" readonly="readonly" placeholder="HTML Formatted Code For Link"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">About HTML Link Creator Tool</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <img class="img-responsive" src="images/amazon-link-creator.jpg" alt="Online Amazon Affiliate link Generator Tool" title="Online Amazon Affiliate link Generator Tool">
+                    <p>This is a free online tool to create simple HTML link code from an existing  URL. The input to this tool is a valid url and optional link text. Output of this tool is an updated HTML code that can be used as valid HTML.</p>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">What is a HTML Link?</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <p>A HTML link is simple way to add a web page URL on a website. </p>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Do I Need To Enter The Link Text Always?</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <p>The link text field is optional.</p>
+                    <p>If you do not provide the link text we will default it to 'click here' </p>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">How To Use These Links?</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <p>You can use these links to share on social media, blog or in emails. You can also add them to your website or in blog comments. </p>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">How To Make Money Using Links and This Tool?</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <p>There are many affiliate websites that may pay you for sharing a web page. </p>
+                    <ul>
+                        <li>Share an awesome product link with your friends.</li>
+                        <li>Write a review of product on a blog.</li>
+                        <li>Email your friends about your favorite products on a website.</li>
+                    </ul>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </section>
+        {% include addthis %}
+    </div>
+    <!-- /.content-wrapper -->
+    {% include theme-footer %}
+</div>
+<!-- ./wrapper -->
+{% include theme-bottom-js %}
+
+</body>
+<script src="plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script src="javascripts/fromdev-utils.js"></script>
+
+<script>
+    $(document).ready(function() {
+        getAffiliateTag();
+        $('#convert').click(function() {
+            clear();
+            var input = $('#input').val();
+            input = input.trim();
+            if (isValidURL(input)) {
+                processUrl(input);
+            }
+        });
+        $('#linkhtml').selectOnFocus();
+        $('#input').selectOnFocus();
+        $('#generators-category').addClass('active');
+    });
+
+    var processUrl = function(url) {
+        $('#openurl').attr('href', url);
+        $('#openurl').text('Open Link (in new window)');
+        $('#linkhtml').val(getLinkCode(url));
+    };
+    var getLinkCode = function(url) {
+        var linkText = $('#linktext').val();
+        if(!linkText){
+            linkText = 'Click Here';
+        }
+        return '<a href="' + url + '" ' + ' title="' + linkText + '" alt="' + linkText   + '"'+ '>'+ linkText + '</a>';
+    };
+
+    var isValidURL = function(s) {
+        var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+        return regexp.test(s);
+    };
+
+    var clear = function() {
+        $('#openurl').attr('href', '');
+        $('#openurl').text('');
+        $('#linkhtml').text('');
+    };
+</script>
+
+</html>
