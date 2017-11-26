@@ -5,13 +5,13 @@ class MultiplicationProblem {
   }
 
   get display() {
-    return displayProblem() + " = " + answer();
+    return this.displayProblem() + " = " + this.answer();
   }
-  get displayProblem() {
+  displayProblem() {
     return this.first + " x " + this.second;
   }
 
-  get answer() {
+  answer() {
     return this.first * this.second;
   }
 }
