@@ -5,7 +5,7 @@ class MultiplicationProblem {
   }
 
   get display() {
-    return this.displayProblem() + " = " + this.answer();
+    return displayProblem() + " = " + answer();
   }
   get displayProblem() {
     return this.first + " x " + this.second;
