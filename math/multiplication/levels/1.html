@@ -68,14 +68,19 @@ layout: post
 
 <script type="text/javascript">
 var currentLevelRange = {"start":0,"end":5};
+var problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(currentLevelRange));
+var $problem = $("#problem");
+
 $(document).ready(function () {
-  var problems = MultiplicationProblem.generateProblems(currentLevelRange);
-  console.log(problems.toString());
-  var selectedPrblem = problems[RandomUtils.getRandomInt(currentLevelRange.start+1,currentLevelRange.end*currentLevelRange.end)];
-  console.log(selectedPrblem.display);
-  var $problem = $("#problem");
-  $problem.text(selectedPrblem.displayProblem());
+  $(".answerChoice").submit(nextProblem);
+  nextProblem();
 });
+
+var nextProblem = function() {
+  var selectedPrblem = problems.pop();
+  console.log(selectedPrblem.display);
+  $problem.text(selectedPrblem.displayProblem());
+}
 
 </script>
 </html>
