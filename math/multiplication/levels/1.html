@@ -30,7 +30,29 @@ layout: post
             </section>
             <!-- Main content -->
             <section class="content">
-
+              <div class="box box-success">
+                  <div class="box-header with-border">
+                      <h1 class="box-title">Solve Multiplication Problem</h1>
+                  </div>
+                  <!-- /.box-header -->
+                  <!-- form start -->
+                  <div class="box-body">
+                      <form role="form">
+                          <div class="form-group">
+                              <h2 id="problem"></h2>
+                          </div>
+                      </form>
+                  </div>
+                  <!-- /.box-body -->
+                  <div class="box-footer">
+                      <div class="row">
+                          <div class="col-xs-1">
+                              <button type="button" class="btn btn-success" id="submit">Suggest Feedback</button>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- /.box-footer -->
+              </div>
             </section>
             <!-- /.content -->
         </div>
@@ -49,8 +71,10 @@ var currentLevelRange = {"start":0,"end":5};
 $(document).ready(function () {
   var problems = MultiplicationProblem.generateProblems(currentLevelRange);
   console.log(problems.toString());
-  console.log(problems[RandomUtils.getRandomInt(currentLevelRange.start+1,currentLevelRange.end*currentLevelRange.end)].display);
-
+  var selectedPrblem = problems[RandomUtils.getRandomInt(currentLevelRange.start+1,currentLevelRange.end*currentLevelRange.end)].display;
+  console.log(selectedPrblem);
+  var $problem = $("#problem");
+  $problem.text(selectedPrblem);
 });
 
 </script>
