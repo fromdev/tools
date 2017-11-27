@@ -7,6 +7,9 @@ class MultiplicationProblem {
   get display() {
     return this.displayProblem() + " = " + this.answer() + " choices " + this.choices().toString();
   }
+  get allChoices() {
+    return this.choices();
+  }
   displayProblem() {
     return this.first + " x " + this.second;
   }
