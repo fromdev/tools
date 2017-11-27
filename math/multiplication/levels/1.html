@@ -98,7 +98,7 @@ var nextProblem = function() {
 };
 
 var showChoices = function(problem) {
-  var choices = problem.choices();
+  var choices = ArrayUtils.shuffle(problem.choices());
   if(choices) {
     for(var i = 0; i < choices.length; i++) {
       var ch = choices[i];
