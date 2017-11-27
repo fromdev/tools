@@ -46,7 +46,7 @@ layout: post
                   <!-- /.box-body -->
                   <div class="box-footer">
                       <div class="row">
-                          <div class="col-xs-1">
+                          <div class="col-xs-1" id="choices">
                               <button type="button" class="btn btn-success answerChoice" id="submit">?</button>
                           </div>
                       </div>
@@ -80,6 +80,8 @@ var nextProblem = function() {
   var selectedPrblem = problems.pop();
   console.log(selectedPrblem.display);
   $problem.text(selectedPrblem.displayProblem());
+  var r= $('<input type="button" class="btn btn-success answerChoice" value="' + selectedPrblem.choices[0] + '"/>');
+  $("#choices").append(r);
 }
 
 </script>
