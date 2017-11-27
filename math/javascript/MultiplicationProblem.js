@@ -34,9 +34,9 @@ class MultiplicationProblem {
   }
   static generateProblems(range) {
     var problems = new Array();
-    if(range && range.start >= 0 && range.end >=0) {
-      for(i = range.start; i<range.end+1; i++) {
-        for(j = range.start; j<range.end+1; j++) {
+    if(range && range.start >= 0 && range.end >= range.start) {
+      for(var i = range.start; i<range.end+1; i++) {
+        for(var j = range.start; j<range.end+1; j++) {
             problems.push(new MultiplicationProblem(i,j));
         }
       }
