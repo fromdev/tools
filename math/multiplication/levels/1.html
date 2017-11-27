@@ -80,7 +80,7 @@ var nextProblem = function() {
   var selectedPrblem = problems.pop();
   console.log(selectedPrblem.display);
   $problem.text(selectedPrblem.displayProblem());
-  var r= $('<input type="button" class="btn btn-success answerChoice" value="' + selectedPrblem.choices[0] + '"/>');
+  var r= $('<input type="button" class="btn btn-success answerChoice" value="' + selectedPrblem.allChoices[0] + '"/>');
   $("#choices").append(r);
 }
 
