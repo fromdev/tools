@@ -74,44 +74,41 @@ layout: post
 <script type="text/javascript" src="http://tools.fromdev.com/math/javascript/Levels.js"></script>
 
 <script type="text/javascript">
-var problems;
-var currentLevelConfig = initLevel(Levels.ONE);
-var $problem = $("#problem");
-var selectedPrblem;
-$(document).ready(function () {
-  $(".answerChoice").click(evaluateAnswer);
-  $("#nextLevel").click(function(){
-    //window.location.href = currentLevelConfig.nextLevel + ".html";
-    currentLevelConfig = initLevel(currentLevelConfig.nextLevel);
 
-    problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(currentLevelConfig.range));
-    $("#levelHeading").text("Math Multiplication Practice Online : Level " + currentLevelConfig.id);
-    $(".answerChoice").show();
-    $("#nextLevel").hide();
-    nextProblem();
-  });
-  nextProblem();
-});
 var initLevel = function(level) {
-  problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(level.range));
+  level.problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(level.range));
   $("#levelHeading").text("Math Multiplication Practice Online : Level " + level.id);
   $(".answerChoice").show();
   $("#nextLevel").hide();
   return level;
 };
+
+var currentLevelConfig = initLevel(Levels.ONE);
+
+var $problem = $("#problem");
+var selectedPrblem;
+$(document).ready(function () {
+  $(".answerChoice").click(evaluateAnswer);
+  $("#nextLevel").click(function(){
+    currentLevelConfig = initLevel(currentLevelConfig.nextLevel);
+    nextProblem();
+  });
+  nextProblem();
+});
+
 var evaluateAnswer = function() {
   var correctAnswer = selectedPrblem.answer();
   var selectedAnswer = $(this).text();
   if(correctAnswer == selectedAnswer) {
-    console.log("correct answer - questions remaining " + problems.length);
+    console.log("correct answer - questions remaining " + currentLevelConfig.problems.length);
   } else {
     console.log("incorrect answer - adding back");
-    problems.push(selectedPrblem);
+    currentLevelConfig.problems.push(selectedPrblem);
   }
   nextProblem();
 };
 var nextProblem = function() {
-  selectedPrblem = problems.pop();
+  selectedPrblem = currentLevelConfig.problems.pop();
   if(selectedPrblem) {
     console.log(selectedPrblem.display);
     $problem.text(selectedPrblem.displayProblem());
