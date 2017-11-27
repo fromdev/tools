@@ -20,20 +20,16 @@ class MultiplicationProblem {
 
   choices() {
     const answ = this.answer();
-    var choices = new Array();
-    choices.push(answ);
-    choices.push(answ + 10);
-    choices.push(answ + 1);
-    choices.push(answ + RandomUtils.getRandomInt(1,10));
-    choices.push(RandomUtils.getRandomInt(1,answ));
-    if(answ > 0) {
-      choices.push(answ - 1);
+    var choices = new Set();
+    choices.add(answ);
+    choices.add(answ + 10);
+    choices.add(answ + 1);
+    choices.add(answ + RandomUtils.getRandomInt(1,10));
+    //Ensure we have 6 choices
+    while(choices.size < 6) {
+      choices.add(RandomUtils.getRandomInt(1,answ))
     }
-    if(answ > 10) {
-      choices.push(answ - 10);
-    }
-
-    return choices;
+    return Array.from(choices);
   }
   static generateProblems(range) {
     var problems = new Array();
