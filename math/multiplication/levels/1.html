@@ -47,7 +47,15 @@ layout: post
 <script type="text/javascript">
 $(document).ready(function () {
   const p1 = new MultiplicationProblem(RandomUtils.getRandomInt(1,10),RandomUtils.getRandomInt(1,10));
-  console.log(p1.display);
+  var level1Problems = new Array();
+
+  for(i = 0; i<11; i++) {
+    for(j = 0; j<11; j++) {
+        level1Problems.push(new MultiplicationProblem(i,j));
+    }
+  }
+  console.log(level1Problems.toString());
+  console.log(level1Problems[RandomUtils.getRandomInt(1,100)].display);
 
 });
 </script>
