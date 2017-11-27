@@ -53,7 +53,7 @@ layout: post
                               <button type="button" class="btn btn-success answerChoice" id="choice3">?</button>
                               <button type="button" class="btn btn-success answerChoice" id="choice4">?</button>
                               <button type="button" class="btn btn-success answerChoice" id="choice5">?</button>
-                              <button type="button" class="btn btn-success" id="nextLevel" value="Go To Level 2" style="display:none;"/>
+                              <button type="button" class="btn btn-success" id="nextLevel" style="display:none;">Go To Level 2</button>
                           </div>
                       </div>
                   </div>
@@ -74,6 +74,7 @@ layout: post
 
 <script type="text/javascript">
 var currentLevel = 1;
+var nextLevel = 2;
 var choicesGiven = 6;
 var currentLevelRange = {"start":0,"end":5};
 var problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(currentLevelRange));
@@ -81,6 +82,9 @@ var $problem = $("#problem");
 var selectedPrblem;
 $(document).ready(function () {
   $(".answerChoice").click(evaluateAnswer);
+  $("#nextLevel").click(function(){
+    window.location.href = nextLevel + ".html";
+  });
   nextProblem();
 });
 var evaluateAnswer = function() {
