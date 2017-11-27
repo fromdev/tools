@@ -47,7 +47,12 @@ layout: post
                   <div class="box-footer">
                       <div class="row">
                           <div class="col-xs-1" id="choices">
-                              <button type="button" class="btn btn-success answerChoice" id="submit">?</button>
+                              <button type="button" class="btn btn-success answerChoice" id="choice1">?</button>
+                              <button type="button" class="btn btn-success answerChoice" id="choice2">?</button>
+                              <button type="button" class="btn btn-success answerChoice" id="choice3">?</button>
+                              <button type="button" class="btn btn-success answerChoice" id="choice4">?</button>
+                              <button type="button" class="btn btn-success answerChoice" id="choice5">?</button>
+                              <button type="button" class="btn btn-success answerChoice" id="choice6">?</button>
                           </div>
                       </div>
                   </div>
@@ -80,9 +85,19 @@ var nextProblem = function() {
   var selectedPrblem = problems.pop();
   console.log(selectedPrblem.display);
   $problem.text(selectedPrblem.displayProblem());
-  var r= $('<input type="button" class="btn btn-success answerChoice" value="' + selectedPrblem.allChoices[0] + '"/>');
-  $("#choices").append(r);
-  $(".answerChoice").click(nextProblem);
+  for(var i = 0; i < selectedPrblem.allChoices().length; i++) {
+    var ch = selectedPrblem.allChoices()[i];
+    var $ch = $("#choice" + i);
+    if($ch) {
+      if(ch) {
+        $ch.prop('value', ch);
+      } else {
+        $ch.remove();
+      }
+    }
+  }
+
+
 }
 
 </script>
