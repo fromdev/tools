@@ -49,7 +49,7 @@ var currentLevelRange = {"start":0,"end":5};
 $(document).ready(function () {
   var problems = MultiplicationProblem.generateProblems(currentLevelRange);
   console.log(problems.toString());
-  console.log(problems[RandomUtils.getRandomInt(1,100)].display);
+  console.log(problems[RandomUtils.getRandomInt(currentLevelRange.start+1,currentLevelRange.end*currentLevelRange.end)].display);
 
 });
 
