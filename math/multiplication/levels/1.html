@@ -72,7 +72,7 @@ var problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(current
 var $problem = $("#problem");
 
 $(document).ready(function () {
-  $(".answerChoice").submit(nextProblem);
+  $(".answerChoice").click(nextProblem);
   nextProblem();
 });
 
