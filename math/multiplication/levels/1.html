@@ -77,7 +77,7 @@ var problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(current
 var $problem = $("#problem");
 var selectedPrblem;
 $(document).ready(function () {
-  $(".answerChoice").click(nextProblem);
+  $(".answerChoice").click(evaluateAnswer);
   nextProblem();
 });
 var evaluateAnswer = function() {
