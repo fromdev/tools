@@ -71,19 +71,20 @@ layout: post
 </body>
 <script type="text/javascript" src="http://tools.fromdev.com/javascripts/fromdev-utils.js"></script>
 <script type="text/javascript" src="http://tools.fromdev.com/math/javascript/MultiplicationProblem.js?v=10"></script>
+<script type="text/javascript" src="http://tools.fromdev.com/math/javascript/Levels.js"></script>
 
 <script type="text/javascript">
-var currentLevel = 1;
-var nextLevel = 2;
-var choicesGiven = 6;
-var currentLevelRange = {"start":0,"end":1};
-var problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(currentLevelRange));
+var currentLevelConfig = Levels.ONE;
+var problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(currentLevelConfig.range));
 var $problem = $("#problem");
 var selectedPrblem;
 $(document).ready(function () {
   $(".answerChoice").click(evaluateAnswer);
   $("#nextLevel").click(function(){
-    window.location.href = nextLevel + ".html";
+    //window.location.href = currentLevelConfig.nextLevel + ".html";
+    currentLevelConfig = currentLevelConfig.nextLevel;
+    problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(currentLevelConfig.range));
+    nextProblem();
   });
   nextProblem();
 });
@@ -105,8 +106,8 @@ var nextProblem = function() {
     $problem.text(selectedPrblem.displayProblem());
     showChoices(selectedPrblem);
   } else {
-    console.log('Level complete - next level ' + (currentLevel + 1));
-    $problem.text("Awesome! Level " + currentLevel + " Completed");
+    console.log('Level complete - next level ' + (currentLevelConfig.id + 1));
+    $problem.text("Awesome! Level " + currentLevelConfig.id + " Completed");
     $(".answerChoice").hide();
     $("#nextLevel").show();
   }
@@ -115,7 +116,7 @@ var nextProblem = function() {
 var showChoices = function(problem) {
   var choices = ArrayUtils.shuffle(problem.choices());
   if(choices) {
-    for(var i = 0; i < choicesGiven; i++) {
+    for(var i = 0; i < currentLevelConfig.choicesGiven; i++) {
       var ch = -1;
       if(i < choices.length){
         ch = choices[i];
