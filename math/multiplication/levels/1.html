@@ -47,12 +47,12 @@ layout: post
                   <div class="box-footer">
                       <div class="row">
                           <div class="col-xs-4" id="choices">
+                              <button type="button" class="btn btn-success answerChoice" id="choice0">?</button>
                               <button type="button" class="btn btn-success answerChoice" id="choice1">?</button>
                               <button type="button" class="btn btn-success answerChoice" id="choice2">?</button>
                               <button type="button" class="btn btn-success answerChoice" id="choice3">?</button>
                               <button type="button" class="btn btn-success answerChoice" id="choice4">?</button>
                               <button type="button" class="btn btn-success answerChoice" id="choice5">?</button>
-                              <button type="button" class="btn btn-success answerChoice" id="choice6">?</button>
                           </div>
                       </div>
                   </div>
@@ -89,7 +89,7 @@ var nextProblem = function() {
   if(choices) {
     for(var i = 0; i < choices.length; i++) {
       var ch = choices[i];
-      var $ch = $("#choice" + i+1);
+      var $ch = $("#choice" + i);
       if($ch) {
         if(ch >= 0) {
           $ch.text(ch);
