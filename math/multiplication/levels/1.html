@@ -72,6 +72,7 @@ layout: post
 <script type="text/javascript" src="http://tools.fromdev.com/math/javascript/MultiplicationProblem.js?v=8"></script>
 
 <script type="text/javascript">
+var currentLevel = 1;
 var currentLevelRange = {"start":0,"end":5};
 var problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(currentLevelRange));
 var $problem = $("#problem");
@@ -86,15 +87,20 @@ var evaluateAnswer = function() {
   if(correctAnswer == selectedAnswer) {
     console.log("correct answer");
   } else {
-    console.log("incorrect answer");
+    console.log("incorrect answer - adding back");
+    problems.push(selectedPrblem);
   }
   nextProblem();
 };
 var nextProblem = function() {
   selectedPrblem = problems.pop();
-  console.log(selectedPrblem.display);
-  $problem.text(selectedPrblem.displayProblem());
-  showChoices(selectedPrblem);
+  if(selectedPrblem) {
+    console.log(selectedPrblem.display);
+    $problem.text(selectedPrblem.displayProblem());
+    showChoices(selectedPrblem);
+  } else {
+    console.log('Level complete - next level ' + currentLevel + 1);
+  }
 };
 
 var showChoices = function(problem) {
