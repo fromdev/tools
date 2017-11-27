@@ -85,7 +85,7 @@ var evaluateAnswer = function() {
   var correctAnswer = selectedPrblem.answer();
   var selectedAnswer = $(this).text();
   if(correctAnswer == selectedAnswer) {
-    console.log("correct answer");
+    console.log("correct answer - questions remaining " + problems.length);
   } else {
     console.log("incorrect answer - adding back");
     problems.push(selectedPrblem);
