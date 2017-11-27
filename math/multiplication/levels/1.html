@@ -84,6 +84,8 @@ $(document).ready(function () {
     //window.location.href = currentLevelConfig.nextLevel + ".html";
     currentLevelConfig = currentLevelConfig.nextLevel;
     problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(currentLevelConfig.range));
+    $(".answerChoice").show();
+    $("#nextLevel").hide();
     nextProblem();
   });
   nextProblem();
