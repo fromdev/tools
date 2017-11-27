@@ -46,7 +46,7 @@ layout: post
                   <!-- /.box-body -->
                   <div class="box-footer">
                       <div class="row">
-                          <div class="col-xs-1" id="choices">
+                          <div class="col-xs-4" id="choices">
                               <button type="button" class="btn btn-success answerChoice" id="choice1">?</button>
                               <button type="button" class="btn btn-success answerChoice" id="choice2">?</button>
                               <button type="button" class="btn btn-success answerChoice" id="choice3">?</button>
@@ -89,9 +89,9 @@ var nextProblem = function() {
   if(choices) {
     for(var i = 0; i < choices.length; i++) {
       var ch = choices[i];
-      var $ch = $("#choice" + i);
+      var $ch = $("#choice" + i+1);
       if($ch) {
-        if(ch) {
+        if(ch >= 0) {
           $ch.prop('value', ch);
         } else {
           $ch.remove();
