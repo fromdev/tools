@@ -73,6 +73,7 @@ layout: post
 
 <script type="text/javascript">
 var currentLevel = 1;
+var choicesGiven = 6;
 var currentLevelRange = {"start":0,"end":5};
 var problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(currentLevelRange));
 var $problem = $("#problem");
@@ -99,15 +100,18 @@ var nextProblem = function() {
     $problem.text(selectedPrblem.displayProblem());
     showChoices(selectedPrblem);
   } else {
-    console.log('Level complete - next level ' + currentLevel + 1);
+    console.log('Level complete - next level ' + (currentLevel + 1));
   }
 };
 
 var showChoices = function(problem) {
   var choices = ArrayUtils.shuffle(problem.choices());
   if(choices) {
-    for(var i = 0; i < choices.length; i++) {
-      var ch = choices[i];
+    for(var i = 0; i < choicesGiven; i++) {
+      var ch = -1;
+      if(i < choices.length){
+        ch = choices[i];
+      }
       var $ch = $("#choice" + i);
       if($ch) {
         if(ch >= 0) {
@@ -117,6 +121,7 @@ var showChoices = function(problem) {
         }
       }
     }
+
   }
 };
 
