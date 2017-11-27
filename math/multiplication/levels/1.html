@@ -92,7 +92,7 @@ var nextProblem = function() {
       var $ch = $("#choice" + i+1);
       if($ch) {
         if(ch >= 0) {
-          $ch.prop('value', ch);
+          $ch.text(ch);
         } else {
           $ch.remove();
         }
