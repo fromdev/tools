@@ -85,19 +85,20 @@ var nextProblem = function() {
   var selectedPrblem = problems.pop();
   console.log(selectedPrblem.display);
   $problem.text(selectedPrblem.displayProblem());
-  for(var i = 0; i < selectedPrblem.allChoices().length; i++) {
-    var ch = selectedPrblem.allChoices()[i];
-    var $ch = $("#choice" + i);
-    if($ch) {
-      if(ch) {
-        $ch.prop('value', ch);
-      } else {
-        $ch.remove();
+  var choices = selectedPrblem.choices();
+  if(choices) {
+    for(var i = 0; i < choices.length; i++) {
+      var ch = choices[i];
+      var $ch = $("#choice" + i);
+      if($ch) {
+        if(ch) {
+          $ch.prop('value', ch);
+        } else {
+          $ch.remove();
+        }
       }
     }
   }
-
-
 }
 
 </script>
