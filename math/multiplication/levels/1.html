@@ -53,6 +53,7 @@ layout: post
                               <button type="button" class="btn btn-success answerChoice" id="choice3">?</button>
                               <button type="button" class="btn btn-success answerChoice" id="choice4">?</button>
                               <button type="button" class="btn btn-success answerChoice" id="choice5">?</button>
+                              <button type="button" class="btn btn-success" id="nextLevel" value="Go To Level 2" style="display:none;"/>
                           </div>
                       </div>
                   </div>
@@ -101,6 +102,9 @@ var nextProblem = function() {
     showChoices(selectedPrblem);
   } else {
     console.log('Level complete - next level ' + (currentLevel + 1));
+    $problem.text("Awesome! Level " + currentLevel + " Completed");
+    $(".answerChoice").hide();
+    $("#nextLevel").show();
   }
 };
 
