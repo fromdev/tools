@@ -75,17 +75,30 @@ layout: post
 var currentLevelRange = {"start":0,"end":5};
 var problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(currentLevelRange));
 var $problem = $("#problem");
-
+var selectedPrblem;
 $(document).ready(function () {
   $(".answerChoice").click(nextProblem);
   nextProblem();
 });
-
+var evaluateAnswer = function() {
+  var correctAnswer = selectedPrblem.answer();
+  var selectedAnswer = $(this).text();
+  if(correctAnswer == selectedAnswer) {
+    console.log("correct answer");
+  } else {
+    console.log("incorrect answer");
+  }
+  nextProblem();
+};
 var nextProblem = function() {
-  var selectedPrblem = problems.pop();
+  selectedPrblem = problems.pop();
   console.log(selectedPrblem.display);
   $problem.text(selectedPrblem.displayProblem());
-  var choices = selectedPrblem.choices();
+  showChoices(selectedPrblem);
+};
+
+var showChoices = function(problem) {
+  var choices = problem.choices();
   if(choices) {
     for(var i = 0; i < choices.length; i++) {
       var ch = choices[i];
@@ -99,7 +112,7 @@ var nextProblem = function() {
       }
     }
   }
-}
+};
 
 </script>
 </html>
