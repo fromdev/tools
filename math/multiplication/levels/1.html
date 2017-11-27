@@ -26,7 +26,7 @@ layout: post
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1 id="levalHeading">Math Multiplication Practice Online : Level 1</h1>
+                <h1 id="levelHeading">Math Multiplication Practice Online : Level 1</h1>
             </section>
             <!-- Main content -->
             <section class="content">
@@ -76,10 +76,12 @@ layout: post
 <script type="text/javascript">
 
 var initLevel = function(level) {
-  level.problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(level.range));
-  $("#levelHeading").text("Math Multiplication Practice Online : Level " + level.id);
-  $(".answerChoice").show();
-  $("#nextLevel").hide();
+  if(level) {
+    level.problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(level.range));
+    $("#levelHeading").text("Math Multiplication Practice Online : Level " + level.id);
+    $(".answerChoice").show();
+    $("#nextLevel").hide();
+  }
   return level;
 };
 
@@ -115,7 +117,7 @@ var nextProblem = function() {
     showChoices(selectedPrblem);
   } else {
     console.log('Level complete - next level ' + (currentLevelConfig.id + 1));
-    $problem.text("Awesome! Level " + currentLevelConfig.id + " Completed");
+    $problem.html('<i class="fa fa-trophy text-yellow"></i> Awesome! Level " + currentLevelConfig.id + " Completed');
     $(".answerChoice").hide();
     $("#nextLevel").show();
   }
