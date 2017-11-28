@@ -69,6 +69,7 @@ layout: post
 {% include theme-bottom-js %}
 
 </body>
+<script type="text/javascript" src="http://tools.fromdev.com/javascripts/json2.js"></script>
 <script type="text/javascript" src="http://tools.fromdev.com/javascripts/fromdev-utils.js"></script>
 <script type="text/javascript" src="http://tools.fromdev.com/math/javascript/MultiplicationProblem.js?v=10"></script>
 <script type="text/javascript" src="http://tools.fromdev.com/math/javascript/Levels.js"></script>
@@ -79,14 +80,23 @@ var initLevel = function(level) {
   if(level) {
     level.problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(level.range));
     console.log(level);
-    StorageUtils.setItem("CURRENT_LEVEL",level);
+    StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
     $("#levelHeading").text("Math Multiplication : Level " + level.id);
     $(".answerChoice").show();
     $("#nextLevel").hide();
   }
   return level;
 };
-var curLvl = StorageUtils.getItem("CURRENT_LEVEL");
+var getJSON = function(key) {
+  var jsonObject;
+  try {
+    jsonObject = JSON.parse(StorageUtils.getItem(key)); // this is how you parse a string into JSON
+  } catch (ex) {
+    console.error(ex);
+  }
+  return jsonObject;
+};
+var curLvl = getJSON("CURRENT_LEVEL");
 
 var currentLevelConfig = (curLvl) ? initLevel(curLvl) : initLevel(Levels.ONE);
 
