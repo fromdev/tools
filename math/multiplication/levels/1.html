@@ -79,7 +79,7 @@ layout: post
 var updateStatus = function(level) {
   StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
 };
-var findNextProblem(level) {
+var findNextProblem = function(level) {
    var problem = level.problems.pop();
    updateStatus(level);
    return problem;
