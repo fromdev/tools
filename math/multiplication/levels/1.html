@@ -78,14 +78,16 @@ layout: post
 var initLevel = function(level) {
   if(level) {
     level.problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(level.range));
+    StorageUtils.setItem("CURRENT_LEVEL",level);
     $("#levelHeading").text("Math Multiplication : Level " + level.id);
     $(".answerChoice").show();
     $("#nextLevel").hide();
   }
   return level;
 };
+var curLvl = StorageUtils.getItem("CURRENT_LEVEL");
 
-var currentLevelConfig = initLevel(Levels.ONE);
+var currentLevelConfig = (curLvl) ? initLevel(curLvl) : initLevel(Levels.ONE);
 
 var $problem = $("#problem");
 var selectedPrblem;
@@ -103,6 +105,8 @@ var evaluateAnswer = function() {
   var selectedAnswer = $(this).text();
   if(correctAnswer == selectedAnswer) {
     console.log("correct answer - questions remaining " + currentLevelConfig.problems.length);
+    $problem.html('<i class="fa  fa-thumbs-up text-yellow"></i> Correct!');
+    $problem.delay(1000).html('');
   } else {
     console.log("incorrect answer - adding back");
     currentLevelConfig.problems.push(selectedPrblem);
