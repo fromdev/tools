@@ -71,46 +71,44 @@ layout: post
 
 </body>
 <script type="text/javascript" src="http://tools.fromdev.com/javascripts/json2.js"></script>
-<script type="text/javascript" src="http://tools.fromdev.com/javascripts/fromdev-utils.js"></script>
+<script type="text/javascript" src="http://tools.fromdev.com/javascripts/fromdev-utils.js?v=1"></script>
 <script type="text/javascript" src="http://tools.fromdev.com/math/javascript/MultiplicationProblem.js?v=10"></script>
 <script type="text/javascript" src="http://tools.fromdev.com/math/javascript/Levels.js?v=2"></script>
 
 <script type="text/javascript">
-var updateStatus = function(level) {
-  StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
-};
-var findNextProblem = function(level) {
-   var problem = level.problems.pop();
-   updateStatus(level);
-   return problem;
-};
-var addProblem = function(level, problem) {
-  level.problems.push(problem);
-  updateStatus(level);
-};
-var initLevel = function(level) {
-  if(level) {
-    level.problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(level.range));
-    console.log(level);
-    StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
-    $("#levelHeading").text("Math Multiplication : Level " + level.id);
-    $(".answerChoice").show();
-    $("#nextLevel").hide();
-  }
-  return level;
-};
-var getJSON = function(key) {
-  var jsonObject;
-  try {
-    jsonObject = JSON.parse(StorageUtils.getItem(key)); // this is how you parse a string into JSON
-  } catch (ex) {
-    console.error(ex);
-  }
-  return jsonObject;
-};
-var curLvl = getJSON("CURRENT_LEVEL");
 
-var currentLevelConfig = (curLvl) ? initLevel(curLvl) : initLevel(Levels.ONE);
+var CurrentLevel = {
+  Instance : function() {
+    return StorageUtils.getJSON("CURRENT_LEVEL");
+  },
+  initialize : function(level) {
+    //default start with level one
+    if(!level) {
+      level = Levels.ONE;
+    }
+    if(level) {
+      level.problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(level.range));
+      StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
+      $("#levelHeading").text("Math Multiplication : Level " + level.id);
+      $(".answerChoice").show();
+      $("#nextLevel").hide();
+      console.log('Level initialized ' + level.id);
+    }
+  },
+  findNextProblem : function() {
+     var level = CurrentLevel.Instance;
+     var problem = level.problems.pop();
+     StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
+     return problem;
+  },
+  addProblem : function(problem) {
+    var level = CurrentLevel.Instance;
+    level.problems.push(problem);
+    StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
+  };
+};
+
+CurrentLevel.initialize(CurrentLevel.Instance);
 
 //cache jquery objects for page
 var $problem = $("#problem");
@@ -119,7 +117,7 @@ var selectedPrblem;
 $(document).ready(function () {
   $(".answerChoice").click(evaluateAnswer);
   $("#nextLevel").click(function(){
-    currentLevelConfig = initLevel(currentLevelConfig.nextLevel);
+    CurrentLevel.initialize(CurrentLevel.Instance.nextLevel);
     nextProblem();
   });
   nextProblem();
@@ -130,12 +128,12 @@ var evaluateAnswer = function() {
   var selectedAnswer = $(this).text();
   if(correctAnswer == selectedAnswer) {
     console.log("correct answer - questions remaining " + currentLevelConfig.problems.length);
-    $message.html('<i class="fa  fa-thumbs-up text-green"></i> Correct! ' + ' +' + currentLevelConfig.points + ' Points.').show().delay(1000).fadeOut();
+    $message.html('<i class="fa  fa-thumbs-up text-green"></i> Correct! ' + ' +' + CurrentLevel.Instance.points + ' Points.').show().delay(1000).fadeOut();
     rewardPoints();
   } else {
     console.log("incorrect answer - adding back");
     $message.html('<i class="fa  fa-times text-red"></i> Oops!').show().delay(1000).fadeOut();;
-    addProblem(currentLevelConfig,selectedPrblem);
+    CurrentLevel.addProblem(selectedPrblem);
   }
   nextProblem();
 };
@@ -146,18 +144,18 @@ var rewardPoints = function() {
     totalPoints = 0;
   }
   var tPoints = parseInt(totalPoints);
-  tPoints += currentLevelConfig.points;
+  tPoints += CurrentLevel.Instance.points;
   StorageUtils.setItem("TOTAL_POINTS",tPoints);
 };
 var nextProblem = function() {
-  selectedPrblem = findNextProblem(currentLevelConfig);
+  selectedPrblem = CurrentLevel.findNextProblem();
   if(selectedPrblem) {
     console.log(selectedPrblem.display);
     $problem.text(selectedPrblem.displayProblem());
     showChoices(selectedPrblem);
   } else {
-    console.log('Level complete - next level ' + (currentLevelConfig.id + 1));
-    $problem.html('<i class="fa fa-trophy text-yellow"></i>'+ ' Awesome! Level ' + currentLevelConfig.id + ' Completed');
+    console.log('Level complete - next level ' + (CurrentLevel.Instance.id + 1));
+    $problem.html('<i class="fa fa-trophy text-yellow"></i>'+ ' Awesome! Level ' + CurrentLevel.Instance.id + ' Completed');
     $(".answerChoice").hide();
     $("#nextLevel").show();
   }
@@ -166,7 +164,7 @@ var nextProblem = function() {
 var showChoices = function(problem) {
   var choices = ArrayUtils.shuffle(problem.choices());
   if(choices) {
-    for(var i = 0; i < currentLevelConfig.choicesGiven; i++) {
+    for(var i = 0; i < CurrentLevel.Instance.choicesGiven; i++) {
       var ch = -1;
       if(i < choices.length){
         ch = choices[i];
