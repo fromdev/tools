@@ -32,7 +32,7 @@ layout: post
             <section class="content">
               <div class="box box-success">
                   <div class="box-header with-border">
-                      <h1 class="box-title">Solve Multiplication Problem</h1>
+                      <h1 class="box-title" id="boxTitle">Solve Multiplication Problem</h1>
                   </div>
                   <!-- /.box-header -->
                   <!-- form start -->
@@ -100,7 +100,9 @@ var curLvl = getJSON("CURRENT_LEVEL");
 
 var currentLevelConfig = (curLvl) ? initLevel(curLvl) : initLevel(Levels.ONE);
 
+//cache jquery objects for page
 var $problem = $("#problem");
+var $boxTitle = $("#boxTitle");
 var selectedPrblem;
 $(document).ready(function () {
   $(".answerChoice").click(evaluateAnswer);
@@ -116,8 +118,10 @@ var evaluateAnswer = function() {
   var selectedAnswer = $(this).text();
   if(correctAnswer == selectedAnswer) {
     console.log("correct answer - questions remaining " + currentLevelConfig.problems.length);
-    $problem.html('<i class="fa  fa-thumbs-up text-yellow"></i> Correct!');
-    $problem.delay(1000).html('');
+
+    var oldTitle = $boxTitle.html();
+    $boxTitle.html('<i class="fa  fa-thumbs-up text-green"></i> Correct!');
+    $boxTitle.delay(1000).html(oldTitle);
     rewardPoints();
   } else {
     console.log("incorrect answer - adding back");
