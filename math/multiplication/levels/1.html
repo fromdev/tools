@@ -119,8 +119,7 @@ var evaluateAnswer = function() {
   if(correctAnswer == selectedAnswer) {
     console.log("correct answer - questions remaining " + currentLevelConfig.problems.length);
     var oldTitle = $boxTitle.html();
-    $boxTitle.html('<i class="fa  fa-thumbs-up text-green"></i> Correct! ' + ' +' + currentLevelConfig.points + " Points.");
-    $boxTitle.delay(1000).html(oldTitle);
+    $boxTitle.html('<i class="fa  fa-thumbs-up text-green"></i> Correct! ' + ' +' + currentLevelConfig.points + " Points.").delay(1000).html(oldTitle);
     rewardPoints();
   } else {
     console.log("incorrect answer - adding back");
