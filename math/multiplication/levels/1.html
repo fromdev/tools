@@ -83,7 +83,7 @@ var CurrentLevel = {
   },
   initialize : function(level) {
     //default start with level one
-    if(!level) {
+    if(!level || !level.id) {
       level = Levels.ONE;
     }
     if(level) {
