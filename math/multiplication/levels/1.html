@@ -134,8 +134,9 @@ var rewardPoints = function() {
   if(!totalPoints) {
     totalPoints = 0;
   }
-  totalPoints += currentLevelConfig.points;
-  StorageUtils.setItem("TOTAL_POINTS",totalPoints);
+  var tPoints = parseInt(totalPoints);
+  tPoints += currentLevelConfig.points;
+  StorageUtils.setItem("TOTAL_POINTS",tPoints);
 };
 var nextProblem = function() {
   selectedPrblem = currentLevelConfig.problems.pop();
