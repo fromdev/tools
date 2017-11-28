@@ -45,6 +45,15 @@ Utils.storage = {
             return localStorage.getItem(key);
         }
         return '';
+    },
+    getJSON = function(key) {
+      var jsonObject;
+      try {
+        jsonObject = JSON.parse(StorageUtils.getItem(key)); // this is how you parse a string into JSON
+      } catch (ex) {
+        console.error(ex);
+      }
+      return jsonObject;
     }
 };
 
