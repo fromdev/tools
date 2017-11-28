@@ -105,7 +105,7 @@ var CurrentLevel = {
     var level = CurrentLevel.Instance;
     level.problems.push(problem);
     StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
-  };
+  }
 };
 
 CurrentLevel.initialize(CurrentLevel.Instance);
