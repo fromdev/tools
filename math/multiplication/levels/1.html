@@ -78,6 +78,7 @@ layout: post
 var initLevel = function(level) {
   if(level) {
     level.problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(level.range));
+    console.log(level);
     StorageUtils.setItem("CURRENT_LEVEL",level);
     $("#levelHeading").text("Math Multiplication : Level " + level.id);
     $(".answerChoice").show();
@@ -107,11 +108,21 @@ var evaluateAnswer = function() {
     console.log("correct answer - questions remaining " + currentLevelConfig.problems.length);
     $problem.html('<i class="fa  fa-thumbs-up text-yellow"></i> Correct!');
     $problem.delay(1000).html('');
+    rewardPoints();
   } else {
     console.log("incorrect answer - adding back");
     currentLevelConfig.problems.push(selectedPrblem);
   }
   nextProblem();
+};
+
+var rewardPoints = function() {
+  var totalPoints = StorageUtils.getItem("TOTAL_POINTS");
+  if(!totalPoints) {
+    totalPoints = 0;
+  }
+  totalPoints += currentLevelConfig.points;
+  StorageUtils.setItem("TOTAL_POINTS",totalPoints);
 };
 var nextProblem = function() {
   selectedPrblem = currentLevelConfig.problems.pop();
