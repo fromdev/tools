@@ -46,7 +46,7 @@ Utils.storage = {
         }
         return '';
     },
-    getJSON = function(key) {
+    getJSON : function(key) {
       var jsonObject;
       try {
         jsonObject = JSON.parse(StorageUtils.getItem(key)); // this is how you parse a string into JSON
