@@ -76,7 +76,18 @@ layout: post
 <script type="text/javascript" src="http://tools.fromdev.com/math/javascript/Levels.js?v=2"></script>
 
 <script type="text/javascript">
-
+var updateStatus = function(level) {
+  StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
+};
+var findNextProblem(level) {
+   var problem = level.problems.pop();
+   updateStatus(level);
+   return problem;
+};
+var addProblem = function(level, problem) {
+  level.problems.push(problem);
+  updateStatus(level);
+};
 var initLevel = function(level) {
   if(level) {
     level.problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(level.range));
@@ -124,7 +135,7 @@ var evaluateAnswer = function() {
   } else {
     console.log("incorrect answer - adding back");
     $message.html('<i class="fa  fa-times text-red"></i> Oops!').show().delay(1000).fadeOut();;
-    currentLevelConfig.problems.push(selectedPrblem);
+    addProblem(currentLevelConfig,selectedPrblem);
   }
   nextProblem();
 };
@@ -139,7 +150,7 @@ var rewardPoints = function() {
   StorageUtils.setItem("TOTAL_POINTS",tPoints);
 };
 var nextProblem = function() {
-  selectedPrblem = currentLevelConfig.problems.pop();
+  selectedPrblem = findNextProblem(currentLevelConfig);
   if(selectedPrblem) {
     console.log(selectedPrblem.display);
     $problem.text(selectedPrblem.displayProblem());
