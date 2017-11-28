@@ -32,7 +32,8 @@ layout: post
             <section class="content">
               <div class="box box-success">
                   <div class="box-header with-border">
-                      <h1 class="box-title" id="boxTitle">Solve Multiplication Problem</h1>
+                      <h1 class="box-title">Solve Multiplication Problem</h1>
+                      <h1 class="box-title" id="message" style="display:none;"></h1>
                   </div>
                   <!-- /.box-header -->
                   <!-- form start -->
@@ -102,7 +103,7 @@ var currentLevelConfig = (curLvl) ? initLevel(curLvl) : initLevel(Levels.ONE);
 
 //cache jquery objects for page
 var $problem = $("#problem");
-var $boxTitle = $("#boxTitle");
+var $message = $("#message");
 var selectedPrblem;
 $(document).ready(function () {
   $(".answerChoice").click(evaluateAnswer);
@@ -118,15 +119,11 @@ var evaluateAnswer = function() {
   var selectedAnswer = $(this).text();
   if(correctAnswer == selectedAnswer) {
     console.log("correct answer - questions remaining " + currentLevelConfig.problems.length);
-    var oldTitle = $boxTitle.html();
-    $boxTitle.html('<i class="fa  fa-thumbs-up text-green"></i> Correct! ' + ' +' + currentLevelConfig.points + " Points.").delay(1000).fadeOut();
-    $boxTitle.html(oldTitle);
+    $message.html('<i class="fa  fa-thumbs-up text-green"></i> Correct! ' + ' +' + currentLevelConfig.points + ' Points.').show().delay(1000).fadeOut();
     rewardPoints();
   } else {
     console.log("incorrect answer - adding back");
-    var oldTitle = $boxTitle.html();
-    $boxTitle.html('<i class="fa  fa-times text-red"></i> Wrong!');
-    $boxTitle.delay(1000).html(oldTitle);
+    $message.html('<i class="fa  fa-times text-red"></i> Oops!').show().delay(1000).fadeOut();;
     currentLevelConfig.problems.push(selectedPrblem);
   }
   nextProblem();
