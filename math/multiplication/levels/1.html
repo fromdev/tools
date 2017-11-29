@@ -112,9 +112,11 @@ var CurrentLevel = {
   },
   findNextProblem : function() {
      var level = CurrentLevel.Instance();
-     var problem = level.problems.pop();
-     StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
-     return new MultiplicationProblem(problem.first, problem.second);
+     if(level.problems.length > 0) {
+       var problem = level.problems.pop();
+       StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
+       return new MultiplicationProblem(problem.first, problem.second);
+     }
   },
   addProblem : function(problem) {
     var level = CurrentLevel.Instance();
