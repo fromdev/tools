@@ -143,12 +143,11 @@ var evaluateAnswer = function() {
 
 var rewardPoints = function() {
   var totalPoints = StorageUtils.getItem("TOTAL_POINTS");
-  if(!totalPoints) {
+  if(!totalPoints || !Number.isInteger(totalPoints)) {
     totalPoints = 0;
   }
-  var tPoints = parseInt(totalPoints);
-  tPoints += CurrentLevel.Instance.points;
-  StorageUtils.setItem("TOTAL_POINTS",tPoints);
+  totalPoints += CurrentLevel.Instance.points;
+  StorageUtils.setItem("TOTAL_POINTS",totalPoints);
 };
 var nextProblem = function() {
   selectedPrblem = CurrentLevel.findNextProblem();
