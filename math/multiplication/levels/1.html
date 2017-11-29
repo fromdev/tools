@@ -100,6 +100,7 @@ var CurrentLevel = {
       $("#levelHeading").text("Math Multiplication : Level " + level.id);
       $(".answerChoice").show();
       $("#nextLevel").hide();
+      showPoints();
       console.log('Level initialized ' + lvlStr);
     }
   },
@@ -153,10 +154,11 @@ var rewardPoints = function() {
   }
   totalPoints += CurrentLevel.Instance().points;
   StorageUtils.setItem("TOTAL_POINTS",totalPoints);
-  showPoints(totalPoints);
+  showPoints();
 };
-var showPoints = function (totalPoints) {
-  $("#totalPoints").html(totalPoints);
+var showPoints = function () {
+  var totalPoints = StorageUtils.getItem("TOTAL_POINTS");
+  $("#totalPoints").html(totalPoints + " Points");
 };
 var nextProblem = function() {
   selectedPrblem = CurrentLevel.findNextProblem();
