@@ -96,13 +96,13 @@ var CurrentLevel = {
     }
   },
   findNextProblem : function() {
-     var level = CurrentLevel.Instance;
+     var level = CurrentLevel.Instance();
      var problem = level.problems.pop();
      StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
      return problem;
   },
   addProblem : function(problem) {
-    var level = CurrentLevel.Instance;
+    var level = CurrentLevel.Instance();
     level.problems.push(problem);
     StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
   }
