@@ -120,7 +120,7 @@ var selectedPrblem;
 $(document).ready(function () {
   $(".answerChoice").click(evaluateAnswer);
   $("#nextLevel").click(function(){
-    CurrentLevel.initialize(CurrentLevel.Instance.nextLevel);
+    CurrentLevel.initialize(CurrentLevel.Instance().nextLevel);
     nextProblem();
   });
   nextProblem();
@@ -146,7 +146,7 @@ var rewardPoints = function() {
   if(!totalPoints || !Number.isInteger(totalPoints)) {
     totalPoints = 0;
   }
-  totalPoints += CurrentLevel.Instance.points;
+  totalPoints += CurrentLevel.Instance().points;
   StorageUtils.setItem("TOTAL_POINTS",totalPoints);
 };
 var nextProblem = function() {
@@ -156,8 +156,8 @@ var nextProblem = function() {
     $problem.text(selectedPrblem.displayProblem());
     showChoices(selectedPrblem);
   } else {
-    console.log('Level complete - next level ' + (CurrentLevel.Instance.id + 1));
-    $problem.html('<i class="fa fa-trophy text-yellow"></i>'+ ' Awesome! Level ' + CurrentLevel.Instance.id + ' Completed');
+    console.log('Level complete - next level ' + (CurrentLevel.Instance().id + 1));
+    $problem.html('<i class="fa fa-trophy text-yellow"></i>'+ ' Awesome! Level ' + CurrentLevel.Instance().id + ' Completed');
     $(".answerChoice").hide();
     $("#nextLevel").show();
   }
