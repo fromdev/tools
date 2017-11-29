@@ -79,6 +79,8 @@ layout: post
 <script type="text/javascript" src="http://tools.fromdev.com/math/javascript/Levels.js?v=2"></script>
 
 <script type="text/javascript">
+Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
+
 var showPoints = function () {
   var totalPoints = StorageUtils.getItem("TOTAL_POINTS");
   $("#totalPoints").html(totalPoints + " Points");
@@ -108,8 +110,7 @@ var CurrentLevel = {
   findNextProblem : function() {
      var level = CurrentLevel.Instance();
      if(level.problems.length > 0) {
-       var problem = level.problems.pop();
-       StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
+       var problem = level.problems.last();
        return new MultiplicationProblem(problem.first, problem.second);
      }
   },
@@ -117,6 +118,13 @@ var CurrentLevel = {
     var level = CurrentLevel.Instance();
     level.problems.push(problem);
     StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
+  },
+  removeLastProblem : function(problem) {
+    var level = CurrentLevel.Instance();
+    if(level.problems.length > 0) {
+      level.problems.pop();
+      StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
+    }
   }
 };
 
@@ -142,10 +150,10 @@ var evaluateAnswer = function() {
     console.log("correct answer - questions remaining " + CurrentLevel.Instance().problems.length);
     $message.html('<p class="pull-right"><i class="fa  fa-thumbs-up text-green"></i> Correct! ' + ' +' + CurrentLevel.Instance().points + ' Points.</p>').show().delay(1000).fadeOut();
     rewardPoints();
+    CurrentLevel.removeLastProblem();
   } else {
     console.log("incorrect answer - adding back");
     $message.html('<p class="pull-right"><i class="fa  fa-times text-red"></i> Oops!</p>').show().delay(1000).fadeOut();;
-    CurrentLevel.addProblem(selectedPrblem);
   }
   nextProblem();
 };
