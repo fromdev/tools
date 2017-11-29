@@ -99,7 +99,7 @@ var CurrentLevel = {
      var level = CurrentLevel.Instance();
      var problem = level.problems.pop();
      StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
-     return problem;
+     return new MultiplicationProblem(problem.first, problem.second);
   },
   addProblem : function(problem) {
     var level = CurrentLevel.Instance();
