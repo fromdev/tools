@@ -127,8 +127,8 @@ var evaluateAnswer = function() {
   var correctAnswer = selectedPrblem.answer();
   var selectedAnswer = $(this).text();
   if(correctAnswer == selectedAnswer) {
-    console.log("correct answer - questions remaining " + currentLevelConfig.problems.length);
-    $message.html('<i class="fa  fa-thumbs-up text-green"></i> Correct! ' + ' +' + CurrentLevel.Instance.points + ' Points.').show().delay(1000).fadeOut();
+    console.log("correct answer - questions remaining " + CurrentLevel.Instance().problems.length);
+    $message.html('<i class="fa  fa-thumbs-up text-green"></i> Correct! ' + ' +' + CurrentLevel.Instance().points + ' Points.').show().delay(1000).fadeOut();
     rewardPoints();
   } else {
     console.log("incorrect answer - adding back");
