@@ -137,11 +137,11 @@ var evaluateAnswer = function() {
   var selectedAnswer = $(this).text();
   if(correctAnswer == selectedAnswer) {
     console.log("correct answer - questions remaining " + CurrentLevel.Instance().problems.length);
-    $message.html('<i class="fa  fa-thumbs-up text-green"></i> Correct! ' + ' +' + CurrentLevel.Instance().points + ' Points.').show().delay(1000).fadeOut();
+    $message.html('<p class="pull-right"><i class="fa  fa-thumbs-up text-green"></i> Correct! ' + ' +' + CurrentLevel.Instance().points + ' Points.</p>').show().delay(1000).fadeOut();
     rewardPoints();
   } else {
     console.log("incorrect answer - adding back");
-    $message.html('<i class="fa  fa-times text-red"></i> Oops!').show().delay(1000).fadeOut();;
+    $message.html('<p class="pull-right"><i class="fa  fa-times text-red"></i> Oops!</p>').show().delay(1000).fadeOut();;
     CurrentLevel.addProblem(selectedPrblem);
   }
   nextProblem();
@@ -159,6 +159,9 @@ var rewardPoints = function() {
 var showPoints = function () {
   var totalPoints = StorageUtils.getItem("TOTAL_POINTS");
   $("#totalPoints").html(totalPoints + " Points");
+  $("#totalPoints").animate({'padding-left' : '5'}, 1000 , function(){
+        $("#totalPoints").animate({'padding-left' : '0'} , 1000)}
+      );
 };
 var nextProblem = function() {
   selectedPrblem = CurrentLevel.findNextProblem();
