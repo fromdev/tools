@@ -81,7 +81,13 @@ layout: post
 <script type="text/javascript" src="http://tools.fromdev.com/math/javascript/Levels.js?v=2"></script>
 
 <script type="text/javascript">
-
+var showPoints = function () {
+  var totalPoints = StorageUtils.getItem("TOTAL_POINTS");
+  $("#totalPoints").html(totalPoints + " Points");
+  $("#totalPoints").animate({'padding-left' : '5'}, 1000 , function(){
+        $("#totalPoints").animate({'padding-left' : '0'} , 1000)}
+      );
+};
 var CurrentLevel = {
   Instance : function() {
     return StorageUtils.getJSON("CURRENT_LEVEL");
@@ -156,13 +162,7 @@ var rewardPoints = function() {
   StorageUtils.setItem("TOTAL_POINTS",totalPoints);
   showPoints();
 };
-var showPoints = function () {
-  var totalPoints = StorageUtils.getItem("TOTAL_POINTS");
-  $("#totalPoints").html(totalPoints + " Points");
-  $("#totalPoints").animate({'padding-left' : '5'}, 1000 , function(){
-        $("#totalPoints").animate({'padding-left' : '0'} , 1000)}
-      );
-};
+
 var nextProblem = function() {
   selectedPrblem = CurrentLevel.findNextProblem();
   if(selectedPrblem) {
