@@ -33,6 +33,11 @@ layout: post
               <div class="box box-success">
                   <div class="box-header with-border">
                       <h1 class="box-title">Solve Multiplication Problem</h1>
+                      <p class="pull-right">
+                          <a class="btn btn-success btn-sm" id="totalPoints">
+                              0 Points
+                          </a>
+                      </p>
                   </div>
                   <!-- /.box-header -->
                   <!-- form start -->
@@ -148,6 +153,10 @@ var rewardPoints = function() {
   }
   totalPoints += CurrentLevel.Instance().points;
   StorageUtils.setItem("TOTAL_POINTS",totalPoints);
+  showPoints(totalPoints);
+};
+var showPoints = function (totalPoints) {
+  $("#totalPoints").html(totalPoints);
 };
 var nextProblem = function() {
   selectedPrblem = CurrentLevel.findNextProblem();
