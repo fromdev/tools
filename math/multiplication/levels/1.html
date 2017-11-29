@@ -88,11 +88,12 @@ var CurrentLevel = {
     }
     if(level) {
       level.problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(level.range));
-      StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
+      var lvlStr = JSON.stringify(level);
+      StorageUtils.setItem("CURRENT_LEVEL",lvlStr);
       $("#levelHeading").text("Math Multiplication : Level " + level.id);
       $(".answerChoice").show();
       $("#nextLevel").hide();
-      console.log('Level initialized ' + level.id);
+      console.log('Level initialized ' + lvlStr);
     }
   },
   findNextProblem : function() {
