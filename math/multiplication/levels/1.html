@@ -154,7 +154,7 @@ var evaluateAnswer = function() {
 };
 
 var rewardPoints = function() {
-  var totalPoints = StorageUtils.getItem("TOTAL_POINTS");
+  var totalPoints = parseInt(StorageUtils.getItem("TOTAL_POINTS"));
   if(!totalPoints || !Number.isInteger(totalPoints)) {
     totalPoints = 0;
   }
