@@ -1,7 +1,10 @@
 class MultiplicationProblem {
-  constructor(first, second) {
+  constructor(first, second, choicesSize) {
     this.first = first;
     this.second = second;
+    if(choicesSize) {
+      this.choicesSize = choicesSize;
+    }
   }
 
   get display() {
@@ -30,7 +33,9 @@ class MultiplicationProblem {
     while(choices.size < 6) {
       choices.add(RandomUtils.getRandomInt(1,choicesRange));
     }
-    return Array.from(choices);
+    this.choicesSize
+    var arChoices = Array.from(choices);
+    return (this.choicesSize) ? arChoices.splice(0,this.choicesSize-1) : arChoices;
   }
   static generateProblems(range) {
     var problems = new Array();
