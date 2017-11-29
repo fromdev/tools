@@ -164,7 +164,7 @@ var nextProblem = function() {
 var showChoices = function(problem) {
   var choices = ArrayUtils.shuffle(problem.choices());
   if(choices) {
-    for(var i = 0; i < CurrentLevel.Instance.choicesGiven; i++) {
+    for(var i = 0; i < CurrentLevel.Instance().choicesGiven; i++) {
       var ch = -1;
       if(i < choices.length){
         ch = choices[i];
