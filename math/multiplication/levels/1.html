@@ -81,6 +81,27 @@ layout: post
 <script type="text/javascript">
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
 
+var ALL_LEVELS = new Array();
+
+var initLevels = function () {
+  var prevLevel;
+  var start = 0;
+  var end = 0;
+  for(int i = 26; i > 1; i--) {
+    end = start + 4;
+    var tmpLevel = {
+      "id" : i,
+      "nextLevel": prevLevel,
+      "choicesGiven":6,
+      "range" : {"start":start-2,"end":end},
+      "points" : 3 * i
+    };
+    ALL_LEVELS.push(tmpLevel);
+    prevLevel = tmpLevel;
+    start = end;
+  }
+}
+
 var showPoints = function () {
   var totalPoints = StorageUtils.getItem("TOTAL_POINTS");
   $("#totalPoints").html(totalPoints + " Points");
@@ -92,7 +113,7 @@ var CurrentLevel = {
   initialize : function(level) {
     //default start with level one
     if(!level || !level.id) {
-      level = Levels.ALL.last();
+      level = ALL_LEVELS.last();
     }
     if(level) {
       if(!level.problems) {
@@ -130,7 +151,7 @@ var CurrentLevel = {
     }
   }
 };
-
+initLevels();
 CurrentLevel.initialize(CurrentLevel.Instance());
 
 //cache jquery objects for page
