@@ -76,31 +76,10 @@ layout: post
 <script type="text/javascript" src="http://tools.fromdev.com/javascripts/json2.js"></script>
 <script type="text/javascript" src="http://tools.fromdev.com/javascripts/fromdev-utils.js?v=2"></script>
 <script type="text/javascript" src="http://tools.fromdev.com/math/javascript/MultiplicationProblem.js?v=12"></script>
-<script type="text/javascript" src="http://tools.fromdev.com/math/javascript/Levels.js?v=3"></script>
+<script type="text/javascript" src="http://tools.fromdev.com/math/javascript/Levels.js?v=4"></script>
 
 <script type="text/javascript">
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
-
-var ALL_LEVELS = new Array();
-
-var initLevels = function () {
-  var prevLevel;
-  var start = 0;
-  var end = 0;
-  for(var i = 26; i > 1; i--) {
-    end = start + 4;
-    var tmpLevel = {
-      "id" : i,
-      "nextLevel": prevLevel,
-      "choicesGiven":6,
-      "range" : {"start":start-2,"end":end},
-      "points" : 3 * i
-    };
-    ALL_LEVELS.push(tmpLevel);
-    prevLevel = tmpLevel;
-    start = end;
-  }
-}
 
 var showPoints = function () {
   var totalPoints = StorageUtils.getItem("TOTAL_POINTS");
@@ -113,7 +92,7 @@ var CurrentLevel = {
   initialize : function(level) {
     //default start with level one
     if(!level || !level.id) {
-      level = ALL_LEVELS.last();
+      level = Levels.ONE;
     }
     if(level) {
       if(!level.problems) {
@@ -151,7 +130,6 @@ var CurrentLevel = {
     }
   }
 };
-initLevels();
 CurrentLevel.initialize(CurrentLevel.Instance());
 
 //cache jquery objects for page
@@ -161,7 +139,7 @@ var selectedPrblem;
 $(document).ready(function () {
   $(".answerChoice").click(evaluateAnswer);
   $("#nextLevel").click(function(){
-    CurrentLevel.initialize(CurrentLevel.Instance().nextLevel);
+    CurrentLevel.initialize(CurrentLevel.Instance().nextLevel(CurrentLevel.Instance()));
     nextProblem();
   });
   nextProblem();
