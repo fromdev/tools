@@ -20,6 +20,30 @@ Levels.CurrentLevel = {
   Instance : function() {
     return StorageUtils.getJSON("CURRENT_LEVEL");
   },
+  ALL_PROBLEMS : [],
+  generateProblems : function(range) {
+    //Generate all problems if not already done
+    if(ALL_PROBLEMS.length == 0) {
+      var allProblemRangeEnd = 26;
+      for(var i = 0; i < allProblemRangeEnd; i++) {
+        for(var j = 0; j < allProblemRangeEnd; j++) {
+            ALL_PROBLEMS.push(new MultiplicationProblem(i,j));
+        }
+      }
+    }
+    var problems = new Array();
+    if(ALL_PROBLEMS.length < range.end) {
+      problems.concat(ALL_PROBLEMS.slice(range.start,range.end));
+    }
+    //Randomly add some problems from previous levels.
+    if(range.start > 0 ) {
+      var allProblemsFromPrevLevels = ArrayUtils.shuffle(ALL_PROBLEMS.slice(0,range.start));
+      //picking random 10 problems
+      problems.concat(allProblemsFromPrevLevels.splice(0,9));
+    }
+
+    return problems;
+  },
   initialize : function(level) {
     //default start with level one
     if(!level || !level.id) {
@@ -27,7 +51,7 @@ Levels.CurrentLevel = {
     }
     if(level) {
       if(!level.problems) {
-        level.problems = ArrayUtils.shuffle(MultiplicationProblem.generateProblems(level.range));
+        level.problems = ArrayUtils.shuffle(Levels.CurrentLevel.generateProblems(level.range));
       }
       var lvlStr = JSON.stringify(level);
       StorageUtils.setItem("CURRENT_LEVEL",lvlStr);
