@@ -30,12 +30,24 @@ layout: post
             </section>
             <!-- Main content -->
             <section class="content">
+              <div class="row">
+              <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                  <div class="inner">
+                    <h3 id="totalPoints">0</h3>
+
+                    <p>Points</p>
+                  </div>
+                  <div class="icon">
+                    <i class="fa fa-trophy"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
               <div class="box box-success">
                   <div class="box-header with-border">
                       <h1 class="box-title">Solve Multiplication Problem</h1>
-                      <p class="pull-right">
-                          <a class="btn btn-success btn-sm" id="totalPoints">     0 Points     </a>
-                      </p>
                   </div>
                   <!-- /.box-header -->
                   <!-- form start -->
@@ -51,13 +63,13 @@ layout: post
                   <div class="box-footer">
                       <div class="row">
                           <div class="col-xs-4" id="choices">
-                              <button type="button" class="btn btn-success answerChoice" id="choice0">?</button>
-                              <button type="button" class="btn btn-success answerChoice" id="choice1">?</button>
-                              <button type="button" class="btn btn-success answerChoice" id="choice2">?</button>
-                              <button type="button" class="btn btn-success answerChoice" id="choice3">?</button>
-                              <button type="button" class="btn btn-success answerChoice" id="choice4">?</button>
-                              <button type="button" class="btn btn-success answerChoice" id="choice5">?</button>
-                              <button type="button" class="btn btn-success" id="nextLevel" style="display:none;">Go To Next Level</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice0">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice1">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice2">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice3">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice4">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice5">?</button>
+                              <button type="button" class="btn btn-block btn-success btn-lg" id="nextLevel" style="display:none;">Go To Next Level</button>
                           </div>
                       </div>
                   </div>
@@ -83,7 +95,8 @@ Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]
 
 var showPoints = function () {
   var totalPoints = StorageUtils.getItem("TOTAL_POINTS");
-  $("#totalPoints").html(totalPoints + " Points");
+  totalPoints = (Number.isInteger(totalPoints)) ? totalPoints : 0;
+  $("#totalPoints").html(totalPoints);
 };
 var CurrentLevel = {
   Instance : function() {
