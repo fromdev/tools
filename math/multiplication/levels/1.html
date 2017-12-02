@@ -181,12 +181,12 @@ var evaluateAnswer = function() {
   var selectedAnswer = $(this).text();
   if(correctAnswer == selectedAnswer) {
     console.log("correct answer - questions remaining " + CurrentLevel.Instance().problems.length);
-    $message.html('<i class="fa  fa-thumbs-up text-green"></i> Correct! ' + ' +' + CurrentLevel.Instance().points + ' Points').show().delay(1000).fadeOut();
+    $message.html('<i class="fa  fa-thumbs-up text-green"></i>' + ' +' + CurrentLevel.Instance().points + ' Points').show().delay(1000).fadeOut();
     rewardPoints();
     CurrentLevel.removeLastProblem();
   } else {
     console.log("incorrect answer - adding back");
-    $message.html('<i class="fa  fa-times text-red"></i> Oops!').show().delay(1000).fadeOut();;
+    $message.html('<i class="fa  fa-times text-red"></i>').show().delay(1000).fadeOut();;
     CurrentLevel.moveProblemToEnd();
   }
   nextProblem();
