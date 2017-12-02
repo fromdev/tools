@@ -23,21 +23,22 @@ Levels.CurrentLevel = {
   ALL_PROBLEMS : [],
   generateProblems : function(range) {
     //Generate all problems if not already done
-    if(ALL_PROBLEMS.length == 0) {
+    var allProblems = Levels.CurrentLevel.ALL_PROBLEMS;
+    if(allProblems.length == 0) {
       var allProblemRangeEnd = 26;
       for(var i = 0; i < allProblemRangeEnd; i++) {
         for(var j = 0; j < allProblemRangeEnd; j++) {
-            ALL_PROBLEMS.push(new MultiplicationProblem(i,j));
+            allProblems.push(new MultiplicationProblem(i,j));
         }
       }
     }
     var problems = new Array();
-    if(ALL_PROBLEMS.length < range.end) {
-      problems.concat(ALL_PROBLEMS.slice(range.start,range.end));
+    if(allProblems.length < range.end) {
+      problems.concat(allProblems.slice(range.start,range.end));
     }
     //Randomly add some problems from previous levels.
     if(range.start > 0 ) {
-      var allProblemsFromPrevLevels = ArrayUtils.shuffle(ALL_PROBLEMS.slice(0,range.start));
+      var allProblemsFromPrevLevels = ArrayUtils.shuffle(allProblems.slice(0,range.start));
       //picking random 10 problems
       problems.concat(allProblemsFromPrevLevels.splice(0,9));
     }
