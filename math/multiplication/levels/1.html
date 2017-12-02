@@ -36,7 +36,6 @@ layout: post
                 <div class="small-box bg-aqua">
                   <div class="inner">
                     <h3 id="totalPoints">0</h3>
-
                     <p>Points</p>
                   </div>
                   <div class="icon">
@@ -163,7 +162,7 @@ var evaluateAnswer = function() {
   var selectedAnswer = $(this).text();
   if(correctAnswer == selectedAnswer) {
     console.log("correct answer - questions remaining " + CurrentLevel.Instance().problems.length);
-    $message.html('<p class="pull-right"><i class="fa  fa-thumbs-up text-green"></i> Correct! ' + ' +' + CurrentLevel.Instance().points + ' Points.</p>').show().delay(1000).fadeOut();
+    $message.html('<i class="fa  fa-thumbs-up text-red"></i> Correct! ' + ' +' + CurrentLevel.Instance().points + ' Points');
     rewardPoints();
     CurrentLevel.removeLastProblem();
   } else {
