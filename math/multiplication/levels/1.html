@@ -26,22 +26,33 @@ layout: post
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1 id="levelHeading">Math Multiplication : Level 1</h1>
+                <div class="row">
+                <div class="col-lg-4 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-aqua">
+                    <div class="inner">
+                      <h3 id="totalPoints">0</h3>
+                      <p>Points</p>
+                    </div>
+                    <div class="icon">
+                      <span id="message" ></span>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-aqua">
+                    <div class="inner">
+                      <h3 id="levelHeading">1</h3>
+                      <p>Level</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </section>
             <!-- Main content -->
             <section class="content">
-              <div class="row">
-              <div class="col-lg-4 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-aqua">
-                  <div class="inner">
-                    <h3 id="totalPoints">0</h3>
-                    <p>Points</p>
-                  </div>
-                  <div class="small-box-footer">&nbsp; <span id="message" ></span> </div>
-                </div>
-              </div>
-            </div>
               <div class="box box-success">
                   <div class="box-header with-border">
                       <h1 class="box-title">Solve Multiplication Problem</h1>
@@ -58,15 +69,21 @@ layout: post
                   <!-- /.box-body -->
                   <div class="box-footer">
                       <div class="row">
-                          <div class="col-xs-4" id="choices">
+                          <div class="col-xs-4">
                               <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice0">?</button>
                               <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice1">?</button>
                               <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice2">?</button>
+                          </div>
+                          <div class="col-xs-4" >
                               <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice3">?</button>
                               <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice4">?</button>
                               <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice5">?</button>
-                              <button type="button" class="btn btn-block btn-success btn-lg" id="nextLevel" style="display:none;">Go To Next Level</button>
                           </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-6">
+                          <button type="button" class="btn btn-block btn-success btn-lg" id="nextLevel" style="display:none;">Go To Next Level</button>
+                        </div>
                       </div>
                   </div>
                   <!-- /.box-footer -->
@@ -109,7 +126,7 @@ var CurrentLevel = {
       }
       var lvlStr = JSON.stringify(level);
       StorageUtils.setItem("CURRENT_LEVEL",lvlStr);
-      $("#levelHeading").text("Math Multiplication : Level " + level.id);
+      $("#levelHeading").text(level.id);
       $(".answerChoice").show();
       $("#nextLevel").hide();
       showPoints();
