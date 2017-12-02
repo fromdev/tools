@@ -3,7 +3,7 @@ var Levels = Levels || {};
 Levels.ONE = {
   "id" : 1,
   "choicesGiven":6,
-  "range" : {"start":0,"end":4},
+  "range" : {"start":0,"end":9},
   "points" : 5
 };
 
@@ -11,7 +11,7 @@ Levels.NextLevel = function(prevLevel) {
   return (prevLevel) ? {
     "id" : prevLevel.id + 1,
     "choicesGiven":6,
-    "range" : {"start":prevLevel.range.end,"end":prevLevel.range.end + 4},
+    "range" : {"start":prevLevel.range.end+1,"end":prevLevel.range.end + 10},
     "points" : prevLevel.points + 1
   } : Levels.ONE;
 };
@@ -39,8 +39,8 @@ Levels.CurrentLevel = {
     //Randomly add some problems from previous levels.
     if(range.start > 0 ) {
       var allProblemsFromPrevLevels = ArrayUtils.shuffle(allProblems.slice(0,range.start));
-      //picking random 10 problems
-      problems = problems.concat(allProblemsFromPrevLevels.slice(0,9));
+      //picking random 5 problems
+      problems = problems.concat(allProblemsFromPrevLevels.slice(0,4));
     }
 
     return problems;
