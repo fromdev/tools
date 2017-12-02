@@ -34,13 +34,13 @@ Levels.CurrentLevel = {
     }
     var problems = new Array();
     if(allProblems.length > range.end) {
-      problems.concat(allProblems.slice(range.start,range.end));
+      problems = problems.concat(allProblems.slice(range.start,range.end));
     }
     //Randomly add some problems from previous levels.
     if(range.start > 0 ) {
       var allProblemsFromPrevLevels = ArrayUtils.shuffle(allProblems.slice(0,range.start));
       //picking random 10 problems
-      problems.concat(allProblemsFromPrevLevels.slice(0,9));
+      problems = problems.concat(allProblemsFromPrevLevels.slice(0,9));
     }
 
     return problems;
