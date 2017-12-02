@@ -167,7 +167,7 @@ var evaluateAnswer = function() {
     CurrentLevel.removeLastProblem();
   } else {
     console.log("incorrect answer - adding back");
-    $message.html('<p class="pull-right"><i class="fa  fa-times text-red"></i> Oops!</p>').show().delay(1000).fadeOut();;
+    $message.html('<i class="fa  fa-times text-red"></i> Oops!').show().delay(1000).fadeOut();;
     CurrentLevel.moveProblemToEnd();
   }
   nextProblem();
