@@ -94,7 +94,7 @@ layout: post
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
 
 var showPoints = function () {
-  var totalPoints = StorageUtils.getItem("TOTAL_POINTS");
+  var totalPoints = parseInt(StorageUtils.getItem("TOTAL_POINTS"));
   totalPoints = (Number.isInteger(totalPoints)) ? totalPoints : 0;
   $("#totalPoints").html(totalPoints);
 };
