@@ -18,6 +18,8 @@ Levels.NextLevel = function(prevLevel) {
   var nxtLevel = Levels.ONE;
   if(prevLevel && prevLevel.type == Levels.TABLE.type) {
     Levels.TABLE.id = Levels.TABLE.id + 1;
+    //re-initialize problems
+    Levels.TABLE.problems = [];
     nxtLevel =  Levels.TABLE;
   } else {
     nxtLevel = (prevLevel) ? {
