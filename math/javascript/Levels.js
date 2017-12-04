@@ -67,7 +67,7 @@ Levels.CurrentLevel = {
   generateProblems : function(level) {
     var problems = new Array();
     if(level === Levels.TABLE) {
-      return ArrayUtils.shuffle(initTableProblems());
+      return ArrayUtils.shuffle(Levels.CurrentLevel.initTableProblems());
     } else {
       var range = level.range;
       //Generate all problems if not already done
