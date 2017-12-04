@@ -117,16 +117,25 @@ var showPoints = function () {
   $("#totalPoints").html(totalPoints);
 };
 var CurrentLevel = Levels.CurrentLevel;
-var url = new URL(window.location.href);
-var skipToLevel = parseInt(url.searchParams.get("level"));
-var currentLevelInstance;
-if(skipToLevel && Number.isInteger(skipToLevel) && skipToLevel > 0) {
-  currentLevelInstance = Levels.findLevel(skipToLevel);
-} else {
-  currentLevelInstance = CurrentLevel.Instance();
-}
 
-CurrentLevel.initialize(currentLevelInstance);
+var checkLevelOverride = function() {
+  var url = new URL(window.location.href);
+  var testByTable = parseInt(url.searchParams.get("t"));
+  if(testByTable && Number.isInteger(testByTable) && testByTable > 0) {
+    Levels.TABLE.number = testByTable;
+    return Levels.TABLE;
+  }
+  var skipToLevel = parseInt(url.searchParams.get("l"));
+  var cLInstance;
+  if(skipToLevel && Number.isInteger(skipToLevel) && skipToLevel > 0) {
+    cLInstance = Levels.findLevel(skipToLevel);
+  } else {
+    cLInstance = CurrentLevel.Instance();
+  }
+  return cLInstance;
+};
+
+CurrentLevel.initialize(checkLevelOverride());
 
 //cache jquery objects for page
 var $problem = $("#problem");
