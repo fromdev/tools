@@ -57,7 +57,7 @@ Levels.CurrentLevel = {
   initTableProblems : function(level) {
     var tableProblems = [];
     if(Levels.TABLE === level) {
-      for(var i = Levels.TABLE.range.start; i < Levels.TABLE.range.end){
+      for(var i = Levels.TABLE.range.start; i < Levels.TABLE.range.end;i++){
         tableProblems.push(new MultiplicationProblem(Levels.TABLE.number,i));
         tableProblems.push(new MultiplicationProblem(i,Levels.TABLE.number));
       }
