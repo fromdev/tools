@@ -121,7 +121,7 @@ var url = new URL(window.location.href);
 var skipToLevel = parseInt(url.searchParams.get("level"));
 var currentLevelInstance;
 if(skipToLevel && Number.isInteger(skipToLevel) && skipToLevel > 0) {
-  currentLevelInstance = Levels.findLevel(Levels.ONE,skipToLevel);
+  currentLevelInstance = Levels.findLevel(skipToLevel);
 } else {
   currentLevelInstance = CurrentLevel.Instance();
 }
