@@ -61,6 +61,7 @@ Levels.CurrentLevel = {
         tableProblems.push(new MultiplicationProblem(Levels.TABLE.number,i));
         tableProblems.push(new MultiplicationProblem(i,Levels.TABLE.number));
       }
+    }
     return tableProblems;
   },
   generateProblems : function(level) {
