@@ -106,7 +106,7 @@ layout: post
 <script type="text/javascript" src="http://tools.fromdev.com/javascripts/json2.js"></script>
 <script type="text/javascript" src="http://tools.fromdev.com/javascripts/fromdev-utils.js?v=2"></script>
 <script type="text/javascript" src="http://tools.fromdev.com/math/javascript/MultiplicationProblem.js?v=12"></script>
-<script type="text/javascript" src="http://tools.fromdev.com/math/javascript/Levels.js?v=14"></script>
+<script type="text/javascript" src="http://tools.fromdev.com/math/javascript/Levels.js?v=15"></script>
 
 <script type="text/javascript">
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
@@ -117,8 +117,17 @@ var showPoints = function () {
   $("#totalPoints").html(totalPoints);
 };
 var CurrentLevel = Levels.CurrentLevel;
+var url = new URL(window.location.href);
+var skipToLevel = url.searchParams.get("level");
+console.log(skipToLevel);
+var currentLevelInstance;
+if(skipToLevel && Number.isInteger(skipToLevel)) {
+  currentLevelInstance = Levels.findLevel(Levels.ONE,skipToLevel);
+} else {
+  currentLevelInstance = CurrentLevel.Instance();
+}
 
-CurrentLevel.initialize(CurrentLevel.Instance());
+CurrentLevel.initialize(currentLevelInstance);
 
 //cache jquery objects for page
 var $problem = $("#problem");
