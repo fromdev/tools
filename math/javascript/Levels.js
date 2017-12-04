@@ -11,18 +11,14 @@ Levels.TABLE = {
   "choicesGiven":6,
   "range" : {"start":0,"end":10},
   "points" : 5,
-  "number" : 25
+  "number" : 25,
+  "type" : "Table"
 };
 Levels.NextLevel = function(prevLevel) {
   var nxtLevel = Levels.ONE;
-  if(prevLevel && prevLevel.id == Levels.TABLE.id) {
-    nxtLevel =  {
-      "id" : prevLevel.id,
-      "choicesGiven":prevLevel.choicesGiven,
-      "range" : prevLevel.range,
-      "points" : prevLevel.points,
-      "number" : prevLevel.number + 1
-    };
+  if(prevLevel && prevLevel == Levels.TABLE) {
+    Levels.TABLE.number += 1;
+    nxtLevel =  Levels.TABLE;
   } else {
     nxtLevel = (prevLevel) ? {
       "id" : prevLevel.id + 1,
@@ -109,6 +105,7 @@ Levels.CurrentLevel = {
       var lvlStr = JSON.stringify(level);
       StorageUtils.setItem("CURRENT_LEVEL",lvlStr);
       $("#levelHeading").text(level.id);
+      $("#levelMessage").text((level.type) ? level.type : "Level");
       $(".answerChoice").show();
       $("#nextLevel").hide();
       showPoints();
