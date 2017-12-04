@@ -118,10 +118,9 @@ var showPoints = function () {
 };
 var CurrentLevel = Levels.CurrentLevel;
 var url = new URL(window.location.href);
-var skipToLevel = url.searchParams.get("level");
-console.log(skipToLevel);
+var skipToLevel = parseInt(url.searchParams.get("level"));
 var currentLevelInstance;
-if(skipToLevel && Number.isInteger(skipToLevel)) {
+if(skipToLevel && Number.isInteger(skipToLevel) && skipToLevel > 0) {
   currentLevelInstance = Levels.findLevel(Levels.ONE,skipToLevel);
 } else {
   currentLevelInstance = CurrentLevel.Instance();
