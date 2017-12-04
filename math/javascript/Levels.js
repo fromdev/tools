@@ -67,11 +67,11 @@ Levels.CurrentLevel = {
   generateProblems : function(level) {
     var problems = new Array();
     if(level === Levels.TABLE) {
-      return ArrayUtils.shuffle(Levels.CurrentLevel.initTableProblems());
+      problems.concat(Levels.CurrentLevel.initTableProblems(level));
     } else {
       var range = level.range;
       //Generate all problems if not already done
-      var allProblems = initAllProblems();
+      var allProblems = Levels.CurrentLevel.initAllProblems();
 
       if(allProblems.length > range.end) {
         problems = problems.concat(allProblems.slice(range.start,range.end));
