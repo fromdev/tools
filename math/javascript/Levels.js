@@ -4,20 +4,20 @@ Levels.ONE = {
   "id" : 1,
   "choicesGiven":6,
   "range" : {"start":0,"end":9},
-  "points" : 5
+  "points" : 5,
+  "type" : "Level"
 };
 Levels.TABLE = {
-  "id" : "Table",
+  "id" : 1,
   "choicesGiven":6,
   "range" : {"start":0,"end":10},
   "points" : 5,
-  "number" : 25,
   "type" : "Table"
 };
 Levels.NextLevel = function(prevLevel) {
   var nxtLevel = Levels.ONE;
   if(prevLevel && prevLevel == Levels.TABLE) {
-    Levels.TABLE.number += 1;
+    Levels.TABLE.id += 1;
     nxtLevel =  Levels.TABLE;
   } else {
     nxtLevel = (prevLevel) ? {
@@ -66,8 +66,8 @@ Levels.CurrentLevel = {
     var tableProblems = [];
     if(Levels.TABLE === level) {
       for(var i = Levels.TABLE.range.start; i < Levels.TABLE.range.end;i++){
-        tableProblems.push(new MultiplicationProblem(Levels.TABLE.number,i));
-        tableProblems.push(new MultiplicationProblem(i,Levels.TABLE.number));
+        tableProblems.push(new MultiplicationProblem(Levels.TABLE.id,i));
+        tableProblems.push(new MultiplicationProblem(i,Levels.TABLE.id));
       }
     }
     return tableProblems;
