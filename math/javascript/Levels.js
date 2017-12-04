@@ -16,7 +16,7 @@ Levels.TABLE = {
 };
 Levels.NextLevel = function(prevLevel) {
   var nxtLevel = Levels.ONE;
-  if(prevLevel && prevLevel == Levels.TABLE) {
+  if(prevLevel && prevLevel.type == Levels.TABLE.type) {
     Levels.TABLE.id = Levels.TABLE.id + 1;
     nxtLevel =  Levels.TABLE;
   } else {
