@@ -186,6 +186,7 @@ var nextProblem = function() {
     console.log('Level complete - next level ' + (CurrentLevel.Instance().id + 1));
     $problem.html('<i class="fa fa-trophy text-yellow"></i>'+ ' Awesome! Level ' + CurrentLevel.Instance().id + ' Completed');
     $(".answerChoice").hide();
+    $("#nextLevel").html("Go To Next " + CurrentLevel.Instance().type);
     $("#nextLevel").show();
   }
 };
