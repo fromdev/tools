@@ -16,15 +16,12 @@ Levels.NextLevel = function(prevLevel) {
   } : Levels.ONE;
 };
 
-Levels.findLevel = function(level, id) {
-  if(!Number.isInteger(id) || id > 1000){
-    return Levels.ONE;
+Levels.findLevel = function(id) {
+  var tmpLevel = Levels.ONE;
+  while(id && Number.isInteger(id) && id < 1000 && id > 0 && id > tmpLevel.id) {
+    tmpLevel = Levels.NextLevel(tmpLevel)
   }
-  if(level.id == id) {
-    return level;
-  } else {
-    return Levels.findLevel(Levels.NextLevel(level));
-  }
+  return tmpLevel;
 };
 
 Levels.CurrentLevel = {
