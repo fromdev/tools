@@ -14,12 +14,24 @@ Levels.TABLE = {
   "number" : 25
 };
 Levels.NextLevel = function(prevLevel) {
-  return (prevLevel) ? {
-    "id" : prevLevel.id + 1,
-    "choicesGiven":6,
-    "range" : {"start":prevLevel.range.end+1,"end":prevLevel.range.end + 10},
-    "points" : prevLevel.points + 1
-  } : Levels.ONE;
+  var nxtLevel = Levels.ONE;
+  if(prevLevel && prevLevel.id == Levels.TABLE.id) {
+    nxtLevel =  {
+      "id" : prevLevel.id,
+      "choicesGiven":prevLevel.choicesGiven,
+      "range" : prevLevel.range,
+      "points" : prevLevel.points,
+      "number" : prevLevel.number + 1
+    };
+  } else {
+    nxtLevel = (prevLevel) ? {
+      "id" : prevLevel.id + 1,
+      "choicesGiven":6,
+      "range" : {"start":prevLevel.range.end+1,"end":prevLevel.range.end + 10},
+      "points" : prevLevel.points + 1
+    } : Levels.ONE;
+  }
+  return nxtLevel;
 };
 
 Levels.findLevel = function(id) {
@@ -67,7 +79,7 @@ Levels.CurrentLevel = {
   generateProblems : function(level) {
     var problems = new Array();
     if(level === Levels.TABLE) {
-      problems.concat(Levels.CurrentLevel.initTableProblems(level));
+      problems = problems.concat(Levels.CurrentLevel.initTableProblems(level));
     } else {
       var range = level.range;
       //Generate all problems if not already done
