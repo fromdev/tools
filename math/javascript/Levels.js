@@ -6,7 +6,13 @@ Levels.ONE = {
   "range" : {"start":0,"end":9},
   "points" : 5
 };
-
+Levels.TABLE = {
+  "id" : "Table",
+  "choicesGiven":6,
+  "range" : {"start":0,"end":10},
+  "points" : 5,
+  "number" : 25
+};
 Levels.NextLevel = function(prevLevel) {
   return (prevLevel) ? {
     "id" : prevLevel.id + 1,
@@ -29,8 +35,7 @@ Levels.CurrentLevel = {
     return StorageUtils.getJSON("CURRENT_LEVEL");
   },
   ALL_PROBLEMS : [],
-  generateProblems : function(range) {
-    //Generate all problems if not already done
+  initAllProblems : function() {
     var allProblems = Levels.CurrentLevel.ALL_PROBLEMS;
     if(allProblems.length == 0) {
       var allProblemRangeEnd = 26;
@@ -47,17 +52,36 @@ Levels.CurrentLevel = {
         }
       }
     }
+    return allProblems;
+  },
+  initTableProblems : function(level) {
+    var tableProblems = [];
+    if(Levels.TABLE === level) {
+      for(var i = Levels.TABLE.range.start; i < Levels.TABLE.range.end){
+        tableProblems.push(new MultiplicationProblem(Levels.TABLE.number,i));
+        tableProblems.push(new MultiplicationProblem(i,Levels.TABLE.number));
+      }
+    return tableProblems;
+  },
+  generateProblems : function(level) {
     var problems = new Array();
-    if(allProblems.length > range.end) {
-      problems = problems.concat(allProblems.slice(range.start,range.end));
-    }
-    //Randomly add some problems from previous levels.
-    if(range.start > 0 ) {
-      var allProblemsFromPrevLevels = ArrayUtils.shuffle(allProblems.slice(0,range.start));
-      //picking random 5 problems
-      problems = problems.concat(allProblemsFromPrevLevels.slice(0,4));
-    }
+    if(level === Levels.TABLE) {
+      return ArrayUtils.shuffle(initTableProblems());
+    } else {
+      var range = level.range;
+      //Generate all problems if not already done
+      var allProblems = initAllProblems();
 
+      if(allProblems.length > range.end) {
+        problems = problems.concat(allProblems.slice(range.start,range.end));
+      }
+      //Randomly add some problems from previous levels.
+      if(range.start > 0 ) {
+        var allProblemsFromPrevLevels = ArrayUtils.shuffle(allProblems.slice(0,range.start));
+        //picking random 5 problems
+        problems = problems.concat(allProblemsFromPrevLevels.slice(0,4));
+      }
+    }
     return problems;
   },
   initialize : function(level) {
@@ -67,7 +91,7 @@ Levels.CurrentLevel = {
     }
     if(level) {
       if(!level.problems) {
-        level.problems = ArrayUtils.shuffle(Levels.CurrentLevel.generateProblems(level.range));
+        level.problems = ArrayUtils.shuffle(Levels.CurrentLevel.generateProblems(level));
       }
       var lvlStr = JSON.stringify(level);
       StorageUtils.setItem("CURRENT_LEVEL",lvlStr);
