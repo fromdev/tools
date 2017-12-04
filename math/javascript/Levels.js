@@ -102,7 +102,7 @@ Levels.CurrentLevel = {
       level = Levels.ONE;
     }
     if(level) {
-      if(!level.problems) {
+      if(!level.problems || level.problems.length == 0) {
         level.problems = ArrayUtils.shuffle(Levels.CurrentLevel.generateProblems(level));
       }
       var lvlStr = JSON.stringify(level);
