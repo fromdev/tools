@@ -28,7 +28,14 @@ Levels.CurrentLevel = {
       var allProblemRangeEnd = 26;
       for(var i = 0; i < allProblemRangeEnd; i++) {
         for(var j = 0; j < allProblemRangeEnd; j++) {
+          if(i < 2 || j < 2) {
+            //for lower number put only 1 out of 5
+            if(RandomUtils.getRandomInt(1,100) % 5 == 0) {
+              allProblems.push(new MultiplicationProblem(i,j));
+            }
+          } else {
             allProblems.push(new MultiplicationProblem(i,j));
+          }
         }
       }
     }
