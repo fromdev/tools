@@ -1,0 +1,200 @@
+---
+title: Amazon Feedback Text Generator | Content Tools
+layout: post
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description"
+          content="This is easy to use open source tool to generate a random &amp; unique positive feedback for Amazon seller. Helpful for regular Amazon sellers to keep good Amazon relations and reach up to top rated seller level."/>
+    <meta name="keywords" content="online,tool,feedback,Amazon,seller,sample"/>
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <!-- header tag from theme -->
+    {% include theme-header %}
+    <!-- Sidebar for the whole website -->
+    {% include theme-sidebar %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h1 class="box-title">Amazon Feedback Generator Tool</h1>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <div class="box-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="sellerFeedback">Amazon Seller Feedback Suggestion</label>
+                            <input class="form-control input-lg" type="text" id="sellerFeedback" readonly="true"
+                                   placeholder="Copy Seller Feedback from here"/>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-xs-1">
+                            <button type="button" class="btn btn-success" id="submit">Suggest Feedback</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+        </section>
+        <section class="content">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">About Amazon Feedback Generator Tool</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <img class="img-responsive" src="images/Amazon.png" alt="Online Amazon Feedback Generator Tool" title="Online Amazon Feedback Generator Tool">
+                    <p>Simple tool for Amazon users to save time and quickly generate a positive feedback. Buyers can use this tool to rate the seller who are awesome.</p>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">What is the use of this Amazon Feedback Generator?</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <p>Every ecommerce platform depends a lot on feedback. Amazon is no different. A seller is given better level and badges based on number of good feedback on Amazon.</p>
+                    <p>This tool will save you time to fill up feedback for sellers that will result in more positive feedback for you.</p>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">How This Tool Can Help Busy Sellers?</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <p>The tool generates a quick random feedback for Amazon sellers. You can pick anything and post on Amazon.</p>
+                    <p>All feedback are positive and randomized so you will not end up posting repeated feedback.</p>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Want To Get An Idea For Writing Feedback?</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <p>Use the suggest button or refresh the browser window. It should change the feedback content for seller. </p>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">How To Get More Positive Feedback On Amazon?</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <p>It is not easy, requires a lot of effort and attention to details. </p>
+                    <p>Some tips are here, but most work is on your side</p>
+                    <ul>
+                        <li>If you feel a buyer is happy about your service than ask for feedback. Share this page link with lazy buyers to post your feedback quickly.</li>
+                        <li>Send thank you message to the buyer.</li>
+                        <li>Address buyer queries faster.</li>
+                    </ul>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Can I Copy The Feedback and Use it?</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <p>Yes, jump in. Copy/Paste use these feedback to thrive on Amazon. </p>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">I Do Not Like The Feedback Suggested By This. What Should I Do?</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <p>Need better feedback just try to refresh browser window to see new feedback. You can also suggest more feedback to us to add in this page.</p>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </section>
+    </div>
+    <!-- /.content-wrapper -->
+    {% include theme-footer %}
+</div>
+<!-- ./wrapper -->
+{% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script type="text/javascript" src="javascripts/fromdev-utils.js"></script>
+<script type="text/javascript" src="javascripts/amazon-seller-feedback-templates.js?v1"></script>
+<script>
+    var debug = false;
+
+    var generateTitlesRandom = function (targets, topics, counts, inputTemplate) {
+        var titleArray = new Array();
+        if (inputTemplate) {
+            var step;
+            var currentTitle;
+            for (step = 0; step < 75; step++) {
+                currentTitle = (' ' + inputTemplate[RandomUtils.getRandomInt(0, inputTemplate.length - 1)]).slice(1);
+                currentTitle = currentTitle.replace("TARGET", targets[RandomUtils.getRandomInt(0, targets.length - 1)]);
+                currentTitle = currentTitle.replace("TOPIC", topics[RandomUtils.getRandomInt(0, topics.length - 1)]);
+                currentTitle = currentTitle.replace("COUNT", counts[RandomUtils.getRandomInt(0, counts.length - 1)]);
+                titleArray.push(currentTitle);
+                LogUtils.log(currentTitle);
+            }
+        }
+        return titleArray;
+    };
+
+    var $sellerFeedback = $("#sellerFeedback");
+    function generateFeedback() {
+        var targets = ["iPhone", "iOS", "iPad"];
+        var topics = [];
+        var counts = ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];
+        topics = targets;
+        LogUtils.log('len = ' + targets.length);
+        var sellerFeedbackArray = generateTitlesRandom(targets, topics, counts, sellerTemplates);
+        // showArray(titleArray);
+        if ($sellerFeedback) {
+            $sellerFeedback.val(sellerFeedbackArray[RandomUtils.getRandomInt(0, sellerFeedbackArray.length - 1)]);
+        }
+    }
+    $(document).ready(function () {
+        $("#submit").click(function () {
+            generateFeedback();
+        });
+        generateFeedback();
+        if ($sellerFeedback) {
+            $sellerFeedback.selectOnFocus();
+        }
+        $('#generators-category').addClass('active');
+
+    });
+</script>
+
+</html>

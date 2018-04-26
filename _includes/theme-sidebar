@@ -20,7 +20,7 @@
                             <li><a href="url-encode-decode.html"><i class="fa fa-circle-o text-aqua"></i> URL Encode | Decode</a></li>
                             <li><a href="string-util.html"><i class="fa fa-circle-o text-aqua"></i> Change Case</a></li>
                             <li><a href="word-counter.html"><i class="fa fa-circle-o text-aqua"></i> Word Counter</a></li>
-                            
+
                         </ul>
                     </li>
 
@@ -76,11 +76,12 @@
                         <ul class="treeview-menu">
                             <li><a href="css-button-generator.html"><i class="fa fa-circle-o"></i> CSS Button Generator</a></li>
                             <li><a href="qr-code-generator.html"><i class="fa fa-circle-o"></i> QR Code Generator</a></li>
-                            <li><a href="jquery-quickstart-snippet.html"><i class="fa fa-circle-o"></i> jQuery Code Grabber</a></li> 
-                            <li><a href="amazon-affiliate-link-maker.html"><i class="fa fa-circle-o"></i> Amazon Link Maker</a></li>                            
+                            <li><a href="jquery-quickstart-snippet.html"><i class="fa fa-circle-o"></i> jQuery Code Grabber</a></li>
+                            <li><a href="amazon-affiliate-link-maker.html"><i class="fa fa-circle-o"></i> Amazon Link Maker</a></li>
+                            <li><a href="amazon-feedback-generator.html"><i class="fa fa-circle-o"></i> Amazon Feedback Maker</a></li>
                             <li><a href="ebay-feedback-generator.html"><i class="fa fa-circle-o"></i> eBay Feedback Maker</a></li>
                             <li><a href="fiverr-feedback-generator.html"><i class="fa fa-circle-o"></i> Fiverr Feedback Maker</a></li>
-                            
+
                         </ul>
                     </li>
                     <li><a href="contact.html"><i class="fa fa-circle-o text-aqua"></i> <span>Feedback</span></a></li>
