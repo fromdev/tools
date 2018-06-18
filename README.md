@@ -1,5 +1,5 @@
 # Developer Tools
-Free Developer Tools Developed by Fromdev http://tools.fromdev.com/
+Free Developer Tools Developed by Fromdev https://tools.fromdev.com/
 
 This is open source collection of developer tools that can be run on browser. The vision is to have a online tools website where all small tools can be present for developers or freelancers. Most of these tools are developed in JavaScript since we want them to run directly inside the browser. 
 
@@ -22,7 +22,7 @@ I have two key things that keep me motivated and help these tool running.
 # How To Test Your Changes
 1. We use [Jasmine](https://jasmine.github.io/) for doing unit testing on any Javascript functions and utilities.
 2. Add test cases in project for every new code in JavaScript.
-3. Run [SpecRunner.html](http://tools.fromdev.com/test/SpecRunner.html) to see your tests passing.
+3. Run [SpecRunner.html](https://tools.fromdev.com/test/SpecRunner.html) to see your tests passing.
 4. Add a new Spec file in <code>test/spec</code> folder for any new JavaScript file you contribute.
 
 

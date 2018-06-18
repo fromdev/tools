@@ -1,16 +1,16 @@
-    <script src="http://tools.fromdev.com/plugins/jQuery/jquery-2.2.3.min.js"></script>
-    <script src="http://tools.fromdev.com/plugins/jQueryUI/jquery-ui.min.js"></script>
+    <script src="https://tools.fromdev.com/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="https://tools.fromdev.com/plugins/jQueryUI/jquery-ui.min.js"></script>
     <script>
         $.widget.bridge('uibutton', $.ui.button);
     </script>
     <!-- Bootstrap 3.3.6 -->
-    <script src="http://tools.fromdev.com/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://tools.fromdev.com/bootstrap/js/bootstrap.min.js"></script>
     <!-- SlimScroll -->
-    <script src="http://tools.fromdev.com/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="https://tools.fromdev.com/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
-    <script src="http://tools.fromdev.com/plugins/fastclick/fastclick.min.js"></script>
+    <script src="https://tools.fromdev.com/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="http://tools.fromdev.com/dist/js/app.min.js"></script>
+    <script src="https://tools.fromdev.com/dist/js/app.min.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
