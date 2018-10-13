@@ -152,15 +152,20 @@ layout: post
     $("#json").selectOnFocus();
     $("#propertyValues").selectOnFocus();
     $('#converters-category').addClass('active');
-    
+
     $("#generate").click(function() {
         var start = performance.now();
         $("#generate").html('Generating...Please Wait...');
         $("#generate").prop('disabled', true);
         var text = $("#json").val();
         if(text) {
-          var obj = JSON.parse(text,"");
-          traverseBoth(obj,"",formatJsonPropMappings);
+          try {
+            var obj = JSON.parse(text,"");
+            traverseBoth(obj,"",formatJsonPropMappings);
+          }
+          catch(error) {
+            console.error(error);
+          }
           $("#propertyValues").val(mappings.join('\n'));
         }
         $("#generate").prop('disabled', false);
