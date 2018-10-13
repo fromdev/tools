@@ -4,6 +4,14 @@ var isNumeric = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
+var formatJsonPropMappings = function(jsonparent, k, v) {
+    var jsonpath = formatJsonPath(jsonparent,k,v);
+    var mapping = {"json":jsonpath,"value":v};
+    mappings.push(jsonpath + "=" + v);
+    return mapping;
+};
+
+
 var formatJsonPath = function (parent, k, v) {
     var path = '';
     if (parent) {
