@@ -149,24 +149,25 @@ layout: post
 <script src="javascripts/json2property.js?v=1"></script>
 <script>
   $(document).ready(function() {
-      $("#generate").click(function() {
-          var start = performance.now();
-          $("#generate").html('Generating...Please Wait...');
-          $("#generate").prop('disabled', true);
-          var text = $("#json").val();
-          if(text) {
-            var obj = JSON.parse(text,"");
-            traverseBoth(obj,"",formatJsonPropMappings);
-            $("#propertyValues").val(mappings.join('\n'));
-          }
-          $("#generate").prop('disabled', false);
-          $("#generate").html('Convert to Properties');
-          //clear up globals
-          mappings.length = 0;
-          $("#json").selectOnFocus();
-          $("#propertyValues").selectOnFocus();
-          $('#converters-category').addClass('active');
-      });
+    $("#json").selectOnFocus();
+    $("#propertyValues").selectOnFocus();
+    $('#converters-category').addClass('active');
+    
+    $("#generate").click(function() {
+        var start = performance.now();
+        $("#generate").html('Generating...Please Wait...');
+        $("#generate").prop('disabled', true);
+        var text = $("#json").val();
+        if(text) {
+          var obj = JSON.parse(text,"");
+          traverseBoth(obj,"",formatJsonPropMappings);
+          $("#propertyValues").val(mappings.join('\n'));
+        }
+        $("#generate").prop('disabled', false);
+        $("#generate").html('Convert to Properties');
+        //clear up globals
+        mappings.length = 0;
+    });
   });
 </script>
 
