@@ -7,7 +7,9 @@ var isNumeric = function (n) {
 var formatJsonPropMappings = function(jsonparent, k, v) {
     var jsonpath = formatJsonPath(jsonparent,k,v);
     var mapping = {"json":jsonpath,"value":v};
-    mappings.push(jsonpath + "=" + v);
+    if(typeof v == "string"){
+      mappings.push(jsonpath + "=" + v);
+    }    
     return mapping;
 };
 
