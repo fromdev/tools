@@ -161,9 +161,11 @@ layout: post
           }
           $("#generate").prop('disabled', false);
           $("#generate").html('Convert to Properties');
-          //$("#debug").html("Time Taken : " + (performance.now() - start) + " milliseconds");
           //clear up globals
           mappings.length = 0;
+          $("#json").selectOnFocus();
+          $("#propertyValues").selectOnFocus();
+          $('#converters-category').addClass('active');
       });
   });
 </script>
