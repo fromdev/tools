@@ -154,12 +154,13 @@ layout: post
           $("#generate").html('Generating...Please Wait...');
           $("#generate").prop('disabled', true);
           var text = $("#json").val();
-          var obj = JSON.parse(text,"");
-          traverseBoth(obj,"",formatJsonPropMappings);
-
-          $("#propertyValues").val(mappings.join('\n'));
+          if(text) {
+            var obj = JSON.parse(text,"");
+            traverseBoth(obj,"",formatJsonPropMappings);
+            $("#propertyValues").val(mappings.join('\n'));
+          }
           $("#generate").prop('disabled', false);
-          $("#generate").html('Generate');
+          $("#generate").html('Convert to Properties');
           //$("#debug").html("Time Taken : " + (performance.now() - start) + " milliseconds");
           //clear up globals
           mappings.length = 0;
