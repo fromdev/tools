@@ -164,7 +164,7 @@ layout: post
             traverseBoth(obj,"",formatJsonPropMappings);
           }
           catch(error) {
-            console.error(error);
+            console.log(error);
           }
           $("#propertyValues").val(mappings.join('\n'));
         }
