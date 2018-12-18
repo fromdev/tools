@@ -1,189 +1,201 @@
----
-title: HTML Escape | UnEscape Online | Developer Tools
-layout: post
---- 
+--- title: HTML Escape | UnEscape Online | Developer Tools layout: post ---
 <html>
+
 <head>
-    {% include common-meta %}
-    <title>{{ page.title }}</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="description" content="This is open source tool for programmers to escape or unescape a String value for HTML use." />
-    <meta name="keywords" content="online,tool,html,escape,unescape,encode,decode,web,opensource,http" /> 
-    <!-- CSS for the site theme -->
-    {% include theme-css %} 
-    <!-- Annoying IE fixes -->
-    {% include ie-fixes %}
+  {% include common-meta %}
+  <title>{{ page.title }}</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta name="description" content="This is open source tool for programmers to escape or unescape a String value for HTML use." />
+  <meta name="keywords" content="online,tool,html,escape,unescape,encode,decode,web,opensource,http" />
+  <!-- CSS for the site theme -->
+  {% include theme-css %}
+  <!-- Annoying IE fixes -->
+  {% include ie-fixes %}
 </head>
 
 <body class="hold-transition skin-green sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
-        <!-- header tag from theme -->
-        {% include theme-header %} 
-        <!-- Sidebar for the whole website -->
-        {% include theme-sidebar %}
+  <!-- Site wrapper -->
+  <div class="wrapper">
+    <!-- header tag from theme -->
+    {% include theme-header %}
+    <!-- Sidebar for the whole website -->
+    {% include theme-sidebar %}
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Main content -->
-            <section class="content">
-                <div class="box box-info">
-            <div class="box-header with-border">
-              <h1 class="box-title">HTML Escape and UnEscape</h1>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-              <div class="box-body">
-                <form role="form">
-                    <div class="form-group">
-                      <textarea class="form-control" rows="20" placeholder="Copy/Paste text here to escape or unescape" id="inputText" autofocus></textarea>
-                    </div>
-                </form>    
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer">
-                  <div class="row">
-                <div class="col-xs-1">
-                  <button type="button" class="btn btn-success" id="escape"> Escape </button>
-                </div>
-                <div class="col-xs-1">
-                  <button type="button" class="btn btn-info" id="unescape">UnEscape</button>
-                </div>
-              </div>
-              </div>
-              <!-- /.box-footer -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Main content -->
+      <section class="content">
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h1 class="box-title">HTML Escape and UnEscape</h1>
           </div>
-            </section>
-            <section class="content">
-                <div class="box box-info">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">About HTML Escape and UnEscape Tool</h3>
-                    </div><!-- /.box-header -->
-                    <div class="box-body">
-                      <p>This is a free online tool to escape and unescape HTML markup. You can copy/paste your desired HTML in below text field and hit Escape or UnEscape button.</p>
-                    </div><!-- /.box-body -->
-                  </div>
-                
-                <div class="box box-info">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">What is HTML Escaping?</h3>
-                    </div><!-- /.box-header -->
-                    <div class="box-body">
-                      <p>HTML escaping is used to represent special meaning characters in a HTML code. e.g. less than symbol <code>&lt;</code> has a special meaning in HTML markup language. But in case your data contains a less than symbol <code>&lt;</code> and
-                    you want to send it without confusing the browser then you need to send it as &amplt; instead of <code>&lt;</code> . Simlarly there are many other special characters that can be used as part of HTML markup. Below sample list can give
-                    you a idea of what this means.</p>
-                        <p>This tool can easily encode a string to HTML entities or reverse the encoding and convert it to plain text string. </p>
-                    </div><!-- /.box-body -->
-                  </div>
-               <div class="box box-info">
-            <div class="box-header">
-              <h3 class="box-title">HTML Escaping Characters</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-                <tbody>
-                    <tr>
-                        <th>Character</th>
-                        <th>HTML Escape Value</th>
-                    </tr>
-                    <tr>
-                        <td>quote (")</td>
-                        <td>&amp;quot;</td>
-                    </tr>
-                    <tr>
-                        <td>amphersand (&amp;)</td>
-                        <td>&amp;amp;</td>
-                    </tr>
-                    <tr>
-                        <td>less than symbol (&lt;)</td>
-                        <td>&amp;lt;</td>
-                    </tr>
-                    <tr>
-                        <td>greater than symbol (&gt;)</td>
-                        <td>&amp;gt;</td>
-                    </tr>
-              </tbody></table>
-            </div>
-            <!-- /.box-body -->
+          <!-- /.box-header -->
+          <!-- form start -->
+          <div class="box-body">
+            <form role="form">
+              <div class="form-group">
+                <textarea class="form-control" rows="20" placeholder="Copy/Paste text here to escape or unescape" id="inputText" autofocus></textarea>
+              </div>
+            </form>
           </div>
-          <!-- /.box --> 
-                
-                <div class="box box-info">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">Want To Know What Is The HTML Escaped Value of a Character?</h3>
-                    </div><!-- /.box-header -->
-                    <div class="box-body">
-                      <p>That is easy. Just type the character or a full string in the text box above and hit Escape button. You should be able to see the escaped value.</p>
-                    </div><!-- /.box-body -->
-                  </div>
-                
-                <div class="box box-info">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">What is HTML UnEscaping?</h3>
-                    </div><!-- /.box-header -->
-                    <div class="box-body">
-                     <p>HTML UnEscaping is the reverse process of escaping. This is used by the browser and client side programming languages to get the real data value from escaped string.</p>
-                    </div><!-- /.box-body -->
-                  </div>
-                 <div class="box box-info">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">What Characters Need To Be Escaped?</h3>
-                    </div><!-- /.box-header -->
-                    <div class="box-body">
-                     <p>Only few special meaning character need to be escaped. These characters have special use in HTML markup language. </p>
-                     </div><!-- /.box-body -->
-                  </div>
-                 <div class="box box-info">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">Why HTML String Encoding Tool Is Needed?</h3>
-                    </div><!-- /.box-header -->
-                    <div class="box-body">
-                     <p>   <img class="img-responsive" src="images/html-escape.png" alt="HTML online string escape unescape tool" title="HTML online string escape unescape tool">
-                        </p>
-                        <p>This tool can be really handy for bloggers and web masters to display HTML code on their website. A website for HTML tutorials will require HTML encoding to display the actual HTML code instead of its browser rendered values. Most of the syntax highlighter do this on the fly. However, you can use this tool to do encoding for static code snippets and more. </p>
-                     </div><!-- /.box-body -->
-                  </div>
-                </section>
+          <!-- /.box-body -->
+          <div class="box-footer">
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-success" id="escape"> Escape </button>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-info" id="unescape">UnEscape</button>
+            </div>
+
+          </div>
+          <!-- /.box-footer -->
         </div>
-        <!-- /.content-wrapper -->
-        {% include theme-footer %}
+      </section>
+      <section class="content">
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">About HTML Escape and UnEscape Tool</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>This is a free online tool to escape and unescape HTML markup. You can copy/paste your desired HTML in below text field and hit Escape or UnEscape button.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">What is HTML Escaping?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>HTML escaping is used to represent special meaning characters in a HTML code. e.g. less than symbol <code>&lt;</code> has a special meaning in HTML markup language. But in case your data contains a less than symbol <code>&lt;</code> and you
+              want to send it without confusing the browser then you need to send it as &amplt; instead of <code>&lt;</code> . Simlarly there are many other special characters that can be used as part of HTML markup. Below sample list can give you a idea
+              of what this means.</p>
+            <p>This tool can easily encode a string to HTML entities or reverse the encoding and convert it to plain text string. </p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-info">
+          <div class="box-header">
+            <h3 class="box-title">HTML Escaping Characters</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body table-responsive no-padding">
+            <table class="table table-hover">
+              <tbody>
+                <tr>
+                  <th>Character</th>
+                  <th>HTML Escape Value</th>
+                </tr>
+                <tr>
+                  <td>quote (")</td>
+                  <td>&amp;quot;</td>
+                </tr>
+                <tr>
+                  <td>amphersand (&amp;)</td>
+                  <td>&amp;amp;</td>
+                </tr>
+                <tr>
+                  <td>less than symbol (&lt;)</td>
+                  <td>&amp;lt;</td>
+                </tr>
+                <tr>
+                  <td>greater than symbol (&gt;)</td>
+                  <td>&amp;gt;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">Want To Know What Is The HTML Escaped Value of a Character?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>That is easy. Just type the character or a full string in the text box above and hit Escape button. You should be able to see the escaped value.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">What is HTML UnEscaping?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>HTML UnEscaping is the reverse process of escaping. This is used by the browser and client side programming languages to get the real data value from escaped string.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">What Characters Need To Be Escaped?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>Only few special meaning character need to be escaped. These characters have special use in HTML markup language. </p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">Why HTML String Encoding Tool Is Needed?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p> <img class="img-responsive" src="images/html-escape.png" alt="HTML online string escape unescape tool" title="HTML online string escape unescape tool">
+            </p>
+            <p>This tool can be really handy for bloggers and web masters to display HTML code on their website. A website for HTML tutorials will require HTML encoding to display the actual HTML code instead of its browser rendered values. Most of the syntax
+              highlighter do this on the fly. However, you can use this tool to do encoding for static code snippets and more. </p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </section>
     </div>
-    <!-- ./wrapper -->
-    {% include theme-bottom-js %}
+    <!-- /.content-wrapper -->
+    {% include theme-footer %}
+  </div>
+  <!-- ./wrapper -->
+  {% include theme-bottom-js %}
 
 </body>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script>
-    var escapeIt = function(txt) {
-        return $("<div>").text(txt).html();
-    };
+  var escapeIt = function(txt) {
+    return $("<div>").text(txt).html();
+  };
 
-    var unescapeIt = function(txt) {
-        var unescaped = $("<textarea/>").html(txt).text();
-        if (escapeIt(unescaped) == txt) {
-            return unescaped;
-        } else {
-            return txt;
-        }
-    };
+  var unescapeIt = function(txt) {
+    var unescaped = $("<textarea/>").html(txt).text();
+    if (escapeIt(unescaped) == txt) {
+      return unescaped;
+    } else {
+      return txt;
+    }
+  };
 
-    $(document).ready(function() {
-        $("#escape").click(function() {
-            var resultTextArea = $("#inputText");
-            var txt = resultTextArea.val();
-            resultTextArea.val(escapeIt(txt));
-        });
-
-        $("#unescape").click(function() {
-            var resultTextArea = $("#inputText");
-            var txt = resultTextArea.val();
-            resultTextArea.val(unescapeIt(txt));
-        });
-        $("#inputText").selectOnFocus();
-        $('#string-utility-category').addClass('active');
+  $(document).ready(function() {
+    $("#escape").click(function() {
+      var resultTextArea = $("#inputText");
+      var txt = resultTextArea.val();
+      resultTextArea.val(escapeIt(txt));
     });
+
+    $("#unescape").click(function() {
+      var resultTextArea = $("#inputText");
+      var txt = resultTextArea.val();
+      resultTextArea.val(unescapeIt(txt));
+    });
+    $("#inputText").selectOnFocus();
+    $('#string-utility-category').addClass('active');
+  });
 </script>
 
 </html>
