@@ -137,6 +137,7 @@ layout: post
        var txt = text.val();
        if(txt) {
          var wordSet = [];
+         txt = txt.replace(/[^\w\s]/gi, '');
          var words = txt.split(" ");
          console.log(words.length);
          for(var i=0;i < words.length; i++) {
