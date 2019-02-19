@@ -1,0 +1,158 @@
+---
+title: Extract Unique Words From A Text | Developer Tools
+layout: post
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to use open source tool to extract all unique words from a text, paragraph or large sentences." />
+    <meta name="keywords" content="online,tool,unique,text,extract,word,opensource" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h1 class="box-title">Extract Unique Words From Any Text</h1>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="htm">Text Input</label>
+                                        <textarea class="form-control" rows="15" id="text" placeholder="Enter your Text here" autofocus></textarea>
+                                        <div style="display:none;" id="hidden"></div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <button type="button" class="btn btn-info" id="submit">Extract Unique Words <i class="fa fa-fw fa-arrow-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Copy Your Unique Words From Here</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                  <label for="result">Unique Words List</label>
+                                    <textarea class="form-control" id="result" rows="15" placeholder="Copy your unique words list from here"></textarea>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About Unique Word Extractor Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This is a free online tool to extract unique words from any plain text.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is a unique word?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>In plain text, many words are repeated. This tool can help you identify all the words that are present.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What Is The use of unique words?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Unique words can be used to identify many things. e.g. Many SEO experts may use it for keyword densityand other analysis purposes. </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Can I Use This Tool for languages other than english?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Yes, this tool can easily be used for any text and can help you identify all unique words. Give it a try. </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script>
+   $(document).ready(function() {
+     var text = $("#text")
+
+      $("#submit").click(function(){
+       var txt = text.val();
+       if(txt) {
+         var wordSet = [];
+         var words = txt.split(" ");
+         console.log(words.length);
+         for(var i=0;i < words.length; i++) {
+           if(wordSet.indexOf(words[i]) == -1) {
+             wordSet.push(words[i]);
+           }
+         }
+
+         $("#result").val(wordSet.join("\n"));
+       }
+
+      });
+
+      $("#text").selectOnFocus();
+      $("#result").selectOnFocus();
+      $('#converters-category').addClass('active');
+   	});
+</script>
+</html>
