@@ -191,7 +191,7 @@ layout: post
           catch(error) {
             console.log(error);
           }
-          $("#jsonValues").val(mappings.join('\n'));
+          $("#jsonValues").val(JSON.stringify(json));
         }
         $("#generate").prop('disabled', false);
         $("#generate").html('Convert to JSON');
