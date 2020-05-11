@@ -1,0 +1,204 @@
+---
+title: Property File Data To JSON Format Converter | Developer Tools
+layout: post
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to use open source tool to convert JSON data to property file entry format. " />
+    <meta name="keywords" content="online,tool,json,property,properties,convert,converter,web,opensource" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h1 class="box-title">Convert Property Format Data To JSON</h1>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="csv">JSON Data</label>
+                                        <textarea class="form-control" rows="10" id="property" placeholder="Enter your Property File Data here" autofocus></textarea>
+                                        <div style="display:hidden;">
+                                          <div id="hidden" style="display:hidden;"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <button type="button" class="btn btn-info" id="generate">Convert to JSON</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Copy Your JSON Data From Here</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="json">JSON Format Converted Data</label>
+                                    <textarea class="form-control" id="jsonValues" rows="10"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About Property to JSON Converter Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <img class="img-responsive" src="images/property-to-json.png" alt="Property to JSON format converter tool" title="Property to JSON format converter tool">
+                        <p>This is a free online tool to convert a property file format to JSON formatted data to. This can be useful tool for converting all property file entryes to a single JSON document. You can convert any 'KEY = VALUE' format data to JSON data using this tool.</p>
+                        <p>This tool can take care of nested property conversion to nested JSON objects by name matching.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is a JSON Format?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>JSON (JavaScript Object Notation) is a popular format used to transfer data between applications. It is very common object format in web applications. JavaScript applications do not require any speciall handling for this type of data since its is already an object of javascript format. </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                 <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is a Property format?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Property files are common way to provide KEY, VALUE pair configuration for programs. </p>
+                        <p>Many programming langugages use configuration files that have simple format that stores each KEY = VALUE pair in new line.</p>
+                     </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is a Property File format convention?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>A commonly accepted propeerty file convention is to use dot (.) or underscore (_) as a separator in keys. </p>
+                        <p>e.g.</p>
+                        <p>Persons.person.name = John</p>
+                        <p>Persons.person.age = 30</p>
+                        <p>Persons.person.city = SFO</p>
+                        <p>In case your property file does not follow this convention you may need to specify the separator for successful conversion to JSON format. </p>
+                     </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why Convert From Property File to JSON Object format?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>JSON Objects are easy to read using JavaScript and can also be easily consumed by many REST based services. This tool can help data conversion easy for property file to JSON format on one click.  </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why Do We Need A Property File to a JSON Object Format Converter Online?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>The online converter is a good help for property file format data  to JSON format. This tool can be handy since you just need to paste the property file data in the input field and hit convert button. </p>
+                        <p>The same task can be done manually, however it can be cumbersome. This tool can save you some time and follow a consistent pattern to create a valid JSON document from well formatted property file.</p>
+                        <p>You just need to copy and paste the property file content into this tool and get the JSON format data.</p>
+                        <p>JSON Objects are easy to read in JavaScript, you can easily convert data in a property file to a JavaScript Object and access it easily in Node.js , Express.js, React.js anre more JavaScript based applications and frameworks.</p>
+                        <p>Many times, we do not want to use property files. In that case this tool can help you convert entire property file into a JSON document.</p>
+                        <p>The tool follows a simple naming convention and can identify nested property values based on name matching (case-sensitive).  </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script src="javascripts/property2json.js"></script>
+<script>
+  $(document).ready(function() {
+    $("#json").selectOnFocus();
+    $("#propertyValues").selectOnFocus();
+    $('#converters-category').addClass('active');
+
+    $("#generate").click(function() {
+        var start = performance.now();
+        $("#generate").html('Generating...Please Wait...');
+        $("#generate").prop('disabled', true);
+        var text = $("#property").val();
+        let json = {};
+        if(text) {
+          try {
+            const lines = text.split('\n') || [];
+            lines.forEach(line => {
+                const pair = line.split('=');
+                const value = pair[1];
+                var propeertyEntries = pair[0].split('.');
+                json = property2json(propeertyEntries,value,json);
+            });
+            
+          }
+          catch(error) {
+            console.log(error);
+          }
+          $("#jsonValues").val(mappings.join('\n'));
+        }
+        $("#generate").prop('disabled', false);
+        $("#generate").html('Convert to JSON');
+        //clear up globals
+        mappings.length = 0;
+    });
+  });
+</script>
+
+</html>
