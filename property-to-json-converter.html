@@ -180,6 +180,7 @@ layout: post
         if(text) {
           try {
             const lines = text.split('\n') || [];
+            lines = lines.filter(line=>(line && line.length));
             lines.forEach(line => {
                 const pair = line.split('=');
                 const value = pair[1];
