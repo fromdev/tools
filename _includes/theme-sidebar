@@ -65,6 +65,7 @@
                             <li><a href="create-html-link.html"><i class="fa fa-circle-o text-green"></i> Create HTML Link</a></li>
                             <li><a href="xml-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> XML To JSON</a></li>
                             <li><a href="json-to-property-converter.html"><i class="fa fa-circle-o text-green"></i> JSON To Property</a></li>
+                            <li><a href="property-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> Property to JSON</a></li>
                             <li><a href="unique-word-extractor.html"><i class="fa fa-circle-o text-green"></i> Unique Word Extractor</a></li>                             
                         </ul>
                     </li>
