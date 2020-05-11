@@ -1,7 +1,7 @@
 const property2json = function(propkeyarr, value, json) {
     if(!json) json = {};
-    if(!propkeyarr) return;
-    if(!value) return;
+    if(!propkeyarr) return json;
+    if(!value) return json;
     let parent = json;
     for(let i = 0; i < propkeyarr.length; i++ ) {
         let name = cleanse(propkeyarr[i]);
