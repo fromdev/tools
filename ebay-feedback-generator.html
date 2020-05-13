@@ -85,18 +85,18 @@ layout: post
                     <p>This tool can be handy for your buyers to quickly send a positive review on recent purchase. </p>
                     <p>You can use a message like below (sample template emails) to your buyers that can encourage them writing you a feedback in few seconds.</p>
                     <p>Template Email #1 : Generic</p>
-                    <textarea class="form-control templateEmail" rows="5">Hi, 
-                        Thanks for your recent purchase. Please reply to this message if you have any concerns. 
+                    <textarea class="form-control" rows="5" id="templateEmail1">Hi,
+ Thanks for your recent purchase. Please reply to this message if you have any concerns. 
                                                 
-                        If you liked our service we would appreciate a positive feedback [http://bit.ly/ebayFeedbk] on eBay from you.</textarea>
+ If you liked our service we would appreciate a positive feedback [http://bit.ly/ebayFeedbk] on eBay from you.</textarea>
                     <p>Template Email #2 : Small/Family Business</p>
-                    <textarea class="form-control templateEmail" rows="5" >Hi, 
-                        We appreciate your business. Please let us know if you have any concerns. 
+                    <textarea class="form-control" rows="5" id="templateEmail2">Hi, 
+We appreciate your business. Please let us know if you have any concerns. 
                                                 
-                        We are running a family based business and your positive feedback would help us grow. You can quickly provide us a feedback using this tool [http://bit.ly/ebayFeedbk] </textarea>
+We are running a family based business and your positive feedback would help us grow. You can quickly provide us a feedback using this tool [http://bit.ly/ebayFeedbk] </textarea>
                     <p>Template Email #3 : Short and Simple</p>
-                    <textarea class="form-control templateEmail" rows="3" >Hi, 
-                        We appreciate your business. Please leave us a positive feedback [http://bit.ly/ebayFeedbk] on eBay.</textarea>
+                    <textarea class="form-control" rows="3" id="templateEmail3">Hi, 
+We appreciate your business. Please leave us a positive feedback [http://bit.ly/ebayFeedbk] on eBay.</textarea>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -222,7 +222,9 @@ layout: post
 
     var $buyerFeedback = $("#buyerFeedback");
     var $sellerFeedback = $("#sellerFeedback");
-    const $templateEmail = $('.templateEmail');
+    const $templateEmail1 = $('#templateEmail1');
+    const $templateEmail2 = $('#templateEmail2');
+    const $templateEmail3 = $('#templateEmail3');
     function generateFeedback() {
         var targets = ["iPhone", "iOS", "iPad"];
         var topics = [];
@@ -251,8 +253,14 @@ layout: post
         if ($sellerFeedback) {
             $sellerFeedback.selectOnFocus();
         }
-        if($templateEmail) {
-            $templateEmail.selectOnFocus();
+        if($templateEmail1) {
+            $templateEmail1.selectOnFocus();
+        }
+        if($templateEmail2) {
+            $templateEmail2.selectOnFocus();
+        }
+        if($templateEmail3) {
+            $templateEmail2.selectOnFocus();
         }
         $('#generators-category').addClass('active');
 
