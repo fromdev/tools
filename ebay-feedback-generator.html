@@ -75,6 +75,23 @@ layout: post
                 </div>
                 <!-- /.box-body -->
             </div>
+            <!-- /.box -->
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">How To Use This Tool To Generate More Positive Feedback on Ebay?</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <p>This tool can be handy for your buyers to quickly send a positive review on recent purchase. </p>
+                    <p>You can use a message like below to your buyers that can encourage them writing you a feedback in few seconds.</p>
+                    <textarea class="form-control" rows="7" id="templateEmail">Hi, 
+                        Thanks for your recent purchase. Please reply to this message if you have any concerns. 
+                        
+                        If you like our service we would appreciate a positive feedback [http://bit.ly/ebayFeedbk] on eBay from you.
+                    </textarea>
+                </div>
+                <!-- /.box-body -->
+            </div>
             <div class="box box-success">
                 <div class="box-header with-border">
                     <h3 class="box-title">What is the use of this eBay Feedback Generator?</h3>
@@ -197,6 +214,7 @@ layout: post
 
     var $buyerFeedback = $("#buyerFeedback");
     var $sellerFeedback = $("#sellerFeedback");
+    const $templateEmail = $('#templateEmail');
     function generateFeedback() {
         var targets = ["iPhone", "iOS", "iPad"];
         var topics = [];
@@ -224,6 +242,9 @@ layout: post
         }
         if ($sellerFeedback) {
             $sellerFeedback.selectOnFocus();
+        }
+        if($templateEmail) {
+            $templateEmail.selectOnFocus();
         }
         $('#generators-category').addClass('active');
 
