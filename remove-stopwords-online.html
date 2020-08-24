@@ -43,7 +43,7 @@ layout: post
                             <div class="box-body">
                                 <form role="form">
                                     <div class="form-group">
-                                        <label for="csv">Your Text</label>
+                                        <label for="intext">Your Text</label>
                                         <textarea class="form-control" rows="10" id="intext" placeholder="Enter your text here" autofocus></textarea>
                                     </div>
                                 </form>
@@ -52,7 +52,7 @@ layout: post
                             <div class="box-footer">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <button type="button" class="btn btn-info" id="convert2json">Remove Stopwords<i class="fa fa-fw fa-arrow-right"></i></button>
+                                        <button type="button" class="btn btn-info" id="removestopwords">Remove Stopwords<i class="fa fa-fw fa-arrow-right"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -67,11 +67,19 @@ layout: post
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                  <label for="json">Cleansed Text</label>
+                                  <label for="output">Cleansed Text</label>
                                     <textarea class="form-control" id="output" rows="10" placeholder="Copy from cleased text from here"></textarea>
                                 </div>
                             </div>
                             <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="row">
+                                    <label for="output">Removed Words</label>
+                                    <div class="col-xs-3" id="removedwords">
+                                        
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -161,15 +169,21 @@ layout: post
 
 </body>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
-<script src="javascripts/stopwords.js"></script>
+<script src="javascripts/stopwords.js?v=1"></script>
 <script>
 	 $(document).ready(function() {
-      $("#convert2json").click(function(){
+      $("#removestopwords").click(function(){
           var input = $("#intext").val();
           if(input) {
             var cleansedOutput = cleanse(input);
             if(cleansedOutput) {
-                $("#output").val(cleansedOutput);
+                $("#output").val(cleansedOutput.out);
+                if(cleansedOutput.removedWords) {
+                    const removedWordSet = new Set(cleansedOutput.removedWords);
+                    const removedWordsHtmlArr = [];
+                    removedWordSet.forEach(word => removedWordsHtmlArr.push(`<code>${word}</code>`));
+                    $("removedwords").html(removedWordsHtmlArr.join(''));
+                }
             }
           }
       });
