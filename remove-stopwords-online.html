@@ -196,6 +196,8 @@ layout: post
         if(hasCustomStopwords) {
             //update storage
             StorageUtils.setItem('CUSTOM_STOP_WORDS', trimmedCustomstopwordsarr.join(','));
+        } else {
+            StorageUtils.setItem('CUSTOM_STOP_WORDS', '');
         }
         return hasCustomStopwords ? new Set(trimmedCustomstopwordsarr) : new Set();
     };
