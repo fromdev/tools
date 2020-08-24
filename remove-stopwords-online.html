@@ -187,12 +187,27 @@ layout: post
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script src="javascripts/stopwords.js?v=3"></script>
 <script>
+    const processCustomStopwords = function() {
+        const customstopwords = $("#customstopwords").val();
+        const hasCustomStopwords = (customstopwords && customstopwords.length);
+        const customstopwordsarr = (hasCustomStopwords) ? customstopwords.split(',') : [];
+        let trimmedCustomstopwordsarr = customstopwordsarr.map(str => str.trim().toLowerCase());
+        if(hasCustomStopwords) {
+            //update storage
+            StorageUtils.setItem('CUSTOM_STOP_WORDS', trimmedCustomstopwordsarr.join(','));
+        }
+        return hasCustomStopwords ? new Set(trimmedCustomstopwordsarr) : new Set();
+    };
+
 	 $(document).ready(function() {
+      const storedCustomStopWords = StorageUtils.getItem('CUSTOM_STOP_WORDS');
+      if(storedCustomStopWords) {
+        $("#customstopwords").val(storedCustomStopWords);
+      }
       $("#removestopwords").click(function(){
           var input = $("#intext").val();
           if(input) {
-            const customstopwords = $("#customstopwords").val();
-            const customStopwordSet = (customstopwords && customstopwords.length) ? new Set(customstopwords.split(',')) : [];
+            const customStopwordSet = processCustomStopwords();
             var cleansedOutput = cleanse(input, customStopwordSet);
             if(cleansedOutput) {
                 $("#output").val(cleansedOutput.out);
