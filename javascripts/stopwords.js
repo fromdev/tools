@@ -6,8 +6,10 @@ const cleanse = function(input) {
     const cleanarr = cleanin.split(' ');
     const result = { out : {}, removedWords: []};
     const out = cleanarr.filter(word => {
-        if(stopwordset.has(word)) {
-            result.removedWords.push(word);
+        if(!word) false;
+        const lcword = word.toLowerCase();
+        if(stopwordset.has(lcword)) {
+            result.removedWords.push(lcword);
             return false;
         }
         return true;
