@@ -182,7 +182,7 @@ layout: post
                     const removedWordSet = new Set(cleansedOutput.removedWords);
                     const removedWordsHtmlArr = [];
                     removedWordSet.forEach(word => removedWordsHtmlArr.push(`<code>${word}</code>`));
-                    $("removedwords").html(removedWordsHtmlArr.join(''));
+                    $("#removedwords").html(removedWordsHtmlArr.join(''));
                 }
             }
           }
