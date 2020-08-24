@@ -4,6 +4,6 @@ const stopwordset = new Set(["able","about","above","abroad","according","accord
 const cleanse = function(input) {
     const cleanin = (input) ? input.trim() : '';
     const cleanarr = cleanin.split(' ');
-    cleanarr.filter(word => !stopwordset.has(word)).join(' ');
-    return cleanarr.trim();
+    const out = cleanarr.filter(word => !stopwordset.has(word)).join(' ');
+    return out.trim();
 };
