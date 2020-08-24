@@ -1,0 +1,183 @@
+---
+title: Remove Stopwords Online and Cleanse Text| Developer Tools
+layout: post
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to use open source tool to cleanse english stopwords from any text or string." />
+    <meta name="keywords" content="online,tool,stopwords,english,online,cleanse,web,opensource" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h1 class="box-title">Stop Words Removal Tool: Cleanse Text</h1>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="csv">Your Text</label>
+                                        <textarea class="form-control" rows="10" id="intext" placeholder="Enter your text here" autofocus></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <button type="button" class="btn btn-info" id="convert2json">Remove Stopwords<i class="fa fa-fw fa-arrow-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Copy Your Clean Text From Here</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                  <label for="json">JSON Data</label>
+                                    <textarea class="form-control" id="output" rows="10" placeholder="Copy from cleased text from here"></textarea>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About Stopwords Cleanser Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <img class="img-responsive" src="images/stopwords-word-cloud.png" alt="Online Stopwords removal tool" title="Online Stopwords removal tool">
+                        <p>This is a free online tool to remove and clean any text. The tool is opensource and free to use. It works in any modern browser. This tool uses a default stopwords list in English.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Can I remove my custom stopwords?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Yes, this tool support custom stopwords. You can add your own words and use them as stopwords. This tool can remember your custom stopwords in your browser. This feature can be handy for repeat use. Please note to use same browser to ensure data saved on your browser can be used, this site does not have any server side storage so if you change your browser your custom stopwords need to be added again.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Can I remove non-English stopwords?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Yes, you can use the custom stopwords in any language. However, we donot have a predefined list of each language. You can contribute a language if you would like.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What are stopwords?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Stopwords are the words that commonly appear in natural language. The concept of stopwords is common in datamining, machine learning and natural language processing (NLP). These repeating words (stopwords) donot add much value in machine learning. Therefore it has become a common practice to remove them from text under analysis.   </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why do we remove stop words?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Stop words may not be value add in computing. Therefore most of the machine leanring and data processing tools remove them before processing. </p>
+                        <p>This approach also reduces the size of text to process. Smaller text can be analyzed quicker. When machine learning is doing a big data analysis it becomes essential to clean up the text to save resources.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What are common stopwords?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>The commonly removed stop words are listed below</p>
+                        <p><code>a</code> <code>the</code> <code>then</code> <code>than</code> <code>is</code> <code>was</code> <code>not</code></p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">How many stopwords in English?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>The list of stopwords can grow based on the application and context of use. Some stopwords list have upto 800+ words in them. </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script src="javascripts/stopwords.js"></script>
+<script>
+	 $(document).ready(function() {
+      $("#convert2json").click(function(){
+          var input = $("#intext").val();
+          if(input) {
+            var cleansedOutput = cleanse(input);
+            if(cleansedOutput) {
+                $("#output").val(cleansedOutput);
+            }
+          }
+      });
+      
+      $("#intext").selectOnFocus();
+      $("#output").selectOnFocus();
+      $('#converters-category').addClass('active');
+
+   	});
+</script>
+</html>
