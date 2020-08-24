@@ -74,6 +74,12 @@ layout: post
                             <!-- /.box-body -->
                             <div class="box-footer">
                                 <div class="row">
+                                    <label for="output">Removed Words Count</label>
+                                    <div class="col-xs-3" id="removedwordscount">
+                                        
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <label for="output">Removed Words</label>
                                     <div class="col-xs-3" id="removedwords">
                                         
@@ -178,12 +184,12 @@ layout: post
             var cleansedOutput = cleanse(input);
             if(cleansedOutput) {
                 $("#output").val(cleansedOutput.out);
-                if(cleansedOutput.removedWords) {
-                    const removedWordSet = new Set(cleansedOutput.removedWords);
-                    const removedWordsHtmlArr = [];
-                    removedWordSet.forEach(word => removedWordsHtmlArr.push(`<code>${word}</code>`));
-                    $("#removedwords").html(removedWordsHtmlArr.join(''));
-                }
+                const removedWordSize = cleansedOutput.removedWords ? cleansedOutput.removedWords.length : 0;
+                $("#removedwordscount").html(removedWordSize);
+                const removedWordSet = (removedWordSize) ? new Set(cleansedOutput.removedWords) : new Set();
+                const removedWordsHtmlArr = [];
+                removedWordSet.forEach(word => removedWordsHtmlArr.push(`<code>${word}</code>`));
+                $("#removedwords").html(removedWordsHtmlArr.join(''));
             }
           }
       });
