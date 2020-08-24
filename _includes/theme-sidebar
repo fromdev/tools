@@ -20,7 +20,7 @@
                             <li><a href="url-encode-decode.html"><i class="fa fa-circle-o text-aqua"></i> URL Encode | Decode</a></li>
                             <li><a href="string-util.html"><i class="fa fa-circle-o text-aqua"></i> Change Case</a></li>
                             <li><a href="word-counter.html"><i class="fa fa-circle-o text-aqua"></i> Word Counter</a></li>
-
+                            <li><a href="remove-stopwords-online.html"><i class="fa fa-circle-o text-aqua"></i>Remove Stopwords</a></li>
                         </ul>
                     </li>
 
