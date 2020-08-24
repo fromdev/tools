@@ -4,10 +4,10 @@ const stopwordset = new Set(["able","about","above","abroad","according","accord
 const cleanse = function(input, customStopwordSet) {
     const cleanin = (input) ? input.trim() : '';
     const cleanarr = cleanin.split(' ');
-    const result = { out : {}, removedWords: []};
+    const result = { out : {}, removedWords: [], totalWords: cleanarr.length};
     const out = cleanarr.filter(word => {
         if(!word) false;
-        const lcword = word.toLowerCase();
+        const lcword = word.toLowerCase().replace(/[_\W]/g, '');
         if(stopwordset.has(lcword) || customStopwordSet.has(lcword)) {
             result.removedWords.push(lcword);
             return false;
