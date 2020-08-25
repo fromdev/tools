@@ -181,7 +181,7 @@ layout: post
             var ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.font = '30pt Arial';
-            ctx.fillText(txt, 100, 50);
+            ctx.fillText(txt, ctx.measureText(txt).width, 50);
         });
 
         $("#download").click(function() {
