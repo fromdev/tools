@@ -1,0 +1,209 @@
+---
+title: Create Word Clouds Online | Developer Tools
+layout: post
+---
+<html>
+
+<head>
+  {% include common-meta %}
+  <title>{{ page.title }}</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta name="description" content="This is open source tool for word cloud creation" />
+  <meta name="keywords" content="online,tool,html,word,cloud,web,opensource,image" />
+  <!-- CSS for the site theme -->
+  {% include theme-css %}
+  <!-- Annoying IE fixes -->
+  {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+    <!-- header tag from theme -->
+    {% include theme-header %}
+    <!-- Sidebar for the whole website -->
+    {% include theme-sidebar %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h1 class="box-title">Generate Word Cloud From Text</h1>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="inputText">Text for Word Cloud</label>
+                                <textarea class="form-control" rows="20" placeholder="Copy/Paste text here to generate word cloud" id="inputText" autofocus></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <button type="button" class="btn btn-success" id="generate">Generate Word Cloud</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Download Your Word Cloud Image From Here</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="form-group">
+                            <div id="result">
+                                <canvas width="256" height="256"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-xs-1">
+                                <button type="button" class="btn btn-info" id="download">Download Word Cloud (PNG)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+      <section class="content">
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">About Word Cloud Creation Tool</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>This is a free online tool to create beautiful images from text input. This tool is free to use and you can download images from here to use anywhere.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">What is a word cloud?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p> <img class="img-responsive" src="images/word-cloud.png" alt="Word cloud generation tool" title="Word cloud generation tool">
+            </p>
+            <p>Word cloud is a creative way of expressing text in the form of a picture. The size of text in a image can emphasize the importance of a word. Most of the times it gives  </p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">Can I use images generated from this tool?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>Yes, you can download and use the images generated from this tool anywhere you like.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">How is the word cloud generated?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>This tool uses simple HTML canvas and Javascript to create images from text. Following steps are followed in generation of word cloud.  </p>
+            <ul>
+              <li>Cleanse the text. Remove whitespaces and special characters</li>
+              <li>Remove Stopwords - based on <a href="https://tools.fromdev.com/remove-stopwords-online.html">this tool</a> backend.</li>
+              <li>Identify Unique words and their occurance.</li>
+              <li>Randomly identify Fant Family for the picture</li>
+              <li>Allocate font size to Unique words based on their occurance.</li>
+              <li>Draw each words in a random orientation and color.</li>
+            </ul>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">Some words are missing?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>This tool removes common English Stopwords from the word cloud. </p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">Why I can not get a URL to the generated image?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">            
+            <p>The Images generated from this tool are not hosted anywhere. You download it and host it whereever you like. This tool is static website that does not have dynamic image storage. </p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </section>
+    </div>
+    <!-- /.content-wrapper -->
+    {% include theme-footer %}
+  </div>
+  <!-- ./wrapper -->
+  {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script type="text/javascript" src="javascripts/reimg.js"></script>
+<script>
+    var resultDiv = $("#result canvas");
+
+    var clearResultDiv = function(d) {
+        d.empty();
+        d.text("Word Cloud will be displayed here!");
+    };
+    $(document).ready(function() {
+        $("#generate").click(function() {
+            resultDiv.empty();
+            const txt = $("#inputText").val();
+            var ctx = resultDiv.getContext('2d');
+            ctx.font = '30pt Arial';
+            ctx.fillText(txt, 100, 50);
+        });
+
+        $("#download").click(function() {
+            resultDiv.empty();
+            var txt = $("#inputText").val();
+            resultDiv.qrcode({
+                text: txt
+            });
+            ReImg.fromCanvas($("#result canvas")[0]).downloadPng("wordcloud.png");
+        });
+
+        $('#inputText').on('input', function(e) {
+            clearResultDiv(resultDiv);
+        });
+        // clearResultDiv(resultDiv);
+
+        $("#inputText").selectOnFocus();
+        $('#generators-category').addClass('active');
+    });
+</script>
+
+</html>
