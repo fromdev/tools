@@ -180,7 +180,7 @@ layout: post
     };
     $(document).ready(function() {
         $("#generate").click(function() {
-            canvas.empty();
+            context.clearRect(0, 0, canvas.width, canvas.height);
             const txt = $("#inputText").val();
             var ctx = canvas.getContext('2d');
             ctx.font = '30pt Arial';
