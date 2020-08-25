@@ -1,5 +1,5 @@
 ---
-title: Create Word Clouds Online | Developer Tools
+title: Create Word Cloud Online | Developer Tools
 layout: post
 ---
 <html>
@@ -10,7 +10,7 @@ layout: post
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <meta name="description" content="This is open source tool for word cloud creation" />
-  <meta name="keywords" content="online,tool,html,word,cloud,web,opensource,image" />
+  <meta name="keywords" content="online,tool,html,word,cloud,web,opensource,image,download" />
   <!-- CSS for the site theme -->
   {% include theme-css %}
   <!-- Annoying IE fixes -->
@@ -68,7 +68,7 @@ layout: post
                     <div class="box-body">
                         <div class="form-group">
                             <div id="result">
-                                <canvas width="256" height="256"></canvas>
+                                <canvas id="wordcloudcanvas" width="256" height="256"></canvas>
                             </div>
                         </div>
                     </div>
@@ -172,7 +172,7 @@ layout: post
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script type="text/javascript" src="javascripts/reimg.js"></script>
 <script>
-    var resultDiv = $("#result canvas");
+    let canvas = document.getElementById('wordcloudcanvas');
 
     var clearResultDiv = function(d) {
         d.empty();
@@ -180,26 +180,21 @@ layout: post
     };
     $(document).ready(function() {
         $("#generate").click(function() {
-            resultDiv.empty();
+            canvas.empty();
             const txt = $("#inputText").val();
-            var ctx = resultDiv.getContext('2d');
+            var ctx = canvas.getContext('2d');
             ctx.font = '30pt Arial';
             ctx.fillText(txt, 100, 50);
         });
 
         $("#download").click(function() {
-            resultDiv.empty();
+            canvas.empty();
             var txt = $("#inputText").val();
             resultDiv.qrcode({
                 text: txt
             });
             ReImg.fromCanvas($("#result canvas")[0]).downloadPng("wordcloud.png");
         });
-
-        $('#inputText').on('input', function(e) {
-            clearResultDiv(resultDiv);
-        });
-        // clearResultDiv(resultDiv);
 
         $("#inputText").selectOnFocus();
         $('#generators-category').addClass('active');
