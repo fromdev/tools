@@ -168,6 +168,7 @@ layout: post
 </body>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script type="text/javascript" src="javascripts/reimg.js"></script>
+<script type="text/javascript" src="javascripts/wordcloud.js"></script>
 <script>
     let canvas = document.getElementById('wordcloudcanvas');
 
@@ -180,8 +181,12 @@ layout: post
             const txt = $("#inputText").val();
             var ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.font = '30pt Arial';
+            ctx.fillStyle = "#DFDFDF";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.font = '30px Arial';
             ctx.fillText(txt, ctx.measureText(txt).width, 50);
+            const drawMeta = drawMetaData(ctx,clipW,clipH,txt);
+            drawMeta.forEach(meta => {draw(ctx, meta);});
         });
 
         $("#download").click(function() {
