@@ -185,7 +185,7 @@ layout: post
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.font = '30px Arial';
             ctx.fillText(txt, ctx.measureText(txt).width, 50);
-            const drawMeta = drawMetaData(ctx,clipW,clipH,txt);
+            const drawMeta = drawMetaData(ctx,canvas.width, canvas.height,txt);
             drawMeta.forEach(meta => {draw(ctx, meta);});
         });
 
