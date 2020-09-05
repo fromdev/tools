@@ -43,7 +43,14 @@ const buildTextMeta = function(text, meta) {
           font: fontSize + 'px ' + fontFamily
          };
 };
+const randomSort = (a,b) => 0.5 - Math.random();
+
+const textToShuffledArray = (txt) => {
+  const arr = (txt && txt.length) ? txt.split(' ') : []
+  return (arr && arr.length) ? arr.sort(randomSort) : [];
+};
 const drawMetaData = function(ctx,clipW,clipH,text) {
+  const suffledTextArray = textToShuffledArray(text);
 	const drawMeta = [];
   for(let i=0;i<10;i++) {
   	const x = i*clipW;
@@ -64,8 +71,13 @@ const drawMetaData = function(ctx,clipW,clipH,text) {
          	},
           index: index
         };
-        meta.text = buildTextMeta(text, meta);
-        drawMeta.push(meta);
+        if(suffledTextArray && suffledTextArray.length) {
+          meta.text = buildTextMeta(suffledTextArray.pop(), meta);
+          drawMeta.push(meta);
+        } else {
+          return drawMeta;
+        }
+        
     }
   }
   return drawMeta;
