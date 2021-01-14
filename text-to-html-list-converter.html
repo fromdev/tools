@@ -1,0 +1,176 @@
+---
+title: Plain Text to HTML List Converter | Developer Tools
+layout: post
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="Free tool to convert Plain Text to HTML list online. We can easily convert simple line separated text to HTML formatted list online. Autodetects line separated text formats." />
+    <meta name="keywords" content="online,tool,text,html,list,ordered,unordered,convert,converter,plain,string" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h1 class="box-title">Convert Plain Text To HTML List Format</h1>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="plainText">Plain Text (New Line Separated)</label>
+                                        <textarea class="form-control" rows="10" id="plainText" placeholder="Enter your text here" autofocus></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <button type="button" class="btn btn-info" id="convert2list">Convert to HTML List</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Copy Your HTML Code From Here</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="json">HTML List Code</label>
+                                    <textarea class="form-control" id="htmlTable" rows="10"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">HTML Formatted List View</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding">
+                        <div id="displayList"></div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About Plain Text to HTML List Converter Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This is a free online tool to convert simple plain text data into a HTML list. The new line delimiter is detected automatically.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Can I Convert any text To HTML list Using This Tool?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Yes, you can simply copy and paste your document into the input field and we will convert it to HTML list format.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is a HTML List?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>HTML List is a way to display list of values on HTML form </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why Convert From Plain Text to HTML list?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Plain text data can be difficult to display on HTML page. When you need to show the data on a HTML page you can convert it to HTML list tags.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What Data Can Be Converted On This Page?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Any plain text data can be converted on this page. We smartly detect the new line delimiter in your data and format the HTML list tags for you.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script>
+    var parseconfig = {
+        header: false,
+        comments: "#"
+    };
+    $(document).ready(function() {
+        $("#convert2list").click(function() {
+            $("#htmlTable").empty();
+            $("#displayList").empty();
+            var input = $("#plainText").val();
+            if (input) {
+                var lines = input.split('\n');
+                const listHtmlEntries = lines.array.map(line => `<li>${line}</li>`);
+                const listHtml = `<ul>${listHtmlEntries}</ul>`;
+                $("#htmlTable").val(listHtml);
+                $("#displayList").html(listHtml);
+            }
+        });
+
+        $("#plainText").selectOnFocus();
+        $("#htmlTable").selectOnFocus();
+        $('#converters-category').addClass('active');
+    });
+</script>
+
+</html>
