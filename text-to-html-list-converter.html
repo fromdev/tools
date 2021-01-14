@@ -46,6 +46,13 @@ layout: post
                                         <label for="plainText">Plain Text (New Line Separated)</label>
                                         <textarea class="form-control" rows="10" id="plainText" placeholder="Enter your text here" autofocus></textarea>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="list-style">List Style</label>
+                                        <select class="form-control" id="list-style">
+                                            <option value="ul" selected="selected">Unordered</option>
+                                            <option value="ol">Ordered</option>
+                                        </select>
+                                    </div>
                                 </form>
                             </div>
                             <!-- /.box-body -->
@@ -160,13 +167,15 @@ layout: post
             if (input) {
                 var lines = input.split('\n');
                 const listHtmlEntries = lines.filter(l => l && l.trim()).map(line => `<li>${line.trim()}</li>`);
-                const listHtml = `<ul>${listHtmlEntries.join('\n')}</ul>`;
+                const listStyle = $("#list-style").val() || 'ul';
+                const listHtml = `<${listStyle}>${listHtmlEntries.join('\n')}</${listStyle}>`;
                 $("#htmlTable").val(listHtml);
                 $("#displayList").html(listHtml);
             }
         });
 
         $("#plainText").selectOnFocus();
+        $("#list-style").selectOnFocus(;
         $("#htmlTable").selectOnFocus();
         $('#converters-category').addClass('active');
     });
