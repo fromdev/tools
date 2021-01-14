@@ -161,7 +161,7 @@ layout: post
             if (input) {
                 var lines = input.split('\n');
                 const listHtmlEntries = lines.filter(l => l && l.trim()).map(line => `<li>${line.trim()}</li>`);
-                const listHtml = `<ul>${listHtmlEntries.join()}</ul>`;
+                const listHtml = `<ul>${listHtmlEntries.join('\n')}</ul>`;
                 $("#htmlTable").val(listHtml);
                 $("#displayList").html(listHtml);
             }
