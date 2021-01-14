@@ -160,8 +160,8 @@ layout: post
             var input = $("#plainText").val();
             if (input) {
                 var lines = input.split('\n');
-                const listHtmlEntries = lines.array.map(line => `<li>${line}</li>`);
-                const listHtml = `<ul>${listHtmlEntries}</ul>`;
+                const listHtmlEntries = lines.filter(l => l && l.trim()).map(line => `<li>${line.trim()}</li>`);
+                const listHtml = `<ul>${listHtmlEntries.join()}</ul>`;
                 $("#htmlTable").val(listHtml);
                 $("#displayList").html(listHtml);
             }
