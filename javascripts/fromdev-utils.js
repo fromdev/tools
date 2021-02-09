@@ -160,7 +160,7 @@ Utils.textutil = {
         value: '\n'
     },
     supportedSeparators: [
-        newlineSeparator,
+        this.newlineSeparator,
         {
             name: 'Comma',
             value: ','
@@ -183,7 +183,7 @@ Utils.textutil = {
         }
     ], 
     guessSeparator: (inVal) => {
-        const separator = (inVal) ? supportedSeparators.find(v => inVal.indexOf(v.value) > -1) : newlineSeparator;
+        const separator = (inVal) ? this.supportedSeparators.find(v => inVal.indexOf(v.value) > -1) : this.newlineSeparator;
         return separator || newlineSeparator;
     }
 };
