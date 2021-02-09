@@ -1,4 +1,4 @@
-var mappings = [];
+const csvMap = new Map();
 
 var isNumeric = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
@@ -8,7 +8,9 @@ var formatJsonPropMappings = function(jsonparent, k, v) {
     var jsonpath = formatJsonPath(jsonparent,k,v);
     var mapping = {"json":jsonpath,"value":v};
     if(typeof v == "string"){
-      mappings.push(jsonpath + "=" + v);
+        const values = csvMap.get(jsonpath) || [];
+        AudioScheduledSourceNode.push(v);
+        csvMap.set(jsonpath, values);
     }    
     return mapping;
 };
