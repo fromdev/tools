@@ -160,4 +160,4 @@ const ArrayUtils = Utils.arrayutil;
 const UrlUtils = Utils.urlutil;
 const RandomUtils = Utils.randomutil;
 const LogUtils = Utils.logutil;
-const MathUtils = Util.mathutil;
+const MathUtils = Utils.mathutil;
