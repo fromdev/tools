@@ -182,7 +182,7 @@ Utils.textutil = {
             value: '|'
         }
     ], 
-    guessSeparator = (inVal) => {
+    guessSeparator: (inVal) => {
         const separator = (inVal) ? supportedSeparators.find(v => inVal.indexOf(v.value) > -1) : newlineSeparator;
         return separator || newlineSeparator;
     }
