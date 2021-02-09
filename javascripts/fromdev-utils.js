@@ -155,35 +155,35 @@ Utils.mathutil = {
 };
 
 Utils.textutil = {
-    newlineSeparator: {
-        name: 'Newline',
-        value: '\n'
-    },
-    supportedSeparators: [
-        this.newlineSeparator,
-        {
-            name: 'Comma',
-            value: ','
-        },
-        {
-            name: 'Colon',
-            value: ':'
-        },
-        {
-            name: 'Semicolor',
-            value: ';'
-        },
-        {
-            name: 'Tab',
-            value: '\t'
-        },
-        {
-            name: 'PIpe',
-            value: '|'
-        }
-    ], 
     guessSeparator: (inVal) => {
-        const separator = (inVal) ? this.supportedSeparators.find(v => inVal.indexOf(v.value) > -1) : this.newlineSeparator;
+        const newlineSeparator = {
+            name: 'Newline',
+            value: '\n'
+        };
+        const supportedSeparators = [
+            this.newlineSeparator,
+            {
+                name: 'Comma',
+                value: ','
+            },
+            {
+                name: 'Colon',
+                value: ':'
+            },
+            {
+                name: 'Semicolor',
+                value: ';'
+            },
+            {
+                name: 'Tab',
+                value: '\t'
+            },
+            {
+                name: 'PIpe',
+                value: '|'
+            }
+        ];
+        const separator = (inVal) ? supportedSeparators.find(v => inVal.indexOf(v.value) > -1) : newlineSeparator;
         return separator || newlineSeparator;
     }
 };
