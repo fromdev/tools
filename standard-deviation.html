@@ -98,10 +98,16 @@ layout: post
 
     var textarea = document.getElementById("inputText");
     var result = document.getElementById("result");
+    const supportedSeparators = ['\n',',',':',';','\t'];
+    const guessSeparator = (inVal) => {
+        const separator = (inVal) ? supportedSeparators.find(v => inVal.indexOf(v) > -1) : '\n';
+        return separator || '\n'; 
+    };
 
     textarea.addEventListener("input", function() {
         const inVal = this.value || '';
-        const values = inVal.split('\n');
+        const separator = guessSeparator();
+        const values = inVal.split(separator);
         const numValues = values.map(Number.parseFloat).filter(Number);
         const v = MathUtils.standardDeviation(numValues);
         const displayValue = (Number.isNaN(v)) ? '?' : (v || '?');
