@@ -2,7 +2,7 @@ var Utils = Utils || {};
 Utils.amazon = {
     onlyASINRegex: new RegExp("([a-zA-Z0-9]{10})"),
 
-    extractASIN: function(url) {
+    extractASIN: function (url) {
         var regex = new RegExp("/([a-zA-Z0-9]{10})(?:[/?]|$)");
         var m = url.match(regex);
         if (m) {
@@ -10,14 +10,14 @@ Utils.amazon = {
         }
         return '';
     },
-    isValidASIN: function(input) {
-        return input && input.length == 10  && this.onlyASINRegex.test(input);
+    isValidASIN: function (input) {
+        return input && input.length == 10 && this.onlyASINRegex.test(input);
     },
-    createCleanAffiliateURL: function(url, asin, tag) {
+    createCleanAffiliateURL: function (url, asin, tag) {
         tag = tag || 'fromdevtools-20';
         return this.getCleanURL(url) + '?tag=' + tag;
     },
-    getCleanURL : function(url, asin) {
+    getCleanURL: function (url, asin) {
         var cleanurl = url;
         asin = asin || this.extractASIN(url);
         if (asin) {
@@ -33,36 +33,36 @@ Utils.amazon = {
 };
 //wrapper around storage to use only if supported
 Utils.storage = {
-    setItem: function(key, value) {
-        if (typeof(Storage) !== "undefined") {
+    setItem: function (key, value) {
+        if (typeof (Storage) !== "undefined") {
             // Store
             localStorage.setItem(key, value);
         }
     },
 
-    getItem: function(key) {
-        if (typeof(Storage) !== "undefined") {
+    getItem: function (key) {
+        if (typeof (Storage) !== "undefined") {
             return localStorage.getItem(key);
         }
         return '';
     },
-    getJSON : function(key) {
-      var jsonObject;
-      try {
-        jsonObject = JSON.parse(StorageUtils.getItem(key)); // this is how you parse a string into JSON
-      } catch (ex) {
-        console.error(ex);
-      }
-      return jsonObject;
+    getJSON: function (key) {
+        var jsonObject;
+        try {
+            jsonObject = JSON.parse(StorageUtils.getItem(key)); // this is how you parse a string into JSON
+        } catch (ex) {
+            console.error(ex);
+        }
+        return jsonObject;
     }
 };
 
 Utils.arrayutil = {
-    removeDuplicates : function(arr) {
+    removeDuplicates: function (arr) {
         var uniques = [];
-        if(arr) {
-            arr.forEach(function(item) {
-                if(uniques.indexOf(item) < 0) {
+        if (arr) {
+            arr.forEach(function (item) {
+                if (uniques.indexOf(item) < 0) {
                     uniques.push(item);
                 }
             });
@@ -70,7 +70,7 @@ Utils.arrayutil = {
         return uniques;
 
     },
-    shuffle : function(array) {
+    shuffle: function (array) {
         var counter = array.length;
 
         // While there are elements in the array
@@ -92,9 +92,9 @@ Utils.arrayutil = {
 };
 
 Utils.urlutil = {
-    extractDomain : function(url) {
+    extractDomain: function (url) {
         var domain = '';
-        if(url) {
+        if (url) {
             //find & remove protocol (http, ftp, etc.) and get domain
             if (url.indexOf("://") > -1) {
                 domain = url.split('/')[2];
@@ -106,10 +106,10 @@ Utils.urlutil = {
         }
         return domain;
     },
-    extractDomainList : function(arr) {
+    extractDomainList: function (arr) {
         var domains = [];
-        if(arr) {
-            arr.forEach(function(item) {
+        if (arr) {
+            arr.forEach(function (item) {
                 domains.push(Utils.urlutil.extractDomain(item));
             });
         }
@@ -118,7 +118,7 @@ Utils.urlutil = {
 };
 
 Utils.randomutil = {
-    getRandomInt : function(min, max) {
+    getRandomInt: function (min, max) {
         min = min || 0;
         max = max || 0;
         return Math.floor(Math.random() * (max - min + 1) + min);
@@ -126,7 +126,7 @@ Utils.randomutil = {
 };
 
 Utils.logutil = {
-    log : function(msg) {
+    log: function (msg) {
         if (debug) {
             console.log(msg);
         }
@@ -134,8 +134,8 @@ Utils.logutil = {
 };
 
 Utils.mathutil = {
-    standardDeviation: function(values) {
-        const average = function(data) {
+    standardDeviation: function (values) {
+        const average = function (data) {
             const sum = data.reduce((s, value) => s + value, 0);
             const avg = sum / data.length;
             return avg;
@@ -146,13 +146,48 @@ Utils.mathutil = {
             const sqrDiff = diff * diff;
             return sqrDiff;
         });
-    
+
         const avgSquareDiff = average(squareDiffs);
-    
+
         const stdDev = Math.sqrt(avgSquareDiff);
         return stdDev;
     }
-}
+};
+
+Utils.textutil = {
+    newlineSeparator: {
+        name: 'Newline',
+        value: '\n'
+    },
+    supportedSeparators: [
+        newlineSeparator,
+        {
+            name: 'Comma',
+            value: ','
+        },
+        {
+            name: 'Colon',
+            value: ':'
+        },
+        {
+            name: 'Semicolor',
+            value: ';'
+        },
+        {
+            name: 'Tab',
+            value: '\t'
+        },
+        {
+            name: 'PIpe',
+            value: '|'
+        }
+    ], 
+    guessSeparator = (inVal) => {
+        const separator = (inVal) ? supportedSeparators.find(v => inVal.indexOf(v.value) > -1) : newlineSeparator;
+        return separator || newlineSeparator;
+    }
+};
+
 
 const AmazonUtils = Utils.amazon;
 const StorageUtils = Utils.storage;
@@ -161,3 +196,4 @@ const UrlUtils = Utils.urlutil;
 const RandomUtils = Utils.randomutil;
 const LogUtils = Utils.logutil;
 const MathUtils = Utils.mathutil;
+const TextUtils = Utils.textutil;

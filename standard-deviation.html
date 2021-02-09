@@ -56,7 +56,7 @@ layout: post
             <section class="content">
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">About Word Counter Tool</h3>
+                        <h3 class="box-title">About Standard Deviation Calculator Tool</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -127,42 +127,11 @@ layout: post
 
     const textarea = document.getElementById("inputText");
     const result = document.getElementById("result");
-    const newlineSeparator = {
-            name: 'Newline',
-            value: '\n'
-        };
     const separatorElement = document.getElementById("separator");
-    const supportedSeparators = [
-        newlineSeparator,
-        {
-            name: 'Comma',
-            value: ','
-        },
-        {
-            name: 'Colon',
-            value: ':'
-        },
-        {
-            name: 'Semicolor',
-            value: ';'
-        },
-        {
-            name: 'Tab',
-            value: '\t'
-        },
-        {
-            name: 'PIpe',
-            value: '|'
-        }
-    ];
-    const guessSeparator = (inVal) => {
-        const separator = (inVal) ? supportedSeparators.find(v => inVal.indexOf(v.value) > -1) : '\n';
-        return separator || newlineSeparator;
-    };
 
     textarea.addEventListener("input", function () {
         const inVal = this.value || '';
-        const separator = guessSeparator();
+        const separator = TextUtils.guessSeparator(inVal);
         const values = inVal.split(separator.value);
         const numValues = values.map(Number.parseFloat).filter(Number);
         const v = MathUtils.standardDeviation(numValues);
