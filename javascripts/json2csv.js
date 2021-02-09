@@ -7,9 +7,10 @@ var isNumeric = function (n) {
 var formatJsonPropMappings = function(jsonparent, k, v) {
     var jsonpath = formatJsonPath(jsonparent,k,v);
     var mapping = {"json":jsonpath,"value":v};
-    if(typeof v == "string"){
+    const vtype = typeof v;
+    if(vtype === "string" || vtype === 'number'){
         const values = csvMap.get(jsonpath) || [];
-        AudioScheduledSourceNode.push(v);
+        values.push(v);
         csvMap.set(jsonpath, values);
     }    
     return mapping;
