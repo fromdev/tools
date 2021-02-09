@@ -1,0 +1,180 @@
+---
+title: JSON Data To CSV File Format Converter | Developer Tools
+layout: post
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to use open source tool to convert JSON data to csv file entry format. " />
+    <meta name="keywords" content="online,tool,json,csv,comma,separated,convert,converter,web,opensource" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h1 class="box-title">Convert JSON Data To CSV Format</h1>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="csv">JSON Data</label>
+                                        <textarea class="form-control" rows="10" id="json" placeholder="Enter your JSON Data here" autofocus></textarea>
+                                        <div style="display:hidden;">
+                                          <div id="hidden" style="display:hidden;"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <button type="button" class="btn btn-info" id="generate">Convert to CSV</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Copy Your CVS File Format Data From Here</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="json">CSV Format Converted Data</label>
+                                    <textarea class="form-control" id="csvValues" rows="10"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About JSON to CSV format Converter Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <img class="img-responsive" src="images/json-to-csv.png" alt="JSON to CSV format converter tool" title="JSON to CSV format converter tool">
+                        <p>This is a free online tool to convert a JSON formatted data to csv file format. This can be useful for automation testing of REST based services. You can convert any JSON data to 'KEY = VALUE' format using this tool.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is a JSON?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>JSON (JavaScript Object Notation) is a popular format used to transfer data between applications. It is very common object format in web applications. JavaScript applications do not require any speciall handling for this type of data since its is already an object of javascript format. </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                 <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is a CSV format?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>CSV files are common way to provide KEY, VALUE pair configuration for programs. </p>
+                        <p>Many programming langugages use configuration files that have simple format that stores each KEY = VALUE pair in new line.</p>
+                     </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why Convert From JSON to CSV file format?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>CSV files are easy to read and can contain entries in KEY = VALUE format that makes validations and configuration easy.   </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why Do We Need A JSON to CSV Format Converter Online?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>The online converter is a good help for automation testing of REST based services. This tool can be handy since you just need to paste the JSON response in the input field and hit convert button. </p>
+                        <p>The same task can be done manually, however it can be cumbersome. This tool can save you some time and follow a consistent pattern to create csv key names.</p>
+                        <p>You just need to copy and paste the JSON data into this tool and get the csv format data (KEY = VALUE).</p>
+                        <p>CSV files are easy to read in Java, you can easily convert data in a csv file to a java.util.Map format and access it easily.</p>
+                        <p>Many times, we do not want to parse the full JSON since only small part of the data is used. In that case this tool can help you hand pick the fields you are interseted in.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script src="javascripts/json2csv.js?v=1"></script>
+<script>
+  $(document).ready(function() {
+    $("#json").selectOnFocus();
+    $("#csvValues").selectOnFocus();
+    $('#converters-category').addClass('active');
+
+    $("#generate").click(function() {
+        var start = performance.now();
+        $("#generate").html('Generating...Please Wait...');
+        $("#generate").prop('disabled', true);
+        var text = $("#json").val();
+        if(text) {
+          try {
+            var obj = JSON.parse(text,"");
+            traverseBoth(obj,"",formatJsonPropMappings);
+          }
+          catch(error) {
+            console.log(error);
+          }
+          $("#csvValues").val(mappings.join('\n'));
+        }
+        $("#generate").prop('disabled', false);
+        $("#generate").html('Convert to CSV');
+        //clear up globals
+        mappings.length = 0;
+    });
+  });
+</script>
+
+</html>
