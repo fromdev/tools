@@ -136,11 +136,12 @@ layout: post
         const numValues = values.map(Number.parseFloat).filter(Number);
         const v = MathUtils.standardDeviation(numValues);
         const displayValue = (Number.isNaN(v)) ? '?' : (v || '?');
-        result.innerHTML = (`<div><code>Standard Deviation[σ]: ${displayValue} </code></div>`);
-        separatorElement.innerHTML = (`<div><code>Data Separator: ${separator.name} [${separator.value}] </code></div>`);
+        result.innerHTML = `<div><code>Standard Deviation[σ]: ${displayValue} </code></div>`;
+        const separatorHtml = `<div><code>Data Separator: ${separator.name} [${separator.value}] </code></div>`;
+        separatorElement.innerHTML = separatorHtml;
     }, false);
     $(document).ready(function () {
-        $('#string-utility-category').addClass('active');
+        $('#string-utility-category').addClass('active');s33fd6d
     });
 
 </script>
