@@ -161,7 +161,7 @@ Utils.textutil = {
             value: '\n'
         };
         const supportedSeparators = [
-            this.newlineSeparator,
+            newlineSeparator,
             {
                 name: 'Comma',
                 value: ','
