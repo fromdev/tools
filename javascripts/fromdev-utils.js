@@ -158,7 +158,8 @@ Utils.textutil = {
     guessSeparator: (inVal) => {
         const newlineSeparator = {
             name: 'Newline',
-            value: '\n'
+            value: '\n',
+            displayValue: '\\n'
         };
         const supportedSeparators = [
             newlineSeparator,
@@ -176,7 +177,8 @@ Utils.textutil = {
             },
             {
                 name: 'Tab',
-                value: '\t'
+                value: '\t',
+                displayValue: '\\t'
             },
             {
                 name: 'PIpe',

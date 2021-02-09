@@ -137,11 +137,11 @@ layout: post
         const v = MathUtils.standardDeviation(numValues);
         const displayValue = (Number.isNaN(v)) ? '?' : (v || '?');
         result.innerHTML = `<div><code>Standard Deviation[σ]: ${displayValue} </code></div>`;
-        const separatorHtml = `<div><code>Data Separator: ${separator.name} [\${separator.value}] </code></div>`;
+        const separatorHtml = `<div><code>Data Separator: ${separator.name} ['${separator.displayValue || separator.value}'] </code></div>`;
         separatorElement.innerHTML = separatorHtml;
     }, false);
     $(document).ready(function () {
-        $('#string-utility-category').addClass('active');s33fd6d
+        $('#string-utility-category').addClass('active');
     });
 
 </script>
