@@ -167,7 +167,8 @@ layout: post
           catch(error) {
             console.log(error);
           }
-          $("#csvValues").val(mappings.join('\n'));
+          const header = [...csvMap.keys()];
+          $("#csvValues").val(header);
         }
         $("#generate").prop('disabled', false);
         $("#generate").html('Convert to CSV');
