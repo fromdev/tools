@@ -102,7 +102,7 @@ layout: post
     textarea.addEventListener("input", function() {
         const inVal = this.value || '';
         const values = inVal.split('\n');
-        const numValues = values.map(Number.parseFloat).filer(Number);
+        const numValues = values.map(Number.parseFloat).filter(Number);
         const v = MathUtils.standardDeviation(numValues);
         result.innerHTML = (`<div><code>Standard Deviation: ${v} </code></div>`);
     }, false);
