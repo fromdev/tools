@@ -133,9 +133,31 @@ Utils.logutil = {
     }
 };
 
-var AmazonUtils = Utils.amazon;
-var StorageUtils = Utils.storage;
-var ArrayUtils = Utils.arrayutil;
-var UrlUtils = Utils.urlutil;
-var RandomUtils = Utils.randomutil;
-var LogUtils = Utils.logutil;
+Utils.mathutil = {
+    standardDeviation: function(values) {
+        const average = function(data) {
+            const sum = data.reduce((s, value) => s + value, 0);
+            const avg = sum / data.length;
+            return avg;
+        };
+        const avg = average(values);
+        const squareDiffs = values.map((value) => {
+            const diff = value - avg;
+            const sqrDiff = diff * diff;
+            return sqrDiff;
+        });
+    
+        const avgSquareDiff = average(squareDiffs);
+    
+        const stdDev = Math.sqrt(avgSquareDiff);
+        return stdDev;
+    }
+}
+
+const AmazonUtils = Utils.amazon;
+const StorageUtils = Utils.storage;
+const ArrayUtils = Utils.arrayutil;
+const UrlUtils = Utils.urlutil;
+const RandomUtils = Utils.randomutil;
+const LogUtils = Utils.logutil;
+const MathUtils = Util.mathutil;
