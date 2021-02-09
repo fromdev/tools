@@ -1,0 +1,114 @@
+---
+title: Calculate Standard Deviation | Standard Deviation Online | Math Tools
+layout: post
+---
+<html>
+
+<head>
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is open source tool to calculate standard deviation, and related statistics online" />
+    <meta name="keywords" content="online,tool,math,standard,deviation,statistics,sigma,web,opensource,http" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h1 class="box-title">Calculate Standard Deviation Online Tool</h1>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="20" placeholder="Copy/Paste list of numbers here to see standard deviation" id="inputText" autofocus></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="box-footer">
+                        <div id="result"><div><code>0 words </code>, <code>0 lines </code></div><div><code>0 characters </code><code>0 characters(excluding spaces) </code></div></div>
+                    </div>
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About Word Counter Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <img class="img-responsive" src="images/love.jpg" alt="Online Standard Deviation Calculator Tool" title="Online Standard Deviation Calculator Tool"/>
+                        <p>This is a free online tool to do calculation of standard deviation statistics function.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why Standard Deviation Calculation Is Needed?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Standard deviation is a common way to measure variation or dispersion of data. This is a common tool to do statistical analysis of large data set.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script>
+    function wordCount(val) {
+        var wom = val.match(/\S+/g);
+        return {
+            charactersNoSpaces: val.replace(/\s+/g, '').length,
+            characters: val.length,
+            words: wom ? wom.length : 0,
+            lines: val.split(/\r*\n/).length
+        };
+    }
+
+
+    var textarea = document.getElementById("inputText");
+    var result = document.getElementById("result");
+
+    textarea.addEventListener("input", function() {
+        var v = wordCount(this.value);
+        result.innerHTML = (
+            "<div><code>" + v.words + " words </code><code>" +
+            v.lines + " lines </code></div><div><code>" +
+            v.characters + " characters </code><code>" +
+            v.charactersNoSpaces + " characters(excluding spaces) </code></div>"
+        );
+    }, false);
+    $(document).ready(function() {
+		$('#string-utility-category').addClass('active');
+   	});
+    
+</script>
+
+</html>
