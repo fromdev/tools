@@ -21,7 +21,7 @@ var formatJsonPath = function (parent, k, v) {
     var path = '';
     if (parent) {
         if (isNumeric(k)) {
-            path = parent + '[' + k + ']';
+            path = parent + '[]';
         } else {
             path = parent + '.' + k;
         }
