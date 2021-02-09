@@ -49,6 +49,9 @@ layout: post
                         <div id="result">
                             <div><code>Standard Deviation[σ]: ?</code></div>
                         </div>
+                        <div id="count">
+                            <div><code>Data Count[Valid Number Input]: ?</code></div>
+                        </div>
                         <div id="separator">
                             <div><code>Data Separator: Automatic</code></div>
                         </div>
@@ -129,17 +132,20 @@ layout: post
     const textarea = document.getElementById("inputText");
     const result = document.getElementById("result");
     const separatorElement = document.getElementById("separator");
+    const countElement = document.getElementById("count");
 
     textarea.addEventListener("input", function () {
         const inVal = this.value || '';
         const separator = TextUtils.guessSeparator(inVal);
         const values = inVal.split(separator.value);
         const numValues = values.map(Number.parseFloat).filter(Number);
+        const count = (numValues) ? numValues.length : 0;
         const v = MathUtils.standardDeviation(numValues);
         const displayValue = (Number.isNaN(v)) ? '?' : (v || '?');
         result.innerHTML = `<div><code>Standard Deviation[σ]: ${displayValue} </code></div>`;
         const separatorHtml = `<div><code>Data Separator: ${separator.name} ['${separator.displayValue || separator.value}'] </code></div>`;
         separatorElement.innerHTML = separatorHtml;
+        countElement.innerHTML = `<div><code>Data Count[Valid Number Input]: ${count}</code></div>`;
     }, false);
     $(document).ready(function () {
         $('#string-utility-category').addClass('active');
