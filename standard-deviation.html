@@ -77,7 +77,7 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>This tool uses mean to calculate the variance.</p>
+                        <p>This tool uses mean to calculate the variation.</p>
                         <img class="img-responsive" src="images/standard-deviation-formula.png" alt="Online Standard Deviation Calculator Tool Uses This Formula" title="Online Standard Deviation Calculator Tool Uses This Formula"/>
                     </div>
                     <!-- /.box-body -->
@@ -93,28 +93,19 @@ layout: post
 
 </body>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script src="javascripts/fromdev-utils.js"></script>
 <script>
-    function wordCount(val) {
-        var wom = val.match(/\S+/g);
-        return {
-            charactersNoSpaces: val.replace(/\s+/g, '').length,
-            characters: val.length,
-            words: wom ? wom.length : 0,
-            lines: val.split(/\r*\n/).length
-        };
-    }
-
 
     var textarea = document.getElementById("inputText");
     var result = document.getElementById("result");
 
     textarea.addEventListener("input", function() {
-        var v = wordCount(this.value);
+        let inVal = this.value || '';
+        const values = inVal.split('\n');
+        const numValues = values.map(Number.parseFloat).filer(Number);
+        var v = MathUtils.standardDeviation(numValues);
         result.innerHTML = (
-            "<div><code>" + v.words + " words </code><code>" +
-            v.lines + " lines </code></div><div><code>" +
-            v.characters + " characters </code><code>" +
-            v.charactersNoSpaces + " characters(excluding spaces) </code></div>"
+            "<div><code>" + v + " Standard Deviation </code></div>"
         );
     }, false);
     $(document).ready(function() {
