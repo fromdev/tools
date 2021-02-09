@@ -43,7 +43,7 @@ layout: post
                         </form>
                     </div>
                     <div class="box-footer">
-                        <div id="result"><div><code>Standard Deviation: 0</code></div>
+                        <div id="result"><div><code>Standard Deviation: ?</code></div>
                     </div>
                 </div>
             </section>
@@ -104,7 +104,8 @@ layout: post
         const values = inVal.split('\n');
         const numValues = values.map(Number.parseFloat).filter(Number);
         const v = MathUtils.standardDeviation(numValues);
-        result.innerHTML = (`<div><code>Standard Deviation: ${v} </code></div>`);
+        const displayValue = (Number.isNaN(v)) ? '?' : (v || '?');
+        result.innerHTML = (`<div><code>Standard Deviation: ${displayValue} </code></div>`);
     }, false);
     $(document).ready(function() {
 		$('#string-utility-category').addClass('active');
