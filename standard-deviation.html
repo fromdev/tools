@@ -43,7 +43,7 @@ layout: post
                         </form>
                     </div>
                     <div class="box-footer">
-                        <div id="result"><div><code>0 words </code>, <code>0 lines </code></div><div><code>0 characters </code><code>0 characters(excluding spaces) </code></div></div>
+                        <div id="result"><div><code>Standard Deviation: 0</code></div>
                     </div>
                 </div>
             </section>
@@ -100,13 +100,11 @@ layout: post
     var result = document.getElementById("result");
 
     textarea.addEventListener("input", function() {
-        let inVal = this.value || '';
+        const inVal = this.value || '';
         const values = inVal.split('\n');
         const numValues = values.map(Number.parseFloat).filer(Number);
-        var v = MathUtils.standardDeviation(numValues);
-        result.innerHTML = (
-            "<div><code>" + v + " Standard Deviation </code></div>"
-        );
+        const v = MathUtils.standardDeviation(numValues);
+        result.innerHTML = (`<div><code>Standard Deviation: ${v} </code></div>`);
     }, false);
     $(document).ready(function() {
 		$('#string-utility-category').addClass('active');
