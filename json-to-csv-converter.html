@@ -177,7 +177,7 @@ layout: post
               const row = [];
               csvMap.forEach((v, k, map) => {
                 let cellValue = '';
-                if(v && v.length > i) {
+                if(v && Array.isArray(v) && v.length > i) {
                     cellValue = v[i];
                 }
                 row.push(cellValue); 
