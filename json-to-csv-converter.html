@@ -168,7 +168,23 @@ layout: post
             console.log(error);
           }
           const header = [...csvMap.keys()];
-          $("#csvValues").val(header.join(','));
+          const values = [...csvMap.values()];
+          const sizes = values.map(v => v.length);
+          const maxRows = Math.max(...sizes);
+          const rows = [];
+          rows.push(header.join(','));
+          for(let i = 0; i < maxRows; i++) {
+              const row = [];
+              csvMap.forEach((v, k, map) => {
+                let cellValue = '';
+                if(v && v.length > i) {
+                    cellValue = v[i];
+                }
+                row.push(cellValue); 
+              });
+              rows.push(row.join(','));
+          }
+          $("#csvValues").val(rows.join('\n'));
         }
         $("#generate").prop('disabled', false);
         $("#generate").html('Convert to CSV');
