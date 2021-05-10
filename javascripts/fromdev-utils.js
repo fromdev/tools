@@ -189,7 +189,20 @@ Utils.textutil = {
         return separator || newlineSeparator;
     }
 };
+Utils.wordutil = {
+    wordCount: (val) => {
+        var wom = val.match(/\S+/g);
+        const uniques = new Set((wom || []).filter(a => a).map(a=>a.toLowerCase()));
+        return {
+            charactersNoSpaces: val.replace(/\s+/g, '').length,
+            characters: val.length,
+            words: wom ? wom.length : 0,
+            lines: val.split(/\r*\n/).length,
+            uniques: uniques.size
+        };
+    }
 
+};
 
 const AmazonUtils = Utils.amazon;
 const StorageUtils = Utils.storage;
@@ -199,3 +212,5 @@ const RandomUtils = Utils.randomutil;
 const LogUtils = Utils.logutil;
 const MathUtils = Utils.mathutil;
 const TextUtils = Utils.textutil;
+const WordUtils = Utils.wordutil;
+
