@@ -114,7 +114,17 @@ Utils.urlutil = {
             });
         }
         return domains;
-    }
+    },
+    getUrlParam: (paramName) => {
+      try {
+          const queryString = window.location.search;
+          const urlParams = new URLSearchParams(queryString);
+          const paramValue = (urlParams) ? urlParams.get(paramName) : '';
+          return paramValue || '';
+      } catch (e) {
+          return JSON.stringify(e);
+      }
+  }
 };
 
 Utils.randomutil = {
@@ -213,4 +223,3 @@ const LogUtils = Utils.logutil;
 const MathUtils = Utils.mathutil;
 const TextUtils = Utils.textutil;
 const WordUtils = Utils.wordutil;
-
