@@ -184,6 +184,22 @@ layout: post
                     </div>
                     <!-- /.box-body -->
                 </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h1 class="box-title">How to Embed This tool in your website?</h1>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="box-body">
+                        <p>You can grab this code snippet to embed this tool on your website.</p>
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="title">Amazon Affiliate Link Maker : Embeded Version Code</label>
+                                <textarea class="form-control" rows="7" id="embedCode"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </section>
             {% include addthis %}
         </div>
@@ -222,6 +238,9 @@ layout: post
         } else {
           $('#generators-category').addClass('active');
         }
+        $('#embedCode').val(`<iframe style=\"position: fixed;top: 0px;bottom: 0px;right: 0px;width: 100%;border: none;margin: 0;padding: 0;overflow: hidden;z-index: 999999;height: 100%;\" scrolling=\"auto\" src=\"https:\/\/tools.fromdev.com\/amazon-affiliate-link-maker.html?mode=embed&affiliateTag=${getAffiliateTag()}\"><\/iframe>`);
+        $("#embedCode").selectOnFocus();
+    
     });
     var getAffiliateTag = function() {
         var affiliateTag = UrlUtils.getUrlParam('affiliateTag') || $('#affiliateTag').val();
