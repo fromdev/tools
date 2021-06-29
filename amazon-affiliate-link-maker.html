@@ -216,7 +216,7 @@ layout: post
         $('#linkhtml').selectOnFocus();
         $('#input').selectOnFocus();
         $('#affiliateTag').selectOnFocus();
-        const mode = getUrlParam('mode') || 'main';
+        const mode = UrlUtils.getUrlParam('mode') || 'main';
         if(mode === 'embed') {
           $('body').addClass('sidebar-collapse');
         } else {
