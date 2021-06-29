@@ -224,7 +224,7 @@ layout: post
         }
     });
     var getAffiliateTag = function() {
-        var affiliateTag = getUrlParam('affiliateTag') || $('#affiliateTag').val();
+        var affiliateTag = UrlUtils.getUrlParam('affiliateTag') || $('#affiliateTag').val();
         if (!affiliateTag) {
             affiliateTag = Utils.storage.getItem("affiliateTag");
             if (!affiliateTag) {
