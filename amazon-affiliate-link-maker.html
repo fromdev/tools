@@ -105,7 +105,7 @@ layout: post
                     </div>
                 </div>
             </section>
-            <section class="content">
+            <section class="content" id="content">
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h3 class="box-title">About Amazon Affiliate Link Creator Tool</h3>
@@ -235,12 +235,13 @@ layout: post
         const mode = UrlUtils.getUrlParam('mode') || 'main';
         if(mode === 'embed') {
           $('body').addClass('sidebar-collapse');
+          $('#content').hide();
         } else {
           $('#generators-category').addClass('active');
         }
         $('#embedCode').val(`<iframe style=\"position: fixed;top: 0px;bottom: 0px;right: 0px;width: 100%;border: none;margin: 0;padding: 0;overflow: hidden;z-index: 999999;height: 100%;\" scrolling=\"auto\" src=\"https:\/\/tools.fromdev.com\/amazon-affiliate-link-maker.html?mode=embed&affiliateTag=${getAffiliateTag()}\"><\/iframe>`);
         $("#embedCode").selectOnFocus();
-    
+
     });
     var getAffiliateTag = function() {
         var affiliateTag = UrlUtils.getUrlParam('affiliateTag') || $('#affiliateTag').val();
