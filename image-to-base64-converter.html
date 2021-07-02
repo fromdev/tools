@@ -1,5 +1,5 @@
 ---
-title: Image to Base64 Converter | Developer Tools
+title: Image or Video to Base64 Converter | Developer Tools
 layout: post
 ---
 <html>
@@ -67,7 +67,7 @@ layout: post
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                  <label for="base64">JSON Data</label>
+                                  <label for="base64">Base 64 Encoded Data</label>
                                     <textarea class="form-control" id="base64" rows="10" placeholder="Copy your Base 64 data from here"></textarea>
                                 </div>
                             </div>
@@ -80,44 +80,32 @@ layout: post
             <section class="content">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h3 class="box-title">About CSV to JSON Converter Tool</h3>
+                        <h3 class="box-title">About Image / Vodeo to Base 64 Converter Tool</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <img class="img-responsive" src="images/csv2json.png" alt="CSV to JSON format converter tool" title="CSV to JSON format converter tool">
-                        <p>This is a free online tool to convert a CSV file into a JSON array. You can also use it to convert from JSON to CSV. The default CSV delimiter is assumed to be comma, however you can changed it by selecting delimiter from drop
-                            down menu.</p>
+                        <img class="img-responsive" src="images/csv2json.png" alt="Image / Video to Base 64 Encoding format converter tool" title="Image / Video to Base 64 Encoding format converter tool">
+                        <p>This is a free online tool to convert a image file into a BASE 64  encoded text. You can also use it to convert from Video to Base 64 Encoded text.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h3 class="box-title">What is a CSV?</h3>
+                        <h3 class="box-title">What Is Base 64 Encoding Format?</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>CSV or Comma Separated Values is a popular format to store large data tables. Tools like microsoft excell and many other software export data in this format. </p>
+                        <p>Base 64 Encding is used to convert a binary raw data format using 64 characters. This a popular way to transfer data over network. </p>
                     </div>
                     <!-- /.box-body -->
                 </div>
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h3 class="box-title">What Is JSON Format?</h3>
+                        <h3 class="box-title">Why Convert From Image / Video to Base 64 Encoding?</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>JSON (JavaScript Object Notation) is way to represent data in JavaScript object format. It is popular for programming purposes. Many application programs interact using JSON format data. Most of REST API development is preferred
-                            in this format. </p>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Why Convert From CSV to JSON?</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p>CSV data can be easy to read for human, however JSON data format can be used by JavaScript and other software easily. Many tools may support JSON format and you can import your data by simply converting from CSV to JSON.</p>
+                        <p>???</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -141,7 +129,6 @@ layout: post
       var reader = new FileReader();
       reader.onloadend = function() {
         $("#base64").val(reader.result);
-        console.log('RESULT', reader.result)
       }
       reader.readAsDataURL(file);
     } else {
@@ -154,8 +141,8 @@ layout: post
         encodeImageFileAsURL();
       });
 
-      $("#csv").selectOnFocus();
-      $("#json").selectOnFocus();
+      $("#myFile").selectOnFocus();
+      $("#base64").selectOnFocus();
       $('#converters-category').addClass('active');
 
    	});
