@@ -5,123 +5,122 @@ layout: post
 <html>
 
 <head>
-    <!-- Meta tags common for website -->
-    {% include common-meta %}
-    <title>{{ page.title }}</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="description" content="This is easy to use open source tool convert Image to Base 64 encoding online. You can also use this to convert Video to Base 64 encoding." />
-    <meta name="keywords" content="online,tool,base64,encoding,text,image,picture, video,convert,converter,web,opensource" />
-    <!-- CSS for the site theme -->
-    {% include theme-css %}
-    <!-- Annoying IE fixes -->
-    {% include ie-fixes %}
+  <!-- Meta tags common for website -->
+  {% include common-meta %}
+  <title>{{ page.title }}</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta name="description" content="This is easy to use open source tool convert Image to Base 64 encoding online. You can also use this to convert Video to Base 64 encoding." />
+  <meta name="keywords" content="online,tool,base64,encoding,text,image,picture, video,convert,converter,web,opensource" />
+  <!-- CSS for the site theme -->
+  {% include theme-css %}
+  <!-- Annoying IE fixes -->
+  {% include ie-fixes %}
 </head>
 
 <body class="hold-transition skin-green sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
+  <!-- Site wrapper -->
+  <div class="wrapper">
 
-        <!-- header tag from theme -->
-        {% include theme-header %}
-        <!-- Sidebar for the whole website -->
-        {% include theme-sidebar %}
+    <!-- header tag from theme -->
+    {% include theme-header %}
+    <!-- Sidebar for the whole website -->
+    {% include theme-sidebar %}
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Main content -->
-            <section class="content">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-6">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h1 class="box-title">Convert Image or Video To Base 64 Format Text</h1>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+              <div class="box-body">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="myFile">Upload Image or Video File From Your Computer</label>
+                    <input type="file" id="myFile" name="filename">
+                  </div>
+                </form>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
                 <div class="row">
-                    <!-- left column -->
-                    <div class="col-md-6">
-                        <div class="box box-success">
-                            <div class="box-header with-border">
-                                <h1 class="box-title">Convert Image or Video To Base 64 Format Text</h1>
-                            </div>
-                            <!-- /.box-header -->
-                            <!-- form start -->
-                            <div class="box-body">
-                                <form role="form">
-                                    <div class="form-group">
-                                        <label for="myFile">Upload Image or Video File From Your Computer</label>
-                                        <input type="file" id="myFile" name="filename">
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- /.box-body -->
-                            <div class="box-footer">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <button type="button" class="btn btn-info" id="convert2base64">Convert to Base 64<i class="fa fa-fw fa-arrow-right"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.box-footer -->
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="box box-success">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Copy Your Base 64 Data From Here</h3>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body">
-                                <div class="form-group">
-                                  <label for="base64">Base 64 Encoded Data</label>
-                                    <textarea class="form-control" id="base64" rows="10" placeholder="Copy your Base 64 data from here"></textarea>
-                                </div>
-                            </div>
+                  <div class="col-xs-3">
+                    <button type="button" class="btn btn-info" id="convert2base64">Convert to Base 64<i class="fa fa-fw fa-arrow-right"></i></button>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-footer -->
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title">Copy Your Base 64 Data From Here</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="base64">Base 64 Encoded Data</label>
+                  <textarea class="form-control" id="base64" rows="10" placeholder="Copy your Base 64 data from here"></textarea>
+                </div>
+              </div>
 
-                        </div>
+            </div>
 
-                    </div>
-                </div>
-            </section>
-            <section class="content">
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">About Image / Vodeo to Base 64 Converter Tool</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <img class="img-responsive" src="images/csv2json.png" alt="Image / Video to Base 64 Encoding format converter tool" title="Image / Video to Base 64 Encoding format converter tool">
-                        <p>This is a free online tool to convert a image file into a BASE 64  encoded text. You can also use it to convert from Video to Base 64 Encoded text.</p>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">What Is Base 64 Encoding Format?</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p>Base 64 Encding is used to convert a binary raw data format using 64 characters. This a popular way to transfer data over network. </p>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Why Convert From Image / Video to Base 64 Encoding?</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p>???</p>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-            </section>
-            {% include addthis %}
+          </div>
         </div>
-        <!-- /.content-wrapper -->
-        {% include theme-footer %}
+      </section>
+      <section class="content">
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">About Image / Vodeo to Base 64 Converter Tool</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <img class="img-responsive" src="images/image-to-base64.png" alt="Image / Video to Base 64 Encoding format converter tool" title="Image / Video to Base 64 Encoding format converter tool">
+            <p>This is a free online tool to convert a image file into a BASE 64 encoded text. You can also use it to convert from Video to Base 64 Encoded text.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">What Is Base 64 Encoding Format?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>Base 64 Encding is used to convert a binary raw data format using 64 characters. This a popular way to transfer data over network. </p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Why Convert From Image / Video to Base 64 Encoding?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>Many image API use BASE 64 format data as input. This tool can be handy when using such API. This Base64 value can be easily put as a part of a JSON request body.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </section>
+      {% include addthis %}
     </div>
-    <!-- ./wrapper -->
-    {% include theme-bottom-js %}
+    <!-- /.content-wrapper -->
+    {% include theme-footer %}
+  </div>
+  <!-- ./wrapper -->
+  {% include theme-bottom-js %}
 
 </body>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script>
-
   const encodeImageFileAsURL = () => {
     const filesSelected = document.getElementById('myFile').files;
     if (filesSelected && filesSelected.length > 0) {
@@ -136,15 +135,16 @@ layout: post
     }
   };
 
-	 $(document).ready(function() {
-      $("#convert2base64").click(function(){
-        encodeImageFileAsURL();
-      });
+  $(document).ready(function() {
+    $("#convert2base64").click(function() {
+      encodeImageFileAsURL();
+    });
 
-      $("#myFile").selectOnFocus();
-      $("#base64").selectOnFocus();
-      $('#converters-category').addClass('active');
+    $("#myFile").selectOnFocus();
+    $("#base64").selectOnFocus();
+    $('#converters-category').addClass('active');
 
-   	});
+  });
 </script>
+
 </html>
