@@ -1,0 +1,183 @@
+---
+title: Bar Code Generator | Developer Tools
+layout: post
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to use open source tool to generate meta tags for HTML pages. This can help you add SEO boost in search engine rankings." />
+    <meta name="keywords" content="online,tool,meta,tags,seo,blog,web,opensource" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h1 class="box-title">Generate Bar Code</h1>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="title">Text for Bar Code</label>
+                                        <textarea class="form-control"  rows="10" id="inputText" placeholder="Enter your text here" autofocus></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <button type="button" class="btn btn-success" id="generate">Generate Bar Code</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Download Your Bar Code From Here</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div id="result">
+                                        <canvas id="barcode" width="256" height="256"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-xs-1">
+                                        <button type="button" class="btn btn-info" id="download">Download Bar Code</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About Bar Code Generator Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <img class="img-responsive" src="images/Bar-code.png" alt="Online Open Source Bar Code Generator Tool" title="Online Open Source Bar Code Generator Tool">
+                        <p>This is a free online tool to generate Bar code for any text. You can copy/paste your desired text/string in above text field and hit Generate Bar Code button.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is a Bar Code?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>It is a visual code that can be read by machines using camera. It is commonly used in mobile phones to read the URL from a printed media like message board or visiting card.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Want To Know What Is The Bar Code of a Character or String?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>That is easy. Just type the character or a full string in the text box above and hit Generate Bar Code button. You should be able to see the Bar Code Image on right side.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">How To Download Bar Code Image?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>The Bar code generated on this page can be downloaded using Download Bar code button. You can also download it (on most browsers except safari) by doing right click on image and choosing save image menu option.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Can I Print this Bar Code?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Yes, the generated Bar code is absolutely free to use for personal or business purposes. You can print it on a paper, visiting card, t-shirt or anywhere you like.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+            {% include addthis %}
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script src="javascripts/JsBarcode.all.min.js"></script>
+<script type="text/javascript" src="javascripts/reimg.js"></script>
+
+<script>
+    var resultDiv = $("#result");
+
+    var clearResultDiv = function(d) {
+        d.empty();
+        d.text("Bar code will be displayed here!");
+    };
+    $(document).ready(function() {
+        $("#generate").click(function() {
+            resultDiv.empty();
+            JsBarcode("#barcode", $("#inputText").val());
+        });
+
+        $("#download").click(function() {
+            resultDiv.empty();
+            JsBarcode("#barcode", $("#inputText").val());
+            ReImg.fromCanvas($("#result canvas")[0]).downloadPng("Barcode.png")
+        });
+
+        $('#inputText').on('input', function(e) {
+            clearResultDiv(resultDiv);
+        });
+        // clearResultDiv(resultDiv);
+
+        $("#inputText").selectOnFocus();
+        $('#generators-category').addClass('active');
+    });
+</script>
+
+</html>
