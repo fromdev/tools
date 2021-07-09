@@ -160,12 +160,10 @@ layout: post
     };
     $(document).ready(function() {
         $("#generate").click(function() {
-            resultDiv.empty();
             JsBarcode("#barcode", $("#inputText").val());
         });
 
         $("#download").click(function() {
-            resultDiv.empty();
             JsBarcode("#barcode", $("#inputText").val());
             ReImg.fromCanvas($("#result canvas")[0]).downloadPng("Barcode.png")
         });
