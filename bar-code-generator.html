@@ -51,10 +51,11 @@ layout: post
                     <label for="format">Bar Code Format</label>
                     <select id="format">
                       <option value="UPC" selected="selected">UPC - Universal Product Codes (12 DIGIT)</option>
-                      <option value="EAN2">EAN2</option>
-                      <option value="EAN5">EAN5</option>
-                      <option value="EAN8">EAN8</option>
-                      <option value="EAN13">EAN13</option>
+                      <option value="EAN2">EAN-2 - European Article Number</option>
+                      <option value="EAN5">EAN-5 - European Article Number</option>
+                      <option value="EAN8">EAN-8  - European Article Number</option>
+                      <option value="EAN13">EAN-13 - European Article Number (13 DIGIT)</option>
+                      <option value="EAN13">GTIN-13 - Global Trade Item Number (13 DIGIT)</option>
                       <option value="CODE128">CODE128</option>
                       <option value="CODE128A">CODE128A</option>
                       <option value="CODE128B">CODE128B</option>
@@ -69,7 +70,7 @@ layout: post
                     </select>
                   </div>
                   <div class="form-group">
-                    <span class="help-block" id="error"></span>
+                    <p id="error" class="text-red"></p>
                   </div>
                 </form>
               </div>
