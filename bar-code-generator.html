@@ -174,10 +174,10 @@ layout: post
 
 <script>
     const generateBarcode = () => {
-      const in = $("#inputText").val();
-      if(in) {
+      const input = $("#inputText").val();
+      if(input) {
         barcodeOptions.format = $('#format option:selected').val() || 'UPC';
-        JsBarcode("#barcode", in, barcodeOptions);
+        JsBarcode("#barcode", input, barcodeOptions);
         return true;
       }
       return false;
