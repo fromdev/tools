@@ -270,6 +270,7 @@ layout: post
     if (incode.length === 2) return 'EAN2';
     if (incode.length === 5) return 'EAN5';
     if (incode.length === 8) return 'EAN8';
+    if (incode.length === 14) return 'ITF14';
     $('#error').text('Failed to detect barcode format. Using default');
     return 'CODE128';
   };
@@ -280,7 +281,7 @@ layout: post
     const format = (selectedFormat === 'autodetect') ? detectBarcodeFormat(input) : 'CODE128';
     barcodeOptions.format = format || 'CODE128';
     return barcodeOptions;
-  }
+  };
 
   const validateBarcode = (input) => {
     try {
