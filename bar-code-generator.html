@@ -152,12 +152,7 @@ layout: post
 <script type="text/javascript" src="javascripts/reimg.js"></script>
 
 <script>
-    var resultDiv = $("#result");
 
-    var clearResultDiv = function(d) {
-        d.empty();
-        d.text("Bar code will be displayed here!");
-    };
     $(document).ready(function() {
         $("#generate").click(function() {
             JsBarcode("#barcode", $("#inputText").val());
@@ -168,9 +163,6 @@ layout: post
             ReImg.fromCanvas($("#result canvas")[0]).downloadPng("Barcode.png")
         });
 
-        $('#inputText').on('input', function(e) {
-            clearResultDiv(resultDiv);
-        });
         // clearResultDiv(resultDiv);
 
         $("#inputText").selectOnFocus();
