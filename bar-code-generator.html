@@ -188,6 +188,7 @@ layout: post
           const barcodeOptions = {};
           barcodeOptions.format = $('#format option:selected').val() || 'UPC';
           JsBarcode("#barcode", input, barcodeOptions);
+          $('#error').text('')
           return true;
         }
       }
