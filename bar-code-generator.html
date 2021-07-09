@@ -274,15 +274,19 @@ layout: post
     return 'CODE128';
   };
 
+  const prepareOptions = () => {
+    const barcodeOptions = {};
+    const selectedFormat = $('#format option:selected').val();
+    const format = (selectedFormat === 'autodetect') ? detectBarcodeFormat(input) : 'CODE128';
+    barcodeOptions.format = format || 'CODE128';
+    return barcodeOptions;
+  }
+
   const validateBarcode = (input) => {
     try {
       const input = $("#inputText").val();
-      const barcodeOptions = {};
-      const selectedFormat = $('#format option:selected').val();
-      const format = (selectedFormat === 'autodetect') ? detectBarcodeFormat(input) : 'CODE128';
-      barcodeOptions.format = format || 'CODE128';
+      const barcodeOptions = prepareOptions();
       if (input) {
-        $('#autodetect').text(`Using Format: ${barcodeOptions.format}`);
         const barcode = BARCODES[barcodeOptions.format] || BARCODES.DEFAULT;
         if (!barcode.validate(input)) {
           $('#error').text(`Invalid ${barcode.name} Code, Can not generate barcode`);
@@ -297,14 +301,14 @@ layout: post
   };
   const generateBarcode = (input) => {
     try {
-      const barcodeOptions = {};
-      barcodeOptions.format = $('#format option:selected').val() || 'UPC';
+      const barcodeOptions = prepareOptions();
       if (input) {
         const canvas = document.getElementById('barcode');
         const context = canvas.getContext('2d');
         context.clearRect(0, 0, canvas.width, canvas.height);
         JsBarcode("#barcode", input, barcodeOptions);
         $('#error').text('');
+        $('#autodetect').text(`Using Format: ${barcodeOptions.format}`);
       }
     } catch (e) {
       // failure - default false is returned
