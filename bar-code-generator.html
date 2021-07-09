@@ -152,18 +152,16 @@ layout: post
 <script type="text/javascript" src="javascripts/reimg.js"></script>
 
 <script>
-
+    const barcodeOptions = { format: 'upc' };
     $(document).ready(function() {
         $("#generate").click(function() {
-            JsBarcode("#barcode", $("#inputText").val());
+            JsBarcode("#barcode", $("#inputText").val(), barcodeOptions);
         });
 
         $("#download").click(function() {
-            JsBarcode("#barcode", $("#inputText").val());
-            ReImg.fromCanvas($("#result canvas")[0]).downloadPng("Barcode.png")
+            JsBarcode("#barcode", $("#inputText").val(), barcodeOptions);
+            ReImg.fromCanvas($("#barcode")).downloadPng("Barcode.png")
         });
-
-        // clearResultDiv(resultDiv);
 
         $("#inputText").selectOnFocus();
         $('#generators-category').addClass('active');
