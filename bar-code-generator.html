@@ -5,172 +5,171 @@ layout: post
 <html>
 
 <head>
-    <!-- Meta tags common for website -->
-    {% include common-meta %}
-    <title>{{ page.title }}</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="description" content="This is easy to use open source tool to generate barcode for any text inpu. This can help you easily generate barcode images." />
-    <meta name="keywords" content="online,tool,barcode,download,blog,web,opensource" />
-    <!-- CSS for the site theme -->
-    {% include theme-css %}
-    <!-- Annoying IE fixes -->
-    {% include ie-fixes %}
+  <!-- Meta tags common for website -->
+  {% include common-meta %}
+  <title>{{ page.title }}</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta name="description" content="This is easy to use open source tool to generate barcode for any text inpu. This can help you easily generate barcode images." />
+  <meta name="keywords" content="online,tool,barcode,download,blog,web,opensource" />
+  <!-- CSS for the site theme -->
+  {% include theme-css %}
+  <!-- Annoying IE fixes -->
+  {% include ie-fixes %}
 </head>
 
 <body class="hold-transition skin-green sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
+  <!-- Site wrapper -->
+  <div class="wrapper">
 
-        <!-- header tag from theme -->
-        {% include theme-header %}
-        <!-- Sidebar for the whole website -->
-        {% include theme-sidebar %}
+    <!-- header tag from theme -->
+    {% include theme-header %}
+    <!-- Sidebar for the whole website -->
+    {% include theme-sidebar %}
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Main content -->
-            <section class="content">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-6">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h1 class="box-title">Generate Bar Code</h1>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+              <div class="box-body">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="title">Text for Bar Code</label>
+                    <textarea class="form-control" rows="10" id="inputText" placeholder="Enter your text here" autofocus></textarea>
+
+                  </div>
+                  <div class="form-group">
+                    <label for="format">Bar Code Format</label>
+                    <select id="format">
+                      <option value="UPC" selected="selected">UPC - Universal Product Codes (12 DIGIT)</option>
+                      <option value="EAN2">EAN2</option>
+                      <option value="EAN5">EAN5</option>
+                      <option value="EAN8">EAN8</option>
+                      <option value="EAN13">EAN13</option>
+                      <option value="CODE128">CODE128</option>
+                      <option value="CODE128A">CODE128A</option>
+                      <option value="CODE128B">CODE128B</option>
+                      <option value="CODE128C">CODE128C</option>
+                      <option value="ITF14">ITF14</option>
+                      <option value="MSI">MSI</option>
+                      <option value="MSI10">MSI10</option>
+                      <option value="MSI11">MSI11</option>
+                      <option value="MSI1010">MSI1010</option <option value="MSI1110">MSI1110</option>
+                      <option value="pharmacode">pharmacode</option>
+                      <option value="codabar">codabar</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <span class="help-block" id="error"></span>
+                  </div>
+                </form>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
                 <div class="row">
-                    <!-- left column -->
-                    <div class="col-md-6">
-                        <div class="box box-success">
-                            <div class="box-header with-border">
-                                <h1 class="box-title">Generate Bar Code</h1>
-                            </div>
-                            <!-- /.box-header -->
-                            <!-- form start -->
-                            <div class="box-body">
-                                <form role="form">
-                                    <div class="form-group">
-                                        <label for="title">Text for Bar Code</label>
-                                        <textarea class="form-control"  rows="10" id="inputText" placeholder="Enter your text here" autofocus></textarea>
+                  <div class="col-xs-3">
+                    <button type="button" class="btn btn-success" id="generate">Generate Bar Code</button>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-footer -->
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title">Download Your Bar Code From Here</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="form-group">
+                  <div id="result">
+                    <canvas id="barcode" width="256" height="256"></canvas>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <div class="row">
+                  <div class="col-xs-1">
+                    <button type="button" class="btn btn-info" id="download">Download Bar Code</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="format">Bar Code Format</label>
-                                          <select id="format">
-                                              <option value="UPC" selected="selected">UPC - Universal Product Codes (12 DIGIT)</option>
-                                              <option value="EAN2">EAN2</option>
-                                              <option value="EAN5">EAN5</option>
-                                              <option value="EAN8">EAN8</option>
-                                              <option value="EAN13">EAN13</option>
-                                              <option value="CODE128">CODE128</option>
-                                              <option value="CODE128A">CODE128A</option>
-                                              <option value="CODE128B">CODE128B</option>
-                                              <option value="CODE128C">CODE128C</option>
-                                              <option value="ITF14">ITF14</option>
-                                              <option value="MSI">MSI</option>
-                                              <option value="MSI10">MSI10</option>
-                                              <option value="MSI11">MSI11</option>
-                                              <option value="MSI1010">MSI1010</option
-                                              <option value="MSI1110">MSI1110</option>
-                                              <option value="pharmacode">pharmacode</option>
-                                              <option value="codabar">codabar</option>
-                                          </select>
-                                      </div>
-                                      <div class="form-group">
-                                        <span class="help-block" id="error"></span>
-                                      </div>
-                                </form>
-                            </div>
-                            <!-- /.box-body -->
-                            <div class="box-footer">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <button type="button" class="btn btn-success" id="generate">Generate Bar Code</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.box-footer -->
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="box box-success">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Download Your Bar Code From Here</h3>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <div id="result">
-                                        <canvas id="barcode" width="256" height="256"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.box-body -->
-                            <div class="box-footer">
-                                <div class="row">
-                                    <div class="col-xs-1">
-                                        <button type="button" class="btn btn-info" id="download">Download Bar Code</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-            <section class="content">
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">About Bar Code Generator Tool</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <img class="img-responsive" src="images/barcode.jpg" alt="Online Open Source Bar Code Generator Tool" title="Online Open Source Bar Code Generator Tool">
-                        <p>This is a free online tool to generate Bar code for any text. You can copy/paste your desired text/string in above text field and hit Generate Bar Code button.</p>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">What is a Bar Code?</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p>It is a visual code that can be read by machines using camera. It is commonly used in mobile phones to read the URL from a printed media like message board or visiting card.</p>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Want To Know What Is The Bar Code of a Character or String?</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p>That is easy. Just type the character or a full string in the text box above and hit Generate Bar Code button. You should be able to see the Bar Code Image on right side.</p>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">How To Download Bar Code Image?</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p>The Bar code generated on this page can be downloaded using Download Bar code button. You can also download it (on most browsers except safari) by doing right click on image and choosing save image menu option.</p>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Can I Print this Bar Code?</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p>Yes, the generated Bar code is absolutely free to use for personal or business purposes. You can print it on a paper, visiting card, t-shirt or anywhere you like.</p>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-            </section>
-            {% include addthis %}
+          </div>
         </div>
-        <!-- /.content-wrapper -->
-        {% include theme-footer %}
+      </section>
+      <section class="content">
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">About Bar Code Generator Tool</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <img class="img-responsive" src="images/barcode.jpg" alt="Online Open Source Bar Code Generator Tool" title="Online Open Source Bar Code Generator Tool">
+            <p>This is a free online tool to generate Bar code for any text. You can copy/paste your desired text/string in above text field and hit Generate Bar Code button.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">What is a Bar Code?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>It is a visual code that can be read by machines using camera. It is commonly used in mobile phones to read the URL from a printed media like message board or visiting card.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Want To Know What Is The Bar Code of a Character or String?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>That is easy. Just type the character or a full string in the text box above and hit Generate Bar Code button. You should be able to see the Bar Code Image on right side.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">How To Download Bar Code Image?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>The Bar code generated on this page can be downloaded using Download Bar code button. You can also download it (on most browsers except safari) by doing right click on image and choosing save image menu option.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Can I Print this Bar Code?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>Yes, the generated Bar code is absolutely free to use for personal or business purposes. You can print it on a paper, visiting card, t-shirt or anywhere you like.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </section>
+      {% include addthis %}
     </div>
-    <!-- ./wrapper -->
-    {% include theme-bottom-js %}
+    <!-- /.content-wrapper -->
+    {% include theme-footer %}
+  </div>
+  <!-- ./wrapper -->
+  {% include theme-bottom-js %}
 
 </body>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
@@ -178,87 +177,95 @@ layout: post
 <script type="text/javascript" src="javascripts/reimg.js"></script>
 
 <script>
-
   // checksum calculation for GTIN-8, GTIN-12, GTIN-13, GTIN-14, and SSCC
-// based on http://www.gs1.org/barcodes/support/check_digit_calculator
-const isValidBarcode = (barcode) => {
-  // check length
-  if (barcode.length < 8 || barcode.length > 18 ||
+  // based on http://www.gs1.org/barcodes/support/check_digit_calculator
+  const isValidBarcode = (barcode) => {
+    // check length
+    if (barcode.length < 8 || barcode.length > 18 ||
       (barcode.length != 8 && barcode.length != 12 &&
-      barcode.length != 13 && barcode.length != 14 &&
-      barcode.length != 18)) {
-    return false;
-  }
-
-  var lastDigit = Number(barcode.substring(barcode.length - 1));
-  var checkSum = 0;
-  if (isNaN(lastDigit)) { return false; } // not a valid upc/ean
-
-  var arr = barcode.substring(0,barcode.length - 1).split("").reverse();
-  var oddTotal = 0, evenTotal = 0;
-
-  for (var i=0; i<arr.length; i++) {
-    if (isNaN(arr[i])) { return false; } // can't be a valid upc/ean we're checking for
-
-    if (i % 2 == 0) { oddTotal += Number(arr[i]) * 3; }
-    else { evenTotal += Number(arr[i]); }
-  }
-  checkSum = (10 - ((evenTotal + oddTotal) % 10)) % 10;
-
-  // true if they are equal
-  return checkSum == lastDigit;
-};
-    const BARCODES = {
-      UPC: {
-        validate: isValidBarcode,
-        name: 'UPC'
-      },
-      DEFAULT: {
-        validate: (input) => true,
-        name: 'DEFAULT'
-      }
-    };
-    const generateBarcode = () => {
-      try {
-        const input = $("#inputText").val();
-        const barcodeOptions = {};
-        barcodeOptions.format = $('#format option:selected').val() || 'UPC';
-        if(input) {
-          const barcode = BARCODES[barcodeOptions.format] || BARCODES.DEFAULT;
-          if(!barcode.validate(input)) {
-            $('#error').text(`Invalid ${barcode.name} Code, Can not generate barcode`);
-            return;
-          }
-          const canvas = document.getElementById('barcode');
-          const context = canvas.getContext('2d');
-          context.clearRect(0, 0, canvas.width, canvas.height);
-          JsBarcode("#barcode", input, barcodeOptions);
-          $('#error').text('')
-          return true;
-        }
-      }
+        barcode.length != 13 && barcode.length != 14 &&
+        barcode.length != 18)) {
       return false;
-    };
+    }
 
-    const download = () => {
-      if(generateBarcode()) {
-        ReImg.fromCanvas($("#result canvas")[0]).downloadPng("Barcode.png");
+    var lastDigit = Number(barcode.substring(barcode.length - 1));
+    var checkSum = 0;
+    if (isNaN(lastDigit)) {
+      return false;
+    } // not a valid upc/ean
+
+    var arr = barcode.substring(0, barcode.length - 1).split("").reverse();
+    var oddTotal = 0,
+      evenTotal = 0;
+
+    for (var i = 0; i < arr.length; i++) {
+      if (isNaN(arr[i])) {
+        return false;
+      } // can't be a valid upc/ean we're checking for
+
+      if (i % 2 == 0) {
+        oddTotal += Number(arr[i]) * 3;
+      } else {
+        evenTotal += Number(arr[i]);
       }
     }
-    $(document).ready(function() {
-        $("#generate").click(function() {
-            if(!generateBarcode()) {
-              $('#error').text('Failed to generate barcode for input');
-            }
-        });
+    checkSum = (10 - ((evenTotal + oddTotal) % 10)) % 10;
 
-        $("#download").click(function() {
-            download();
-        });
+    // true if they are equal
+    return checkSum == lastDigit;
+  };
+  const validUPC = (input) => (input && input.length === 12);
+  const BARCODES = {
+    UPC: {
+      validate: (input) => validUPC(input) && isValidBarcode(input),
+      name: 'UPC'
+    },
+    DEFAULT: {
+      validate: (input) => true,
+      name: 'DEFAULT'
+    }
+  };
+  const generateBarcode = () => {
+    try {
+      const input = $("#inputText").val();
+      const barcodeOptions = {};
+      barcodeOptions.format = $('#format option:selected').val() || 'UPC';
+      if (input) {
+        const barcode = BARCODES[barcodeOptions.format] || BARCODES.DEFAULT;
+        if (!barcode.validate(input)) {
+          $('#error').text(`Invalid ${barcode.name} Code, Can not generate barcode`);
+          return;
+        }
+        const canvas = document.getElementById('barcode');
+        const context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        JsBarcode("#barcode", input, barcodeOptions);
+        $('#error').text('')
+        return true;
+      }
+    }
+    return false;
+  };
 
-        $("#inputText").selectOnFocus();
-        $('#generators-category').addClass('active');
+  const download = () => {
+    if (generateBarcode()) {
+      ReImg.fromCanvas($("#result canvas")[0]).downloadPng("Barcode.png");
+    }
+  }
+  $(document).ready(function() {
+    $("#generate").click(function() {
+      if (!generateBarcode()) {
+        $('#error').text('Failed to generate barcode for input');
+      }
     });
+
+    $("#download").click(function() {
+      download();
+    });
+
+    $("#inputText").selectOnFocus();
+    $('#generators-category').addClass('active');
+  });
 </script>
 
 </html>
