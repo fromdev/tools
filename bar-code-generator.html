@@ -243,6 +243,9 @@ layout: post
         $('#error').text('')
         return true;
       }
+    } catch(e) {
+      // failure - default false is returned
+      console.log(e);
     }
     return false;
   };
