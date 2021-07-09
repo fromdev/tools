@@ -70,6 +70,27 @@ layout: post
                                     <div id="result">
                                         <canvas id="barcode" width="256" height="256"></canvas>
                                     </div>
+                                    <div id="formats">
+                                        <select id="format">
+                                            <option value="UPC" selected="selected">UPC</option>
+                                            <option value="EAN2">EAN2</option>
+                                            <option value="EAN5">EAN5</option>
+                                            <option value="EAN8">EAN8</option>
+                                            <option value="EAN13">EAN13</option>
+                                            <option value="CODE128">CODE128</option>
+                                            <option value="CODE128A">CODE128A</option>
+                                            <option value="CODE128B">CODE128B</option>
+                                            <option value="CODE128C">CODE128C</option>
+                                            <option value="ITF14">ITF14</option>
+                                            <option value="MSI">MSI</option>
+                                            <option value="MSI10">MSI10</option>
+                                            <option value="MSI11">MSI11</option>
+                                            <option value="MSI1010">MSI1010</option
+                                            <option value="MSI1110">MSI1110</option>
+                                            <option value="pharmacode">pharmacode</option>
+                                            <option value="codabar">codabar</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /.box-body -->
@@ -152,15 +173,28 @@ layout: post
 <script type="text/javascript" src="javascripts/reimg.js"></script>
 
 <script>
-    const barcodeOptions = { format: 'upc' };
+    const generateBarcode = () => {
+      const in = $("#inputText").val();
+      if(in) {
+        barcodeOptions.format = $('#format option:selected').val() || 'UPC';
+        JsBarcode("#barcode", in, barcodeOptions);
+        return true;
+      }
+      return false;
+    };
+
+    const download = () => {
+      if(generateBarcode()) {
+        ReImg.fromCanvas($("#result canvas")[0]).downloadPng("Barcode.png");
+      }
+    }
     $(document).ready(function() {
         $("#generate").click(function() {
-            JsBarcode("#barcode", $("#inputText").val(), barcodeOptions);
+            generateBarcode();
         });
 
         $("#download").click(function() {
-            JsBarcode("#barcode", $("#inputText").val(), barcodeOptions);
-            ReImg.fromCanvas($("#result canvas")[0]).downloadPng("Barcode.png")
+            download();
         });
 
         $("#inputText").selectOnFocus();
