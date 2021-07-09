@@ -50,12 +50,12 @@ layout: post
                   <div class="form-group">
                     <label for="format">Bar Code Format</label>
                     <select id="format">
-                      <option value="UPC" selected="selected">UPC - Universal Product Codes (12 DIGIT)</option>
-                      <option value="EAN2">EAN-2 - European Article Number</option>
-                      <option value="EAN5">EAN-5 - European Article Number</option>
-                      <option value="EAN8">EAN-8  - European Article Number</option>
-                      <option value="EAN13">EAN-13 - European Article Number (13 DIGIT)</option>
-                      <option value="EAN13">GTIN-13 - Global Trade Item Number (13 DIGIT)</option>
+                      <option value="UPC" selected="selected">UPC - (12 DIGIT)</option>
+                      <option value="EAN2">EAN-2</option>
+                      <option value="EAN5">EAN-5</option>
+                      <option value="EAN8">EAN-8</option>
+                      <option value="EAN13">EAN-13 - (13 DIGIT)</option>
+                      <option value="EAN13">GTIN-13 (13 DIGIT)</option>
                       <option value="CODE128">CODE128</option>
                       <option value="CODE128A">CODE128A</option>
                       <option value="CODE128B">CODE128B</option>
@@ -64,7 +64,8 @@ layout: post
                       <option value="MSI">MSI</option>
                       <option value="MSI10">MSI10</option>
                       <option value="MSI11">MSI11</option>
-                      <option value="MSI1010">MSI1010</option <option value="MSI1110">MSI1110</option>
+                      <option value="MSI1010">MSI1010</option>
+                      <option value="MSI1110">MSI1110</option>
                       <option value="pharmacode">pharmacode</option>
                       <option value="codabar">codabar</option>
                     </select>
@@ -163,6 +164,37 @@ layout: post
           </div>
           <!-- /.box-body -->
         </div>
+
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">What Types of bardcode are supported by this tool?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>This tool supports following barcodes</p>
+            <ul>
+              <li>UPC - Universal Product Codes - 12 Digit</li>
+              <li>EAN-2 - European Article Number</li>
+              <li>EAN-5 - European Article Number</li>
+              <li>EAN-8 - European Article Number</li>
+              <li>EAN-13 - European Article Number (13 DIGIT)</li>
+              <li>GTIN-13 - Global Trade Item Number (13 DIGIT)</li>
+              <li>CODE128</li>
+              <li>CODE128A</li>
+              <li>CODE128B</li>
+              <li">CODE128C</li>
+              <li>ITF14</li>
+              <li>MSI</li>
+              <li>MSI10</li>
+              <li>MSI11</li>
+              <li>MSI1010</li>
+              <li>MSI1110</li>
+              <li>pharmacode</li>
+              <li>codabar</li>
+            </ul>
+          </div>
+          <!-- /.box-body -->
+        </div>
       </section>
       {% include addthis %}
     </div>
@@ -239,7 +271,7 @@ layout: post
           return false;
         }
       }
-    } catch(e) {
+    } catch (e) {
       $('#error').text('Failed to generate barcode for input');
       return false;
     }
@@ -256,7 +288,7 @@ layout: post
         JsBarcode("#barcode", input, barcodeOptions);
         $('#error').text('')
       }
-    } catch(e) {
+    } catch (e) {
       // failure - default false is returned
       console.log(e);
     }
