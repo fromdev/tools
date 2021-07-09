@@ -160,7 +160,7 @@ layout: post
 
         $("#download").click(function() {
             JsBarcode("#barcode", $("#inputText").val(), barcodeOptions);
-            ReImg.fromCanvas($("#barcode")).downloadPng("Barcode.png")
+            ReImg.fromCanvas($("#result canvas")[0]).downloadPng("Barcode.png")
         });
 
         $("#inputText").selectOnFocus();
