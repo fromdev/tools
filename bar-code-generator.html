@@ -225,7 +225,8 @@ layout: post
       name: 'DEFAULT'
     }
   };
-  const generateBarcode = () => {
+
+  const validateBarcode = (input) => {
     try {
       const input = $("#inputText").val();
       const barcodeOptions = {};
@@ -234,35 +235,51 @@ layout: post
         const barcode = BARCODES[barcodeOptions.format] || BARCODES.DEFAULT;
         if (!barcode.validate(input)) {
           $('#error').text(`Invalid ${barcode.name} Code, Can not generate barcode`);
-          return;
+          return false;
         }
+      }
+    } catch(e) {
+      $('#error').text('Failed to generate barcode for input');
+      return false;
+    }
+    return true;
+  }
+  const generateBarcode = (input) => {
+    try {
+      const barcodeOptions = {};
+      barcodeOptions.format = $('#format option:selected').val() || 'UPC';
+      if (input) {
         const canvas = document.getElementById('barcode');
         const context = canvas.getContext('2d');
         context.clearRect(0, 0, canvas.width, canvas.height);
         JsBarcode("#barcode", input, barcodeOptions);
         $('#error').text('')
-        return true;
       }
     } catch(e) {
       // failure - default false is returned
       console.log(e);
     }
-    return false;
   };
 
   const download = () => {
-    if (generateBarcode()) {
+    $('#error').text('');
+    const input = $("#inputText").val();
+    if (validateBarcode(input)) {
+      generateBarcode(input);
       ReImg.fromCanvas($("#result canvas")[0]).downloadPng("Barcode.png");
     }
   }
   $(document).ready(function() {
     $("#generate").click(function() {
-      if (!generateBarcode()) {
-        $('#error').text('Failed to generate barcode for input');
+      $('#error').text('');
+      const input = $("#inputText").val();
+      if (validateBarcode(input)) {
+        generateBarcode(input);
       }
     });
 
     $("#download").click(function() {
+      $('#error').text('');
       download();
     });
 
