@@ -274,7 +274,7 @@ layout: post
     return 'CODE128';
   };
 
-  const prepareOptions = () => {
+  const prepareOptions = (input) => {
     const barcodeOptions = {};
     const selectedFormat = $('#format option:selected').val();
     const format = (selectedFormat === 'autodetect') ? detectBarcodeFormat(input) : 'CODE128';
@@ -285,7 +285,7 @@ layout: post
   const validateBarcode = (input) => {
     try {
       const input = $("#inputText").val();
-      const barcodeOptions = prepareOptions();
+      const barcodeOptions = prepareOptions(input);
       if (input) {
         const barcode = BARCODES[barcodeOptions.format] || BARCODES.DEFAULT;
         if (!barcode.validate(input)) {
@@ -301,7 +301,7 @@ layout: post
   };
   const generateBarcode = (input) => {
     try {
-      const barcodeOptions = prepareOptions();
+      const barcodeOptions = prepareOptions(input);
       if (input) {
         const canvas = document.getElementById('barcode');
         const context = canvas.getContext('2d');
