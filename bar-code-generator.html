@@ -282,6 +282,7 @@ layout: post
       const format = (selectedFormat === 'autodetect') ? detectBarcodeFormat(input) : 'CODE128';
       barcodeOptions.format = format || 'CODE128';
       if (input) {
+        $('#autodetect').text(`Using Format: ${barcodeOptions.format}`);
         const barcode = BARCODES[barcodeOptions.format] || BARCODES.DEFAULT;
         if (!barcode.validate(input)) {
           $('#error').text(`Invalid ${barcode.name} Code, Can not generate barcode`);
