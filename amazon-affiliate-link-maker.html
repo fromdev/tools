@@ -251,7 +251,7 @@ layout: post
     }
     embedCodeSetup();
     $("#embedCode").selectOnFocus();
-    $('#copy-taggedurl').copyText({textElementId: 'taggedurl'});
+    $('#copy-taggedurl').copyText({textElementId: 'taggedurl', confirm: () => {$("#confirm.taggedurl").show().delay(5000).fadeOut();}});
   });
   const embedCodeSetup = () => {
     $('#embedCode').val(
