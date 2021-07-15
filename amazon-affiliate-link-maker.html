@@ -233,10 +233,9 @@ layout: post
   {% include theme-bottom-js %}
 
 </body>
-<script src="plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script src="javascripts/fromdev-ux-addon.js"></script>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script src="plugins/copyText/jquery.copyText.min.js"></script>
-
 <script src="javascripts/fromdev-utils.js?v=1"></script>
 
 <script>
@@ -267,31 +266,12 @@ layout: post
     }
     embedCodeSetup();
     $("#embedCode").selectOnFocus();
-    registerCopyText('taggedurl');
-    registerCopyText('cleanurl');
-    registerCopyText('asin');
-    registerCopyText('linkhtml');
-
+    UxUtils.registerCopyText('taggedurl');
+    UxUtils.registerCopyText('cleanurl');
+    UxUtils.registerCopyText('asin');
+    UxUtils.registerCopyText('linkhtml');
   });
-  const confirmShowHide = (id) => {
-    $(id).show().delay(5000).fadeOut();
-  };
 
-  const registerCopyText = (id) => {
-    if(!id) return;
-    const buttonId = `#copy-${id}`
-    const copyButton = $(buttonId);
-    if(!copyButton) return;
-    const confirmSpanId = `#confirm-${id}`;
-    const confirmSpan = $(confirmSpanId);
-    if(!confirmSpan) return;
-    copyButton.copyText({
-      textElementId: id,
-      confirm: function() {
-        confirmShowHide(confirmSpanId);
-      }
-    });
-  };
   const embedCodeSetup = () => {
     $('#embedCode').val(
       `<iframe style=\"position: fixed;top: 0px;bottom: 0px;right: 0px;width: 100%;border: none;margin: 0;padding: 0;overflow: hidden;z-index: 999999;height: 100%;\" scrolling=\"auto\" src=\"https:\/\/tools.fromdev.com\/amazon-affiliate-link-maker.html?mode=embed&affiliateTag=${getAffiliateTag()}\"><\/iframe>`
