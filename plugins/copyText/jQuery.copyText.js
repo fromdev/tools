@@ -11,8 +11,8 @@
     if(!context || !context.textElementId) return; //nothing to register
     var u = n(this);
       n.click(function() {
-      const val = copyTextAction(context.textElementId);
-      if(val && context.confirm) context.confirm();
+        const val = copyTextAction(context.textElementId);
+        if(val && context.confirm) context.confirm();
     });
   }
 }(jQuery);
