@@ -82,9 +82,9 @@ layout: post
                     <div class="input-group margin">
                       <input class="form-control" id="taggedurl" type="text" placeholder="Original URL with Tag" />
                       <span class="input-group-btn">
-                        <button type="button" id="copy.taggedurl" class="btn btn-default btn-flat"><i class="fa fa-copy"></i> Copy Link</button>
+                        <button type="button" id="copy-taggedurl" class="btn btn-default btn-flat"><i class="fa fa-copy"></i> Copy Link</button>
                       </span>
-                      <span class="label label-success" id="confirm.taggedurl" style="display:none"><i class="fa fa-check"></i> Copied</span>
+                      <span class="label label-success" id="confirm-taggedurl" style="display:none"><i class="fa fa-check"></i> Copied</span>
                     </div>
 
                   </div>
@@ -219,17 +219,11 @@ layout: post
 </body>
 <script src="plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script src="plugins/copyText/jquery.copyText.min.js"></script>
+
 <script src="javascripts/fromdev-utils.js?v=1"></script>
 
 <script>
-  const copyText = (id) => {
-    if (!id) return false;
-    const copyText = document.getElementById(id);
-    copyText.select();
-    copyText.setSelectionRange(0, 99999)
-    document.execCommand("copy");
-    return true;
-  };
   $(document).ready(function() {
     getAffiliateTag();
     $('#convert').click(function() {
@@ -257,11 +251,7 @@ layout: post
     }
     embedCodeSetup();
     $("#embedCode").selectOnFocus();
-    $('#copy.taggedurl').click(function() {
-      if (copyText('taggedurl')) {
-        $("#confirm.taggedurl").show().delay(5000).fadeOut();
-      }
-    });
+    $('#copy-taggedurl').copyText('taggedurl');
   });
   const embedCodeSetup = () => {
     $('#embedCode').val(
