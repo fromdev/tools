@@ -219,7 +219,7 @@ layout: post
 </body>
 <script src="plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
-<script src="plugins/copyText/jquery.copyText.min.js"></script>
+<script src="plugins/copyText/jquery.copyText.js"></script>
 
 <script src="javascripts/fromdev-utils.js?v=1"></script>
 
@@ -251,7 +251,7 @@ layout: post
     }
     embedCodeSetup();
     $("#embedCode").selectOnFocus();
-    $('#copy-taggedurl').copyText('taggedurl');
+    $('#copy-taggedurl').copyText({textElementId: 'taggedurl'});
   });
   const embedCodeSetup = () => {
     $('#embedCode').val(
