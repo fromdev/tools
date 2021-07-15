@@ -89,7 +89,14 @@ layout: post
                   </div>
                   <div class="form-group">
                     <label for="cleanurl">Clean Amazon URL with Affiliate Tag</label>
-                    <input class="form-control" id="cleanurl" type="text" placeholder="Clean URL" />
+
+                    <div class="input-group margin">
+                      <input class="form-control" id="cleanurl" type="text" placeholder="Clean URL" />
+                      <span class="input-group-btn">
+                        <button type="button" id="copy-cleanurl" class="btn btn-default btn-flat"><i class="fa fa-copy"></i> Copy Link</button>
+                      </span>
+                    </div>
+                    <span class="label label-success" id="confirm-cleanurl" style="display:none"><i class="fa fa-check"></i> Copied</span>
                   </div>
                   <div class="form-group">
                     <label for="asin">Extracted ASIN (Unique Product Id on Amazon) </label>
@@ -250,15 +257,30 @@ layout: post
     }
     embedCodeSetup();
     $("#embedCode").selectOnFocus();
-    $('#copy-taggedurl').copyText({
-      textElementId: 'taggedurl',
-      confirm: function() {
-        confirmShowHide('#confirm-taggedurl');
-      }
-    });
+    registerCopyText('taggedurl');
+    //cleanurl
+    registerCopyText('cleanurl');
+
+
   });
   const confirmShowHide = (id) => {
     $(id).show().delay(5000).fadeOut();
+  };
+
+  const registerCopyText = (id) => {
+    if(!id) return;
+    const buttonId = `#copy-${id}`
+    const copyButton = $(buttonId);
+    if(!copyButton) return;
+    const confirmSpanId = `#confirm-${id}`;
+    const confirmSpan = $(confirmSpanId);
+    if(!confirmSpan) return;
+    copyButton.copyText({
+      textElementId: id,
+      confirm: function() {
+        confirmShowHide(confirmSpanId);
+      }
+    });
   };
   const embedCodeSetup = () => {
     $('#embedCode').val(
