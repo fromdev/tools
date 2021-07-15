@@ -251,8 +251,16 @@ layout: post
     }
     embedCodeSetup();
     $("#embedCode").selectOnFocus();
-    $('#copy-taggedurl').copyText({textElementId: 'taggedurl', confirm: () => {$("#confirm.taggedurl").show().delay(5000).fadeOut();}});
+    $('#copy-taggedurl').copyText({
+      textElementId: 'taggedurl',
+      confirm: function() {
+        confirmShowHide('#confirm.taggedurl');
+      }
+    });
   });
+  const confirmShowHide = (id) => {
+    $(id).show().delay(5000).fadeOut();
+  };
   const embedCodeSetup = () => {
     $('#embedCode').val(
       `<iframe style=\"position: fixed;top: 0px;bottom: 0px;right: 0px;width: 100%;border: none;margin: 0;padding: 0;overflow: hidden;z-index: 999999;height: 100%;\" scrolling=\"auto\" src=\"https:\/\/tools.fromdev.com\/amazon-affiliate-link-maker.html?mode=embed&affiliateTag=${getAffiliateTag()}\"><\/iframe>`
