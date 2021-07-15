@@ -21,3 +21,4 @@ UxUtils.copyTextAddon = {
     });
   }
 };
+const CopyTextAddon = UxUtils.copyTextAddon;

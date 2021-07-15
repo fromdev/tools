@@ -266,10 +266,10 @@ layout: post
     }
     embedCodeSetup();
     $("#embedCode").selectOnFocus();
-    UxUtils.registerCopyText('taggedurl');
-    UxUtils.registerCopyText('cleanurl');
-    UxUtils.registerCopyText('asin');
-    UxUtils.registerCopyText('linkhtml');
+    CopyTextAddon.registerCopyText('taggedurl');
+    CopyTextAddon.registerCopyText('cleanurl');
+    CopyTextAddon.registerCopyText('asin');
+    CopyTextAddon.registerCopyText('linkhtml');
   });
 
   const embedCodeSetup = () => {
