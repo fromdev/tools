@@ -10,9 +10,10 @@
   n.fn.copyText = function(context) {
     if(!context || !context.textElementId) return; //nothing to register
     var u = n(this);
-      n.click(function() {
-        const val = copyTextAction(context.textElementId);
-        if(val && context.confirm) context.confirm();
+    if(!u) return;
+    u.click(function() {
+      const val = copyTextAction(context.textElementId);
+      if(val && context.confirm) context.confirm();
     });
   }
 }(jQuery);
