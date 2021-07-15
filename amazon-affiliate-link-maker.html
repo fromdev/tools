@@ -79,7 +79,14 @@ layout: post
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label for="taggedurl">Amazon URL with Affiliate Tag</label>
-                                        <input class="form-control" id="taggedurl" type="text" placeholder="Original URL with Tag" />
+                                        <div class="input-group margin">
+                                          <input class="form-control" id="taggedurl" type="text" placeholder="Original URL with Tag" />
+                                          <span class="input-group-btn">
+                                            <button type="button" id="copy.taggedurl" class="btn btn-default btn-flat"><i class="fa fa-copy"></i> Copy Link</button>
+                                          </span>
+                                          <span class="label label-success" id="confirm.taggedurl" style="display:none"><i class="fa fa-check"></i> Copied</span>
+                                        </div>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="cleanurl">Clean Amazon URL with Affiliate Tag</label>
@@ -215,6 +222,14 @@ layout: post
 <script src="javascripts/fromdev-utils.js?v=1"></script>
 
 <script>
+  const copyText = (id) = > {
+    if(!id) return false;
+    const copyText = document.getElementById(id);
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    return true;
+  };
     $(document).ready(function() {
         getAffiliateTag();
         $('#convert').click(function() {
@@ -242,7 +257,11 @@ layout: post
         }
         embedCodeSetup();
         $("#embedCode").selectOnFocus();
-
+        $('#copy.taggedurl').click(function(){
+          if(copyText('taggedurl')) {
+            $("#confirm.taggedurl").show().delay(5000).fadeOut();
+          }
+        });
     });
     const embedCodeSetup = () => {
       $('#embedCode').val(`<iframe style=\"position: fixed;top: 0px;bottom: 0px;right: 0px;width: 100%;border: none;margin: 0;padding: 0;overflow: hidden;z-index: 999999;height: 100%;\" scrolling=\"auto\" src=\"https:\/\/tools.fromdev.com\/amazon-affiliate-link-maker.html?mode=embed&affiliateTag=${getAffiliateTag()}\"><\/iframe>`);
