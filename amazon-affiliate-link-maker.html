@@ -89,7 +89,6 @@ layout: post
                   </div>
                   <div class="form-group">
                     <label for="cleanurl">Clean Amazon URL with Affiliate Tag</label>
-
                     <div class="input-group margin">
                       <input class="form-control" id="cleanurl" type="text" placeholder="Clean URL" />
                       <span class="input-group-btn">
@@ -100,7 +99,14 @@ layout: post
                   </div>
                   <div class="form-group">
                     <label for="asin">Extracted ASIN (Unique Product Id on Amazon) </label>
-                    <input class="form-control" id="asin" type="text" placeholder="Exracted ASIN" />
+
+                    <div class="input-group margin">
+                      <input class="form-control" id="asin" type="text" placeholder="Exracted ASIN" />
+                      <span class="input-group-btn">
+                        <button type="button" id="copy-asin" class="btn btn-default btn-flat"><i class="fa fa-copy"></i> Copy ASIN</button>
+                      </span>
+                    </div>
+                    <span class="label label-success" id="confirm-asin" style="display:none"><i class="fa fa-check"></i> Copied</span>
                   </div>
                   <div class="form-group">
                     <label for="openurl">Clickable URL</label>
@@ -260,7 +266,7 @@ layout: post
     registerCopyText('taggedurl');
     //cleanurl
     registerCopyText('cleanurl');
-
+    registerCopyText('asin');
 
   });
   const confirmShowHide = (id) => {
