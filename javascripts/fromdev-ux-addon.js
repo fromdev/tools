@@ -1,6 +1,6 @@
 var UxUtils = UxUtils || {};
 
-UxUtils.confirmShowHide = (id) => {
+UxUtils.showHide = (id) => {
   $(id).show().delay(5000).fadeOut();
 };
 
@@ -16,9 +16,10 @@ UxUtils.copyTextAddon = {
     copyButton.copyText({
       textElementId: id,
       confirm: function() {
-        UxUtils.confirmShowHide(confirmSpanId);
+        UxUtils.showHide(confirmSpanId);
       }
     });
   }
 };
 const CopyTextAddon = UxUtils.copyTextAddon;
+const ShowHide = UxUtils.showHide;
