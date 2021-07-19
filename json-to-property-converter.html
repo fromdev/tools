@@ -190,7 +190,7 @@ layout: post
             traverseBoth(obj, "", formatJsonPropMappings, context);
           }
           catch(error) {
-            ShowHide('error');
+            ShowHide('#error');
             console.log(error);
           }
           $("#propertyValues").val(mappings.join('\n'));
