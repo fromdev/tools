@@ -49,6 +49,24 @@ layout: post
                                           <div id="hidden" style="display:hidden;"></div>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="list-style">Separator</label>
+                                        <select class="form-control" id="separator">
+                                            <option value="." selected="selected">DOT [.] - (Default)</option>
+                                            <option value=":">COLON [:]</option>
+                                            <option value="-">DASH [-]</option>
+                                            <option value="_">UNDERSCORE [_]</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="list-style">Enclose Fields and Values</label>
+                                        <select class="form-control" id="enclose">
+                                            <option value="" selected="selected">Do No Enclose - (Default)</option>
+                                            <option value='"'>Enclose Using Double Quotes [""]</option>
+                                            <option value="'">Enclose Using Single Quotes ['']</option>
+                                        </select>
+                                    </div>
+
                                 </form>
                             </div>
                             <!-- /.box-body -->
@@ -163,6 +181,10 @@ layout: post
         if(text) {
           try {
             var obj = JSON.parse(text,"");
+            const context = {
+              separator : $('#separator option:selected') || '.',
+              enclose: $('#enclose option:selected') || false
+            };
             traverseBoth(obj,"",formatJsonPropMappings);
           }
           catch(error) {
