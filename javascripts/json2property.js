@@ -8,12 +8,11 @@ var formatJsonPropMappings = function(jsonparent, k, v, context) {
     var jsonpath = formatJsonPath(jsonparent,k,v, context);
     var mapping = {"json":jsonpath,"value":v};
     const vtype = typeof v;
-    if(vtype === "string" || vtype === 'number'){
-      if(context.enclose) {
-        path = `${context.enclose}${jsonpath}${context.enclose}=${context.enclose}${v}${context.enclose}`;
-      } else {
-        mappings.push(`${jsonpath}=${v}`);
-      }
+    if(vtype === "string" || vtype === 'number') {
+      const path = (context.enclose) ?
+        `${context.enclose}${jsonpath}${context.enclose}=${context.enclose}${v}${context.enclose}`
+        : `${jsonpath}=${v}`;
+      mappings.push(path);
     }
     return mapping;
 };
