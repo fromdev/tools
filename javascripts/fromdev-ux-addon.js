@@ -21,5 +21,9 @@ UxUtils.copyTextAddon = {
     });
   }
 };
+
+const selectedOption = (id, defaultValue) => $(`#${id} option:selected`).val() || defaultValue;
+
 const CopyTextAddon = UxUtils.copyTextAddon;
 const ShowHide = UxUtils.showHide;
+const SelectedOption = UxUtils.selectedOption;

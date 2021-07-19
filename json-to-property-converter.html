@@ -184,10 +184,10 @@ layout: post
           try {
             var obj = JSON.parse(text,"");
             const context = {
-              separator : $('#separator option:selected') || '.',
-              enclose: $('#enclose option:selected') || false
+              separator : SelectedOption('separator', '.'),
+              enclose: SelectedOption('enclose', false)
             };
-            traverseBoth(obj,"",formatJsonPropMappings);
+            traverseBoth(obj, "", formatJsonPropMappings, context);
           }
           catch(error) {
             ShowHide('error');
