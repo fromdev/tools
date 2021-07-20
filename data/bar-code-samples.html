@@ -171,134 +171,24 @@ layout: post
 <script src="/plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script src="/javascripts/JsBarcode.all.min.js"></script>
 <script src="/javascripts/reimg.js"></script>
+<script src="javascripts/barcode-ux-utils.js"></script>
 <script src="/javascripts/data/upc-list.js"></script>
 
 <script>
-  // checksum calculation for GTIN-8, GTIN-12, GTIN-13, GTIN-14, and SSCC
-  // based on http://www.gs1.org/barcodes/support/check_digit_calculator
-  const isValidBarcode = (barcode) => {
-    // check length
-    if (barcode.length < 8 || barcode.length > 18 ||
-      (barcode.length != 8 && barcode.length != 12 &&
-        barcode.length != 13 && barcode.length != 14 &&
-        barcode.length != 18)) {
-      return false;
-    }
-
-    var lastDigit = Number(barcode.substring(barcode.length - 1));
-    var checkSum = 0;
-    if (isNaN(lastDigit)) {
-      return false;
-    } // not a valid upc/ean
-
-    var arr = barcode.substring(0, barcode.length - 1).split("").reverse();
-    var oddTotal = 0,
-      evenTotal = 0;
-
-    for (var i = 0; i < arr.length; i++) {
-      if (isNaN(arr[i])) {
-        return false;
-      } // can't be a valid upc/ean we're checking for
-
-      if (i % 2 == 0) {
-        oddTotal += Number(arr[i]) * 3;
-      } else {
-        evenTotal += Number(arr[i]);
-      }
-    }
-    checkSum = (10 - ((evenTotal + oddTotal) % 10)) % 10;
-
-    // true if they are equal
-    return checkSum == lastDigit;
-  };
-  const validUPC = (input) => (input && input.length === 12);
-  const BARCODES = {
-    UPC: {
-      validate: (input) => validUPC(input) && isValidBarcode(input),
-      name: 'UPC'
-    },
-    DEFAULT: {
-      validate: (input) => true,
-      name: 'DEFAULT'
-    }
-  };
-
-  const detectBarcodeFormat = (input) => {
-    const incode = input || '';
-    if (incode.length === 12) return 'UPC';
-    if (incode.length === 13) return 'EAN13';
-    if (incode.length === 2) return 'EAN2';
-    if (incode.length === 5) return 'EAN5';
-    if (incode.length === 8) return 'EAN8';
-    if (incode.length === 14) return 'ITF14';
-    $('#error').text('Failed to detect barcode format. Using default');
-    return 'CODE128';
-  };
-
-  const prepareOptions = (input) => {
-    const barcodeOptions = {};
-    const selectedFormat = $('#format option:selected').val();
-    const format = (selectedFormat === 'autodetect') ? detectBarcodeFormat(input) : 'CODE128';
-    barcodeOptions.format = format || 'CODE128';
-    return barcodeOptions;
-  };
-
-  const validateBarcode = (input) => {
-    try {
-      const input = $("#inputText").val();
-      const barcodeOptions = prepareOptions(input);
-      if (input) {
-        const barcode = BARCODES[barcodeOptions.format] || BARCODES.DEFAULT;
-        if (!barcode.validate(input)) {
-          $('#error').text(`Invalid ${barcode.name} Code, Can not generate barcode`);
-          return false;
-        }
-      }
-    } catch (e) {
-      $('#error').text('Failed to generate barcode for input');
-      return false;
-    }
-    return true;
-  };
-  const generateBarcode = (input) => {
-    try {
-      const barcodeOptions = prepareOptions(input);
-      if (input) {
-        const canvas = document.getElementById('barcode');
-        const context = canvas.getContext('2d');
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        JsBarcode("#barcode", input, barcodeOptions);
-        $('#error').text('');
-        $('#autodetect').text(`Barcode Format: ${barcodeOptions.format}`);
-      }
-    } catch (e) {
-      // failure - default false is returned
-      $('#error').text('Failed to generate barcode for input');
-      console.log(e);
-    }
-  };
-
-  const download = () => {
-    $('#error').text('');
-    const input = $("#inputText").val();
-    if (validateBarcode(input)) {
-      generateBarcode(input);
-      ReImg.fromCanvas($("#result canvas")[0]).downloadPng("Barcode.png");
-    }
-  }
+  
   $(document).ready(function() {
     generateBarcode(ArrayUtils.nextRandomItem(upcList));
     $("#generate").click(function() {
       $('#error').text('');
-      const input = $("#inputText").val();
-      if (validateBarcode(input)) {
-        generateBarcode(input);
+      const input = ArrayUtils.nextRandomItem(upcList);
+      if (BarcodeUxUtils.validateBarcode(input)) {
+        BarcodeUxUtils.generateBarcode(input);
       }
     });
 
     $("#download").click(function() {
       $('#error').text('');
-      download();
+      BarcodeUxUtils.download();
     });
 
     $("#inputText").selectOnFocus();
