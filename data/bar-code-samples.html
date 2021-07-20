@@ -43,11 +43,17 @@ layout: post
                     <canvas id="barcode" width="256" height="256"></canvas>
                   </div>
                 </div>
+                <div class="form-group">
+                    <p id="autodetect" class="text-aqua"></p>
+                </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
                 <div class="row">
-                  <div class="col-xs-1">
+                  <div class="col-xs-3">
+                    <button type="button" class="btn btn-success" id="generate">Generate Bar Code</button>
+                  </div>
+                  <div class="col-xs-3">
                     <button type="button" class="btn btn-info" id="download">Download Bar Code</button>
                   </div>
                 </div>
@@ -263,7 +269,7 @@ layout: post
         context.clearRect(0, 0, canvas.width, canvas.height);
         JsBarcode("#barcode", input, barcodeOptions);
         $('#error').text('');
-        $('#autodetect').text(`Using Format: ${barcodeOptions.format}`);
+        $('#autodetect').text(`Barcode Format: ${barcodeOptions.format}`);
       }
     } catch (e) {
       // failure - default false is returned
