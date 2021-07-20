@@ -161,9 +161,11 @@ layout: post
   {% include theme-bottom-js %}
 
 </body>
+<script src="/javascripts/fromdev-utils.js"></script>
 <script src="/plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script src="/javascripts/JsBarcode.all.min.js"></script>
-<script type="text/javascript" src="/javascripts/reimg.js"></script>
+<script src="/javascripts/reimg.js"></script>
+<script src="/javascripts/data/upc-list.js"></script>
 
 <script>
   // checksum calculation for GTIN-8, GTIN-12, GTIN-13, GTIN-14, and SSCC
@@ -279,6 +281,7 @@ layout: post
     }
   }
   $(document).ready(function() {
+    generateBarcode(ArrayUtils.nextRandomItem(upcList));
     $("#generate").click(function() {
       $('#error').text('');
       const input = $("#inputText").val();

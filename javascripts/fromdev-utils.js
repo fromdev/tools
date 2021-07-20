@@ -88,6 +88,9 @@ Utils.arrayutil = {
         }
 
         return array;
+    },
+    nextRandomItem: (array) => {
+        return (!array) ? undefined : array[Utils.getRandomInt(0,array.length)];
     }
 };
 
