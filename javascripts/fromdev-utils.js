@@ -90,7 +90,7 @@ Utils.arrayutil = {
         return array;
     },
     nextRandomItem: (array) => {
-        return (!array) ? undefined : array[Utils.getRandomInt(0,array.length)];
+        return (!array) ? undefined : array[Utils.randomutil.getRandomInt(0,array.length)];
     }
 };
 
