@@ -40,7 +40,7 @@ var BarcodeUxUtils = BarcodeUxUtils || {};
   BarcodeUxUtils.validUPC = (input) => (input && input.length === 12);
   BarcodeUxUtils.BARCODES = {
     UPC: {
-      validate: (input) => validUPC(input) && isValidBarcode(input),
+      validate: (input) => BarcodeUxUtils.validUPC(input) && BarcodeUxUtils.isValidBarcode(input),
       name: 'UPC'
     },
     DEFAULT: {
@@ -64,7 +64,7 @@ var BarcodeUxUtils = BarcodeUxUtils || {};
   BarcodeUxUtils.prepareOptions = (input) => {
     const barcodeOptions = {};
     const selectedFormat = $('#format option:selected').val();
-    const format = (selectedFormat === 'autodetect') ? detectBarcodeFormat(input) : 'CODE128';
+    const format = (selectedFormat === 'autodetect') ? BarcodeUxUtils.detectBarcodeFormat(input) : 'CODE128';
     barcodeOptions.format = format || 'CODE128';
     return barcodeOptions;
   };
@@ -72,7 +72,7 @@ var BarcodeUxUtils = BarcodeUxUtils || {};
   BarcodeUxUtils.validateBarcode = (input) => {
     try {
       const input = $("#inputText").val();
-      const barcodeOptions = prepareOptions(input);
+      const barcodeOptions = BarcodeUxUtils.prepareOptions(input);
       if (input) {
         const barcode = BARCODES[barcodeOptions.format] || BARCODES.DEFAULT;
         if (!barcode.validate(input)) {
@@ -88,7 +88,7 @@ var BarcodeUxUtils = BarcodeUxUtils || {};
   };
   BarcodeUxUtils.generateBarcode = (input) => {
     try {
-      const barcodeOptions = prepareOptions(input);
+      const barcodeOptions = BarcodeUxUtils.prepareOptions(input);
       if (input) {
         const canvas = document.getElementById('barcode');
         const context = canvas.getContext('2d');
@@ -107,8 +107,8 @@ var BarcodeUxUtils = BarcodeUxUtils || {};
   BarcodeUxUtils.download = () => {
     $('#error').text('');
     const input = $("#inputText").val();
-    if (validateBarcode(input)) {
-      generateBarcode(input);
+    if (BarcodeUxUtils.validateBarcode(input)) {
+        BarcodeUxUtils.generateBarcode(input);
       ReImg.fromCanvas($("#result canvas")[0]).downloadPng("Barcode.png");
     }
   };
