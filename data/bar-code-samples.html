@@ -177,7 +177,7 @@ layout: post
 <script>
   
   $(document).ready(function() {
-    generateBarcode(ArrayUtils.nextRandomItem(upcList));
+    BarcodeUxUtils.generateBarcode(ArrayUtils.nextRandomItem(upcList));
     $("#generate").click(function() {
       $('#error').text('');
       const input = ArrayUtils.nextRandomItem(upcList);
