@@ -70,6 +70,10 @@ layout: post
                 <div class="form-group">
                     <p id="autodetect" class="text-aqua"></p>
                 </div>
+                <div class="form-group">
+                  <label for="amazon-url">Find On Amazon</label>
+                  <div class="form-control"> <a id="amazon-url" target="_blank"></a></div>
+                </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
@@ -207,6 +211,7 @@ layout: post
       const input = ArrayUtils.nextRandomItem(upcList);
       if (BarcodeUxUtils.validateBarcode(input)) {
         BarcodeUxUtils.generateBarcode(input);
+        $('#amazon-url').attr('href', Utils.amazon.createCleanAffiliateURL(`https://www.amazon.com/s?k=${input}`, '', 'fromdevtools-20'));
       }
     });
 
