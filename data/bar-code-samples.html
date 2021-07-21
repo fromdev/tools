@@ -74,6 +74,10 @@ layout: post
                   <label for="amazon-url">Find On Amazon</label>
                   <div class="form-control"> <a id="amazon-url" target="_blank">Open On Amazon</a></div>
                 </div>
+                <div class="form-group">
+                  <label for="ebay-url">Find On eBay</label>
+                  <div class="form-control"> <a id="ebay-url" target="_blank">Open On eBay</a></div>
+                </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
@@ -206,6 +210,10 @@ layout: post
   const createAmazonUrl = (input) => {
     $('#amazon-url').attr('href', `https://www.amazon.com/s?k=${input}&tag=fromdevtools-20`);
   };
+  const createEbayUrl = (input) => {
+    $('#ebay-url').attr('href', `https://www.ebay.com/sch/i.html?_nkw=${input}&_sacat=0`);
+  };
+  'https://www.ebay.com/sch/i.html?_nkw=0608410040359&_sacat=0'
 
   $(document).ready(function() {
     const randomPick = ArrayUtils.nextRandomItem(upcList);
