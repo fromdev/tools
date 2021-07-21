@@ -120,6 +120,6 @@ var BarcodeUxUtils = BarcodeUxUtils || {};
   };
 
   BarcodeUxUtils.createUrls = (input) => {
-    createAmazonUrl(input);
-    createEbayUrl(input);
+    BarcodeUxUtils.createAmazonUrl(input);
+    BarcodeUxUtils.createEbayUrl(input);
   };
