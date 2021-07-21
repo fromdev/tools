@@ -204,7 +204,7 @@ layout: post
 
 <script>
   const createAmazonUrl = (input) => {
-    $('#amazon-url').attr('href', Utils.amazon.createCleanAffiliateURL(`https://www.amazon.com/s?k=${input}`, '', 'fromdevtools-20'));
+    $('#amazon-url').attr('href', `https://www.amazon.com/s?k=${input}&tag=fromdevtools-20`);
   };
 
   $(document).ready(function() {
