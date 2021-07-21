@@ -32,6 +32,7 @@ layout: post
       <!-- Main content -->
       <section class="content">
         <div class="row">
+          <div class="col-md-6">
             <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title">Download Or Scan Bar Code From Here</h3>
@@ -67,17 +68,6 @@ layout: post
                     <option value="codabar">codabar</option>
                   </select>
                 </div>
-                <div class="form-group">
-                    <p id="autodetect" class="text-aqua"></p>
-                </div>
-                <div class="form-group">
-                  <label for="amazon-url">Find On Amazon</label>
-                  <div class="form-control"> <a id="amazon-url" target="_blank">Open On Amazon</a></div>
-                </div>
-                <div class="form-group">
-                  <label for="ebay-url">Find On eBay</label>
-                  <div class="form-control"> <a id="ebay-url" target="_blank">Open On eBay</a></div>
-                </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
@@ -91,6 +81,31 @@ layout: post
                 </div>
               </div>
             </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title">Find More About This Bardcode Here</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+               
+                <div class="form-group">
+                    <p id="autodetect" class="text-aqua"></p>
+                </div>
+                <div class="form-group">
+                  <label for="amazon-url">Find On Amazon</label>
+                  <div class="form-control"> <a id="amazon-url" target="_blank">Open On Amazon</a></div>
+                </div>
+                <div class="form-group">
+                  <label for="ebay-url">Find On eBay</label>
+                  <div class="form-control"> <a id="ebay-url" target="_blank">Open On eBay</a></div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+            </div>
+          </div>
+            
           </div>
       </section>
       <section class="content">
@@ -213,18 +228,22 @@ layout: post
   const createEbayUrl = (input) => {
     $('#ebay-url').attr('href', `https://www.ebay.com/sch/i.html?_nkw=${input}&_sacat=0`);
   };
-  'https://www.ebay.com/sch/i.html?_nkw=0608410040359&_sacat=0'
+
+  const createUrls = (input) => {
+    createAmazonUrl(input);
+    createEbayUrl(input);
+  };
 
   $(document).ready(function() {
     const randomPick = ArrayUtils.nextRandomItem(upcList);
     BarcodeUxUtils.generateBarcode(randomPick);
-    createAmazonUrl(randomPick);
+    createUrls(randomPick);
     $("#generate").click(function() {
       $('#error').text('');
       const input = ArrayUtils.nextRandomItem(upcList);
       if (BarcodeUxUtils.validateBarcode(input)) {
         BarcodeUxUtils.generateBarcode(input);
-        createAmazonUrl(input);
+        createUrls(input);
       }
     });
 
