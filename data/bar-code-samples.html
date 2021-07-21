@@ -203,19 +203,20 @@ layout: post
 <script src="/javascripts/data/upc-list.js"></script>
 
 <script>
-  const createAmazonUrl = () => {
+  const createAmazonUrl = (input) => {
     $('#amazon-url').attr('href', Utils.amazon.createCleanAffiliateURL(`https://www.amazon.com/s?k=${input}`, '', 'fromdevtools-20'));
   };
 
   $(document).ready(function() {
-    BarcodeUxUtils.generateBarcode(ArrayUtils.nextRandomItem(upcList));
-    createAmazonUrl();
+    const randomPick = ArrayUtils.nextRandomItem(upcList);
+    BarcodeUxUtils.generateBarcode(randomPick);
+    createAmazonUrl(randomPick);
     $("#generate").click(function() {
       $('#error').text('');
       const input = ArrayUtils.nextRandomItem(upcList);
       if (BarcodeUxUtils.validateBarcode(input)) {
         BarcodeUxUtils.generateBarcode(input);
-        createAmazonUrl();
+        createAmazonUrl(input);
       }
     });
 
