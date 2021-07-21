@@ -71,10 +71,9 @@ var BarcodeUxUtils = BarcodeUxUtils || {};
 
   BarcodeUxUtils.validateBarcode = (input) => {
     try {
-      const input = $("#inputText").val();
       const barcodeOptions = BarcodeUxUtils.prepareOptions(input);
       if (input) {
-        const barcode = BARCODES[barcodeOptions.format] || BARCODES.DEFAULT;
+        const barcode = BarcodeUxUtils.BARCODES[barcodeOptions.format] || BarcodeUxUtils.BARCODES.DEFAULT;
         if (!barcode.validate(input)) {
           $('#error').text(`Invalid ${barcode.name} Code, Can not generate barcode`);
           return false;
