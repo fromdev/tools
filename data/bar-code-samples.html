@@ -186,28 +186,17 @@ layout: post
 <script src="/javascripts/data/upc-list.js"></script>
 
 <script>
-  const createAmazonUrl = (input) => {
-    $('#amazon-url').attr('href', `https://www.amazon.com/s?k=${input}&tag=fromdevtools-20`);
-  };
-  const createEbayUrl = (input) => {
-    $('#ebay-url').attr('href', `https://www.ebay.com/sch/i.html?_nkw=${input}&_sacat=0`);
-  };
-
-  const createUrls = (input) => {
-    createAmazonUrl(input);
-    createEbayUrl(input);
-  };
 
   $(document).ready(function() {
     const randomPick = ArrayUtils.nextRandomItem(upcList);
     BarcodeUxUtils.generateBarcode(randomPick);
-    createUrls(randomPick);
+    BarcodeUxUtils.createUrls(randomPick);
     $("#generate").click(function() {
       $('#error').text('');
       const input = ArrayUtils.nextRandomItem(upcList);
       if (BarcodeUxUtils.validateBarcode(input)) {
         BarcodeUxUtils.generateBarcode(input);
-        createUrls(input);
+        BarcodeUxUtils.createUrls(input);
       }
     });
 

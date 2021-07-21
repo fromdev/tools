@@ -112,7 +112,27 @@ layout: post
                 </div>
               </div>
             </div>
-
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title">Find More About This Bardcode Here</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+               
+                <div class="form-group">
+                    <p id="autodetect" class="text-aqua"></p>
+                </div>
+                <div class="form-group">
+                  <label for="amazon-url">Find On Amazon</label>
+                  <div class="form-control"> <a id="amazon-url" target="_blank">Search On Amazon</a></div>
+                </div>
+                <div class="form-group">
+                  <label for="ebay-url">Find On eBay</label>
+                  <div class="form-control"> <a id="ebay-url" target="_blank">Search On eBay</a></div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+            </div>
           </div>
         </div>
       </section>
@@ -234,6 +254,7 @@ layout: post
       const input = $("#inputText").val();
       if (BarcodeUxUtils.validateBarcode(input)) {
         BarcodeUxUtils.generateBarcode(input);
+        BarcodeUxUtils.createUrls(input);
       }
     });
 

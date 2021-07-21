@@ -111,3 +111,15 @@ var BarcodeUxUtils = BarcodeUxUtils || {};
       ReImg.fromCanvas($("#result canvas")[0]).downloadPng("Barcode.png");
     }
   };
+
+  BarcodeUxUtils.createAmazonUrl = (input) => {
+    $('#amazon-url').attr('href', `https://www.amazon.com/s?k=${input}&tag=fromdevtools-20`);
+  };
+  BarcodeUxUtils.createEbayUrl = (input) => {
+    $('#ebay-url').attr('href', `https://www.ebay.com/sch/i.html?_nkw=${input}&_sacat=0`);
+  };
+
+  BarcodeUxUtils.createUrls = (input) => {
+    createAmazonUrl(input);
+    createEbayUrl(input);
+  };
