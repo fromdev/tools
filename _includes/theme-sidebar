@@ -14,13 +14,13 @@
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="html-escape-unescape.html"><i class="fa fa-circle-o text-aqua"></i> HTML Escape</a></li>
-                            <li><a href="javascript-escape-unescape.html"><i class="fa fa-circle-o text-aqua"></i> JavaScript Escape</a></li>
-                            <li><a href="xml-escape-unescape.html"><i class="fa fa-circle-o text-aqua"></i> XML Escape</a></li>
-                            <li><a href="url-encode-decode.html"><i class="fa fa-circle-o text-aqua"></i> URL Encode | Decode</a></li>
-                            <li><a href="string-util.html"><i class="fa fa-circle-o text-aqua"></i> Change Case</a></li>
-                            <li><a href="word-counter.html"><i class="fa fa-circle-o text-aqua"></i> Word Counter</a></li>
-                            <li><a href="remove-stopwords-online.html"><i class="fa fa-circle-o text-aqua"></i>Remove Stopwords</a></li>
+                            <li><a href="/html-escape-unescape.html"><i class="fa fa-circle-o text-aqua"></i> HTML Escape</a></li>
+                            <li><a href="/javascript-escape-unescape.html"><i class="fa fa-circle-o text-aqua"></i> JavaScript Escape</a></li>
+                            <li><a href="/xml-escape-unescape.html"><i class="fa fa-circle-o text-aqua"></i> XML Escape</a></li>
+                            <li><a href="/url-encode-decode.html"><i class="fa fa-circle-o text-aqua"></i> URL Encode | Decode</a></li>
+                            <li><a href="/string-util.html"><i class="fa fa-circle-o text-aqua"></i> Change Case</a></li>
+                            <li><a href="/word-counter.html"><i class="fa fa-circle-o text-aqua"></i> Word Counter</a></li>
+                            <li><a href="/remove-stopwords-online.html"><i class="fa fa-circle-o text-aqua"></i>Remove Stopwords</a></li>
                         </ul>
                     </li>
 
@@ -32,9 +32,9 @@
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="secure-password-generator.html"><i class="fa fa-circle-o text-red"></i> Password Generator</a></li>
-                            <li><a href="memorable-secure-password-generator.html"><i class="fa fa-circle-o text-red"></i> Memorable Password</a></li>
-                            <li><a href="md5.html"><i class="fa fa-circle-o text-red"></i> Calculate MD5</a></li>
+                            <li><a href="/secure-password-generator.html"><i class="fa fa-circle-o text-red"></i> Password Generator</a></li>
+                            <li><a href="/memorable-secure-password-generator.html"><i class="fa fa-circle-o text-red"></i> Memorable Password</a></li>
+                            <li><a href="/md5.html"><i class="fa fa-circle-o text-red"></i> Calculate MD5</a></li>
                         </ul>
                     </li>
                     <li class="treeview" id="seo-category">
@@ -45,8 +45,8 @@
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="title-maker.html"><i class="fa fa-circle-o text-yellow"></i> Title Maker</a></li>
-                            <li><a href="meta-tag-generator.html"><i class="fa fa-circle-o text-yellow"></i> Meta Tags</a></li>
+                            <li><a href="/title-maker.html"><i class="fa fa-circle-o text-yellow"></i> Title Maker</a></li>
+                            <li><a href="/meta-tag-generator.html"><i class="fa fa-circle-o text-yellow"></i> Meta Tags</a></li>
                         </ul>
                     </li>
                     <li class="treeview" id="converters-category">
@@ -57,19 +57,19 @@
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="csv-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> CSV To JSON</a></li>
-                            <li><a href="json-to-csv-converter.html"><i class="fa fa-circle-o text-green"></i> JSON To CSV</a></li>
-                            <li><a href="csv-to-table-converter.html"><i class="fa fa-circle-o text-green"></i> CSV To HTML Table</a></li>
-                            <li><a href="table-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> HTML Table To JSON</a></li>
-                            <li><a href="html-to-text-converter.html"><i class="fa fa-circle-o text-green"></i> HTML To Text</a></li>
-                            <li><a href="html-link-extractor.html"><i class="fa fa-circle-o text-green"></i> HTML Link Extractor</a></li>
-                            <li><a href="create-html-link.html"><i class="fa fa-circle-o text-green"></i> Create HTML Link</a></li>
-                            <li><a href="text-to-html-list-converter.html"><i class="fa fa-circle-o text-green"></i> Text To HTML List</a></li>
-                            <li><a href="xml-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> XML To JSON</a></li>
-                            <li><a href="json-to-property-converter.html"><i class="fa fa-circle-o text-green"></i> JSON To Property</a></li>
-                            <li><a href="property-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> Property to JSON</a></li>
-                            <li><a href="image-to-base64-converter.html"><i class="fa fa-circle-o text-green"></i> Image To Base-64</a></li>
-                            <li><a href="unique-word-extractor.html"><i class="fa fa-circle-o text-green"></i> Unique Word Extractor</a></li>
+                            <li><a href="/csv-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> CSV To JSON</a></li>
+                            <li><a href="/json-to-csv-converter.html"><i class="fa fa-circle-o text-green"></i> JSON To CSV</a></li>
+                            <li><a href="/csv-to-table-converter.html"><i class="fa fa-circle-o text-green"></i> CSV To HTML Table</a></li>
+                            <li><a href="/table-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> HTML Table To JSON</a></li>
+                            <li><a href="/html-to-text-converter.html"><i class="fa fa-circle-o text-green"></i> HTML To Text</a></li>
+                            <li><a href="/html-link-extractor.html"><i class="fa fa-circle-o text-green"></i> HTML Link Extractor</a></li>
+                            <li><a href="/create-html-link.html"><i class="fa fa-circle-o text-green"></i> Create HTML Link</a></li>
+                            <li><a href="/text-to-html-list-converter.html"><i class="fa fa-circle-o text-green"></i> Text To HTML List</a></li>
+                            <li><a href="/xml-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> XML To JSON</a></li>
+                            <li><a href="/json-to-property-converter.html"><i class="fa fa-circle-o text-green"></i> JSON To Property</a></li>
+                            <li><a href="/property-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> Property to JSON</a></li>
+                            <li><a href="/image-to-base64-converter.html"><i class="fa fa-circle-o text-green"></i> Image To Base-64</a></li>
+                            <li><a href="/unique-word-extractor.html"><i class="fa fa-circle-o text-green"></i> Unique Word Extractor</a></li>
                         </ul>
                     </li>
                      <li class="treeview" id="generators-category">
@@ -80,18 +80,18 @@
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="css-button-generator.html"><i class="fa fa-circle-o"></i> CSS Button Generator</a></li>
-                            <li><a href="qr-code-generator.html"><i class="fa fa-circle-o"></i> QR Code Generator</a></li>
-                            <li><a href="bar-code-generator.html"><i class="fa fa-circle-o"></i> Bar Code Generator</a></li>
-                            <li><a href="jquery-quickstart-snippet.html"><i class="fa fa-circle-o"></i> jQuery Code Grabber</a></li>
-                            <li><a href="amazon-affiliate-link-maker.html"><i class="fa fa-circle-o"></i> Amazon Link Maker</a></li>
-                            <li><a href="amazon-feedback-generator.html"><i class="fa fa-circle-o"></i> Amazon Feedback Maker</a></li>
-                            <li><a href="ebay-feedback-generator.html"><i class="fa fa-circle-o"></i> eBay Feedback Maker</a></li>
-                            <li><a href="fiverr-feedback-generator.html"><i class="fa fa-circle-o"></i> Fiverr Feedback Maker</a></li>
+                            <li><a href="/css-button-generator.html"><i class="fa fa-circle-o"></i> CSS Button Generator</a></li>
+                            <li><a href="/qr-code-generator.html"><i class="fa fa-circle-o"></i> QR Code Generator</a></li>
+                            <li><a href="/bar-code-generator.html"><i class="fa fa-circle-o"></i> Bar Code Generator</a></li>
+                            <li><a href="/jquery-quickstart-snippet.html"><i class="fa fa-circle-o"></i> jQuery Code Grabber</a></li>
+                            <li><a href="/amazon-affiliate-link-maker.html"><i class="fa fa-circle-o"></i> Amazon Link Maker</a></li>
+                            <li><a href="/amazon-feedback-generator.html"><i class="fa fa-circle-o"></i> Amazon Feedback Maker</a></li>
+                            <li><a href="/ebay-feedback-generator.html"><i class="fa fa-circle-o"></i> eBay Feedback Maker</a></li>
+                            <li><a href="/fiverr-feedback-generator.html"><i class="fa fa-circle-o"></i> Fiverr Feedback Maker</a></li>
 
                         </ul>
                     </li>
-                    <li><a href="contact.html"><i class="fa fa-circle-o text-aqua"></i> <span>Feedback</span></a></li>
+                    <li><a href="/contact.html"><i class="fa fa-circle-o text-aqua"></i> <span>Feedback</span></a></li>
                 </ul>
             </section>
             <!-- /.sidebar -->
