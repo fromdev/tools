@@ -206,12 +206,13 @@ layout: post
   
   $(document).ready(function() {
     BarcodeUxUtils.generateBarcode(ArrayUtils.nextRandomItem(upcList));
+    BarcodeUxUtils.createAmazonUrl();
     $("#generate").click(function() {
       $('#error').text('');
       const input = ArrayUtils.nextRandomItem(upcList);
       if (BarcodeUxUtils.validateBarcode(input)) {
         BarcodeUxUtils.generateBarcode(input);
-        $('#amazon-url').attr('href', Utils.amazon.createCleanAffiliateURL(`https://www.amazon.com/s?k=${input}`, '', 'fromdevtools-20'));
+        BarcodeUxUtils.createAmazonUrl();
       }
     });
 

@@ -111,3 +111,7 @@ var BarcodeUxUtils = BarcodeUxUtils || {};
       ReImg.fromCanvas($("#result canvas")[0]).downloadPng("Barcode.png");
     }
   };
+
+  BarcodeUxUtils.createAmazonUrl = () => {
+    $('#amazon-url').attr('href', Utils.amazon.createCleanAffiliateURL(`https://www.amazon.com/s?k=${input}`, '', 'fromdevtools-20'));
+  };
