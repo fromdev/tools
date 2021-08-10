@@ -53,7 +53,7 @@ layout: post
               <div class="box-footer">
                 <div class="row">
                   <div class="col-xs-3">
-                    <button type="button" class="btn btn-info" id="convert2base64">Convert<i
+                    <button type="button" class="btn btn-info" id="convert">Convert<i
                         class="fa fa-fw fa-arrow-right"></i></button>
                   </div>
                 </div>
@@ -71,6 +71,12 @@ layout: post
                 <div class="form-group">
                   <label for="base64">Converted Image</label>
                   <div id="target"></div>
+                </div>
+                
+              </div>
+              <div class="box-footer">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info" id="download"> <i class="fa fa-download"></i> Download Bar Code</button>
                 </div>
               </div>
 
@@ -147,7 +153,6 @@ layout: post
   };
   const readFileAndConvert = (context) => {
     const filesSelected = document.getElementById('myFile').files;
-    context.originalFileMeta = getOriginalFileMeta();
     if (filesSelected 
           && filesSelected.length > 0 
           && context.originalFileMeta 
@@ -162,9 +167,9 @@ layout: post
     }
   };
 
-  const download = () => {
+  const download = (context) => {
     let container = new DataTransfer();
-    let file = new File([resultBlob], "heic" + ".jpg", { type: "image/jpeg", lastModified: new Date().getTime() });
+    let file = new File([context.blob], `${context.originalFileMeta.fileName}.jpg`, { type: "image/jpeg", lastModified: new Date().getTime() });
     container.items.add(file);
   };
 
@@ -182,9 +187,16 @@ layout: post
   };
 
   $(document).ready(function () {
-    $("#convert2base64").click(function () {
+    $("#convert").click(function () {
       const context = {};
       context.callback = showImage;
+      context.originalFileMeta = getOriginalFileMeta();
+      readFileAndConvert(context);
+    });
+    $("#download").click(function () {
+      const context = {};
+      context.callback = download;
+      context.originalFileMeta = getOriginalFileMeta();
       readFileAndConvert(context);
     });
 
