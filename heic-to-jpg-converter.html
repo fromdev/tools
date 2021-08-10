@@ -56,6 +56,21 @@ layout: post
                     </select>
                   </div>
                   <div class="form-group">
+                    <label for="quality">Image Quality</label>
+                    <select id="quality">
+                      <option value="1" selected>Highest Quality [100% - Default]</option>
+                      <option value="0.9">Reduce to 90%</option>
+                      <option value="0.8">Reduce to 80%</option>
+                      <option value="0.7">Reduce to 70%</option>
+                      <option value="0.6">Reduce to 60%</option>
+                      <option value="0.5">Reduce to 50%</option>
+                      <option value="0.4">Reduce to 40%</option>
+                      <option value="0.3">Reduce to 30%</option>
+                      <option value="0.2">Reduce to 20%</option>
+                      <option value="0.1">Reduce to 10% - Lowest Quality</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
                     <p id="error" class="text-red"></p>
                   </div>
                 </form>
@@ -90,9 +105,7 @@ layout: post
                   <a class="btn btn-info" target="_blank" id="download" href="#"> <i class="fa fa-download"></i> Download Converted File</a>
                 </div>
               </div>
-
             </div>
-
           </div>
         </div>
       </section>
@@ -161,6 +174,16 @@ layout: post
             <p>This tool is a free to use and open source therefore we are not using any server side technology to convert or store photos.</p>
             <p>Photos are not stored anywhere, so you need to convert them everytime you require it. </p>
             <p>Only one conveted photo stays in browser memory so everytime you convert a photo the last photo will be lost.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Why is the image size so high after conversion?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>The HEIC image format quality is usually very high. This format is very efficient in storing images. However, when we convert it to other lower efficient formats the image size increases drastically.</p>
           </div>
           <!-- /.box-body -->
         </div>
@@ -233,6 +256,7 @@ layout: post
     heic2any({
       blob: context.blob,
       toType: context.format,
+      quality: context.quality || 1
     }).then(function (resultBlob) {
       context.url = URL.createObjectURL(resultBlob);
       context.callback(context);
@@ -247,6 +271,7 @@ layout: post
     $("#convert").click(function () {
       const context = {};
       context.format = $('#format option:selected').val();
+      context.quality = $('#quality option:selected').val() || 1;
       context.callback = showImage;
       context.originalFileMeta = getOriginalFileMeta();
       readFileAndConvert(context);
