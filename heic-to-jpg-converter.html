@@ -87,7 +87,7 @@ layout: post
               </div>
               <div class="box-footer">
                 <div class="btn-group">
-                  <a class="btn btn-info" target="_blank" id="download"> <i class="fa fa-download"></i> Download Converted File</a>
+                  <a class="btn btn-info" target="_blank" id="download" href="#"> <i class="fa fa-download"></i> Download Converted File</a>
                 </div>
               </div>
 
@@ -174,7 +174,7 @@ layout: post
   };
   const showInProgress = () => {
     $('#error').text('');
-    $("#target").html("<p>Converting...</p>");
+    $("#target").html("<i class='fa fa-refresh fa-spin'></i> <p>Converting...</p>");
   };
   const readFileAndConvert = (context) => {
     showInProgress();
