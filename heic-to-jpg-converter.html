@@ -87,7 +87,7 @@ layout: post
               </div>
               <div class="box-footer">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-info" id="download"> <i class="fa fa-download"></i> Download Converted File</button>
+                  <a class="btn btn-info" target="_blank" id="download"> <i class="fa fa-download"></i> Download Converted File</a>
                 </div>
               </div>
 
@@ -157,6 +157,8 @@ layout: post
 
   const showImage = (context) => {
     $("#target").html(`<a target="_blank" download="${context.filename}" href="${context.url}"><img src="${context.url}"></a>`);
+    $('#download').attr('download', context.filename);
+    $('#download').attr('href', context.url);
   };
 
   const extractAfterLastIndexOf = (str, ch) => {
@@ -193,11 +195,6 @@ layout: post
     }
   };
 
-  const download = (context) => {
-    showImage();
-    $("#target a").trigger("click");
-  };
-
   const convert = (context) => {
     heic2any({
       blob: context.blob,
@@ -217,13 +214,6 @@ layout: post
       const context = {};
       context.format = $('#format option:selected').val();
       context.callback = showImage;
-      context.originalFileMeta = getOriginalFileMeta();
-      readFileAndConvert(context);
-    });
-    $("#download").click(function () {
-      const context = {};
-      context.format = $('#format option:selected').val();
-      context.callback = download;
       context.originalFileMeta = getOriginalFileMeta();
       readFileAndConvert(context);
     });
