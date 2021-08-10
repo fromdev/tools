@@ -138,7 +138,7 @@ layout: post
     const filesSelected = document.getElementById('myFile').files;
     const context = {};
     if (filesSelected && filesSelected.length > 0) {
-      $("#target").val("Converting...");
+      $("#target").innerHTML("<p>Converting...</p>");
       context.filename = 'download-file.jpg';
       context.blob = filesSelected[0];
       context.callback = showImage;
@@ -147,7 +147,7 @@ layout: post
       $("#target").val("Invalid File, unable to convert");
     }
   };
-  
+
   const download = () => {
     let container = new DataTransfer();
     let file = new File([resultBlob], "heic"+".jpg",{type:"image/jpeg", lastModified:new Date().getTime()});
