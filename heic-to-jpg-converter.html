@@ -48,6 +48,14 @@ layout: post
                     <input type="file" id="myFile" name="filename">
                   </div>
                   <div class="form-group">
+                    <label for="format">Image Format</label>
+                    <select id="format">
+                      <option value="image/jpg" selected>JPG/JPEG</option>
+                      <option value="image/png">PNG</option>
+                      <option value="image/gif">GIF</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
                     <p id="error" class="text-red"></p>
                   </div>
                 </form>
@@ -139,6 +147,14 @@ layout: post
 <script src="/javascripts/heic2any.min.js"></script>
 
 <script>
+  const extensionsMap = new Map();
+  extensionsMap.set('image/jpg', 'jpg');
+  extensionsMap.set('image/png', 'png');
+  extensionsMap.set('image/gif', 'gif');
+  const findExtension = (context) => {
+    return (context.format) ? extensionsMap.get(context.format) || '' : '';
+  };
+
   const showImage = (context) => {
     $("#target").html(`<a target="_blank" download="${context.filename}" href="${context.url}"><img src="${context.url}"></a>`);
   };
@@ -161,12 +177,15 @@ layout: post
   const readFileAndConvert = (context) => {
     showInProgress();
     const filesSelected = document.getElementById('myFile').files;
+    context.convertedFileExtension = findExtension(context);
     if (filesSelected 
           && filesSelected.length > 0 
           && context.originalFileMeta 
           && context.originalFileMeta.fileExtension 
-          && context.originalFileMeta.fileExtension.toUpperCase() === 'HEIC') {
-      context.filename = `${context.originalFileMeta.fileName}.jpg`;
+          && context.originalFileMeta.fileExtension.toUpperCase() === 'HEIC'
+          && context.format
+          && context.convertedFileExtension) {
+      context.filename = `${context.originalFileMeta.fileName}.${context.convertedFileExtension}`;
       context.blob = filesSelected[0];
       convert(context);
     } else {
@@ -182,7 +201,7 @@ layout: post
   const convert = (context) => {
     heic2any({
       blob: context.blob,
-      toType: "image/jpg",
+      toType: context.format,
     }).then(function (resultBlob) {
       context.url = URL.createObjectURL(resultBlob);
       context.callback(context);
@@ -193,14 +212,17 @@ layout: post
   };
 
   $(document).ready(function () {
+
     $("#convert").click(function () {
       const context = {};
+      context.format = $('#format option:selected').val();
       context.callback = showImage;
       context.originalFileMeta = getOriginalFileMeta();
       readFileAndConvert(context);
     });
     $("#download").click(function () {
       const context = {};
+      context.format = $('#format option:selected').val();
       context.callback = download;
       context.originalFileMeta = getOriginalFileMeta();
       readFileAndConvert(context);
