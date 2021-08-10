@@ -47,6 +47,9 @@ layout: post
                     <label for="myFile">Upload Image File From Your Computer</label>
                     <input type="file" id="myFile" name="filename">
                   </div>
+                  <div class="form-group">
+                    <p id="error" class="text-red"></p>
+                  </div>
                 </form>
               </div>
               <!-- /.box-body -->
@@ -151,23 +154,28 @@ layout: post
     meta.fileExtension = extractAfterLastIndexOf(meta.fileName, '.');
     return meta;
   };
+  const showInProgress = () => {
+    $('#error').text('');
+    $("#target").html("<p>Converting...</p>");
+  };
   const readFileAndConvert = (context) => {
+    showInProgress();
     const filesSelected = document.getElementById('myFile').files;
     if (filesSelected 
           && filesSelected.length > 0 
           && context.originalFileMeta 
           && context.originalFileMeta.fileExtension 
           && context.originalFileMeta.fileExtension.toUpperCase() === 'HEIC') {
-      $("#target").html("<p>Converting...</p>");
       context.filename = `${context.originalFileMeta.fileName}.jpg`;
       context.blob = filesSelected[0];
       convert(context);
     } else {
-      $("#target").html("<p>Invalid File, unable to convert</p>");
+      $('#error').text('Invalid File, unable to convert');
     }
   };
 
   const download = (context) => {
+    showImage();
     $("#target a").trigger("click");
   };
 
