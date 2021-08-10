@@ -281,7 +281,7 @@ layout: post
     $("#convert").click(function () {
       const context = {};
       context.format = $('#format option:selected').val();
-      context.quality = $('#quality option:selected').val() || 1;
+      context.quality = Number.parseFloat($('#quality option:selected').val()) || 1;
       context.callback = showImage;
       context.originalFileMeta = getOriginalFileMeta();
       readFileAndConvert(context);
