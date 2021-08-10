@@ -85,7 +85,7 @@ layout: post
                 </div>
                 
               </div>
-              <div class="box-footer">
+              <div class="box-footer" id="download-div">
                 <div class="btn-group">
                   <a class="btn btn-info" target="_blank" id="download" href="#"> <i class="fa fa-download"></i> Download Converted File</a>
                 </div>
@@ -159,6 +159,7 @@ layout: post
     $("#target").html(`<a target="_blank" download="${context.filename}" href="${context.url}"><img src="${context.url}"></a>`);
     $('#download').attr('download', context.filename);
     $('#download').attr('href', context.url);
+    $('#download-div').show();
   };
 
   const extractAfterLastIndexOf = (str, ch) => {
@@ -175,6 +176,7 @@ layout: post
   const showInProgress = () => {
     $('#error').text('');
     $("#target").html("<i class='fa fa-refresh fa-spin'></i> <p>Converting...</p>");
+    $('#download-div').hide();
   };
   const readFileAndConvert = (context) => {
     showInProgress();
