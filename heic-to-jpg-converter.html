@@ -130,24 +130,37 @@ layout: post
 <script src="/javascripts/heic2any.min.js"></script>
 
 <script>
+  const showImage = (context) => {
+    document.getElementById("target").innerHTML = `<a target="_blank" download="${context.filename}" href="${context.url}"><img src="${context.url}"></a>`;
+  };
+
   const readFileAndConvert = () => {
     const filesSelected = document.getElementById('myFile').files;
+    const context = {};
     if (filesSelected && filesSelected.length > 0) {
       $("#target").val("Converting...");
-      convert(filesSelected[0]);
+      context.filename = 'download-file.jpg';
+      context.blob = filesSelected[0];
+      context.callback = showImage;
+      convert(context);
     } else {
       $("#target").val("Invalid File, unable to convert");
     }
   };
+  
+  const download = () => {
+    let container = new DataTransfer();
+    let file = new File([resultBlob], "heic"+".jpg",{type:"image/jpeg", lastModified:new Date().getTime()});
+    container.items.add(file);
+  };
 
-  const convert = (blob) => {
+  const convert = (context) => {
     heic2any({
-      blob: blob,
+      blob: context.blob,
       toType: "image/jpg",
     }).then(function (resultBlob) {
-      var url = URL.createObjectURL(resultBlob);
-      const filename = 'download-file.jpg';
-      document.getElementById("target").innerHTML = `<a target="_blank" download="${filename}" href="${url}"><img src="${url}"></a>`;
+      context.url = URL.createObjectURL(resultBlob);
+      context.callback(context);
     }).catch(function (x) {
       console.log(x.code);
       console.log(x.message);
