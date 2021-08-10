@@ -168,9 +168,7 @@ layout: post
   };
 
   const download = (context) => {
-    let container = new DataTransfer();
-    let file = new File([context.blob], `${context.originalFileMeta.fileName}.jpg`, { type: "image/jpeg", lastModified: new Date().getTime() });
-    container.items.add(file);
+    $("#target a").trigger("click");
   };
 
   const convert = (context) => {
