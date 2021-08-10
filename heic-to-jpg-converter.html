@@ -131,20 +131,18 @@ layout: post
 
 <script>
   const showImage = (context) => {
-    document.getElementById("target").innerHTML = `<a target="_blank" download="${context.filename}" href="${context.url}"><img src="${context.url}"></a>`;
+    $("#target").html(`<a target="_blank" download="${context.filename}" href="${context.url}"><img src="${context.url}"></a>`);
   };
 
-  const readFileAndConvert = () => {
+  const readFileAndConvert = (context) => {
     const filesSelected = document.getElementById('myFile').files;
-    const context = {};
     if (filesSelected && filesSelected.length > 0) {
-      document.getElementById("target").innerHTML("<p>Converting...</p>");
+      $("#target").html("<p>Converting...</p>");
       context.filename = 'download-file.jpg';
       context.blob = filesSelected[0];
-      context.callback = showImage;
       convert(context);
     } else {
-      $("#target").val("Invalid File, unable to convert");
+      $("#target").html("<p>Invalid File, unable to convert</p>");
     }
   };
 
@@ -169,7 +167,9 @@ layout: post
 
   $(document).ready(function () {
     $("#convert2base64").click(function () {
-      readFileAndConvert();
+      const context = {};
+      context.callback = showImage;
+      readFileAndConvert(context);
     });
 
     $("#myFile").selectOnFocus();
