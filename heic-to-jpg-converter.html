@@ -146,7 +146,8 @@ layout: post
       toType: "image/jpg",
     }).then(function (resultBlob) {
       var url = URL.createObjectURL(resultBlob);
-      document.getElementById("target").innerHTML = `<a target="_blank" href="${url}"><img src="${url}"></a>`;
+      const filename = 'download-file.jpg';
+      document.getElementById("target").innerHTML = `<a target="_blank" download="${filename}" href="${url}"><img src="${url}"></a>`;
     }).catch(function (x) {
       console.log(x.code);
       console.log(x.message);
