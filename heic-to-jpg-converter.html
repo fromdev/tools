@@ -133,6 +133,7 @@ layout: post
   const readFileAndConvert = () => {
     const filesSelected = document.getElementById('myFile').files;
     if (filesSelected && filesSelected.length > 0) {
+      $("#target").val("Converting...");
       convert(filesSelected[0]);
     } else {
       $("#target").val("Invalid File, unable to convert");
