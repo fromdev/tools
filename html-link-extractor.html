@@ -267,12 +267,13 @@ layout: post
             let count = 1;
             $(originalText).find('a').each(function () {
                 links.push(this.href);
+                const el = $(this);
                 linkAttributes.push({
                     url: this.href,
                     sn: count++,
-                    text: this.text() || '-',
-                    title: this.attr('title') || '-',
-                    alt: this.attr('alt') || '-',
+                    text: el.attr('text') || '-',
+                    title: el.attr('title') || '-',
+                    alt: el.attr('alt') || '-',
                 });
             });
             var uniqueLinks = cleanLinks(ArrayUtils.removeDuplicates(links), originalText);
