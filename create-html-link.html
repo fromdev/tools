@@ -60,6 +60,15 @@ layout: post
                                     </select>
                                   </div>
                                   <div class="form-group">
+                                    <label for="target">Link Open (in New / Same Window / more)</label>
+                                    <select id="target">
+                                      <option value="_self" selected="selected">Same Window [Default]</option>
+                                      <option value="_blank">New Window/Tab</option>
+                                      <option value="_parent">Immediate Parent Window/Tab</option>
+                                      <option value="_top">Top Most Parent Window/Tab</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group">
                                     <p id="error" class="text-red"></p>
                                   </div>
                             </form>
@@ -199,23 +208,30 @@ layout: post
         if(context.rel) {
             $link.attr('rel', context.rel);
         }
+        if(context.target && context.target !== '_self') {
+            $link.attr('target',context.target);
+        }
         $link.text(context.text);
         $link.attr('title',context.text);
         $link.attr('alt',context.text);
     };
     var processUrl = function(url) {
         const rel = $('#following option:selected').val();
+        const target = $('#target option:selected').val();
+
         const openUrlLink = $('#openurl');
         createLink(openUrlLink, {
             url: url,
             rel: rel,
-            text: 'Open Link (in new window)'
+            text: 'Open Link (in new window)',
+            target: target
         });
         const linkCode = $('#linkcodecontainer a');
         createLink(linkCode, {
             url: url,
             rel: rel,
-            text: $('#linktext').val() || 'Link'
+            target: target,
+            text: $('#linktext').val() || 'Click here'
         });
         $('#linkhtml').val(getLinkCode(url));
     };
