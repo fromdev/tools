@@ -10,7 +10,8 @@ layout: post
     <title>{{ page.title }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="description" content="This is easy to use open source tool to extract URL from a HTML document. Use it to scrape href links list from a web page." />
+    <meta name="description"
+        content="This is easy to use open source tool to extract URL from a HTML document. Use it to scrape href links list from a web page." />
     <meta name="keywords" content="online,tool,html,url,link,web,opensource" />
     <!-- CSS for the site theme -->
     {% include theme-css %}
@@ -44,7 +45,8 @@ layout: post
                                 <form role="form">
                                     <div class="form-group">
                                         <label for="htm">HTML Data</label>
-                                        <textarea class="form-control" rows="20" id="htm" placeholder="Enter your HTML data here" autofocus></textarea>
+                                        <textarea class="form-control" rows="20" id="htm"
+                                            placeholder="Enter your HTML data here" autofocus></textarea>
                                         <div style="display:none;" id="hidden"></div>
                                     </div>
                                 </form>
@@ -53,7 +55,8 @@ layout: post
                             <div class="box-footer">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <button type="button" class="btn btn-info" id="extracturl">Extract URLs <i class="fa fa-fw fa-arrow-right"></i></button>
+                                        <button type="button" class="btn btn-info" id="extracturl">Extract URLs <i
+                                                class="fa fa-fw fa-arrow-right"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -69,8 +72,17 @@ layout: post
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="urls">Extracted Unique Links</label>
-                                    <textarea class="form-control" id="urls" rows="13" placeholder="Copy your links from here"></textarea>
+                                    <textarea class="form-control" id="urls" rows="13"
+                                        placeholder="Copy your links from here"></textarea>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Links Summary</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
                                 <div class="form-group">
                                     <label for="totalcount">Total URL Count</label>
                                     <h4 class='text-green' id="totalcount"> 0 </h4>
@@ -86,9 +98,7 @@ layout: post
                             </div>
                             <!-- /.box-body -->
                         </div>
-
                     </div>
-                </div>
             </section>
             <section class="content">
                 <div class="box box-success">
@@ -97,8 +107,11 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>This is a free online tool to extract URLs from a HTML document. You can copy/paste any HTML document in the text area and hit the "Extract URLs" button to get list of all unique links on the HTML page.</p>
-                        <p>This tool is also commonly called as <strong>href extractor tool</strong> due to HTML attribute <code>HREF</code> in the anchor tag <code>a</code>. </p>
+                        <p>This is a free online tool to extract URLs from a HTML document. You can copy/paste any HTML
+                            document in the text area and hit the "Extract URLs" button to get list of all unique links
+                            on the HTML page.</p>
+                        <p>This tool is also commonly called as <strong>href extractor tool</strong> due to HTML
+                            attribute <code>HREF</code> in the anchor tag <code>a</code>. </p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -108,7 +121,8 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>HTML (HyperText Markup Language) is used for web pages. All web pages on internet use this language. Browsers understand this language and render pages accordingly.</p>
+                        <p>HTML (HyperText Markup Language) is used for web pages. All web pages on internet use this
+                            language. Browsers understand this language and render pages accordingly.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -118,8 +132,11 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <img class="img-responsive" src="images/html-link-extractor.jpg" alt="Online link Extractor Tool from HTML data" title="Online link Extractor Tool from HTML data">
-                        <p>A link or URL or HREF value is common name for web page address. A link uniquely identifies a page location on internet.</p>
+                        <img class="img-responsive" src="images/html-link-extractor.jpg"
+                            alt="Online link Extractor Tool from HTML data"
+                            title="Online link Extractor Tool from HTML data">
+                        <p>A link or URL or HREF value is common name for web page address. A link uniquely identifies a
+                            page location on internet.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -129,7 +146,9 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>Extracting the URL from HTML pages can be done for many reasons. I like to do it for web scraping and content research. HTML is powerful language for browsers, however, human can not easily read HTML pages. This page can easily
+                        <p>Extracting the URL from HTML pages can be done for many reasons. I like to do it for web
+                            scraping and content research. HTML is powerful language for browsers, however, human can
+                            not easily read HTML pages. This page can easily
                             extract all reference link from a HTML page and you can use them as you like.</p>
                     </div>
                     <!-- /.box-body -->
@@ -140,7 +159,8 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>Every HTML document contains link in a specific format. We look for anchor tags in HTML document and extract the value of HREF attribute from it. </p>
+                        <p>Every HTML document contains link in a specific format. We look for anchor tags in HTML
+                            document and extract the value of HREF attribute from it. </p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -168,9 +188,9 @@ layout: post
 <script src="javascripts/fromdev-utils.js"></script>
 <script>
     var baseUrl = 'https://tools.fromdev.com/';
-    var cleanLinks = function(arr, originalText) {
+    var cleanLinks = function (arr, originalText) {
         var cleanLinks = [];
-        $.each(arr, function(i, el) {
+        $.each(arr, function (i, el) {
             el = el.trim();
             el = (el && el.toLowerCase().startsWith('javascript:')) ? '' : el;
             if (el && originalText.indexOf(el) === -1 && el.indexOf(baseUrl) !== -1 && baseUrl.length < el.length - 1) {
@@ -178,17 +198,17 @@ layout: post
                 el = el.substring(baseUrl.length, el.length - 1);
             }
             if (el) {
-              cleanLinks.push(el);
+                cleanLinks.push(el);
             }
         });
 
         return cleanLinks;
     };
-    $(document).ready(function() {
-        $("#extracturl").click(function() {
+    $(document).ready(function () {
+        $("#extracturl").click(function () {
             var links = [];
             var originalText = $("#htm").val();
-            $(originalText).find('a').each(function() {
+            $(originalText).find('a').each(function () {
                 links.push(this.href);
             });
             var uniqueLinks = cleanLinks(ArrayUtils.removeDuplicates(links), originalText);
