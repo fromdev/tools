@@ -271,7 +271,7 @@ layout: post
                 linkAttributes.push({
                     url: this.href,
                     sn: count++,
-                    text: el.attr('text') || '-',
+                    text: el.text() || '-',
                     title: el.attr('title') || '-',
                     alt: el.attr('alt') || '-',
                 });
