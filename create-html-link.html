@@ -53,8 +53,8 @@ layout: post
                                     <input class="form-control" id="linktext" type="text" value="" placeholder="Enter display text for HTML link" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="rel">Link Type</label>
-                                    <select id="rel">
+                                    <label for="following">Link Type</label>
+                                    <select id="following">
                                       <option value="" selected="selected">Do Follow</option>
                                       <option value="nofollow">No Follow</option>
                                     </select>
@@ -191,7 +191,7 @@ layout: post
         $link.text(context.text);
     };
     var processUrl = function(url) {
-        const rel = $('#rel option:selected').val();
+        const rel = $('#following option:selected').val();
         const openUrlLink = $('#openurl');
         createLink(openUrlLink, {
             url: url,
