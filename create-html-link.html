@@ -59,6 +59,9 @@ layout: post
                                       <option value="nofollow">No Follow</option>
                                     </select>
                                   </div>
+                                  <div class="form-group">
+                                    <p id="error" class="text-red"></p>
+                                  </div>
                             </form>
                         </div>
                         <!-- /.box-body -->
@@ -177,6 +180,8 @@ layout: post
             input = input.trim();
             if (isValidURL(input)) {
                 processUrl(input);
+            } else {
+                $('#error').text('Invalid input URL');
             }
         });
         $('#linkhtml').selectOnFocus();
@@ -189,6 +194,8 @@ layout: post
             $link.attr('rel', rel);
         }
         $link.text(context.text);
+        $link.attr('title',context.text);
+        $link.attr('alt',context.text);
     };
     var processUrl = function(url) {
         const rel = $('#following option:selected').val();
@@ -219,6 +226,10 @@ layout: post
         $('#openurl').attr('href', '');
         $('#openurl').text('');
         $('#linkhtml').text('');
+        $('#error').text('');
+        const linkCode = $('#linkcodecontainer a');
+        linkCode.attr('href','');
+        linkCode.attr('rel','');
     };
 </script>
 
