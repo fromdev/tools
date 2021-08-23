@@ -82,7 +82,8 @@ layout: post
                             <div class="form-group">
                                 <div class="form-group">
                                     <label for="openurl">Clickable URL</label>
-                                    <div class="form-control" id="openurlcontainer" > <a id="openurl" target="_blank"></a></div>
+                                    <div class="form-control"> <a id="openurl" target="_blank"></a></div>
+                                    <div id="linkcodecontainer" style="display: none;"><a></a></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="linkhtml">HTML Formatted Code For Link</label>
@@ -182,18 +183,30 @@ layout: post
         $('#input').selectOnFocus();
         $('#converters-category').addClass('active');
     });
-
-    var processUrl = function(url) {
-        $('#openurl').attr('href', url);
-        const rel = $('#rel option:selected').val();
-        if(rel) {
-            $('#openurl').attr('rel', rel);
+    const createLink = ($link, context) => {
+        $link.attr('href', context.url);
+        if(context.rel) {
+            $link.attr('rel', rel);
         }
-        $('#openurl').text('Open Link (in new window)');
+        $link.text(context.text);
+    };
+    var processUrl = function(url) {
+        const openUrlLink = $('#openurl');
+        createLink(openUrlLink, {
+            url: url,
+            rel: $('#rel option:selected').val(),
+            text: 'Open Link (in new window)'
+        });
+        const linkCode = $('#linkcodecontainer a');
+        createLink(linkCode, {
+            url: url,
+            rel: $('#rel option:selected').val(),
+            text: $('#linktext').val() || 'Link'
+        });
         $('#linkhtml').val(getLinkCode(url));
     };
     var getLinkCode = function(url) {
-        return $('#openurlcontainer').html();
+        return $('#linkcodecontainer').html();
     };
 
     var isValidURL = function(s) {
