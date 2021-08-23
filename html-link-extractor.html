@@ -257,7 +257,7 @@ layout: post
                     title: el.attr('title') || '-',
                     alt: el.attr('alt') || '-',
                     rel: el.attr('rel') || 'dofollow',
-                    relStyle: (el.attr(rel) === 'nofollow') ? 'warning' : 'success'
+                    relStyle: (el.attr('rel') === 'nofollow') ? 'warning' : 'success'
                 });
             });
             var uniqueLinks = cleanLinks(ArrayUtils.removeDuplicates(links), originalText);
