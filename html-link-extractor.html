@@ -246,12 +246,34 @@ layout: post
 
         return cleanLinks;
     };
+    const createLinkRow = (context) => {
+        return `
+        <tr>
+                                    <td>${context.sn}</td>
+                                    <td>${context.url}</td>
+                                    <td>${context.text}</td>
+                                    <td><span class="label label-success">${context.following}</span></td>
+                                    <td>${context.title}</td>
+                                    <td>${context.alt}</td>
+                                    <td>${context.linkCode}</td>
+                                </tr>
+        `;
+    }
     $(document).ready(function () {
         $("#extracturl").click(function () {
             var links = [];
+            const linkAttributes = [];
             var originalText = $("#htm").val();
+            let count = 1;
             $(originalText).find('a').each(function () {
                 links.push(this.href);
+                linkAttributes.push({
+                    url: this.href,
+                    sn: count++,
+                    text: this.text() || '-',
+                    title: this.attr('title') || '-',
+                    alt: this.attr('alt') || '-',
+                });
             });
             var uniqueLinks = cleanLinks(ArrayUtils.removeDuplicates(links), originalText);
             if (uniqueLinks) {
@@ -261,6 +283,9 @@ layout: post
                 var uniqueDomains = ArrayUtils.removeDuplicates(UrlUtils.extractDomainList(links));
                 $("#uniqueDomainCount").text(uniqueDomains.length);
             }
+            const rows = [];
+            (linkAttributes || []).forEach(linkAttribute =>  rows.push(createLinkRow(linkAttribute)))
+            $('#linkdatatable').append(rows.join(''));
         });
         $("#urls").selectOnFocus();
         $("#htm").selectOnFocus();
