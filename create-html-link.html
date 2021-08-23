@@ -191,7 +191,7 @@ layout: post
     const createLink = ($link, context) => {
         $link.attr('href', context.url);
         if(context.rel) {
-            $link.attr('rel', rel);
+            $link.attr('rel', context.rel);
         }
         $link.text(context.text);
         $link.attr('title',context.text);
