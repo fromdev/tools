@@ -191,16 +191,17 @@ layout: post
         $link.text(context.text);
     };
     var processUrl = function(url) {
+        const rel = $('#rel option:selected').val();
         const openUrlLink = $('#openurl');
         createLink(openUrlLink, {
             url: url,
-            rel: $('#rel option:selected').val(),
+            rel: rel,
             text: 'Open Link (in new window)'
         });
         const linkCode = $('#linkcodecontainer a');
         createLink(linkCode, {
             url: url,
-            rel: $('#rel option:selected').val(),
+            rel: rel,
             text: $('#linktext').val() || 'Link'
         });
         $('#linkhtml').val(getLinkCode(url));
