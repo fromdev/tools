@@ -249,10 +249,8 @@ layout: post
         $('#openurl').text('');
         $('#linkhtml').text('');
         $('#error').text('');
-        const linkCode = $('#linkcodecontainer a');
-        linkCode.attr('href','');
-        linkCode.attr('rel',undefined);
-        linkCode.attr('target',undefined);
+        $('#linkcodecontainer').empty();
+        $('#linkcodecontainer').html('<a></a>');
     };
 </script>
 
