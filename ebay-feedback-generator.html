@@ -11,8 +11,8 @@ layout: post
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="description"
-          content="This is easy to use open source tool to generate a random &amp; unique positive feedback for ebay buyer or seller. Helpful for regular ebay sellers and buyers to keep good ebay relations and reach up to top rated seller level."/>
-    <meta name="keywords" content="online,tool,feedback,ebay,buyer,seller,sample"/>
+        content="This is easy to use open source tool to generate a random &amp; unique positive feedback for ebay buyer or seller. Helpful for regular ebay sellers and buyers to keep good ebay relations and reach up to top rated seller level." />
+    <meta name="keywords" content="online,tool,feedback,ebay,buyer,seller,sample" />
     <!-- CSS for the site theme -->
     {% include theme-css %}
     <!-- Annoying IE fixes -->
@@ -20,193 +20,212 @@ layout: post
 </head>
 
 <body class="hold-transition skin-green sidebar-mini">
-<!-- Site wrapper -->
-<div class="wrapper">
+    <!-- Site wrapper -->
+    <div class="wrapper">
 
-    <!-- header tag from theme -->
-    {% include theme-header %}
-    <!-- Sidebar for the whole website -->
-    {% include theme-sidebar %}
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Main content -->
-        <section class="content">
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h1 class="box-title">eBay Feedback Generator Tool</h1>
-                </div>
-                <!-- /.box-header -->
-                <!-- form start -->
-                <div class="box-body">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h1 class="box-title">eBay Feedback Generator Tool</h1>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
                     <form role="form">
-                        <div class="form-group">
-                            <label for="buyerFeedback">eBay Buyer Feedback Suggestion</label>
-                            <div class="input-group margin"></div>
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="buyerFeedback">eBay Buyer Feedback Suggestion</label>
+                                <div class="input-group margin"></div>
                                 <input class="form-control input-lg" type="text" id="buyerFeedback" readonly="true"
-                                    placeholder="Copy Buyer Feedback from here"/>
+                                    placeholder="Copy Buyer Feedback from here" />
                                 <span class="input-group-btn">
-                                <button type="button" id="copy-buyerFeedback" class="btn btn-default btn-flat"><i class="fa fa-copy"></i> Copy Feedback</button>
+                                    <button type="button" id="copy-buyerFeedback" class="btn btn-default btn-flat"><i
+                                            class="fa fa-copy"></i> Copy Feedback</button>
                                 </span>
-                                <span class="label label-success" id="confirm-buyerFeedback" style="display:none"><i class="fa fa-check"></i> Copied</span>
+                                <span class="label label-success" id="confirm-buyerFeedback" style="display:none"><i
+                                        class="fa fa-check"></i> Copied</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="sellerFeedback">eBay Seller Feedback Suggestion</label>
                             <div class="input-group margin"></div>
-                                <input class="form-control input-lg input-group margin" type="text" id="sellerFeedback" readonly="true"
-                                    placeholder="Copy Seller Feedback from here"/>
-                                <span class="input-group-btn">
-                                <button type="button" id="copy-sellerFeedback" class="btn btn-default btn-flat"><i class="fa fa-copy"></i> Copy Feedback</button>
-                                </span>
-                                <span class="label label-success" id="confirm-sellerFeedback" style="display:none"><i class="fa fa-check"></i> Copied</span>
-                            </div>
+                            <input class="form-control input-lg input-group margin" type="text" id="sellerFeedback"
+                                readonly="true" placeholder="Copy Seller Feedback from here" />
+                            <span class="input-group-btn">
+                                <button type="button" id="copy-sellerFeedback" class="btn btn-default btn-flat"><i
+                                        class="fa fa-copy"></i> Copy Feedback</button>
+                            </span>
+                            <span class="label label-success" id="confirm-sellerFeedback" style="display:none"><i
+                                    class="fa fa-check"></i> Copied</span>
                         </div>
                     </form>
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    <div class="row">
-                        <div class="col-xs-1">
-                            <button type="button" class="btn btn-success" id="submit">Suggest Feedback</button>
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-xs-1">
+                                <button type="button" class="btn btn-success" id="submit">Suggest Feedback</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- /.box-footer -->
-            </div>
-        </section>
-        <section class="content">
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">About eBay Feedback Generator Tool</h3>
+
+            </section>
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About eBay Feedback Generator Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This is a free online tool to generate a short positive feedback for a ebay user. This tool
+                            takes
+                            care of randomly picking a good feedback from list of various different text.</p>
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <p>This is a free online tool to generate a short positive feedback for a ebay user. This tool takes
-                        care of randomly picking a good feedback from list of various different text.</p>
-                </div>
-                <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">How To Use This Tool To Generate More Positive Feedback on Ebay?</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <p>This tool can be handy for your buyers to quickly send a positive review on recent purchase. </p>
-                    <p>You can use a message like below (sample template emails) to your buyers that can encourage them writing you a feedback in few seconds.</p>
-                    <p>Template Email #1 : Generic</p>
-                    <textarea class="form-control" rows="5" id="templateEmail1">Hi,
+                <!-- /.box -->
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">How To Use This Tool To Generate More Positive Feedback on Ebay?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This tool can be handy for your buyers to quickly send a positive review on recent purchase.
+                        </p>
+                        <p>You can use a message like below (sample template emails) to your buyers that can encourage
+                            them
+                            writing you a feedback in few seconds.</p>
+                        <p>Template Email #1 : Generic</p>
+                        <textarea class="form-control" rows="5"
+                            id="templateEmail1">Hi,
  Thanks for your recent purchase. Please reply to this message if you have any concerns. 
                                                 
  If you liked our service we would appreciate a positive feedback [http://bit.ly/ebayFeedbk] on eBay from you.</textarea>
-                    <p>Template Email #2 : Small/Family Business</p>
-                    <textarea class="form-control" rows="5" id="templateEmail2">Hi, 
+                        <p>Template Email #2 : Small/Family Business</p>
+                        <textarea class="form-control" rows="5"
+                            id="templateEmail2">Hi, 
 We appreciate your business. Please let us know if you have any concerns. 
                                                 
 We are running a family based business and your positive feedback would help us grow. You can quickly provide us a feedback using this tool [http://bit.ly/ebayFeedbk] </textarea>
-                    <p>Template Email #3 : Short and Simple</p>
-                    <textarea class="form-control" rows="3" id="templateEmail3">Hi, 
+                        <p>Template Email #3 : Short and Simple</p>
+                        <textarea class="form-control" rows="3" id="templateEmail3">Hi, 
 We appreciate your business. Please leave us a positive feedback [http://bit.ly/ebayFeedbk] on eBay.</textarea>
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
-            </div>
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">What is the use of this eBay Feedback Generator?</h3>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is the use of this eBay Feedback Generator?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>As a ebay user (buyer or seller) I do a lot of interaction with people. I often come across
+                            awesome folks that deserve a positive feedback. At times it is difficult to think about some
+                            text to write. </p>
+                        <p>I have collected many awesome feedback and created this tool to randomly pick a feedback.
+                            This
+                            makes my life easier and I can post multiple feedback in few seconds.</p>
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <p>As a ebay user (buyer or seller) I do a lot of interaction with people. I often come across
-                        awesome folks that deserve a positive feedback. At times it is difficult to think about some
-                        text to write. </p>
-                    <p>I have collected many awesome feedback and created this tool to randomly pick a feedback. This
-                        makes my life easier and I can post multiple feedback in few seconds.</p>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">How This Tool Can Help Busy Sellers?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>As a busy eBay seller, you may have a lot of things to do. This may leave you with very less
+                            time to
+                            leave feedback.</p>
+                        <p>Using this tool you can quickly pick a randomly selected ebay feedback for a buyer and post
+                            it.</p>
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
-            </div>
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">How This Tool Can Help Busy Sellers?</h3>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why You Should Post A Buyer Feedback on eBAy?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Posting a buyer feedback is a proven and successful way to receive positive feedback from
+                            buyers.</p>
+                        <p>Once you post a review for buyer, ebay system informs the buyer about a feedback. This acts
+                            as very
+                            effective means to motivate buyer for rating the seller as well.</p>
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <p>As a busy eBay seller, you may have a lot of things to do. This may leave you with very less time to leave feedback.</p>
-                    <p>Using this tool you can quickly pick a randomly selected ebay feedback for a buyer and post it.</p>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Want To Get An Idea For Writing Feedback?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>That is easy. Just hit the Suggest Feedback button and the tool will suggest you a completely
+                            new
+                            random and awesome feedback. </p>
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
-            </div>
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Why You Should Post A Buyer Feedback on eBAy?</h3>
+                <!-- /.box -->
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">How To Get More Positive Feedback On eBay?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Getting positive feedback requires a lot of effort from sellers. This includes the quality of
+                            service
+                            and product. </p>
+                        <p>In addition to that following things can help you get better feedback. </p>
+                        <ul>
+                            <li>Ask for feedback to the buyer after they have received the product or service.</li>
+                            <li>Provide your feedback for the buyer.</li>
+                            <li>Respond quickly and promptly to buyer queries.</li>
+                        </ul>
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <p>Posting a buyer feedback is a proven and successful way to receive positive feedback from buyers.</p>
-                    <p>Once you post a review for buyer, ebay system informs the buyer about a feedback. This acts as very effective means to motivate buyer for rating the seller as well.</p>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Can I Copy The Feedback and Use it?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>The feedback suggested by this tool are absolutely free for you to use. You can easily copy
+                            it
+                            from the suggestion text box and use any way you like. </p>
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
-            </div>
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Want To Get An Idea For Writing Feedback?</h3>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">I Do Not Like The Feedback Suggested By This. What Should I Do?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>The feedback idea suggested in this tool may not always be relevant. In such cases just hit
+                            the
+                            "Suggest Feedback" button again and you can see a new feedback suggestion. Keep trying until
+                            you
+                            really discover your favorite feedback text.</p>
+                    </div>
                 </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <p>That is easy. Just hit the Suggest Feedback button and the tool will suggest you a completely new
-                        random and awesome feedback. </p>
-                </div>
-                <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">How To Get More Positive Feedback On eBay?</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <p>Getting positive feedback requires a lot of effort from sellers. This includes the quality of service and product.  </p>
-                    <p>In addition to that following things can help you get better feedback. </p>
-                    <ul>
-                        <li>Ask for feedback to the buyer after they have received the product or service.</li>
-                        <li>Provide your feedback for the buyer.</li>
-                        <li>Respond quickly and promptly to buyer queries.</li>
-                    </ul>
-                </div>
-                <!-- /.box-body -->
-            </div>
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Can I Copy The Feedback and Use it?</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <p>The feedback suggested by this tool are absolutely free for you to use. You can easily copy it
-                        from the suggestion text box and use any way you like. </p>
-                </div>
-                <!-- /.box-body -->
-            </div>
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">I Do Not Like The Feedback Suggested By This. What Should I Do?</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <p>The feedback idea suggested in this tool may not always be relevant. In such cases just hit the
-                        "Suggest Feedback" button again and you can see a new feedback suggestion. Keep trying until you
-                        really discover your favorite feedback text.</p>
-                </div>
-                <!-- /.box-body -->
-            </div>
-        </section>
-        {% include addthis %}
+            </section>
+            {% include addthis %}
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
     </div>
-    <!-- /.content-wrapper -->
-    {% include theme-footer %}
-</div>
-<!-- ./wrapper -->
-{% include theme-bottom-js %}
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
 
 </body>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
@@ -268,13 +287,13 @@ We appreciate your business. Please leave us a positive feedback [http://bit.ly/
         if ($sellerFeedback) {
             $sellerFeedback.selectOnFocus();
         }
-        if($templateEmail1) {
+        if ($templateEmail1) {
             $templateEmail1.selectOnFocus();
         }
-        if($templateEmail2) {
+        if ($templateEmail2) {
             $templateEmail2.selectOnFocus();
         }
-        if($templateEmail3) {
+        if ($templateEmail3) {
             $templateEmail2.selectOnFocus();
         }
         CopyTextAddon.register('buyerFeedback');
