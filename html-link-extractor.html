@@ -229,7 +229,7 @@ layout: post
                                     <th>Title</th>
                                     <th>Alt</th>
                                 </tr>`;
-    }
+    };
     const createLinkRow = (context) => {
         return `
         <tr>
@@ -241,6 +241,9 @@ layout: post
                                     <td>${context.alt}</td>
                                 </tr>
         `;
+    };
+    const suggestText = (el) => {
+        return el.text() || UrlUtils.extractDomain(el.attr('href')) || '-';
     }
     $(document).ready(function () {
         $("#extracturl").click(function () {
@@ -255,7 +258,7 @@ layout: post
                 linkAttributes.push({
                     url: this.href,
                     sn: count++,
-                    text: el.text() || '-',
+                    text: suggestText(el),
                     title: el.attr('title') || '-',
                     alt: el.attr('alt') || '-',
                     rel: el.attr('rel') || 'dofollow',
