@@ -253,17 +253,19 @@ layout: post
             var originalText = $("#htm").val();
             let count = 1;
             $(originalText).find('a').each(function () {
-                links.push(this.href);
-                const el = $(this);
-                linkAttributes.push({
-                    url: this.href,
-                    sn: count++,
-                    text: suggestText(el),
-                    title: el.attr('title') || '-',
-                    alt: el.attr('alt') || '-',
-                    rel: el.attr('rel') || 'dofollow',
-                    relStyle: (el.attr('rel') === 'nofollow') ? 'warning' : 'success'
-                });
+                if(this.href) {
+                    links.push(this.href);
+                    const el = $(this);
+                    linkAttributes.push({
+                        url: this.href,
+                        sn: count++,
+                        text: suggestText(el),
+                        title: el.attr('title') || '-',
+                        alt: el.attr('alt') || '-',
+                        rel: el.attr('rel') || 'dofollow',
+                        relStyle: (el.attr('rel') === 'nofollow') ? 'warning' : 'success'
+                    });
+                }
             });
             var uniqueLinks = cleanLinks(ArrayUtils.removeDuplicates(links), originalText);
             if (uniqueLinks) {
