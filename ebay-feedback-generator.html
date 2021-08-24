@@ -44,11 +44,19 @@ layout: post
                             <label for="buyerFeedback">eBay Buyer Feedback Suggestion</label>
                             <input class="form-control input-lg" type="text" id="buyerFeedback" readonly="true"
                                    placeholder="Copy Buyer Feedback from here"/>
+                            <span class="input-group-btn">
+                            <button type="button" id="copy-buyerFeedback" class="btn btn-default btn-flat"><i class="fa fa-copy"></i> Copy Feedback</button>
+                            </span>
+                            <span class="label label-success" id="confirm-buyerFeedback" style="display:none"><i class="fa fa-check"></i> Copied</span>
                         </div>
                         <div class="form-group">
                             <label for="sellerFeedback">eBay Seller Feedback Suggestion</label>
                             <input class="form-control input-lg" type="text" id="sellerFeedback" readonly="true"
                                    placeholder="Copy Seller Feedback from here"/>
+                            <span class="input-group-btn">
+                            <button type="button" id="copy-sellerFeedback" class="btn btn-default btn-flat"><i class="fa fa-copy"></i> Copy Feedback</button>
+                            </span>
+                            <span class="label label-success" id="confirm-sellerFeedback" style="display:none"><i class="fa fa-check"></i> Copied</span>
                         </div>
                     </form>
                 </div>
@@ -199,6 +207,8 @@ We appreciate your business. Please leave us a positive feedback [http://bit.ly/
 </body>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script type="text/javascript" src="javascripts/fromdev-utils.js"></script>
+<script src="/javascripts/fromdev-ux-addon.js"></script>
+<script src="/plugins/copyText/jquery.copyText.min.js"></script>
 <script type="text/javascript" src="javascripts/buyer-feedback-templates.js"></script>
 <script type="text/javascript" src="javascripts/seller-feedback-templates.js"></script>
 <script>
@@ -263,8 +273,9 @@ We appreciate your business. Please leave us a positive feedback [http://bit.ly/
         if($templateEmail3) {
             $templateEmail2.selectOnFocus();
         }
+        CopyTextAddon.register('buyerFeedback');
+        CopyTextAddon.register('sellerFeedback');
         $('#generators-category').addClass('active');
-
     });
 </script>
 
