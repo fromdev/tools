@@ -109,14 +109,7 @@ layout: post
                     <div class="box-body">
                         <table id='linkdatatable' class="table table-hover">
                             <tbody>
-                                <tr>
-                                    <th>SN</th>
-                                    <th>Link</th>
-                                    <th>Link Text</th>
-                                    <th>Type</th>
-                                    <th>Title</th>
-                                    <th>Alt</th>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
@@ -227,6 +220,16 @@ layout: post
 
         return cleanLinks;
     };
+    const createTableHeader = () => {
+        return `<tr>
+                                    <th>SN</th>
+                                    <th>Link</th>
+                                    <th>Link Text</th>
+                                    <th>Type</th>
+                                    <th>Title</th>
+                                    <th>Alt</th>
+                                </tr>`;
+    }
     const createLinkRow = (context) => {
         return `
         <tr>
@@ -268,6 +271,7 @@ layout: post
                 $("#uniqueDomainCount").text(uniqueDomains.length);
             }
             const rows = [];
+            rows.push(createTableHeader());
             (linkAttributes || []).forEach(linkAttribute =>  rows.push(createLinkRow(linkAttribute)))
             $('#linkdatatable').append(rows.join(''));
         });
