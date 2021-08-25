@@ -312,7 +312,7 @@ layout: post
                 const httpsLink = toHttpsUrl(httpLink);
                 const originalText = $("#updatedHtm").val() || $("#htm").val();
                 const updatedHtm = originalText.replace(httpLink, httpsLink);
-                $("#updatedHtm").val(updated);
+                $("#updatedHtm").val(updatedHtm);
             });
         });
     };
