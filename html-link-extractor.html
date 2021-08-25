@@ -344,12 +344,15 @@ layout: post
             $("#linkdatatable").DataTable();
         });
 
-        $(".change-to-https").click(function(){
-            const httpLink = $(this).attr("data-http-url");
-            const httpsLink = toHttpsUrl(httpLink);
-            const originalText = $("#updatedHtm").val() || $("#htm").val();
-            const updatedHtm = originalText.replace(httpLink, httpsLink);
-            $("#updatedHtm").val(updated);
+        $('.change-to-https').each(function () {
+            var $this = $(this);
+            $this.on("click", function () {
+                const httpLink = $(this).attr("data-http-url");
+                const httpsLink = toHttpsUrl(httpLink);
+                const originalText = $("#updatedHtm").val() || $("#htm").val();
+                const updatedHtm = originalText.replace(httpLink, httpsLink);
+                $("#updatedHtm").val(updated);
+            });
         });
 
         $("#urls").selectOnFocus();
