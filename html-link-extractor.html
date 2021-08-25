@@ -303,6 +303,19 @@ layout: post
     const suggestText = (el) => {
         return el.text() || UrlUtils.extractDomain(el.attr('href')) || '-';
     }
+
+    const registerTableButtons = () => {
+        $('.change-to-https').each(function () {
+            var $this = $(this);
+            $this.on("click", function () {
+                const httpLink = $(this).attr("data-http-url");
+                const httpsLink = toHttpsUrl(httpLink);
+                const originalText = $("#updatedHtm").val() || $("#htm").val();
+                const updatedHtm = originalText.replace(httpLink, httpsLink);
+                $("#updatedHtm").val(updated);
+            });
+        });
+    };
     $(document).ready(function () {
         $("#extracturl").click(function () {
             $('#linkdatatable').empty();
@@ -342,19 +355,8 @@ layout: post
             (linkAttributes || []).forEach(linkAttribute => rows.push(createLinkRow(linkAttribute)))
             $('#linkdatatable').append(rows.join(''));
             $("#linkdatatable").DataTable();
+            registerTableButtons();
         });
-
-        $('.change-to-https').each(function () {
-            var $this = $(this);
-            $this.on("click", function () {
-                const httpLink = $(this).attr("data-http-url");
-                const httpsLink = toHttpsUrl(httpLink);
-                const originalText = $("#updatedHtm").val() || $("#htm").val();
-                const updatedHtm = originalText.replace(httpLink, httpsLink);
-                $("#updatedHtm").val(updated);
-            });
-        });
-
         $("#urls").selectOnFocus();
         $("#htm").selectOnFocus();
         $('#converters-category').addClass('active');
