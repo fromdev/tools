@@ -109,9 +109,24 @@ layout: post
                     <div class="box-body">
                         <table id='linkdatatable' class="table table-hover">
                             <tbody>
-                                
+
                             </tbody>
                         </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="linkdatatable_info" role="status" aria-live="polite"></div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="linkdatatable_paginate">
+                                <ul class="pagination">
+                                    <li class="paginate_button previous disabled" id="linkdatatable_previous"><a href="#"
+                                            aria-controls="linkdatatable" data-dt-idx="0" tabindex="0">Previous</a></li>
+                                    <li class="paginate_button next" id="linkdatatable_next"><a href="#"
+                                            aria-controls="linkdatatable" data-dt-idx="7" tabindex="0">Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -256,7 +271,7 @@ layout: post
             var originalText = $("#htm").val();
             let count = 1;
             $(originalText).find('a').each(function () {
-                if(this.href) {
+                if (this.href) {
                     links.push(this.href);
                     const el = $(this);
                     linkAttributes.push({
@@ -281,11 +296,11 @@ layout: post
             }
             const rows = [];
             rows.push(createTableHeader());
-            (linkAttributes || []).forEach(linkAttribute =>  rows.push(createLinkRow(linkAttribute)))
+            (linkAttributes || []).forEach(linkAttribute => rows.push(createLinkRow(linkAttribute)))
             $('#linkdatatable').append(rows.join(''));
             $("#linkdatatable").DataTable();
         });
-        
+
         $("#urls").selectOnFocus();
         $("#htm").selectOnFocus();
         $('#converters-category').addClass('active');
