@@ -97,6 +97,10 @@ layout: post
                                     <label for="uniqueDomainCount">Unique Domain Count</label>
                                     <h4 class='text-green' id="uniqueDomainCount"> 0 </h4>
                                 </div>
+                                <div class="form-group">
+                                    <label for="httpsLinksCount">HTTPS Links Count</label>
+                                    <h4 class='text-green' id="httpsLinksCount"> 0 </h4>
+                                </div>
                             </div>
                             <!-- /.box-body -->
                         </div>
@@ -288,6 +292,8 @@ layout: post
                 $("#totalcount").text(links.length);
                 var uniqueDomains = ArrayUtils.removeDuplicates(UrlUtils.extractDomainList(links));
                 $("#uniqueDomainCount").text(uniqueDomains.length);
+                const httpsLink = link.filter(l => l && l.toLowerCase().startsWith('https'));
+                $('#httpsLinksCount').text(httpsLink.length);
             }
             const rows = [];
             rows.push(createTableHeader());
