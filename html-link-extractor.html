@@ -292,7 +292,7 @@ layout: post
                 $("#totalcount").text(links.length);
                 var uniqueDomains = ArrayUtils.removeDuplicates(UrlUtils.extractDomainList(links));
                 $("#uniqueDomainCount").text(uniqueDomains.length);
-                const httpsLink = link.filter(l => l && l.toLowerCase().startsWith('https'));
+                const httpsLink = (links || []).filter(l => l && l.toLowerCase().startsWith('https'));
                 $('#httpsLinksCount').text(httpsLink.length);
             }
             const rows = [];
