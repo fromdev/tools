@@ -222,7 +222,7 @@ layout: post
         return cleanLinks;
     };
     const createTableHeader = () => {
-        return `<tr>
+        return `<thead><tr>
                                     <th>SN</th>
                                     <th>Link</th>
                                     <th>Link Text</th>
@@ -230,7 +230,7 @@ layout: post
                                     <th>Title</th>
                                     <th>Alt</th>
                                     <th>HTTPS Link</th>
-                                </tr>`;
+                                </tr></thead>`;
     };
     const createLinkRow = (context) => {
         return `
@@ -283,8 +283,9 @@ layout: post
             rows.push(createTableHeader());
             (linkAttributes || []).forEach(linkAttribute =>  rows.push(createLinkRow(linkAttribute)))
             $('#linkdatatable').append(rows.join(''));
+            $("#linkdatatable").DataTable();
         });
-        $("#linkdatatable").DataTable();
+        
         $("#urls").selectOnFocus();
         $("#htm").selectOnFocus();
         $('#converters-category').addClass('active');
