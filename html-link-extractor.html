@@ -18,7 +18,7 @@ layout: post
     <!-- Annoying IE fixes -->
     {% include ie-fixes %}
     <!-- Data Table Addon Styles -->
-    <link rel="stylesheet" href="https://tools.fromdev.com/plugins/datatables.net/dataTables.bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://tools.fromdev.com/plugins/datatables.net/dataTables.bootstrap.min.css">
 </head>
 
 <body class="hold-transition skin-green sidebar-mini">
@@ -109,11 +109,40 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id='linkdatatable' class="table table-hover">
-                            <tbody>
+                        <!-- table setup start -->
+                        <div id="linkdatatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="dataTables_length" id="linkdatatable_length">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div id="linkdatatable_filter" class="dataTables_filter"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id='linkdatatable' class="table table-hover">
+                                        <tbody>
 
-                            </tbody>
-                        </table>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="dataTables_info" id="linkdatatable_info" role="status"
+                                        aria-live="polite">
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="linkdatatable_paginate">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- table setup end -->
+
                     </div>
                     <!-- /.box-body -->
                 </div>
