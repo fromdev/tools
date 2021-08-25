@@ -280,7 +280,7 @@ layout: post
     const getActionButtons = (context) => {
         const buttons = [];
         if(!isHttpsLink(context.url))  {
-            buttons.push(`<button type="button" class="btn btn-info change-to-https" data-http-url="${contest.url}">Change To HTTPS</button>`);
+            buttons.push(`<button type="button" class="btn btn-info change-to-https" data-http-url="${context.url}">Change To HTTPS</button>`);
         }
         return buttons.join('');
     };
