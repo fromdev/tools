@@ -128,6 +128,31 @@ layout: post
                 </div>
             </section>
             <section class="content">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h1 class="box-title">Updated HTML</h1>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="updatedHtm">Updated HTML Data</label>
+                                        <textarea class="form-control" rows="20" id="updatedHtm"
+                                            placeholder="Copy your updated HTML data from here" readonly></textarea>
+                                        <div style="display:none;" id="hidden"></div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                            <!-- /.box-footer -->
+                        </div>
+                    </div>
+            </section>
+            <section class="content">
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h3 class="box-title">About HTML Link Extractor Tool</h3>
@@ -243,8 +268,23 @@ layout: post
                                     <th>Title</th>
                                     <th>Alt</th>
                                     <th>HTTPS Link</th>
+                                    <th>Actions</th>
                                 </tr></thead>`;
     };
+    const isHttpsLink = (url) => {
+        return (url || '').toLowerCase().startsWith('https');
+    }
+    const toHttpsUrl = (url) => {
+        return (url || '').toLowerCase().replace('http://','https://');
+    };
+    const getActionButtons = (context) => {
+        const buttons = [];
+        if(!isHttpsLink(context.url))  {
+            buttons.push(`<button type="button" class="btn btn-info change-to-https" data-http-url="${contest.url}">Change To HTTPS</button>`);
+        }
+        return buttons.join('');
+    };
+
     const createLinkRow = (context) => {
         return `
         <tr>
@@ -255,8 +295,9 @@ layout: post
                                     <td>${UrlUtils.extractDomain(context.url) || '-'}</td>
                                     <td>${context.title}</td>
                                     <td>${context.alt}</td>
-                                    <td>${context.url.toLowerCase().startsWith('https') ? '<span class="badge bg-green">HTTPS</span>' : '<span class="badge bg-red">HTTP</span>'}</td>
-                                </tr>
+                                    <td>${isHttpsLink(context.url) ? '<span class="badge bg-green">HTTPS</span>' : '<span class="badge bg-red">HTTP</span>'}</td>
+                                    <td>${getActionButtons(context)}</td>
+                                    </tr>
         `;
     };
     const suggestText = (el) => {
@@ -265,6 +306,7 @@ layout: post
     $(document).ready(function () {
         $("#extracturl").click(function () {
             $('#linkdatatable').empty();
+            $("#updatedHtm").val('');
             var links = [];
             const linkAttributes = [];
             var originalText = $("#htm").val();
@@ -300,6 +342,14 @@ layout: post
             (linkAttributes || []).forEach(linkAttribute => rows.push(createLinkRow(linkAttribute)))
             $('#linkdatatable').append(rows.join(''));
             $("#linkdatatable").DataTable();
+        });
+
+        $(".change-to-https").click(function(){
+            const httpLink = $(this).attr("data-http-url");
+            const httpsLink = toHttpsUrl(httpLink);
+            const originalText = $("#updatedHtm").val() || $("#htm").val();
+            const updatedHtm = originalText.replace(httpLink, httpsLink);
+            $("#updatedHtm").val(updated);
         });
 
         $("#urls").selectOnFocus();
