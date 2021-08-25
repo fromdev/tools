@@ -200,6 +200,7 @@ layout: post
     {% include theme-bottom-js %}
 
 </body>
+<script src="/plugins/datatables.net/jquery.dataTables.min.js"></script>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script src="javascripts/fromdev-utils.js"></script>
 <script>
@@ -281,6 +282,7 @@ layout: post
             (linkAttributes || []).forEach(linkAttribute =>  rows.push(createLinkRow(linkAttribute)))
             $('#linkdatatable').append(rows.join(''));
         });
+        $("#linkdatatable").DataTable();
         $("#urls").selectOnFocus();
         $("#htm").selectOnFocus();
         $('#converters-category').addClass('active');
