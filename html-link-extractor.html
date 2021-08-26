@@ -317,8 +317,10 @@ layout: post
         });
     };
     $(document).ready(function () {
+        let datatable;
         $("#extracturl").click(function () {
             $("#updatedHtm").val('');
+            datatable.destroy();
             var links = [];
             const linkAttributes = [];
             var originalText = $("#htm").val();
@@ -353,7 +355,7 @@ layout: post
             rows.push(createTableHeader());
             (linkAttributes || []).forEach(linkAttribute => rows.push(createLinkRow(linkAttribute)))
             $('#linkdatatable').append(rows.join(''));
-            $("#linkdatatable").DataTable();
+            datatable = $("#linkdatatable").DataTable();
             registerTableButtons();
         });
         $("#urls").selectOnFocus();
