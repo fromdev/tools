@@ -318,7 +318,7 @@ layout: post
     };
     $(document).ready(function () {
         $("#extracturl").click(function () {
-            $('#linkdatatable').empty();
+            $('#linkdatatable').DataTable({data: []});
             $("#updatedHtm").val('');
             var links = [];
             const linkAttributes = [];
@@ -359,6 +359,7 @@ layout: post
         });
         $("#urls").selectOnFocus();
         $("#htm").selectOnFocus();
+        $("#updatedHtm").selectOnFocus();
         $('#converters-category').addClass('active');
     });
 </script>
