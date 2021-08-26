@@ -116,7 +116,7 @@ layout: post
                         <!-- table setup start -->
                         <div id="linkdatatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                             <div class="row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-12" id="linkdatatablecontainer">
                                     <table id='linkdatatable' class="table table-hover">
                                     </table>
                                 </div>
@@ -322,6 +322,7 @@ layout: post
             $("#updatedHtm").val('');
             if(datatable) {
                 datatable.clear();
+                $('#linkdatatablecontainer').empty();
             }
             var links = [];
             const linkAttributes = [];
@@ -356,9 +357,9 @@ layout: post
             const rows = [];
             rows.push(createTableHeader());
             (linkAttributes || []).forEach(linkAttribute => rows.push(createLinkRow(linkAttribute)))
-            $('#linkdatatable').append(rows.join(''));
-            datatable = $("#linkdatatable").DataTable();
-            datatable.draw();
+            $('#linkdatatablecontainer').html(`<table class="table table-hover"></table>`);
+            $('#linkdatatablecontainer table').append(rows.join(''));
+            datatable = $('#linkdatatablecontainer table').DataTable();
             registerTableButtons();
         });
         $("#urls").selectOnFocus();
