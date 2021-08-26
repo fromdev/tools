@@ -261,7 +261,6 @@ layout: post
                                     <th>Title</th>
                                     <th>Alt</th>
                                     <th>HTTPS Link</th>
-                                    <th>Actions</th>
                                 </tr></thead>`;
     };
     const isHttpsLink = (url) => {
@@ -269,13 +268,6 @@ layout: post
     }
     const toHttpsUrl = (url) => {
         return (url || '').toLowerCase().replace('http://','https://');
-    };
-    const getActionButtons = (context) => {
-        const buttons = [];
-        if(!isHttpsLink(context.url))  {
-            buttons.push(`<button type="button" class="btn btn-info change-to-https" data-http-url="${context.url}">Change To HTTPS</button>`);
-        }
-        return buttons.join('');
     };
 
     const createLinkRow = (context) => {
@@ -289,7 +281,6 @@ layout: post
                                     <td>${context.title}</td>
                                     <td>${context.alt}</td>
                                     <td>${isHttpsLink(context.url) ? '<span class="badge bg-green">HTTPS</span>' : '<span class="badge bg-red">HTTP</span>'}</td>
-                                    <td>${getActionButtons(context)}</td>
                                     </tr>
         `;
     };
@@ -297,18 +288,6 @@ layout: post
         return el.text() || UrlUtils.extractDomain(el.attr('href')) || '-';
     }
 
-    const registerTableButtons = () => {
-        $('.change-to-https').each(function () {
-            var $this = $(this);
-            $this.on("click", function () {
-                const httpLink = $(this).attr("data-http-url");
-                const httpsLink = toHttpsUrl(httpLink);
-                const originalText = $("#updatedHtm").val() || $("#htm").val();
-                const updatedHtm = originalText.replace(httpLink, httpsLink);
-                $("#updatedHtm").val(updatedHtm);
-            });
-        });
-    };
     $(document).ready(function () {
         let datatable;
         $("#extracturl").click(function () {
@@ -353,7 +332,6 @@ layout: post
             $('#linkdatatablecontainer').html(`<table class="table table-hover"></table>`);
             $('#linkdatatablecontainer table').append(rows.join(''));
             datatable = $('#linkdatatablecontainer table').DataTable();
-            registerTableButtons();
         });
         $("#urls").selectOnFocus();
         $("#htm").selectOnFocus();
