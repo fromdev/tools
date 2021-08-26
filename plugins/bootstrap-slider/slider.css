@@ -280,3 +280,7 @@
 #purple .slider-selection {
     background: #932ab6;
 }
+
+.markdown-body {
+    max-width:100%;
+}
