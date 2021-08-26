@@ -320,7 +320,9 @@ layout: post
         let datatable;
         $("#extracturl").click(function () {
             $("#updatedHtm").val('');
-            datatable.destroy();
+            if(datatable) {
+                datatable.clear();
+            }
             var links = [];
             const linkAttributes = [];
             var originalText = $("#htm").val();
@@ -356,6 +358,7 @@ layout: post
             (linkAttributes || []).forEach(linkAttribute => rows.push(createLinkRow(linkAttribute)))
             $('#linkdatatable').append(rows.join(''));
             datatable = $("#linkdatatable").DataTable();
+            datatable.draw();
             registerTableButtons();
         });
         $("#urls").selectOnFocus();
