@@ -128,26 +128,6 @@ layout: post
             <section class="content">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h1 class="box-title">Updated HTML</h1>
-                    </div>
-                    <!-- /.box-header -->
-                    <!-- form start -->
-                    <div class="box-body">
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="updatedHtm">Updated HTML Data</label>
-                                <textarea class="form-control" rows="20" id="updatedHtm"
-                                    placeholder="Copy your updated HTML data from here" readonly></textarea>
-                                <div style="display:none;" id="hidden"></div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- /.box-body -->
-                    <!-- /.box-footer -->
-            </section>
-            <section class="content">
-                <div class="box box-success">
-                    <div class="box-header with-border">
                         <h3 class="box-title">About HTML Link Extractor Tool</h3>
                     </div>
                     <!-- /.box-header -->
@@ -291,7 +271,6 @@ layout: post
     $(document).ready(function () {
         let datatable;
         $("#extracturl").click(function () {
-            $("#updatedHtm").val('');
             if(datatable) {
                 datatable.clear();
                 $('#linkdatatablecontainer').empty();
@@ -335,8 +314,8 @@ layout: post
         });
         $("#urls").selectOnFocus();
         $("#htm").selectOnFocus();
-        $("#updatedHtm").selectOnFocus();
         $('#converters-category').addClass('active');
+        $('.markdown-body').attr('style','max-width:100%;');
     });
 </script>
 
