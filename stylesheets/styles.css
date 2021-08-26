@@ -517,4 +517,11 @@ span.orange {
   color : #ff9d00;
   font-weight:bold;
 }
+
+.markdown-body {
+  max-width: 100%;
+}
+
+
+
 /* End Addition by Sachin for Custom elements */
