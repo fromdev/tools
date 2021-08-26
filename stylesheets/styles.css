@@ -518,10 +518,7 @@ span.orange {
   font-weight:bold;
 }
 /* hack to use full screen width */
-.markdown-body {
+.markdown-body .container-lg {
   max-width: 100%;
 }
-
-
-
 /* End Addition by Sachin for Custom elements */
