@@ -517,7 +517,7 @@ span.orange {
   color : #ff9d00;
   font-weight:bold;
 }
-
+/* hack to use full screen width */
 .markdown-body {
   max-width: 100%;
 }
