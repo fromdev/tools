@@ -18,6 +18,8 @@ layout: post
   <link rel="stylesheet" href="plugins/bootstrap-slider/slider.css">
   <!-- Annoying IE fixes -->
   {% include ie-fixes %}
+  <!-- Data Table Addon Styles -->
+  <link rel="stylesheet" href="https://tools.fromdev.com/plugins/datatables.net/dataTables.bootstrap.min.css">
 </head>
 
 <body class="hold-transition skin-green sidebar-mini">
@@ -135,7 +137,9 @@ layout: post
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <div id="history">Empty</div>
+            <div id="history_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+              <div id="history">Empty</div>
+            </div>
           </div>
           <!-- /.box-body -->
         </div>
@@ -256,15 +260,18 @@ layout: post
   {% include theme-bottom-js %}
 
 </body>
-<script src="javascripts/fromdev-ux-addon.js"></script>
-<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
-<script src="plugins/copyText/jquery.copyText.min.js"></script>
-<script src="javascripts/fromdev-utils.js?v=1"></script>
+<script src="/javascripts/fromdev-ux-addon.js"></script>
+<script src="/plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script src="/plugins/copyText/jquery.copyText.min.js"></script>
+<script src="/javascripts/fromdev-utils.js?v=1"></script>
+<script src="/plugins/datatables.net/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables.net/dataTables.bootstrap.min.js"></script>
 
 <script>
     const HISTORY_TABLE_NAME = 'AMAZON-AFFILIATE-LINK-MAKER'
 
   $(document).ready(function() {
+    let datatable;
     getAffiliateTag();
     $('#convert').click(function() {
       clear();
@@ -377,6 +384,10 @@ layout: post
   const showHistory = () => {
     const history = HistoryUtils.findAll(HISTORY_TABLE_NAME) || [];
     if(!Array.isArray(history)) return;
+    if(datatable) {
+        datatable.clear();
+        $('#history').empty();
+    }
     const rows = [];
     rows.push(createTableHeader());
     history.forEach(r => rows.push(createRow(r)));
