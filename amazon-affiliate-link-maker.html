@@ -374,7 +374,7 @@ layout: post
     }
   };
   const showHistory = () => {
-    const history = HistoryUtils.findAll();
+    const history = HistoryUtils.findAll(HISTORY_TABLE_NAME);
     if(!Array.isArray(history)) return;
     const rows = [];
     rows.push(createTableHeader());
