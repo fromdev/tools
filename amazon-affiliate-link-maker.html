@@ -266,6 +266,7 @@ layout: post
 <script src="/javascripts/fromdev-utils.js?v=1"></script>
 <script src="/plugins/datatables.net/jquery.dataTables.min.js"></script>
 <script src="/plugins/datatables.net/dataTables.bootstrap.min.js"></script>
+<script src="/javascripts/custom-analytics.js"></script>
 
 <script>
     const HISTORY_TABLE_NAME = 'AMAZON-AFFILIATE-LINK-MAKER'
@@ -372,6 +373,13 @@ layout: post
       affiliateTag, affiliateTag,
       linkText: linkText
     });
+    CustomAnalytics.collector.collect(
+      {
+        eventName: 'convert',
+        eventAction: 'click',
+        message: cleanurl
+      }
+    );
   };
   const history = (context) => {
     try {
