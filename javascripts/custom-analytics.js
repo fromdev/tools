@@ -1,4 +1,4 @@
-let CustomAnalytics = CustomAnalytics || {};
+var CustomAnalytics = CustomAnalytics || {};
 
 CustomAnalytics.collector = {
     collect: (context) => {
