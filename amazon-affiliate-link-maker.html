@@ -269,9 +269,9 @@ layout: post
 
 <script>
     const HISTORY_TABLE_NAME = 'AMAZON-AFFILIATE-LINK-MAKER'
+    let datatable;
 
   $(document).ready(function() {
-    let datatable;
     getAffiliateTag();
     $('#convert').click(function() {
       clear();
