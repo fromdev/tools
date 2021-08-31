@@ -63,6 +63,7 @@ Utils.history = {
         const historyTable = StorageUtils.getItem(historyTableName) || [];
         row.timestamp = Date.now();
         historyTable.push(row);
+        StorageUtils.setItem(historyTableName, JSON.stringify(historyTable));
     },
     findAll: (historyTableName) => {
         if(!historyTableName) return [];
