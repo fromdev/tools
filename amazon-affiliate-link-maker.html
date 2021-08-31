@@ -393,6 +393,7 @@ layout: post
     history.forEach(r => rows.push(createRow(r)));
     $('#history').html(`<table class="table table-hover"></table>`);
     $('#history table').append(rows.join(''));
+    datatable = $('#history table').DataTable();
   };
   const collectHistory = (context) => {
     HistoryUtils.append(HISTORY_TABLE_NAME, context);
