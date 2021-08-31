@@ -57,6 +57,19 @@ Utils.storage = {
     }
 };
 
+Utils.history = {
+    append: (historyTableName, row) => {
+        if(!historyTableName || !row) return;
+        const historyTable = StorageUtils.getItem(historyTableName) || [];
+        row.timestamp = Date.now();
+        historyTable.push(row);
+    },
+    findAll: (historyTableName) => {
+        if(!historyTableName) return [];
+        return StorageUtils.getJSON(historyTableName) || [];
+    }
+};
+
 Utils.arrayutil = {
     removeDuplicates: function (arr) {
         var uniques = [];
@@ -226,3 +239,4 @@ const LogUtils = Utils.logutil;
 const MathUtils = Utils.mathutil;
 const TextUtils = Utils.textutil;
 const WordUtils = Utils.wordutil;
+const HistoryUtils = Utils.history;

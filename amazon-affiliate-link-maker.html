@@ -262,6 +262,8 @@ layout: post
 <script src="javascripts/fromdev-utils.js?v=1"></script>
 
 <script>
+    const HISTORY_TABLE_NAME = 'AMAZON-AFFILIATE-LINK-MAKER'
+
   $(document).ready(function() {
     getAffiliateTag();
     $('#convert').click(function() {
@@ -313,6 +315,28 @@ layout: post
     return affiliateTag;
   };
 
+  const createTableHeader = () => {
+        return `<thead><tr>
+                                    <th>ASIN</th>
+                                    <th>Link</th>
+                                    <th>Affiliate Tag</th>
+                                    <th>Date Created</th>                                   
+                                </tr></thead>`;
+    };
+
+    const createRow = (context) => {
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+      
+        return `
+        <tr>
+                                    <td>${context.asin}</td>
+                                    <td><a href='${context.url}' target='_blank'> ${context.linkText || 'Click here'}</a></td>
+                                    <td>${context.affiliateTag}</td>
+                                    <td>${(new Date(context.timestamp).toLocaleDateString(undefined, options))}</td>
+                                    </tr>
+        `;
+    };
+
   var processUrl = function(url) {
     var affiliateTag = getAffiliateTag();
     var params = getUrlVars(url);
@@ -327,16 +351,41 @@ layout: post
     var asin = Utils.amazon.extractASIN(url);
     $('#asin').val(asin);
     $('#taggedurl').val(url);
-    $('#cleanurl').val(Utils.amazon.createCleanAffiliateURL(url, asin, affiliateTag));
+    const cleanurl = Utils.amazon.createCleanAffiliateURL(url, asin, affiliateTag);
+    $('#cleanurl').val(cleanurl);
     $('#openurl').attr('href', url);
     $('#openurl').text('Open Link (in new window)');
-    $('#linkhtml').val(getLinkCode(url));
+    var linkText = $('#linktext').val() || 'Click Here';
+    $('#linkhtml').val(getLinkCode(url, linkText));
+    history({
+      url: cleanurl,
+      asin, asin,
+      affiliateTag, affiliateTag,
+      linkText: linkText
+    });
   };
-  var getLinkCode = function(url) {
-    var linkText = $('#linktext').val();
-    if (!linkText) {
-      linkText = 'Click Here';
+  const history = (context) => {
+    try {
+      collectHistory(context);
+      showHistory();
+    } catch(e) {
+      console.log('history error, ignoring to continue main flow');
+      console.log(e);
     }
+  };
+  const showHistory = () => {
+    const history = HistoryUtils.findAll();
+    if(!Array.isArray(history)) return;
+    const rows = [];
+    rows.push(createTableHeader());
+    history.forEach(r => rows.push(createRow(r)));
+    $('#history').html(`<table class="table table-hover"></table>`);
+    $('#history table').append(rows.join(''));
+  };
+  const collectHistory = (context) => {
+    HistoryUtils.append(HISTORY_TABLE_NAME, context);
+  };
+  var getLinkCode = function(url, linkText) {
     return '<a href="' + url + '" ' + ' title="' + linkText + '" alt="' + linkText + '"' + '>' + linkText + '</a>';
   };
 
