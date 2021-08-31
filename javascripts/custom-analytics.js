@@ -9,4 +9,4 @@ CustomAnalytics.collector = {
             //ignore silently
         }
       }
-}
+};
