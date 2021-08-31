@@ -60,7 +60,7 @@ Utils.storage = {
 Utils.history = {
     append: (historyTableName, row) => {
         if(!historyTableName || !row) return;
-        const historyTable = StorageUtils.getItem(historyTableName) || [];
+        const historyTable = StorageUtils.getJSON(historyTableName) || [];
         row.timestamp = Date.now();
         historyTable.push(row);
         StorageUtils.setItem(historyTableName, JSON.stringify(historyTable));
