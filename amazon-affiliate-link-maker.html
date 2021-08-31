@@ -271,7 +271,7 @@ layout: post
       var affiliateTag = getAffiliateTag();
       var input = $('#input').val();
       input = input.trim();
-      if (isValidURL(input)) {
+      if (UrlUtils.isValidURL(input)) {
         processUrl(input, affiliateTag);
       }
       embedCodeSetup();
@@ -400,11 +400,6 @@ layout: post
       vars[hash[0]] = hash[1];
     }
     return vars;
-  };
-
-  var isValidURL = function(s) {
-    var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
-    return regexp.test(s);
   };
 
   var clear = function() {

@@ -280,7 +280,7 @@ layout: post
             var originalText = $("#htm").val();
             let count = 1;
             $(originalText).find('a').each(function () {
-                if (this.href) {
+                if (this.href && UrlUtils.isValidURL(this.href)) {
                     links.push(this.href);
                     const el = $(this);
                     linkAttributes.push({
