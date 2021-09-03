@@ -40,8 +40,10 @@ describe('Fromdev Util JS Test Suite', function () {
                 expect(AmazonUtils.createCleanAffiliateURL('https://www.amazon.com/dp/B01LWW2CGN', '')).toEqual('https://www.amazon.com/dp/B01LWW2CGN' + '?tag=fromdevtools-20');
                 expect(AmazonUtils.createCleanAffiliateURL('http://www.amazon.com/Kindle-Wireless-Reading-Display-Generation/dp/B0015T963C', 'mytag')).toEqual('http://www.amazon.com/Kindle-Wireless-Reading-Display-Generation/dp/B0015T963C' + '?tag=mytag');
                 expect(AmazonUtils.createCleanAffiliateURL('http://www.amazon.com/dp/B0015T963C', '')).toEqual('http://www.amazon.com/dp/B0015T963C' + '?tag=fromdevtools-20');
-                expect(AmazonUtils.createCleanAffiliateURL('http://www.amazon.com/gp/product/B0015T963C', 'wrongasin')).toEqual('http://www.amazon.com/gp/product/B0015T963C' + '?tag=fromdevtools-20');
+                expect(AmazonUtils.createCleanAffiliateURL('http://www.amazon.com/gp/product/B0015T963C', 'producturl-tag')).toEqual('http://www.amazon.com/gp/product/B0015T963C' + '?tag=producturl-tag');
                 expect(AmazonUtils.createCleanAffiliateURL('http://www.amazon.com/gp/product/glance/B0015T963C')).toEqual('http://www.amazon.com/gp/product/glance/B0015T963C' + '?tag=fromdevtools-20');
+                expect(AmazonUtils.createCleanAffiliateURL('https://www.amazon.com/promocode/AOBPUN3EX2D89')).toEqual('https://www.amazon.com/promocode/AOBPUN3EX2D89' + '?tag=fromdevtools-20');
+                expect(AmazonUtils.createCleanAffiliateURL('https://www.amazon.com/promocode/AOBPUN3EX2D89', 'promo-tag')).toEqual('https://www.amazon.com/promocode/AOBPUN3EX2D89' + '?tag=promo-tag');
             });
         });
     });
