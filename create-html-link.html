@@ -266,8 +266,8 @@ layout: post
             } catch(e) {
                 CustomAnalytics.collector.collect(
                 {
-                    eventName: 'convert',
-                    eventAction: 'error',
+                    eventName: 'error',
+                    eventAction: 'convert-click',
                     message: `${e}: ${JSON.stringify(Page.request)}`
                 }
                 );
