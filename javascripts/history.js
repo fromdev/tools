@@ -21,8 +21,8 @@ History.showHistory = (context) => {
     let historyTable = HistoryUtils.findAll(context.tableName) || [];
     historyTable = historyTable.sort((a, b) => (b.timestamp - a.timestamp));
     if (!Array.isArray(historyTable)) return;
-    if (datatable) {
-        datatable.clear();
+    if (History.datatable) {
+        History.datatable.clear();
         $(context.containerId).empty();
     }
     const rows = [];
@@ -31,7 +31,7 @@ History.showHistory = (context) => {
     $(context.containerId).html(`<table class="table table-hover"></table>`);
     const $table = $(`${context.containerId} table`);
     $table.append(rows.join(''));
-    datatable = $table.DataTable();
+    History.datatable = $table.DataTable();
 };
 
 History.collectHistory = (Page) => {
