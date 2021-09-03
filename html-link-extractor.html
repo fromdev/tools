@@ -213,6 +213,8 @@ layout: post
 <script src="/plugins/datatables.net/dataTables.bootstrap.min.js"></script>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script src="javascripts/fromdev-utils.js"></script>
+<script src="/javascripts/custom-analytics.js"></script>
+
 <script>
     var baseUrl = 'https://tools.fromdev.com/';
     const Page = {
@@ -300,14 +302,12 @@ layout: post
         if(!Page.request.originalText || Page.request.originalText.indexOf(txt) === -1) return;
         Page.request.originalText.replace(txt, toTxt);
         $("#htm").val(Page.request.originalText);
-        $("#extracturl").trigger("click");
+        handleConvertClick();
     };
 
-    $(document).ready(function () {
-        let datatable;
-        $("#extracturl").click(function () {
-            if(datatable) {
-                datatable.clear();
+    const handleConvertClick = () => {
+            if(Page.datatable) {
+                Page.datatable.clear();
                 $('#linkdatatablecontainer').empty();
             }
             var links = [];
@@ -345,9 +345,24 @@ layout: post
             (linkAttributes || []).forEach(linkAttribute => rows.push(createLinkRow(linkAttribute)))
             $('#linkdatatablecontainer').html(`<table class="table table-hover"></table>`);
             $('#linkdatatablecontainer table').append(rows.join(''));
-            datatable = $('#linkdatatablecontainer table').DataTable();
+            Page.datatable = $('#linkdatatablecontainer table').DataTable();
             registerActionButtons();
+        };
+    $(document).ready(function () {
+        $("#extracturl").click(function() {
+            try {
+                handleConvertClick();
+            } catch(e) {
+                CustomAnalytics.collector.collect(
+                {
+                    eventName: 'error',
+                    eventAction: 'convert-click',
+                    message: `${e}: ${JSON.stringify(Page.request)}`
+                }
+                );
+            }
         });
+        
         $("#urls").selectOnFocus();
         $("#htm").selectOnFocus();
         $('#converters-category').addClass('active');

@@ -250,7 +250,7 @@ layout: post
     }
   };
     $(document).ready(function() {
-        const handleConverClick = () => {
+        const handleConvertClick = () => {
             clear();
             var input = $('#input').val();
             Page.request.url = input.trim();
@@ -262,7 +262,7 @@ layout: post
         };
         $('#convert').click(function() {
             try {
-                handleConverClick();
+                handleConvertClick();
             } catch(e) {
                 CustomAnalytics.collector.collect(
                 {
