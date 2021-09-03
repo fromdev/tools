@@ -285,7 +285,7 @@ layout: post
           const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
           return `<tr>
                       <td>${context.asin}</td>
-                      <td><a href='${context.cleanurl}' target='_blank'> ${context.linkText || 'Click here'}</a></td>
+                      <td><a href='${context.cleanurl || context.taggedurl || context.url}' target='_blank'> ${context.linkText || 'Click here'}</a></td>
                       <td>${context.affiliateTag}</td>
                       <td>${(new Date(context.timestamp).toLocaleDateString(undefined, options))}</td>
                   </tr>`;
