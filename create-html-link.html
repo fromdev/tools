@@ -234,13 +234,16 @@ layout: post
       tableName: 'CREATE-HTML-LINK',
       containerId: '#history',
       createTableHeader: () => {
-        return `<thead><tr><th>Link</th><th>Type</th><th>Date Created</th></tr></thead>`;
+        return `<thead><tr><th>Link</th><th>Type</th><th>Target</th><th>Title</th><th>Alt</th><th>Date Created</th></tr></thead>`;
       },
       createRow: (context) => {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
         return `<tr>
-                      <td><a href='${context.cleanurl || context.taggedurl || context.url}' target='_blank'> ${context.linkText || 'Click here'}</a></td>
-                      <td>${context.affiliateTag}</td>
+                      <td><a href='${context.url}' target='_blank'> ${context.linkText || 'Click here'}</a></td>
+                      <td>${context.rel}</td>
+                      <td>${context.target}</td>
+                      <td>${context.text}</td>
+                      <td>${context.text}</td>
                       <td>${(new Date(context.timestamp).toLocaleDateString(undefined, options))}</td>
                   </tr>`;
       }
@@ -277,21 +280,22 @@ layout: post
     };
     var processUrl = function(url) {
         Page.request.rel = $('#following option:selected').val();
-        const target = $('#target option:selected').val();
+        Page.request.target = $('#target option:selected').val();
 
         const openUrlLink = $('#openurl');
         createLink(openUrlLink, {
             url: url,
             rel: Page.request.rel,
             text: 'Open Link (in new window)',
-            target: target
+            target: Page.request.target
         });
         const linkCode = $('#linkcodecontainer a');
+        Page.request.linkText = $('#linktext').val() || 'Click here';
         createLink(linkCode, {
             url: url,
             rel: Page.request.rel,
-            target: target,
-            text: $('#linktext').val() || 'Click here'
+            target: Page.request.target,
+            text: Page.request.linkText
         });
         $('#linkhtml').val(getLinkCode(url));
         History.collectAndShow(Page);
