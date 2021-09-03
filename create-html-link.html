@@ -115,6 +115,20 @@ layout: post
         </section>
         <section class="content">
             <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title">Recently Created Links History (Saved On Browser)</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div id="history_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                  <div id="history">Empty</div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+            </div>
+          </section>
+        <section class="content">
+            <div class="box box-success">
                 <div class="box-header with-border">
                     <h3 class="box-title">About HTML Link Creator Tool</h3>
                 </div>
@@ -206,15 +220,35 @@ layout: post
 <script src="/plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script src="/plugins/copyText/jquery.copyText.min.js"></script>
 <script src="/javascripts/fromdev-utils.js"></script>
+<script src="/javascripts/custom-analytics.js"></script>
+<script src="/javascripts/history.js"></script>
 
 <script>
+      const Page = {
+    request: {},
+    context: {
+      tableName: 'CREATE-HTML-LINK',
+      containerId: '#history',
+      createTableHeader: () => {
+        return `<thead><tr><th>Link</th><th>Type</th><th>Date Created</th></tr></thead>`;
+      },
+      createRow: (context) => {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+        return `<tr>
+                      <td><a href='${context.cleanurl || context.taggedurl || context.url}' target='_blank'> ${context.linkText || 'Click here'}</a></td>
+                      <td>${context.affiliateTag}</td>
+                      <td>${(new Date(context.timestamp).toLocaleDateString(undefined, options))}</td>
+                  </tr>`;
+      }
+    }
+  };
     $(document).ready(function() {
         $('#convert').click(function() {
             clear();
             var input = $('#input').val();
-            input = input.trim();
-            if (isValidURL(input)) {
-                processUrl(input);
+            Page.request.url = input.trim();
+            if (isValidURL(Page.request.url)) {
+                processUrl(Page.request.url);
             } else {
                 $('#error').text('Invalid input URL');
             }
@@ -223,6 +257,7 @@ layout: post
         $('#linkhtml').selectOnFocus();
         $('#input').selectOnFocus();
         $('#converters-category').addClass('active');
+        History.collectAndShow(Page);
     });
     const createLink = ($link, context) => {
         $link.attr('href', context.url);
@@ -237,24 +272,32 @@ layout: post
         $link.attr('alt',context.text);
     };
     var processUrl = function(url) {
-        const rel = $('#following option:selected').val();
+        Page.request.rel = $('#following option:selected').val();
         const target = $('#target option:selected').val();
 
         const openUrlLink = $('#openurl');
         createLink(openUrlLink, {
             url: url,
-            rel: rel,
+            rel: Page.request.rel,
             text: 'Open Link (in new window)',
             target: target
         });
         const linkCode = $('#linkcodecontainer a');
         createLink(linkCode, {
             url: url,
-            rel: rel,
+            rel: Page.request.rel,
             target: target,
             text: $('#linktext').val() || 'Click here'
         });
         $('#linkhtml').val(getLinkCode(url));
+        History.collectAndShow(Page);
+        CustomAnalytics.collector.collect(
+            {
+                eventName: 'convert',
+                eventAction: 'click',
+                message: `${JSON.stringify(Page.request)}`
+            }
+        );
     };
     var getLinkCode = function(url) {
         return $('#linkcodecontainer').html();
