@@ -270,7 +270,7 @@ layout: post
 <script src="/plugins/datatables.net/jquery.dataTables.min.js"></script>
 <script src="/plugins/datatables.net/dataTables.bootstrap.min.js"></script>
 <script src="/javascripts/custom-analytics.js"></script>
-
+<script src="/javascripts/history.js"></script>
 <script>
     let datatable;
     const Page = {request: {},
@@ -323,7 +323,7 @@ layout: post
     $('#openurl').text('Open Link (in new window)');
     Page.request.linkText = $('#linktext').val() || 'Click Here';
     $('#linkhtml').val(getLinkCode(Page.request.cleanurl, Page.request.linkText));
-    history(Page);
+    History.collectAndShow(Page);
     CustomAnalytics.collector.collect(
       {
         eventName: 'convert',
@@ -332,35 +332,7 @@ layout: post
       }
     );
   };
-  const history = (Page) => {
-    try {
-      collectHistory(Page);
-      showHistory(Page);
-    } catch(e) {
-      console.log('history error, ignoring to continue main flow');
-      console.log(e);
-    }
-  };
-  const showHistory = (Page) => {
-    const context = Page.context;
-    let history = HistoryUtils.findAll(context.tableName) || [];
-    history = history.sort((a, b) => (b.timestamp - a.timestamp));
-    if(!Array.isArray(history)) return;
-    if(datatable) {
-        datatable.clear();
-        $(context.containerId).empty();
-    }
-    const rows = [];
-    rows.push(context.createTableHeader());
-    history.forEach(r => rows.push(context.createRow(r)));
-    $(context.containerId).html(`<table class="table table-hover"></table>`);
-    const $table = $(`${context.containerId} table`);
-    $table.append(rows.join(''));
-    datatable  = $table.DataTable();
-  };
-  const collectHistory = (Page) => {
-    HistoryUtils.append(Page.context.tableName, Page.request);
-  };
+
   var getLinkCode = function(url, linkText) {
     return '<a href="' + url + '" ' + ' title="' + linkText + '" alt="' + linkText + '"' + '>' + linkText + '</a>';
   };
@@ -435,7 +407,7 @@ layout: post
     CopyTextAddon.register('asin');
     CopyTextAddon.register('linkhtml');
     $('.markdown-body').attr('style','max-width:100%;');
-    history(Page);
+    History.collectAndShow(Page);
   });
 </script>
 
