@@ -250,7 +250,7 @@ layout: post
     }
   };
     $(document).ready(function() {
-        $('#convert').click(function() {
+        const handleConverClick = () => {
             clear();
             var input = $('#input').val();
             Page.request.url = input.trim();
@@ -258,6 +258,19 @@ layout: post
                 processUrl(Page.request.url);
             } else {
                 $('#error').text('Invalid input URL');
+            }
+        };
+        $('#convert').click(function() {
+            try {
+                handleConverClick();
+            } catch(e) {
+                CustomAnalytics.collector.collect(
+                {
+                    eventName: 'convert',
+                    eventAction: 'error',
+                    message: `${e}: ${JSON.stringify(Page.request)}`
+                }
+                );
             }
         });
         CopyTextAddon.register('linkhtml');
@@ -323,6 +336,7 @@ layout: post
         $('#error').text('');
         $('#linkcodecontainer').empty();
         $('#linkcodecontainer').html('<a></a>');
+        Page.request = {};
     };
 </script>
 
