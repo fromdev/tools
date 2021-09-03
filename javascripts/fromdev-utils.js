@@ -70,11 +70,16 @@ Utils.storage = {
 };
 
 Utils.history = {
+    MAX: 1000,
     append: (historyTableName, row) => {
         if(!historyTableName || !row) return;
         const historyTable = StorageUtils.getJSON(historyTableName) || [];
         row.timestamp = Date.now();
-        historyTable.push(row);
+        historyTable.unshift(row);
+        //limit max history to avoid too large array
+        if(historyTable.length > HistoryUtils.MAX) {
+            historyTable.length = HistoryUtils.MAX;
+        }
         StorageUtils.setItem(historyTableName, JSON.stringify(historyTable));
     },
     findAll: (historyTableName) => {
