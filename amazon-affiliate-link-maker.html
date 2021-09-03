@@ -272,9 +272,15 @@ layout: post
 <script src="/javascripts/custom-analytics.js"></script>
 
 <script>
-    const HISTORY_TABLE_NAME = 'AMAZON-AFFILIATE-LINK-MAKER'
     let datatable;
-    const Page = {request: {}};
+    const Page = {request: {},
+      context: {
+        tableName: 'AMAZON-AFFILIATE-LINK-MAKER',
+        containerId: '#history',
+        createTableHeader: createTableHeader,
+        createRow: createRow
+      }
+    };
 
   $(document).ready(function() {
     getAffiliateTag();
@@ -323,7 +329,7 @@ layout: post
     CopyTextAddon.register('asin');
     CopyTextAddon.register('linkhtml');
     $('.markdown-body').attr('style','max-width:100%;');
-    history();
+    history(Page);
   });
 
   const embedCodeSetup = () => {
@@ -359,7 +365,7 @@ layout: post
         return `
         <tr>
                                     <td>${context.asin}</td>
-                                    <td><a href='${context.url}' target='_blank'> ${context.linkText || 'Click here'}</a></td>
+                                    <td><a href='${context.cleanurl}' target='_blank'> ${context.linkText || 'Click here'}</a></td>
                                     <td>${context.affiliateTag}</td>
                                     <td>${(new Date(context.timestamp).toLocaleDateString(undefined, options))}</td>
                                     </tr>
@@ -378,16 +384,7 @@ layout: post
     $('#openurl').text('Open Link (in new window)');
     Page.request.linkText = $('#linktext').val() || 'Click Here';
     $('#linkhtml').val(getLinkCode(Page.request.cleanurl, Page.request.linkText));
-    history({
-      url: Page.request.cleanurl,
-      asin: Page.request.asin,
-      affiliateTag: Page.request.affiliateTag,
-      linkText: Page.request.linkText,
-      tableName: HISTORY_TABLE_NAME,
-      containerId: '#history',
-      createTableHeader: createTableHeader,
-      createRow: createRow
-    });
+    history(Page);
     CustomAnalytics.collector.collect(
       {
         eventName: 'convert',
@@ -396,10 +393,10 @@ layout: post
       }
     );
   };
-  const history = (context) => {
+  const history = (Page) => {
     try {
-      collectHistory(context);
-      showHistory(context);
+      collectHistory(Page);
+      showHistory(Page);
     } catch(e) {
       console.log('history error, ignoring to continue main flow');
       console.log(e);
@@ -420,8 +417,8 @@ layout: post
     $table.append(rows.join(''));
     datatable  = $table.DataTable();
   };
-  const collectHistory = (context) => {
-    HistoryUtils.append(context.tableName, context);
+  const collectHistory = (Page) => {
+    HistoryUtils.append(Page.context.tableName, Page.request);
   };
   var getLinkCode = function(url, linkText) {
     return '<a href="' + url + '" ' + ' title="' + linkText + '" alt="' + linkText + '"' + '>' + linkText + '</a>';
