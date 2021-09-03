@@ -240,10 +240,10 @@ layout: post
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
         return `<tr>
                       <td><a href='${context.url}' target='_blank'> ${context.linkText || 'Click here'}</a></td>
-                      <td>${context.rel}</td>
-                      <td>${context.target}</td>
-                      <td>${context.text}</td>
-                      <td>${context.text}</td>
+                      <td>${context.rel || 'dofollow'}</td>
+                      <td>${context.target || ''}</td>
+                      <td>${context.linkText || ''}</td>
+                      <td>${context.linkText || ''}</td>
                       <td>${(new Date(context.timestamp).toLocaleDateString(undefined, options))}</td>
                   </tr>`;
       }
