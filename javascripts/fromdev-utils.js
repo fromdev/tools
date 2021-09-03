@@ -174,7 +174,10 @@ Utils.urlutil = {
           vars[hash[0]] = hash[1];
         }
         return vars;
-      }
+    },
+    getLinkCode: (url, linkText) => {
+        return '<a href="' + url + '" ' + ' title="' + linkText + '" alt="' + linkText + '"' + '>' + linkText + '</a>';
+    }
 };
 
 Utils.randomutil = {

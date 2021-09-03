@@ -10,8 +10,10 @@ layout: post
   <title>{{ page.title }}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <meta name="description" content="This is easy to use open source tool to create amazon affiliate link from an existing amazon link." />
-  <meta name="keywords" content="online,tool,amazon,affiliate,tag,url,link,maker,builder,creator,generator,opensource" />
+  <meta name="description"
+    content="This is easy to use open source tool to create amazon affiliate link from an existing amazon link." />
+  <meta name="keywords"
+    content="online,tool,amazon,affiliate,tag,url,link,maker,builder,creator,generator,opensource" />
   <!-- CSS for the site theme -->
   {% include theme-css %}
   <link rel="stylesheet" href="plugins/colorpicker/bootstrap-colorpicker.min.css">
@@ -52,11 +54,13 @@ layout: post
                   </div>
                   <div class="form-group">
                     <label for="affiliateTag">Amazon Affilate Tag</label>
-                    <input class="form-control" id="affiliateTag" type="text" value="" placeholder="Enter amazon affiliate tag" />
+                    <input class="form-control" id="affiliateTag" type="text" value=""
+                      placeholder="Enter amazon affiliate tag" />
                   </div>
                   <div class="form-group">
                     <label for="linktext">Link Text</label>
-                    <input class="form-control" id="linktext" type="text" value="" placeholder="Enter display text for HTML code" />
+                    <input class="form-control" id="linktext" type="text" value=""
+                      placeholder="Enter display text for HTML code" />
                   </div>
                   <div class="form-group">
                     <p id="error" class="text-red"></p>
@@ -67,7 +71,8 @@ layout: post
               <div class="box-footer">
                 <div class="row">
                   <div class="col-xs-3">
-                    <button type="button" class="btn btn-info" id="convert">Convert <i class="fa fa-fw fa-arrow-right"></i></button>
+                    <button type="button" class="btn btn-info" id="convert">Convert <i
+                        class="fa fa-fw fa-arrow-right"></i></button>
                   </div>
                 </div>
               </div>
@@ -87,20 +92,24 @@ layout: post
                     <div class="input-group margin">
                       <input class="form-control" id="taggedurl" type="text" placeholder="Original URL with Tag" />
                       <span class="input-group-btn">
-                        <button type="button" id="copy-taggedurl" class="btn btn-default btn-flat"><i class="fa fa-copy"></i> Copy Link</button>
+                        <button type="button" id="copy-taggedurl" class="btn btn-default btn-flat"><i
+                            class="fa fa-copy"></i> Copy Link</button>
                       </span>
                     </div>
-                    <span class="label label-success" id="confirm-taggedurl" style="display:none"><i class="fa fa-check"></i> Copied</span>
+                    <span class="label label-success" id="confirm-taggedurl" style="display:none"><i
+                        class="fa fa-check"></i> Copied</span>
                   </div>
                   <div class="form-group">
                     <label for="cleanurl">Clean Amazon URL with Affiliate Tag</label>
                     <div class="input-group margin">
                       <input class="form-control" id="cleanurl" type="text" placeholder="Clean URL" />
                       <span class="input-group-btn">
-                        <button type="button" id="copy-cleanurl" class="btn btn-default btn-flat"><i class="fa fa-copy"></i> Copy Link</button>
+                        <button type="button" id="copy-cleanurl" class="btn btn-default btn-flat"><i
+                            class="fa fa-copy"></i> Copy Link</button>
                       </span>
                     </div>
-                    <span class="label label-success" id="confirm-cleanurl" style="display:none"><i class="fa fa-check"></i> Copied</span>
+                    <span class="label label-success" id="confirm-cleanurl" style="display:none"><i
+                        class="fa fa-check"></i> Copied</span>
                   </div>
                   <div class="form-group">
                     <label for="asin">Extracted ASIN (Unique Product Id on Amazon) </label>
@@ -108,10 +117,12 @@ layout: post
                     <div class="input-group margin">
                       <input class="form-control" id="asin" type="text" placeholder="Exracted ASIN" />
                       <span class="input-group-btn">
-                        <button type="button" id="copy-asin" class="btn btn-default btn-flat"><i class="fa fa-copy"></i> Copy ASIN</button>
+                        <button type="button" id="copy-asin" class="btn btn-default btn-flat"><i class="fa fa-copy"></i>
+                          Copy ASIN</button>
                       </span>
                     </div>
-                    <span class="label label-success" id="confirm-asin" style="display:none"><i class="fa fa-check"></i> Copied</span>
+                    <span class="label label-success" id="confirm-asin" style="display:none"><i class="fa fa-check"></i>
+                      Copied</span>
                   </div>
                   <div class="form-group">
                     <label for="openurl">Clickable URL</label>
@@ -119,11 +130,14 @@ layout: post
                   </div>
                   <div class="form-group">
                     <label for="linkhtml">HTML Formatted Code For Link</label>
-                    <textarea class="form-control" rows="3" id="linkhtml" readonly="readonly" placeholder="HTML Formatted Code For Link"></textarea>
+                    <textarea class="form-control" rows="3" id="linkhtml" readonly="readonly"
+                      placeholder="HTML Formatted Code For Link"></textarea>
                     <span class="input-group-btn">
-                      <button type="button" id="copy-linkhtml" class="btn btn-default btn-flat"><i class="fa fa-copy"></i> Copy Code</button>
+                      <button type="button" id="copy-linkhtml" class="btn btn-default btn-flat"><i
+                          class="fa fa-copy"></i> Copy Code</button>
                     </span>
-                    <span class="label label-success" id="confirm-linkhtml" style="display:none"><i class="fa fa-check"></i> Copied</span>
+                    <span class="label label-success" id="confirm-linkhtml" style="display:none"><i
+                        class="fa fa-check"></i> Copied</span>
                   </div>
                 </div>
               </div>
@@ -154,8 +168,11 @@ layout: post
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <img class="img-responsive" src="images/amazon-link-creator.jpg" alt="Online Amazon Affiliate link Generator Tool" title="Online Amazon Affiliate link Generator Tool">
-            <p>This is a free online tool to create amazon affiliate link from an existing amazon link. The input to this tool is amazon url and affiliate tag. Output of this tool is an updated link that contains your affiliate tag.</p>
+            <img class="img-responsive" src="images/amazon-link-creator.jpg"
+              alt="Online Amazon Affiliate link Generator Tool" title="Online Amazon Affiliate link Generator Tool">
+            <p>This is a free online tool to create amazon affiliate link from an existing amazon link. The input to
+              this tool is amazon url and affiliate tag. Output of this tool is an updated link that contains your
+              affiliate tag.</p>
           </div>
           <!-- /.box-body -->
         </div>
@@ -165,7 +182,9 @@ layout: post
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <p>Amazon affiliate program is a popular affiliate commission program on internet. Amazon gives commission to its affiliate for referring users. Many affiliates refer user to a amazon product they like. This attracts many buyers to
+            <p>Amazon affiliate program is a popular affiliate commission program on internet. Amazon gives commission
+              to its affiliate for referring users. Many affiliates refer user to a amazon product they like. This
+              attracts many buyers to
               amazon and in reward amazon offers commisions. It is a win-win for both amazon and its affiliate.</p>
           </div>
           <!-- /.box-body -->
@@ -176,8 +195,11 @@ layout: post
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <p>This is a simple browser based tool that requires user input. We try to store your last input tag in browser storage if it is supported. Therefore we can retain the last tag entered by you on a supported browser.</p>
-            <p>At the same time we are limited by storing data in only browser. Therefore your preferences may not be obtained if you switch browsers. </p>
+            <p>This is a simple browser based tool that requires user input. We try to store your last input tag in
+              browser storage if it is supported. Therefore we can retain the last tag entered by you on a supported
+              browser.</p>
+            <p>At the same time we are limited by storing data in only browser. Therefore your preferences may not be
+              obtained if you switch browsers. </p>
           </div>
           <!-- /.box-body -->
         </div>
@@ -188,7 +210,10 @@ layout: post
           <!-- /.box-header -->
           <div class="box-body">
             <p>We have created a simple step by step video for using this tool.</p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/mUIPH0wvSTk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/mUIPH0wvSTk"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
           </div>
           <!-- /.box-body -->
         </div>
@@ -198,7 +223,8 @@ layout: post
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <p>You can use these links to share on social media, blogs, videos, text messages or in emails. Twitter and Facebook are popular platform for sharing amazon referral links.</p>
+            <p>You can use these links to share on social media, blogs, videos, text messages or in emails. Twitter and
+              Facebook are popular platform for sharing amazon referral links.</p>
           </div>
           <!-- /.box-body -->
         </div>
@@ -218,7 +244,8 @@ layout: post
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <p>Yes, Youtube is a popular place to refer. Many people place the links on video description. You can also try to put in video links. </p>
+            <p>Yes, Youtube is a popular place to refer. Many people place the links on video description. You can also
+              try to put in video links. </p>
           </div>
           <!-- /.box-body -->
         </div>
@@ -228,7 +255,8 @@ layout: post
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <p>This tool can help you make money by speeding up your amazon affiliate links creation. Below are some ideas </p>
+            <p>This tool can help you make money by speeding up your amazon affiliate links creation. Below are some
+              ideas </p>
             <ul>
               <li>Share an awesome amazon product link with your friends.</li>
               <li>Write a review of amazon product on a blog.</li>
@@ -272,33 +300,34 @@ layout: post
 <script src="/javascripts/custom-analytics.js"></script>
 <script src="/javascripts/history.js"></script>
 <script>
-    let datatable;
-    const Page = {request: {},
-      context: {
-        tableName: 'AMAZON-AFFILIATE-LINK-MAKER',
-        containerId: '#history',
-        createTableHeader: () => {
+  let datatable;
+  const Page = {
+    request: {},
+    context: {
+      tableName: 'AMAZON-AFFILIATE-LINK-MAKER',
+      containerId: '#history',
+      createTableHeader: () => {
         return `<thead><tr><th>ASIN</th><th>Link</th><th>Affiliate Tag</th>
                 <th>Date Created</th></tr></thead>`;
-        },
-        createRow: (context) => {
-          const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
-          return `<tr>
+      },
+      createRow: (context) => {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+        return `<tr>
                       <td>${context.asin}</td>
                       <td><a href='${context.cleanurl || context.taggedurl || context.url}' target='_blank'> ${context.linkText || 'Click here'}</a></td>
                       <td>${context.affiliateTag}</td>
                       <td>${(new Date(context.timestamp).toLocaleDateString(undefined, options))}</td>
                   </tr>`;
-        }        
       }
-    };
+    }
+  };
 
   const embedCodeSetup = () => {
     $('#embedCode').val(
       `<iframe style=\"position: fixed;top: 0px;bottom: 0px;right: 0px;width: 100%;border: none;margin: 0;padding: 0;overflow: hidden;z-index: 999999;height: 100%;\" scrolling=\"auto\" src=\"https:\/\/tools.fromdev.com\/amazon-affiliate-link-maker.html?mode=embed&affiliateTag=${getAffiliateTag()}\"><\/iframe>`
     );
   };
-  var getAffiliateTag = function() {
+  var getAffiliateTag = function () {
     var affiliateTag = UrlUtils.getUrlParam('affiliateTag') || $('#affiliateTag').val();
     if (!affiliateTag) {
       affiliateTag = Utils.storage.getItem("affiliateTag");
@@ -311,7 +340,7 @@ layout: post
     return affiliateTag;
   };
 
-  var processUrl = function(Page) {
+  var processUrl = function (Page) {
     const updatedUrl = AmazonUtils.addAffiliateTag(Page.request.url, Page.request.affiliateTag);
     $('#taggedurl').val(updatedUrl);
     Page.request.taggedurl = updatedUrl;
@@ -322,7 +351,7 @@ layout: post
     $('#openurl').attr('href', updatedUrl);
     $('#openurl').text('Open Link (in new window)');
     Page.request.linkText = $('#linktext').val() || 'Click Here';
-    $('#linkhtml').val(getLinkCode(Page.request.cleanurl, Page.request.linkText));
+    $('#linkhtml').val(UrlUtils.getLinkCode(Page.request.cleanurl, Page.request.linkText));
     History.collectAndShow(Page);
     CustomAnalytics.collector.collect(
       {
@@ -333,23 +362,7 @@ layout: post
     );
   };
 
-  var getLinkCode = function(url, linkText) {
-    return '<a href="' + url + '" ' + ' title="' + linkText + '" alt="' + linkText + '"' + '>' + linkText + '</a>';
-  };
-
-  var getUrlVars = function() {
-    var vars = [],
-      hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for (var i = 0; i < hashes.length; i++) {
-      hash = hashes[i].split('=');
-      vars.push(hash[0]);
-      vars[hash[0]] = hash[1];
-    }
-    return vars;
-  };
-
-  var clear = function() {
+  var clear = function () {
     $('#asin').val('');
     $('#taggedurl').val('');
     $('#cleanurl').val('');
@@ -360,7 +373,7 @@ layout: post
     Page.request = {};
   };
 
-  $(document).ready(function() {
+  $(document).ready(function () {
     getAffiliateTag();
     const handleConverClick = () => {
       clear();
@@ -374,10 +387,10 @@ layout: post
       }
       embedCodeSetup();
     };
-    $('#convert').click(function() {
+    $('#convert').click(function () {
       try {
         handleConverClick();
-      } catch(e) {
+      } catch (e) {
         CustomAnalytics.collector.collect(
           {
             eventName: 'convert',
@@ -406,7 +419,7 @@ layout: post
     CopyTextAddon.register('cleanurl');
     CopyTextAddon.register('asin');
     CopyTextAddon.register('linkhtml');
-    $('.markdown-body').attr('style','max-width:100%;');
+    $('.markdown-body').attr('style', 'max-width:100%;');
     History.collectAndShow(Page);
   });
 </script>
