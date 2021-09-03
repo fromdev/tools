@@ -15,7 +15,7 @@ Utils.amazon = {
     },
     createCleanAffiliateURL: function (url, tag) {
         const cleanurl = AmazonUtils.getCleanURL(url);
-        return AmazonUtils.addAffiliateTag(cleanurl, tag || 'fromdevtools-20');
+        return AmazonUtils.addAffiliateTag(cleanurl, tag);
     },
     getCleanURL: function (url, asin) {
         var cleanurl = url;
@@ -29,7 +29,8 @@ Utils.amazon = {
         }
         return cleanurl;
     },
-    addAffiliateTag: (url, affiliateTag) => {
+    addAffiliateTag: (url, tag) => {
+        const affiliateTag = tag || 'fromdevtools-20';
         const params = UrlUtils.getUrlVars(url);
         const tagVal = params['tag'];
         let updatedUrl = url;
