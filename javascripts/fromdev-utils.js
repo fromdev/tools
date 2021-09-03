@@ -13,9 +13,9 @@ Utils.amazon = {
     isValidASIN: function (input) {
         return input && input.length == 10 && this.onlyASINRegex.test(input);
     },
-    createCleanAffiliateURL: function (url, asin, tag) {
-        tag = tag || 'fromdevtools-20';
-        return this.getCleanURL(url) + '?tag=' + tag;
+    createCleanAffiliateURL: function (url, tag) {
+        const cleanurl = AmazonUtils.getCleanURL(url);
+        return AmazonUtils.addAffiliateTag(cleanurl, tag || 'fromdevtools-20');
     },
     getCleanURL: function (url, asin) {
         var cleanurl = url;
@@ -28,8 +28,20 @@ Utils.amazon = {
             }
         }
         return cleanurl;
+    },
+    addAffiliateTag: (url, affiliateTag) => {
+        const params = UrlUtils.getUrlVars(url);
+        const tagVal = params['tag'];
+        let updatedUrl = url;
+        if (tagVal) {
+            updatedUrl = url.replace('tag=' + tagVal, 'tag=' + affiliateTag);
+        } else if (url.indexOf('?') === -1) {
+            updatedUrl = url + '?tag=' + affiliateTag;
+        } else {
+            updatedUrl = url.replace('?', '?tag=' + affiliateTag + '&');
+        }
+        return updatedUrl;
     }
-
 };
 //wrapper around storage to use only if supported
 Utils.storage = {
@@ -145,7 +157,18 @@ Utils.urlutil = {
     isValidURL: (s) => {
         var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
         return regexp.test(s);
-    }
+    },
+    getUrlVars: () => {
+        var vars = [],
+          hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for (var i = 0; i < hashes.length; i++) {
+          hash = hashes[i].split('=');
+          vars.push(hash[0]);
+          vars[hash[0]] = hash[1];
+        }
+        return vars;
+      }
 };
 
 Utils.randomutil = {

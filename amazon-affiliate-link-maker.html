@@ -58,6 +58,9 @@ layout: post
                     <label for="linktext">Link Text</label>
                     <input class="form-control" id="linktext" type="text" value="" placeholder="Enter display text for HTML code" />
                   </div>
+                  <div class="form-group">
+                    <p id="error" class="text-red"></p>
+                  </div>
                 </form>
               </div>
               <!-- /.box-body -->
@@ -271,18 +274,34 @@ layout: post
 <script>
     const HISTORY_TABLE_NAME = 'AMAZON-AFFILIATE-LINK-MAKER'
     let datatable;
+    const Page = {request: {}};
 
   $(document).ready(function() {
     getAffiliateTag();
-    $('#convert').click(function() {
+    const handleConverClick = () => {
       clear();
-      var affiliateTag = getAffiliateTag();
-      var input = $('#input').val();
-      input = input.trim();
-      if (UrlUtils.isValidURL(input)) {
-        processUrl(input, affiliateTag);
+      Page.request.affiliateTag = getAffiliateTag();
+      const input = $('#input').val();
+      Page.request.url = input.trim();
+      if (UrlUtils.isValidURL(Page.request.url)) {
+        processUrl(Page);
+      } else {
+        $('#error').text('Invalid/Missing URL input, please enter a valid Amazon url');
       }
       embedCodeSetup();
+    };
+    $('#convert').click(function() {
+      try {
+        handleConverClick();
+      } catch(e) {
+        CustomAnalytics.collector.collect(
+          {
+            eventName: 'convert',
+            eventAction: 'error',
+            message: `${e}: ${JSON.stringify(Page.request)}`
+          }
+        );
+      }
     });
     $('#asin').selectOnFocus();
     $('#taggedurl').selectOnFocus();
@@ -347,65 +366,62 @@ layout: post
         `;
     };
 
-  var processUrl = function(url) {
-    var affiliateTag = getAffiliateTag();
-    var params = getUrlVars(url);
-    var tagVal = params['tag'];
-    if (tagVal) {
-      url = url.replace('tag=' + tagVal, 'tag=' + affiliateTag);
-    } else if (url.indexOf('?') === -1) {
-      url = url + '?tag=' + affiliateTag;
-    } else {
-      url = url.replace('?', '?tag=' + affiliateTag + '&');
-    }
-    var asin = Utils.amazon.extractASIN(url);
-    $('#asin').val(asin);
-    $('#taggedurl').val(url);
-    const cleanurl = Utils.amazon.createCleanAffiliateURL(url, asin, affiliateTag);
-    $('#cleanurl').val(cleanurl);
-    $('#openurl').attr('href', url);
+  var processUrl = function(Page) {
+    const updatedUrl = AmazonUtils.addAffiliateTag(Page.request.url, Page.request.affiliateTag);
+    $('#taggedurl').val(updatedUrl);
+    Page.request.taggedurl = updatedUrl;
+    Page.request.asin = Utils.amazon.extractASIN(updatedUrl);
+    $('#asin').val(Page.request.asin);
+    Page.request.cleanurl = AmazonUtils.createCleanAffiliateURL(Page.request.url, Page.request.affiliateTag);
+    $('#cleanurl').val(Page.request.cleanurl);
+    $('#openurl').attr('href', updatedUrl);
     $('#openurl').text('Open Link (in new window)');
-    var linkText = $('#linktext').val() || 'Click Here';
-    $('#linkhtml').val(getLinkCode(url, linkText));
+    Page.request.linkText = $('#linktext').val() || 'Click Here';
+    $('#linkhtml').val(getLinkCode(Page.request.cleanurl, Page.request.linkText));
     history({
-      url: cleanurl,
-      asin, asin,
-      affiliateTag, affiliateTag,
-      linkText: linkText
+      url: Page.request.cleanurl,
+      asin: Page.request.asin,
+      affiliateTag: Page.request.affiliateTag,
+      linkText: Page.request.linkText,
+      tableName: HISTORY_TABLE_NAME,
+      containerId: '#history',
+      createTableHeader: createTableHeader,
+      createRow: createRow
     });
     CustomAnalytics.collector.collect(
       {
         eventName: 'convert',
         eventAction: 'click',
-        message: cleanurl
+        message: `${JSON.stringify(Page.request)}`
       }
     );
   };
   const history = (context) => {
     try {
       collectHistory(context);
-      showHistory();
+      showHistory(context);
     } catch(e) {
       console.log('history error, ignoring to continue main flow');
       console.log(e);
     }
   };
-  const showHistory = () => {
-    const history = HistoryUtils.findAll(HISTORY_TABLE_NAME) || [];
+  const showHistory = (context) => {
+    const history = HistoryUtils.findAll(context.tableName) || [];
     if(!Array.isArray(history)) return;
     if(datatable) {
         datatable.clear();
-        $('#history').empty();
+        $(context.containerId).empty();
     }
     const rows = [];
-    rows.push(createTableHeader());
-    history.forEach(r => rows.push(createRow(r)));
-    $('#history').html(`<table class="table table-hover"></table>`);
-    $('#history table').append(rows.join(''));
-    datatable = $('#history table').DataTable();
+    rows.push(context.createTableHeader());
+    history.forEach(r => rows.push(context.createRow(r)));
+    $(context.containerId).html(`<table class="table table-hover"></table>`);
+    const $table = $(`${context.containerId} table`);
+    $table.append(rows.join(''));
+    datatable  = $table.DataTable();
   };
   const collectHistory = (context) => {
-    HistoryUtils.append(HISTORY_TABLE_NAME, context);
+    HistoryUtils.append(context.tableName, context);
   };
   var getLinkCode = function(url, linkText) {
     return '<a href="' + url + '" ' + ' title="' + linkText + '" alt="' + linkText + '"' + '>' + linkText + '</a>';
@@ -430,6 +446,8 @@ layout: post
     $('#openurl').attr('href', '');
     $('#openurl').text('');
     $('#linkhtml').text('');
+    $('#error').text('');
+    Page.request = {};
   };
 </script>
 
