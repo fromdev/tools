@@ -277,6 +277,7 @@ layout: post
         $('#linkhtml').selectOnFocus();
         $('#input').selectOnFocus();
         $('#converters-category').addClass('active');
+        $('.markdown-body').attr('style', 'max-width:100%;');
         History.collectAndShow(Page);
     });
     const createLink = ($link, context) => {
