@@ -276,61 +276,9 @@ layout: post
     const Page = {request: {},
       context: {
         tableName: 'AMAZON-AFFILIATE-LINK-MAKER',
-        containerId: '#history',
-        createTableHeader: createTableHeader,
-        createRow: createRow
+        containerId: '#history'        
       }
     };
-
-  $(document).ready(function() {
-    getAffiliateTag();
-    const handleConverClick = () => {
-      clear();
-      Page.request.affiliateTag = getAffiliateTag();
-      const input = $('#input').val();
-      Page.request.url = input.trim();
-      if (UrlUtils.isValidURL(Page.request.url)) {
-        processUrl(Page);
-      } else {
-        $('#error').text('Invalid/Missing URL input, please enter a valid Amazon url');
-      }
-      embedCodeSetup();
-    };
-    $('#convert').click(function() {
-      try {
-        handleConverClick();
-      } catch(e) {
-        CustomAnalytics.collector.collect(
-          {
-            eventName: 'convert',
-            eventAction: 'error',
-            message: `${e}: ${JSON.stringify(Page.request)}`
-          }
-        );
-      }
-    });
-    $('#asin').selectOnFocus();
-    $('#taggedurl').selectOnFocus();
-    $('#cleanurl').selectOnFocus();
-    $('#linkhtml').selectOnFocus();
-    $('#input').selectOnFocus();
-    $('#affiliateTag').selectOnFocus();
-    const mode = UrlUtils.getUrlParam('mode') || 'main';
-    if (mode === 'embed') {
-      $('body').addClass('sidebar-collapse');
-      $('#content').hide();
-    } else {
-      $('#generators-category').addClass('active');
-    }
-    embedCodeSetup();
-    $("#embedCode").selectOnFocus();
-    CopyTextAddon.register('taggedurl');
-    CopyTextAddon.register('cleanurl');
-    CopyTextAddon.register('asin');
-    CopyTextAddon.register('linkhtml');
-    $('.markdown-body').attr('style','max-width:100%;');
-    history(Page);
-  });
 
   const embedCodeSetup = () => {
     $('#embedCode').val(
@@ -446,6 +394,58 @@ layout: post
     $('#error').text('');
     Page.request = {};
   };
+
+  $(document).ready(function() {
+    Page.context.createTableHeader = createTableHeader;
+    Page.context.createRow = createRow;
+    getAffiliateTag();
+    const handleConverClick = () => {
+      clear();
+      Page.request.affiliateTag = getAffiliateTag();
+      const input = $('#input').val();
+      Page.request.url = input.trim();
+      if (UrlUtils.isValidURL(Page.request.url)) {
+        processUrl(Page);
+      } else {
+        $('#error').text('Invalid/Missing URL input, please enter a valid Amazon url');
+      }
+      embedCodeSetup();
+    };
+    $('#convert').click(function() {
+      try {
+        handleConverClick();
+      } catch(e) {
+        CustomAnalytics.collector.collect(
+          {
+            eventName: 'convert',
+            eventAction: 'error',
+            message: `${e}: ${JSON.stringify(Page.request)}`
+          }
+        );
+      }
+    });
+    $('#asin').selectOnFocus();
+    $('#taggedurl').selectOnFocus();
+    $('#cleanurl').selectOnFocus();
+    $('#linkhtml').selectOnFocus();
+    $('#input').selectOnFocus();
+    $('#affiliateTag').selectOnFocus();
+    const mode = UrlUtils.getUrlParam('mode') || 'main';
+    if (mode === 'embed') {
+      $('body').addClass('sidebar-collapse');
+      $('#content').hide();
+    } else {
+      $('#generators-category').addClass('active');
+    }
+    embedCodeSetup();
+    $("#embedCode").selectOnFocus();
+    CopyTextAddon.register('taggedurl');
+    CopyTextAddon.register('cleanurl');
+    CopyTextAddon.register('asin');
+    CopyTextAddon.register('linkhtml');
+    $('.markdown-body').attr('style','max-width:100%;');
+    history(Page);
+  });
 </script>
 
 </html>
