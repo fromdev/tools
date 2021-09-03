@@ -215,6 +215,10 @@ layout: post
 <script src="javascripts/fromdev-utils.js"></script>
 <script>
     var baseUrl = 'https://tools.fromdev.com/';
+    const Page = {
+        request: {},
+        context: {}
+    };
     var cleanLinks = function (arr, originalText) {
         var cleanLinks = [];
         $.each(arr, function (i, el) {
@@ -236,11 +240,12 @@ layout: post
                                     <th>SN</th>
                                     <th>Link</th>
                                     <th>Link Text</th>
+                                    <th>HTTPS Link</th>
+                                    <th>Actions</th>
                                     <th>Type</th>
                                     <th>Domain</th>
                                     <th>Title</th>
                                     <th>Alt</th>
-                                    <th>HTTPS Link</th>
                                 </tr></thead>`;
     };
     const isHttpsLink = (url) => {
@@ -250,23 +255,52 @@ layout: post
         return (url || '').toLowerCase().replace('http://','https://');
     };
 
+    const getHttpToHttpsConverterButton = (context) => {
+        return `<button type="button" class="btn btn-info action-convert-to-https" data-url="${context.url}">Convert to HTTPS</button>`;
+    };
+    const getRemoveLinkButton = (context) => {
+        return `<button type="button" class="btn btn-info action-remove-link" data-url="${context.url}">Convert to HTTPS</button>`;
+    };
+    const getEligibleActions = (context) => {
+        const actionButtons = [];
+        if(!isHttpsLink(context.url)) {
+            actionButtons.push(getHttpToHttpsConverterButton(context));
+        }
+        //actionButtons.push(getRemoveLinkButton(context));
+        return actionButtons.join('');
+    };
+
+    const registerActionButtons = () => {
+        $('.action-convert-to-https').click(function() {
+            const toReplace = $(this).attr("data-url");
+            replace(toReplace, toHttpsUrl(toReplace));
+        });
+    };
+
     const createLinkRow = (context) => {
         return `
         <tr>
                                     <td>${context.sn}</td>
                                     <td><a href='${context.url}' target='_blank'> ${context.text || context.backupText}</a></td>
+                                    <td>${isHttpsLink(context.url) ? '<span class="badge bg-green">HTTPS</span>' : '<span class="badge bg-red">HTTP</span>'}</td>
+                                    <td>${getEligibleActions(context)}</td>
                                     <td>${context.text || '-'}</td>
                                     <td><span class="label label-${context.relStyle}">${context.rel}</span></td>
                                     <td>${UrlUtils.extractDomain(context.url) || '-'}</td>
                                     <td>${context.title}</td>
                                     <td>${context.alt}</td>
-                                    <td>${isHttpsLink(context.url) ? '<span class="badge bg-green">HTTPS</span>' : '<span class="badge bg-red">HTTP</span>'}</td>
                                     </tr>
         `;
     };
     const suggestText = (el) => {
         return el.text() || UrlUtils.extractDomain(el.attr('href')) || '-';
     }
+
+    const replace = (txt, toTxt) => {
+        if(!Page.request.originalText || Page.request.originalText.indexOf(txt) === -1) return;
+        Page.request.originalText.replace(txt, toTxt);
+        $("#extracturl").trigger("click");
+    };
 
     $(document).ready(function () {
         let datatable;
@@ -277,9 +311,9 @@ layout: post
             }
             var links = [];
             const linkAttributes = [];
-            var originalText = $("#htm").val();
+            Page.request.originalText = $("#htm").val();
             let count = 1;
-            $(originalText).find('a').each(function () {
+            $(Page.request.originalText).find('a').each(function () {
                 if (this.href && UrlUtils.isValidURL(this.href)) {
                     links.push(this.href);
                     const el = $(this);
@@ -295,7 +329,7 @@ layout: post
                     });
                 }
             });
-            var uniqueLinks = cleanLinks(ArrayUtils.removeDuplicates(links), originalText);
+            var uniqueLinks = cleanLinks(ArrayUtils.removeDuplicates(links), Page.request.originalText);
             if (uniqueLinks) {
                 $("#urls").val(uniqueLinks.join("\r\n"));
                 $("#count").text(uniqueLinks.length);
@@ -311,6 +345,7 @@ layout: post
             $('#linkdatatablecontainer').html(`<table class="table table-hover"></table>`);
             $('#linkdatatablecontainer table').append(rows.join(''));
             datatable = $('#linkdatatablecontainer table').DataTable();
+            registerActionButtons();
         });
         $("#urls").selectOnFocus();
         $("#htm").selectOnFocus();
