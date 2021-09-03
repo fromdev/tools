@@ -343,7 +343,8 @@ layout: post
   };
   const showHistory = (Page) => {
     const context = Page.context;
-    const history = HistoryUtils.findAll(context.tableName) || [];
+    let history = HistoryUtils.findAll(context.tableName) || [];
+    history = history.sort((a, b) => (b.timestamp - a.timestamp));
     if(!Array.isArray(history)) return;
     if(datatable) {
         datatable.clear();
