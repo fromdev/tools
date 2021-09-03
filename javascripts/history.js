@@ -2,8 +2,8 @@ var History = History || {};
 History.datatable = undefined;
 History.collectAndShow = (Page) => {
     try {
-        collectHistory(Page);
-        showHistory(Page.context);
+        History.collectHistory(Page);
+        History.showHistory(Page.context);
     } catch (e) {
         console.log('history error, ignoring to continue main flow');
         console.log(e);
