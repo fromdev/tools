@@ -288,6 +288,7 @@ layout: post
         $('.action-convert-to-https').click(function() {
             const toReplace = $(this).attr("data-url");
             replace(toReplace, toHttpsUrl(toReplace));
+            Page.request.validated.add(link);
         });
         $('.action-try-https-url').click(function() {
             const url = $(this).attr("data-url");
