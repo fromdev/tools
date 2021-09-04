@@ -263,7 +263,7 @@ layout: post
         return `<button type="button" class="btn btn-info action-convert-to-https" data-url="${context.url}">Convert to HTTPS</button>`;
     };
     const getRemoveLinkButton = (context) => {
-        return `<button type="button" class="btn btn-info action-remove-link" data-url="${context.url}">Convert to HTTPS</button>`;
+        return `<button type="button" class="btn btn-info action-remove-link" data-url="${context.url}">Remove Link</button>`;
     };
     const getEligibleActions = (context) => {
         const actionButtons = [];
@@ -285,6 +285,10 @@ layout: post
             if(url) {
                 window.open(toHttpsUrl(url), '_blank').focus();
             }
+        });
+        $('.action-remove-link').click(function() {
+            const toReplace = $(this).attr("data-url");
+            replace(toReplace, '#');
         });
     };
 
