@@ -267,7 +267,7 @@ layout: post
     const getRemoveLinkButton = (context) => {
         return `<button type="button" class="btn btn-info action-remove-link" data-url="${context.url}">Remove Link</button>`;
     };
-    const markValidated = (context) => {
+    const getMarkValidatedButton = (context) => {
         return `<button type="button" class="btn btn-info action-mark-validated" data-url="${context.url}">Mark Validated</button>`;
     };
     const getEligibleActions = (context) => {
@@ -277,6 +277,7 @@ layout: post
                 actionButtons.push(getHttpToHttpsConverterButton(context));
                 actionButtons.push(openHttpsVersion(context));
             }
+            actionButtons.push(getMarkValidatedButton(context));
             actionButtons.push(getRemoveLinkButton(context));
             return `<div class="btn-group">${actionButtons.join('')}</div>`;
         }
