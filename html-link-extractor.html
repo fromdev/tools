@@ -256,7 +256,9 @@ layout: post
     const toHttpsUrl = (url) => {
         return (url || '').toLowerCase().replace('http://','https://');
     };
-
+    const openHttpsVersion = (context) => {
+        return `<button type="button" class="btn btn-info action-try-https-url" data-url="${context.url}">Open HTTPS</button>`;
+    };
     const getHttpToHttpsConverterButton = (context) => {
         return `<button type="button" class="btn btn-info action-convert-to-https" data-url="${context.url}">Convert to HTTPS</button>`;
     };
@@ -267,6 +269,7 @@ layout: post
         const actionButtons = [];
         if(!isHttpsLink(context.url)) {
             actionButtons.push(getHttpToHttpsConverterButton(context));
+            actionButtons.push(openHttpsVersion(context));
         }
         //actionButtons.push(getRemoveLinkButton(context));
         return actionButtons.join('');
@@ -276,6 +279,12 @@ layout: post
         $('.action-convert-to-https').click(function() {
             const toReplace = $(this).attr("data-url");
             replace(toReplace, toHttpsUrl(toReplace));
+        });
+        $('.action-try-https-url').click(function() {
+            const url = $(this).attr("data-url");
+            if(url) {
+                window.open(url, '_blank').focus();
+            }
         });
     };
 
