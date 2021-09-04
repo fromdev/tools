@@ -218,7 +218,9 @@ layout: post
 <script>
     var baseUrl = 'https://tools.fromdev.com/';
     const Page = {
-        request: {},
+        request: {
+            validated: new Set()
+        },
         context: {}
     };
     var cleanLinks = function (arr, originalText) {
@@ -265,14 +267,20 @@ layout: post
     const getRemoveLinkButton = (context) => {
         return `<button type="button" class="btn btn-info action-remove-link" data-url="${context.url}">Remove Link</button>`;
     };
+    const markValidated = (context) => {
+        return `<button type="button" class="btn btn-info action-mark-validated" data-url="${context.url}">Mark Validated</button>`;
+    };
     const getEligibleActions = (context) => {
         const actionButtons = [];
-        if(!isHttpsLink(context.url)) {
-            actionButtons.push(getHttpToHttpsConverterButton(context));
-            actionButtons.push(openHttpsVersion(context));
+        if(!Page.request.validated.has(context.url)) {
+            if(!isHttpsLink(context.url)) {
+                actionButtons.push(getHttpToHttpsConverterButton(context));
+                actionButtons.push(openHttpsVersion(context));
+            }
+            actionButtons.push(getRemoveLinkButton(context));
+            return `<div class="btn-group">${actionButtons.join('')}</div>`;
         }
-        actionButtons.push(getRemoveLinkButton(context));
-        return `<div class="btn-group">${actionButtons.join('')}</div>`;
+        return `<span class="label label-success"><i class="fa fa-check"></i> Validated</span>`;
     };
 
     const registerActionButtons = () => {
@@ -289,6 +297,10 @@ layout: post
         $('.action-remove-link').click(function() {
             const toReplace = $(this).attr("data-url");
             replace(toReplace, '#');
+        });
+        $('.action-mark-validated').click(function() {
+            const link = $(this).attr("data-url");
+            Page.request.validated.add(link);
         });
     };
 
