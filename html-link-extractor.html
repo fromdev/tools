@@ -353,7 +353,9 @@ layout: post
             (linkAttributes || []).forEach(linkAttribute => rows.push(createLinkRow(linkAttribute)))
             $('#linkdatatablecontainer').html(`<table class="table table-hover"></table>`);
             $('#linkdatatablecontainer table').append(rows.join(''));
-            Page.datatable = $('#linkdatatablecontainer table').DataTable();
+            Page.datatable = $('#linkdatatablecontainer table').DataTable({
+                "lengthMenu": [[100, 250, 500, -1], [100, 250, 500, "All"]]
+            });
             registerActionButtons();
         };
     $(document).ready(function () {
