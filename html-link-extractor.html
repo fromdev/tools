@@ -288,7 +288,6 @@ layout: post
         $('.action-convert-to-https').click(function() {
             const toReplace = $(this).attr("data-url");
             replace(toReplace, toHttpsUrl(toReplace));
-            Page.request.validated.add(link);
         });
         $('.action-try-https-url').click(function() {
             const url = $(this).attr("data-url");
@@ -303,6 +302,7 @@ layout: post
         $('.action-mark-validated').click(function() {
             const link = $(this).attr("data-url");
             Page.request.validated.add(link);
+            handleConvertClick();
         });
     };
 
@@ -328,6 +328,7 @@ layout: post
     const replace = (txt, toTxt) => {
         if(!Page.request.originalText || Page.request.originalText.indexOf(txt) === -1) return;
         $("#htm").val(Page.request.originalText.replace(txt, toTxt));
+        Page.request.validated.add(link);
         handleConvertClick();
     };
 
