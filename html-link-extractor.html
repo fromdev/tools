@@ -272,7 +272,7 @@ layout: post
             actionButtons.push(openHttpsVersion(context));
         }
         actionButtons.push(getRemoveLinkButton(context));
-        return actionButtons.join('');
+        return `<div class="btn-group">${actionButtons.join('')}</div>`;
     };
 
     const registerActionButtons = () => {
