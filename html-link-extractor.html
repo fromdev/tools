@@ -328,7 +328,7 @@ layout: post
     const replace = (txt, toTxt) => {
         if(!Page.request.originalText || Page.request.originalText.indexOf(txt) === -1) return;
         $("#htm").val(Page.request.originalText.replace(txt, toTxt));
-        Page.request.validated.add(link);
+        Page.request.validated.add(toTxt);
         handleConvertClick();
     };
 
