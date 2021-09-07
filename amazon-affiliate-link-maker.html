@@ -390,12 +390,12 @@ layout: post
       try {
         handleConverClick();
       } catch (e) {
-        CustomAnalytics.collector.collect(
+        CustomAnalytics.collector.collectError(
           {
-            eventName: `${e}`,
             eventAction: `${Page.context.tableName}-convert-click`,
             message: `${JSON.stringify(Page.request)}`
-          }
+          },
+          e
         );
       }
     });

@@ -259,7 +259,7 @@ layout: post
         return (url || '').toLowerCase().startsWith('https');
     }
     const toHttpsUrl = (url) => {
-        return (url || '').toLowerCase().replace('http://','https://');
+        return (url || '').toLowerCase().replace('http://', 'https://');
     };
     const openHttpsVersion = (context) => {
         return `<button type="button" class="btn btn-info action-try-https-url" data-url="${context.url}">Open HTTPS</button>`;
@@ -275,8 +275,8 @@ layout: post
     };
     const getEligibleActions = (context) => {
         const actionButtons = [];
-        if(!Page.request.validated.has(context.url)) {
-            if(!isHttpsLink(context.url)) {
+        if (!Page.request.validated.has(context.url)) {
+            if (!isHttpsLink(context.url)) {
                 actionButtons.push(getHttpToHttpsConverterButton(context));
                 actionButtons.push(openHttpsVersion(context));
             }
@@ -288,21 +288,21 @@ layout: post
     };
 
     const registerActionButtons = () => {
-        $('.action-convert-to-https').click(function() {
+        $('.action-convert-to-https').click(function () {
             const toReplace = $(this).attr("data-url");
             replace(toReplace, toHttpsUrl(toReplace));
         });
-        $('.action-try-https-url').click(function() {
+        $('.action-try-https-url').click(function () {
             const url = $(this).attr("data-url");
-            if(url) {
+            if (url) {
                 window.open(toHttpsUrl(url), '_blank').focus();
             }
         });
-        $('.action-remove-link').click(function() {
+        $('.action-remove-link').click(function () {
             const toReplace = $(this).attr("data-url");
             replace(toReplace, '#');
         });
-        $('.action-mark-validated').click(function() {
+        $('.action-mark-validated').click(function () {
             const link = $(this).attr("data-url");
             Page.request.validated.add(link);
             handleConvertClick();
@@ -329,76 +329,76 @@ layout: post
     }
 
     const replace = (txt, toTxt) => {
-        if(!Page.request.originalText || Page.request.originalText.indexOf(txt) === -1) return;
+        if (!Page.request.originalText || Page.request.originalText.indexOf(txt) === -1) return;
         $("#htm").val(Page.request.originalText.replace(txt, toTxt));
         Page.request.validated.add(toTxt);
         handleConvertClick();
     };
 
     const handleConvertClick = () => {
-            if(Page.datatable) {
-                Page.datatable.clear();
-                $('#linkdatatablecontainer').empty();
+        if (Page.datatable) {
+            Page.datatable.clear();
+            $('#linkdatatablecontainer').empty();
+        }
+        var links = [];
+        const linkAttributes = [];
+        Page.request.originalText = $("#htm").val();
+        let count = 1;
+        $(Page.request.originalText).find('a').each(function () {
+            if (this.href && UrlUtils.isValidURL(this.href)) {
+                links.push(this.href);
+                const el = $(this);
+                linkAttributes.push({
+                    url: this.href,
+                    sn: count++,
+                    text: el.text(),
+                    backupText: suggestText(el),
+                    title: el.attr('title') || '-',
+                    alt: el.attr('alt') || '-',
+                    rel: el.attr('rel') || 'dofollow',
+                    relStyle: (el.attr('rel') === 'nofollow') ? 'warning' : 'success'
+                });
             }
-            var links = [];
-            const linkAttributes = [];
-            Page.request.originalText = $("#htm").val();
-            let count = 1;
-            $(Page.request.originalText).find('a').each(function () {
-                if (this.href && UrlUtils.isValidURL(this.href)) {
-                    links.push(this.href);
-                    const el = $(this);
-                    linkAttributes.push({
-                        url: this.href,
-                        sn: count++,
-                        text: el.text(),
-                        backupText: suggestText(el),
-                        title: el.attr('title') || '-',
-                        alt: el.attr('alt') || '-',
-                        rel: el.attr('rel') || 'dofollow',
-                        relStyle: (el.attr('rel') === 'nofollow') ? 'warning' : 'success'
-                    });
-                }
-            });
-            var uniqueLinks = cleanLinks(ArrayUtils.removeDuplicates(links), Page.request.originalText);
-            if (uniqueLinks) {
-                $("#urls").val(uniqueLinks.join("\r\n"));
-                $("#count").text(uniqueLinks.length);
-                $("#totalcount").text(links.length);
-                var uniqueDomains = ArrayUtils.removeDuplicates(UrlUtils.extractDomainList(links));
-                $("#uniqueDomainCount").text(uniqueDomains.length);
-                const httpsLink = (links || []).filter(l => l && l.toLowerCase().startsWith('https'));
-                $('#httpsLinksCount').text(httpsLink.length);
-            }
-            const rows = [];
-            rows.push(createTableHeader());
-            (linkAttributes || []).forEach(linkAttribute => rows.push(createLinkRow(linkAttribute)))
-            $('#linkdatatablecontainer').html(`<table class="table table-hover"></table>`);
-            $('#linkdatatablecontainer table').append(rows.join(''));
-            Page.datatable = $('#linkdatatablecontainer table').DataTable({
-                "lengthMenu": [[100, 250, 500, -1], [100, 250, 500, "All"]]
-            });
-            registerActionButtons();
-        };
+        });
+        var uniqueLinks = cleanLinks(ArrayUtils.removeDuplicates(links), Page.request.originalText);
+        if (uniqueLinks) {
+            $("#urls").val(uniqueLinks.join("\r\n"));
+            $("#count").text(uniqueLinks.length);
+            $("#totalcount").text(links.length);
+            var uniqueDomains = ArrayUtils.removeDuplicates(UrlUtils.extractDomainList(links));
+            $("#uniqueDomainCount").text(uniqueDomains.length);
+            const httpsLink = (links || []).filter(l => l && l.toLowerCase().startsWith('https'));
+            $('#httpsLinksCount').text(httpsLink.length);
+        }
+        const rows = [];
+        rows.push(createTableHeader());
+        (linkAttributes || []).forEach(linkAttribute => rows.push(createLinkRow(linkAttribute)))
+        $('#linkdatatablecontainer').html(`<table class="table table-hover"></table>`);
+        $('#linkdatatablecontainer table').append(rows.join(''));
+        Page.datatable = $('#linkdatatablecontainer table').DataTable({
+            "lengthMenu": [[100, 250, 500, -1], [100, 250, 500, "All"]]
+        });
+        registerActionButtons();
+    };
     $(document).ready(function () {
-        $("#extracturl").click(function() {
+        $("#extracturl").click(function () {
             try {
                 handleConvertClick();
-            } catch(e) {
-                CustomAnalytics.collector.collect(
-                {
-                    eventName: `${e}`,
-                    eventAction: `${Page.context.tableName}-convert-click`,
-                    message: `${JSON.stringify(Page.request)}`
-                }
+            } catch (e) {
+                CustomAnalytics.collector.collectError(
+                    {
+                        eventAction: `${Page.context.tableName}-convert-click`,
+                        message: `${JSON.stringify(Page.request)}`
+                    },
+                    e
                 );
             }
         });
-        
+
         $("#urls").selectOnFocus();
         $("#htm").selectOnFocus();
         $('#converters-category').addClass('active');
-        $('.markdown-body').attr('style','max-width:100%;');
+        $('.markdown-body').attr('style', 'max-width:100%;');
     });
 </script>
 
