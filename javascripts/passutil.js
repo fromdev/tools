@@ -126,8 +126,14 @@ var getRandomCharFromMap = function(inputchar) {
 
 var randomReplace = function(inputString) {
   var charArray = inputString.split('');
+  const requestLevelCharMappings = new Map();
   for (i = 0; i < charArray.length; i++){
-    charArray[i] = getRandomCharFromMap(charArray[i]);
+    let toChar = requestLevelCharMappings.get(charArray[i]);
+    if(!toChar) {
+      toChar = getRandomCharFromMap(charArray[i]);
+      requestLevelCharMappings.set(charArray[i], toChar);
+    }
+    charArray[i] = toChar;
   }
   return charArray.join("");
 }
