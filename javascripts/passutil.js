@@ -28,12 +28,15 @@ var ensureMinLength = function(inputString) {
 };
 
 var securePasswordFromInputString = function(inputString){
+  const result = {};
   if(inputString) {
     inputString = inputString.replace(/\s/g, "");
-    inputString = randomReplace(inputString);
+    result.randomReplaceResult = randomReplace(inputString);
+    inputString = result.randomReplaceResult.charArray;
     inputString = ensureMinLength(inputString);
   }
-  return inputString;
+  result.suggestion = inputString;
+  return result;
 };
 
 var scorePassword = function(pass) {
@@ -125,19 +128,21 @@ var getRandomCharFromMap = function(inputchar) {
 };
 
 var randomReplace = function(inputString) {
+  const result = {};
   var charArray = inputString.split('');
-  const requestLevelCharMappings = new Map();
+  result.requestLevelCharMappings = new Map();
   let chountChanged = 0;
   for (i = 0; i < charArray.length; i++){
     let toChar = requestLevelCharMappings.get(charArray[i]);
     if(!toChar) {
       toChar = (chountChanged > 2) ? charArray[i] : getRandomCharFromMap(charArray[i]);
-      requestLevelCharMappings.set(charArray[i], toChar);
+      result.requestLevelCharMappings.set(charArray[i], toChar);
     }
     if(toChar !== charArray[i]) {
       chountChanged++;
     }
     charArray[i] = toChar;
   }
-  return charArray.join("");
+  result.charArray = charArray.join("");
+  return result;
 }
