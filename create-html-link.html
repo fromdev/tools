@@ -267,7 +267,7 @@ layout: post
                 CustomAnalytics.collector.collect(
                 {
                     eventName: 'error',
-                    eventAction: 'convert-click',
+                    eventAction: `${Page.context.tableName}-convert`,
                     message: `${e}: ${JSON.stringify(Page.request)}`
                 }
                 );

@@ -9,21 +9,26 @@ History.collectAndShow = (Page) => {
         console.log(e);
     }
 };
-History.showHistory = (context) => {
+History.fetchHistory = (context) => {
     if (!HistoryUtils) {
         console.log('Include fromdev-utils.js for HistoryUtils');
         return;
     }
-    if (!context.createTableHeader || !context.createRow) {
-        console.log('createTableHeader() and createRow() callback required');
-        return;
-    }
+
     let historyTable = HistoryUtils.findAll(context.tableName) || [];
     historyTable = historyTable.sort((a, b) => (b.timestamp - a.timestamp));
+    return historyTable;
+};
+History.showHistory = (context) => {
+    const historyTable = History.fetchHistory(context);
     if (!Array.isArray(historyTable)) return;
     if (History.datatable) {
         History.datatable.clear();
         $(context.containerId).empty();
+    }
+    if (!context.createTableHeader || !context.createRow) {
+        console.log('createTableHeader() and createRow() callback required');
+        return;
     }
     const rows = [];
     rows.push(context.createTableHeader());

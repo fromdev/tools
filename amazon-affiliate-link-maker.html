@@ -355,7 +355,7 @@ layout: post
     CustomAnalytics.collector.collect(
       {
         eventName: 'convert',
-        eventAction: 'click',
+        eventAction: `${Page.context.tableName}-convert-click`,
         message: `${JSON.stringify(Page.request)}`
       }
     );
@@ -393,7 +393,7 @@ layout: post
         CustomAnalytics.collector.collect(
           {
             eventName: 'error',
-            eventAction: 'convert-click',
+            eventAction: `${Page.context.tableName}-convert-click`,
             message: `${e}: ${JSON.stringify(Page.request)}`
           }
         );
