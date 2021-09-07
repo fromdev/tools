@@ -127,11 +127,15 @@ var getRandomCharFromMap = function(inputchar) {
 var randomReplace = function(inputString) {
   var charArray = inputString.split('');
   const requestLevelCharMappings = new Map();
+  let chountChanged = 0;
   for (i = 0; i < charArray.length; i++){
     let toChar = requestLevelCharMappings.get(charArray[i]);
     if(!toChar) {
-      toChar = getRandomCharFromMap(charArray[i]);
+      toChar = (chountChanged > 2) ? charArray[i] : getRandomCharFromMap(charArray[i]);
       requestLevelCharMappings.set(charArray[i], toChar);
+    }
+    if(toChar !== charArray[i]) {
+      chountChanged++;
     }
     charArray[i] = toChar;
   }
