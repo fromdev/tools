@@ -133,7 +133,7 @@ var randomReplace = function(inputString) {
   result.requestLevelCharMappings = new Map();
   let chountChanged = 0;
   for (i = 0; i < charArray.length; i++){
-    let toChar = requestLevelCharMappings.get(charArray[i]);
+    let toChar = result.requestLevelCharMappings.get(charArray[i]);
     if(!toChar) {
       toChar = (chountChanged > 2) ? charArray[i] : getRandomCharFromMap(charArray[i]);
       result.requestLevelCharMappings.set(charArray[i], toChar);
