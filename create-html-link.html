@@ -266,9 +266,9 @@ layout: post
             } catch(e) {
                 CustomAnalytics.collector.collect(
                 {
-                    eventName: 'error',
-                    eventAction: `${Page.context.tableName}-convert`,
-                    message: `${e}: ${JSON.stringify(Page.request)}`
+                    eventName: `${e}`,
+                    eventAction: `${Page.context.tableName}-convert-click`,
+                    message: `${JSON.stringify(Page.request)}`
                 }
                 );
             }

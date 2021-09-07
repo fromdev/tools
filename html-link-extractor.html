@@ -221,7 +221,9 @@ layout: post
         request: {
             validated: new Set()
         },
-        context: {}
+        context: {
+            tableName: 'HTML-LINK-EXTRACTOR'
+        }
     };
     Page.request.validated.add('#');
     var cleanLinks = function (arr, originalText) {
@@ -385,9 +387,9 @@ layout: post
             } catch(e) {
                 CustomAnalytics.collector.collect(
                 {
-                    eventName: 'error',
-                    eventAction: 'convert-click',
-                    message: `${e}: ${JSON.stringify(Page.request)}`
+                    eventName: `${e}`,
+                    eventAction: `${Page.context.tableName}-convert-click`,
+                    message: `${JSON.stringify(Page.request)}`
                 }
                 );
             }
