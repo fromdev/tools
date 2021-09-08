@@ -10,10 +10,8 @@ layout: post
   <title>{{ page.title }}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <meta name="description"
-    content="This is easy to use open source tool to create a TODO list online." />
-  <meta name="keywords"
-    content="online,tool,todo,task,list,grocery,maker,builder,creator,generator,opensource" />
+  <meta name="description" content="This is easy to use open source tool to create a TODO list online." />
+  <meta name="keywords" content="online,tool,todo,task,list,grocery,maker,builder,creator,generator,opensource" />
   <!-- CSS for the site theme -->
   {% include theme-css %}
   <link rel="stylesheet" href="plugins/colorpicker/bootstrap-colorpicker.min.css">
@@ -44,20 +42,14 @@ layout: post
           <!-- /.box-header -->
           <div class="box-body">
             <div class="form-group">
-              <label for="item">List Name</label>
               <div class="input-group margin">
-                <input class="form-control" id="listName" type="text" placeholder="Enter list name" />
+                <input class="form-control" id="item" type="text" placeholder="Enter task or item here" />
+                <span class="input-group-btn">
+                  <button type="button" id="add-item" class="btn btn-default btn-flat"><i class="fa fa-plus"></i>
+                    Add</button>
+                </span>
               </div>
             </div>
-              <div class="form-group">
-                <div class="input-group margin">
-                  <input class="form-control" id="item" type="text" placeholder="Enter task or item here" />
-                  <span class="input-group-btn">
-                    <button type="button" id="add-item" class="btn btn-default btn-flat"><i
-                        class="fa fa-plus"></i> Add</button>
-                  </span>
-                </div>
-              </div>
           </div>
           <!-- /.box-body -->
         </div>
@@ -120,6 +112,7 @@ layout: post
 <script>
   const Page = {
     request: {},
+    list: [],
     context: {
       tableName: 'TODO-LIST-MAKER',
       containerId: '#history',
@@ -129,9 +122,7 @@ layout: post
       createRow: (context) => {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
         return `<tr>
-                      <td>${context.asin}</td>
-                      <td><a href='${context.cleanurl || context.taggedurl || context.url}' target='_blank'> ${context.linkText || 'Click here'}</a></td>
-                      <td>${context.affiliateTag}</td>
+                      <td>${context.item}</td>
                       <td>${(new Date(context.timestamp).toLocaleDateString(undefined, options))}</td>
                   </tr>`;
       }
@@ -146,8 +137,9 @@ layout: post
   $(document).ready(function () {
     const addItem = () => {
       clear();
-      const input = $('#input').val();
-      
+      Page.request.item = $('#input').val();
+      Page.list.push(Page.request.item);
+      History.collectAndShow(Page);
     };
     $('#add-item').click(function () {
       try {
