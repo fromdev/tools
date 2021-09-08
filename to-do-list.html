@@ -44,17 +44,20 @@ layout: post
           <!-- /.box-header -->
           <div class="box-body">
             <div class="form-group">
+              <label for="item">List Name</label>
+              <div class="input-group margin">
+                <input class="form-control" id="listName" type="text" placeholder="Enter list name" />
+              </div>
+            </div>
               <div class="form-group">
-                <label for="item">Add item to list</label>
                 <div class="input-group margin">
-                  <input class="form-control" id="item" type="text" placeholder="enter task or item here" />
+                  <input class="form-control" id="item" type="text" placeholder="Enter task or item here" />
                   <span class="input-group-btn">
                     <button type="button" id="add-item" class="btn btn-default btn-flat"><i
                         class="fa fa-plus"></i> Add</button>
                   </span>
                 </div>
               </div>
-            </div>
           </div>
           <!-- /.box-body -->
         </div>
@@ -135,103 +138,38 @@ layout: post
     }
   };
 
-  const embedCodeSetup = () => {
-    $('#embedCode').val(
-      `<iframe style=\"position: fixed;top: 0px;bottom: 0px;right: 0px;width: 100%;border: none;margin: 0;padding: 0;overflow: hidden;z-index: 999999;height: 100%;\" scrolling=\"auto\" src=\"https:\/\/tools.fromdev.com\/amazon-affiliate-link-maker.html?mode=embed&affiliateTag=${getAffiliateTag()}\"><\/iframe>`
-    );
-  };
-  var getAffiliateTag = function () {
-    var affiliateTag = UrlUtils.getUrlParam('affiliateTag') || $('#affiliateTag').val();
-    if (!affiliateTag) {
-      affiliateTag = Utils.storage.getItem("affiliateTag");
-      if (!affiliateTag) {
-        affiliateTag = 'fromdevtools-20';
-      }
-    }
-    Utils.storage.setItem("affiliateTag", affiliateTag);
-    $('#affiliateTag').val(affiliateTag);
-    return affiliateTag;
-  };
-
-  var processUrl = function (Page) {
-    const updatedUrl = AmazonUtils.addAffiliateTag(Page.request.url, Page.request.affiliateTag);
-    $('#taggedurl').val(updatedUrl);
-    Page.request.taggedurl = updatedUrl;
-    Page.request.asin = Utils.amazon.extractASIN(updatedUrl);
-    $('#asin').val(Page.request.asin);
-    Page.request.cleanurl = AmazonUtils.createCleanAffiliateURL(Page.request.url, Page.request.affiliateTag);
-    $('#cleanurl').val(Page.request.cleanurl);
-    $('#openurl').attr('href', updatedUrl);
-    $('#openurl').text('Open Link (in new window)');
-    Page.request.linkText = $('#linktext').val() || 'Click Here';
-    $('#linkhtml').val(UrlUtils.getLinkCode(Page.request.cleanurl, Page.request.linkText));
-    History.collectAndShow(Page);
-    CustomAnalytics.collector.collect(
-      {
-        eventName: 'convert',
-        eventAction: `${Page.context.tableName}-convert-click`,
-        message: `${JSON.stringify(Page.request)}`
-      }
-    );
-  };
-
   var clear = function () {
-    $('#asin').val('');
-    $('#taggedurl').val('');
-    $('#cleanurl').val('');
-    $('#openurl').attr('href', '');
-    $('#openurl').text('');
-    $('#linkhtml').text('');
     $('#error').text('');
     Page.request = {};
   };
 
   $(document).ready(function () {
-    getAffiliateTag();
-    const handleConverClick = () => {
+    const addItem = () => {
       clear();
-      Page.request.affiliateTag = getAffiliateTag();
       const input = $('#input').val();
-      Page.request.url = input.trim();
-      if (UrlUtils.isValidURL(Page.request.url)) {
-        processUrl(Page);
-      } else {
-        $('#error').text('Invalid/Missing URL input, please enter a valid Amazon url');
-      }
-      embedCodeSetup();
+      
     };
-    $('#convert').click(function () {
+    $('#add-item').click(function () {
       try {
-        handleConverClick();
+        addItem();
       } catch (e) {
         CustomAnalytics.collector.collectError(
           {
-            eventAction: `${Page.context.tableName}-convert-click`,
+            eventAction: `${Page.context.tableName}-addItem-click`,
             message: `${JSON.stringify(Page.request)}`
           },
           e
         );
       }
     });
-    $('#asin').selectOnFocus();
-    $('#taggedurl').selectOnFocus();
-    $('#cleanurl').selectOnFocus();
-    $('#linkhtml').selectOnFocus();
     $('#input').selectOnFocus();
-    $('#affiliateTag').selectOnFocus();
-    const mode = UrlUtils.getUrlParam('mode') || 'main';
-    if (mode === 'embed') {
-      $('body').addClass('sidebar-collapse');
-      $('#content').hide();
-    } else {
-      $('#generators-category').addClass('active');
-    }
     embedCodeSetup();
     $("#embedCode").selectOnFocus();
     CopyTextAddon.register('taggedurl');
     CopyTextAddon.register('cleanurl');
     CopyTextAddon.register('asin');
     CopyTextAddon.register('linkhtml');
+    $('#generators-category').addClass('active');
     $('.markdown-body').attr('style', 'max-width:100%;');
     History.showHistory(Page.context);
   });
