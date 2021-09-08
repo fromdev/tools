@@ -86,6 +86,9 @@ Utils.history = {
     findAll: (historyTableName) => {
         if(!historyTableName) return [];
         return StorageUtils.getJSON(historyTableName) || [];
+    },
+    clear: (historyTableName) => {
+        StorageUtils.setItem(historyTableName, JSON.stringify([]));
     }
 };
 

@@ -42,3 +42,7 @@ History.showHistory = (context) => {
 History.collectHistory = (Page) => {
     HistoryUtils.append(Page.context.tableName, Page.request);
 };
+
+History.clear = (Page) => {
+    HistoryUtils.clear(Page.context.tableName);
+};
