@@ -1,0 +1,240 @@
+---
+title: TODO List Maker | Simple Daily Use Tools
+layout: post
+---
+<html>
+
+<head>
+  <!-- Meta tags common for website -->
+  {% include common-meta %}
+  <title>{{ page.title }}</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta name="description"
+    content="This is easy to use open source tool to create a TODO list online." />
+  <meta name="keywords"
+    content="online,tool,todo,task,list,grocery,maker,builder,creator,generator,opensource" />
+  <!-- CSS for the site theme -->
+  {% include theme-css %}
+  <link rel="stylesheet" href="plugins/colorpicker/bootstrap-colorpicker.min.css">
+  <link rel="stylesheet" href="plugins/bootstrap-slider/slider.css">
+  <!-- Annoying IE fixes -->
+  {% include ie-fixes %}
+  <!-- Data Table Addon Styles -->
+  <link rel="stylesheet" href="https://tools.fromdev.com/plugins/datatables.net/dataTables.bootstrap.min.css">
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+
+    <!-- header tag from theme -->
+    {% include theme-header %}
+    <!-- Sidebar for the whole website -->
+    {% include theme-sidebar %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Main content -->
+      <section class="content">
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Create a To Do List</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <div class="form-group">
+              <div class="form-group">
+                <label for="item">Add item to list</label>
+                <div class="input-group margin">
+                  <input class="form-control" id="item" type="text" placeholder="enter task or item here" />
+                  <span class="input-group-btn">
+                    <button type="button" id="add-item" class="btn btn-default btn-flat"><i
+                        class="fa fa-plus"></i>Add</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </section>
+      <section class="content">
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Recently Created List Item History (Saved On Browser)</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <div id="history_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+              <div id="history">Empty</div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </section>
+      <section class="content" id="content">
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">About TODO List Creator Tool</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <img class="img-responsive" src="images/amazon-link-creator.jpg"
+              alt="Online Amazon Affiliate link Generator Tool" title="Online Amazon Affiliate link Generator Tool">
+            <p>This is a free online tool to create simple todo list.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">What is a TODO list?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>TODO list is a a common term used for list of things to be done. It is like a checklist.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </section>
+      {% include addthis %}
+    </div>
+    <!-- /.content-wrapper -->
+    {% include theme-footer %}
+  </div>
+  <!-- ./wrapper -->
+  {% include theme-bottom-js %}
+
+</body>
+<script src="/javascripts/fromdev-ux-addon.js"></script>
+<script src="/plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script src="/plugins/copyText/jquery.copyText.min.js"></script>
+<script src="/javascripts/fromdev-utils.js?v=1"></script>
+<script src="/plugins/datatables.net/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables.net/dataTables.bootstrap.min.js"></script>
+<script src="/javascripts/custom-analytics.js"></script>
+<script src="/javascripts/history.js"></script>
+<script>
+  const Page = {
+    request: {},
+    context: {
+      tableName: 'TODO-LIST-MAKER',
+      containerId: '#history',
+      createTableHeader: () => {
+        return `<thead><tr><th>Item</th><th>Date Created</th></tr></thead>`;
+      },
+      createRow: (context) => {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+        return `<tr>
+                      <td>${context.asin}</td>
+                      <td><a href='${context.cleanurl || context.taggedurl || context.url}' target='_blank'> ${context.linkText || 'Click here'}</a></td>
+                      <td>${context.affiliateTag}</td>
+                      <td>${(new Date(context.timestamp).toLocaleDateString(undefined, options))}</td>
+                  </tr>`;
+      }
+    }
+  };
+
+  const embedCodeSetup = () => {
+    $('#embedCode').val(
+      `<iframe style=\"position: fixed;top: 0px;bottom: 0px;right: 0px;width: 100%;border: none;margin: 0;padding: 0;overflow: hidden;z-index: 999999;height: 100%;\" scrolling=\"auto\" src=\"https:\/\/tools.fromdev.com\/amazon-affiliate-link-maker.html?mode=embed&affiliateTag=${getAffiliateTag()}\"><\/iframe>`
+    );
+  };
+  var getAffiliateTag = function () {
+    var affiliateTag = UrlUtils.getUrlParam('affiliateTag') || $('#affiliateTag').val();
+    if (!affiliateTag) {
+      affiliateTag = Utils.storage.getItem("affiliateTag");
+      if (!affiliateTag) {
+        affiliateTag = 'fromdevtools-20';
+      }
+    }
+    Utils.storage.setItem("affiliateTag", affiliateTag);
+    $('#affiliateTag').val(affiliateTag);
+    return affiliateTag;
+  };
+
+  var processUrl = function (Page) {
+    const updatedUrl = AmazonUtils.addAffiliateTag(Page.request.url, Page.request.affiliateTag);
+    $('#taggedurl').val(updatedUrl);
+    Page.request.taggedurl = updatedUrl;
+    Page.request.asin = Utils.amazon.extractASIN(updatedUrl);
+    $('#asin').val(Page.request.asin);
+    Page.request.cleanurl = AmazonUtils.createCleanAffiliateURL(Page.request.url, Page.request.affiliateTag);
+    $('#cleanurl').val(Page.request.cleanurl);
+    $('#openurl').attr('href', updatedUrl);
+    $('#openurl').text('Open Link (in new window)');
+    Page.request.linkText = $('#linktext').val() || 'Click Here';
+    $('#linkhtml').val(UrlUtils.getLinkCode(Page.request.cleanurl, Page.request.linkText));
+    History.collectAndShow(Page);
+    CustomAnalytics.collector.collect(
+      {
+        eventName: 'convert',
+        eventAction: `${Page.context.tableName}-convert-click`,
+        message: `${JSON.stringify(Page.request)}`
+      }
+    );
+  };
+
+  var clear = function () {
+    $('#asin').val('');
+    $('#taggedurl').val('');
+    $('#cleanurl').val('');
+    $('#openurl').attr('href', '');
+    $('#openurl').text('');
+    $('#linkhtml').text('');
+    $('#error').text('');
+    Page.request = {};
+  };
+
+  $(document).ready(function () {
+    getAffiliateTag();
+    const handleConverClick = () => {
+      clear();
+      Page.request.affiliateTag = getAffiliateTag();
+      const input = $('#input').val();
+      Page.request.url = input.trim();
+      if (UrlUtils.isValidURL(Page.request.url)) {
+        processUrl(Page);
+      } else {
+        $('#error').text('Invalid/Missing URL input, please enter a valid Amazon url');
+      }
+      embedCodeSetup();
+    };
+    $('#convert').click(function () {
+      try {
+        handleConverClick();
+      } catch (e) {
+        CustomAnalytics.collector.collectError(
+          {
+            eventAction: `${Page.context.tableName}-convert-click`,
+            message: `${JSON.stringify(Page.request)}`
+          },
+          e
+        );
+      }
+    });
+    $('#asin').selectOnFocus();
+    $('#taggedurl').selectOnFocus();
+    $('#cleanurl').selectOnFocus();
+    $('#linkhtml').selectOnFocus();
+    $('#input').selectOnFocus();
+    $('#affiliateTag').selectOnFocus();
+    const mode = UrlUtils.getUrlParam('mode') || 'main';
+    if (mode === 'embed') {
+      $('body').addClass('sidebar-collapse');
+      $('#content').hide();
+    } else {
+      $('#generators-category').addClass('active');
+    }
+    embedCodeSetup();
+    $("#embedCode").selectOnFocus();
+    CopyTextAddon.register('taggedurl');
+    CopyTextAddon.register('cleanurl');
+    CopyTextAddon.register('asin');
+    CopyTextAddon.register('linkhtml');
+    $('.markdown-body').attr('style', 'max-width:100%;');
+    History.collectAndShow(Page);
+  });
+</script>
+
+</html>

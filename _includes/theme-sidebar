@@ -80,6 +80,7 @@
                             <li><a href="/image-to-base64-converter.html"><i class="fa fa-circle-o text-green"></i> Image To Base-64</a></li>
                             <li><a href="/heic-to-jpg-converter.html"><i class="fa fa-circle-o text-green"></i> HEIC to JPG / PNG / GIF</a></li>
                             <li><a href="/unique-word-extractor.html"><i class="fa fa-circle-o text-green"></i> Unique Word Extractor</a></li>
+                            <li><a href="/todo-list.html"><i class="fa fa-circle-o"></i>To Do List Maker</a></li>
                         </ul>
                     </li>
                      <li class="treeview" id="generators-category">
