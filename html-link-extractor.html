@@ -278,7 +278,7 @@ layout: post
     };
     const getEligibleActions = (context) => {
         const actionButtons = [];
-        if (!Page.request.validated.has(context.url)) {
+        if (!(Page.request.validated || new Set()).has(context.url)) {
             if (!isHttpsLink(context.url)) {
                 actionButtons.push(getHttpToHttpsConverterButton(context));
                 actionButtons.push(openHttpsVersion(context));
@@ -396,7 +396,9 @@ layout: post
     };
     const clear = () => {
         $('#error').text('');
-        Page.request = {};
+        Page.request = {
+            validated: new Set()
+        };
     };
     $(document).ready(function () {
         $("#extracturl").click(function () {
