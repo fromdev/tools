@@ -346,14 +346,18 @@ layout: post
         var links = [];
         const linkAttributes = [];
         Page.request.originalText = $("#htm").val();
-        let count = 1;
+        if(!Page.request.originalText) {
+            $('#error').text('HTML data required');
+            return;
+        }
         let $html;
         try {
             $html = $(Page.request.originalText)
         } catch(e) {
-            $('#error').text('Invalid HTML input, Please input valid HTML data');
+            $('#error').text('Invalid HTML, Please input valid HTML data');
             return;
         }
+        let count = 1;
         $html.find('a').each(function () {
             if (this.href && UrlUtils.isValidURL(this.href)) {
                 links.push(this.href);
