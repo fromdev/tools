@@ -15,7 +15,7 @@ CustomAnalytics.collector = {
         context.errorContext.url = window.location.href;
         context.errorContext.userAgent = navigator.userAgent;
         try {
-            context.eventName = `$err`;
+            context.eventName = `${err}`;
         } catch(e) {
             context.eventName = `Unknown Error`;
         }
