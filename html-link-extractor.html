@@ -51,6 +51,9 @@ layout: post
                                             placeholder="Enter your HTML data here" autofocus></textarea>
                                         <div style="display:none;" id="hidden"></div>
                                     </div>
+                                    <div class="form-group">
+                                        <p id="error" class="text-red"></p>
+                                    </div>
                                 </form>
                             </div>
                             <!-- /.box-body -->
@@ -344,7 +347,14 @@ layout: post
         const linkAttributes = [];
         Page.request.originalText = $("#htm").val();
         let count = 1;
-        $(Page.request.originalText).find('a').each(function () {
+        let $html;
+        try {
+            $html = $(Page.request.originalText)
+        } catch(e) {
+            $('#error').text('Invalid HTML input, Please input valid HTML data');
+            return;
+        }
+        $html.find('a').each(function () {
             if (this.href && UrlUtils.isValidURL(this.href)) {
                 links.push(this.href);
                 const el = $(this);
@@ -380,9 +390,14 @@ layout: post
         });
         registerActionButtons();
     };
+    const clear = () => {
+        $('#error').text('');
+        Page.request = {};
+    };
     $(document).ready(function () {
         $("#extracturl").click(function () {
             try {
+                clear();
                 handleConvertClick();
             } catch (e) {
                 CustomAnalytics.collector.collectError(
