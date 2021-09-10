@@ -3,7 +3,7 @@
     AmazonPopularProducts.showProducts = (context) => {
         const rows = [];
         rows.push(context.createTableHeader());
-        AmazonPopularProducts.list.forEach(r => rows.push(context.createRow(r)));
+        AmazonPopularProducts.list.filter(e => e && e.asin && e.name).forEach(r => rows.push(context.createRow(r)));
         $(context.containerId).html(`<table class="table table-hover"></table>`);
         const $table = $(`${context.containerId} table`);
         $table.append(rows.join(''));
@@ -314,4 +314,4 @@
             asin: ''
         }
     ]
-};
+    ;
