@@ -1,6 +1,6 @@
     'use strict';
     const AmazonPopularProducts = {};
-    AmazonPopularProducts.LIMIT = 10;
+    AmazonPopularProducts.LIMIT = 15;
     AmazonPopularProducts.showProducts = (context) => {
         const rows = [];
         rows.push(context.createTableHeader());
