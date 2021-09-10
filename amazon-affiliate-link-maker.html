@@ -150,6 +150,18 @@ layout: post
       <section class="content">
         <div class="box box-success">
           <div class="box-header with-border">
+            <h3 class="box-title">Popular Products on Amazon (Frequently bought)</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+              <div id="popular">Empty</div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </section>
+      <section class="content">
+        <div class="box box-success">
+          <div class="box-header with-border">
             <h3 class="box-title">Recently Created Amazon Links History (Saved On Browser)</h3>
           </div>
           <!-- /.box-header -->
@@ -299,6 +311,7 @@ layout: post
 <script src="/plugins/datatables.net/dataTables.bootstrap.min.js"></script>
 <script src="/javascripts/custom-analytics.js"></script>
 <script src="/javascripts/history.js"></script>
+<script src="/javascripts/data/amazon-popular-products.js"></script>
 <script>
   const Page = {
     request: {},
@@ -316,6 +329,20 @@ layout: post
                       <td><a href='${context.cleanurl || context.taggedurl || context.url}' target='_blank'> ${context.linkText || 'Click here'}</a></td>
                       <td>${context.affiliateTag}</td>
                       <td>${(new Date(context.timestamp).toLocaleDateString(undefined, options))}</td>
+                  </tr>`;
+      }
+    },
+    popularProductsContext: {
+      containerId: '#popular',
+      createTableHeader: () => {
+        return `<thead><tr><th>Image</th><th>Title</th></tr></thead>`;
+      },
+      createRow: (context) => {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+        return `<tr>
+                      <td><a rel="nofollow" title="${context.name}" name="${context.name}" href="http://www.amazon.com/dp/${context.asin}?tag=fromdevtools-20"><img
+        title="${context.name}" class="img-responsive" alt="${context.name}" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=${context.asin}&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1"/></a></td>
+                      <td>${context.name}</td>
                   </tr>`;
       }
     }
@@ -419,6 +446,7 @@ layout: post
     CopyTextAddon.register('asin');
     CopyTextAddon.register('linkhtml');
     $('.markdown-body').attr('style', 'max-width:100%;');
+    AmazonPopularProducts.showProducts(Page.popularProductsContext);
     History.showHistory(Page.context);
   });
 </script>
