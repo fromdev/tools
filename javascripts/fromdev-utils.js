@@ -126,6 +126,17 @@ Utils.arrayutil = {
     },
     nextRandomItem: (array) => {
         return (!array) ? undefined : array[Utils.randomutil.getRandomInt(0,array.length)];
+    },
+    someRandomItems: (array, limit) => {
+        if(!array || !limit) return [];
+        const randomItems = new Set();
+        for(let i=0;i< limit;i++) {
+            const item = ArrayUtils.nextRandomItem(array);
+            if(item) {
+                randomItems.add();
+            }
+        }
+        return [...randomItems];
     }
 };
 
