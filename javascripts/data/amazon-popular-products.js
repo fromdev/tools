@@ -4,10 +4,11 @@
     AmazonPopularProducts.showProducts = (context) => {
         const rows = [];
         rows.push(context.createTableHeader());
+        const cleanList = AmazonPopularProducts.list.filter(e => e && e.asin && e.name);
         const someRandomProducts = (ArrayUtils) 
-            ? ArrayUtils.someRandomItems(AmazonPopularProducts.list, AmazonPopularProducts.LIMIT)
+            ? ArrayUtils.someRandomItems(cleanList, AmazonPopularProducts.LIMIT)
             : [];
-        someRandomProducts.filter(e => e && e.asin && e.name).forEach(r => rows.push(context.createRow(r)));
+        someRandomProducts.forEach(r => rows.push(context.createRow(r)));
         $(context.containerId).html(`<table class="table table-hover"></table>`);
         const $table = $(`${context.containerId} table`);
         $table.append(rows.join(''));
