@@ -133,7 +133,7 @@ Utils.arrayutil = {
         for(let i=0;i< limit;i++) {
             const item = ArrayUtils.nextRandomItem(array);
             if(item) {
-                randomItems.add();
+                randomItems.add(item);
             }
         }
         return [...randomItems];
