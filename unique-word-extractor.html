@@ -151,7 +151,7 @@ layout: post
                     <div class="box-body">
                         <p>This tool uses browser memory to process the text. It can support a very large text depending
                             on your browser. </p>
-                        <p>On a Macbook Pro it can easily identify </p>
+                        <p>On a Macbook Pro it can easily identify several thousand words </p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -187,7 +187,7 @@ layout: post
                 const uniqueWords = Array.from(new Set([...cleansedWrods]));
                 $("#result").val(uniqueWords.join("\n"));
                 Page.request.uniqueWordsCount = uniqueWords.length;
-                $("#totalcount").val(Page.request.uniqueWordsCount);
+                $("#totalcount").text(Page.request.uniqueWordsCount);
             } else {
                 $('#error').text('Text input required');
             }
