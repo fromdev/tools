@@ -179,15 +179,29 @@ Utils.urlutil = {
         return regexp.test(s);
     },
     getUrlVars: () => {
+        const url = window.location.href;
         var vars = [],
           hash;
-        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        var hashes = url.slice(url.indexOf('?') + 1).split('&');
         for (var i = 0; i < hashes.length; i++) {
           hash = hashes[i].split('=');
           vars.push(hash[0]);
           vars[hash[0]] = hash[1];
         }
         return vars;
+    },
+    getUrlParams: (url) => {
+        const params = new Map(),
+          hash;
+        const pairs = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        (pairs || []).forEach(p => {
+            const pair = p.split('=');
+            const key = pair[0];
+            const val = (pair.length > 1) ? pair[1]: '';
+            if(key) {
+                params.set(key, val);
+            }
+        });
     },
     getLinkCode: (url, linkText) => {
         return '<a href="' + url + '" ' + ' title="' + linkText + '" alt="' + linkText + '"' + '>' + linkText + '</a>';

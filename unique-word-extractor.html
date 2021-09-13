@@ -10,7 +10,8 @@ layout: post
     <title>{{ page.title }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="description" content="This is easy to use open source tool to extract all unique words from a text, paragraph or large sentences." />
+    <meta name="description"
+        content="This is easy to use open source tool to extract all unique words from a text, paragraph or large sentences." />
     <meta name="keywords" content="online,tool,unique,text,extract,word,opensource" />
     <!-- CSS for the site theme -->
     {% include theme-css %}
@@ -44,7 +45,8 @@ layout: post
                                 <form role="form">
                                     <div class="form-group">
                                         <label for="htm">Text Input</label>
-                                        <textarea class="form-control" rows="15" id="text" placeholder="Enter your Text here" autofocus></textarea>
+                                        <textarea class="form-control" rows="15" id="text"
+                                            placeholder="Enter your Text here" autofocus></textarea>
                                         <div style="display:none;" id="hidden"></div>
                                     </div>
                                 </form>
@@ -53,7 +55,8 @@ layout: post
                             <div class="box-footer">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <button type="button" class="btn btn-info" id="submit">Extract Unique Words <i class="fa fa-fw fa-arrow-right"></i></button>
+                                        <button type="button" class="btn btn-info" id="submit">Extract Unique Words <i
+                                                class="fa fa-fw fa-arrow-right"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -68,8 +71,13 @@ layout: post
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                  <label for="result">Unique Words List</label>
-                                    <textarea class="form-control" id="result" rows="15" placeholder="Copy your unique words list from here"></textarea>
+                                    <label for="result">Unique Words List</label>
+                                    <textarea class="form-control" id="result" rows="15"
+                                        placeholder="Copy your unique words list from here"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="totalcount">Unique Words Count</label>
+                                    <h4 class='text-green' id="totalcount"> 0 </h4>
                                 </div>
                             </div>
                             <!-- /.box-body -->
@@ -95,7 +103,8 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>Word lists are useful way to memorize certain words. This tool makes it easy to find unique words from any text and create a list</p>
+                        <p>Word lists are useful way to memorize certain words. This tool makes it easy to find unique
+                            words from any text and create a list</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -105,7 +114,8 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>In plain text, many words are repeated. This tool can help you identify all the words that are present.</p>
+                        <p>In plain text, many words are repeated. This tool can help you identify all the words that
+                            are present.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -115,8 +125,10 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>Unique words can be used to identify many things. e.g. Many SEO experts may use it for keyword densityand other analysis purposes. </p>
-                        <p>Unique words are handy to create word clouds too. Just throw these words into a word cloud maker and it will do the magic. </p>
+                        <p>Unique words can be used to identify many things. e.g. Many SEO experts may use it for
+                            keyword densityand other analysis purposes. </p>
+                        <p>Unique words are handy to create word clouds too. Just throw these words into a word cloud
+                            maker and it will do the magic. </p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -126,7 +138,20 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>Yes, this tool can easily be used for any text and can help you identify all unique words. Give it a try. </p>
+                        <p>Yes, this tool can easily be used for any text and can help you identify all unique words.
+                            Give it a try. </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">How many words can this tool support?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This tool uses browser memory to process the text. It can support a very large text depending
+                            on your browser. </p>
+                        <p>On a Macbook Pro it can easily identify </p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -142,30 +167,36 @@ layout: post
 </body>
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script>
-   $(document).ready(function() {
-     var text = $("#text")
+    const Page = {
+        request: {}
+    };
+    const clear = function () {
+        $('#error').text('');
+        $("#totalcount").val(uniqueWords.length);
+        Page.request = {};
+    };
+    $(document).ready(function () {
+        var text = $("#text")
 
-      $("#submit").click(function(){
-       var txt = text.val();
-       if(txt) {
-         var wordSet = [];
-         txt = txt.replace(/[^\w\s]/gi, '');
-         var words = txt.match(/\b(\w+)\b/g);
-         console.log(words.length);
-         for(var i=0;i < words.length; i++) {
-           if(wordSet.indexOf(words[i]) == -1) {
-             wordSet.push(words[i]);
-           }
-         }
+        $("#submit").click(function () {
+            clear();
+            Page.request.txt = text.val();
+            if (Page.request.txt) {
+                const words = Page.request.txt.split(' ');
+                const cleansedWrods = (words || []).filter(w => w && w.trim());
+                const uniqueWords = Array.from(new Set([...cleansedWrods]));
+                $("#result").val(uniqueWords.join("\n"));
+                Page.request.uniqueWordsCount = uniqueWords.length;
+                $("#totalcount").val(Page.request.uniqueWordsCount);
+            } else {
+                $('#error').text('Text input required');
+            }
+        });
 
-         $("#result").val(wordSet.join("\n"));
-       }
-
-      });
-
-      $("#text").selectOnFocus();
-      $("#result").selectOnFocus();
-      $('#converters-category').addClass('active');
-   	});
+        $("#text").selectOnFocus();
+        $("#result").selectOnFocus();
+        $('#converters-category').addClass('active');
+    });
 </script>
+
 </html>
