@@ -252,6 +252,7 @@ layout: post
                                     <th>Link Text</th>
                                     <th>HTTPS Link</th>
                                     <th>Actions</th>
+                                    <th>Replace URL</th>
                                     <th>Type</th>
                                     <th>Domain</th>
                                     <th>Title</th>
@@ -289,6 +290,11 @@ layout: post
         }
         return `<span class="label label-success"><i class="fa fa-check"></i> Validated</span>`;
     };
+    const getReplaceAction = (context) => {
+        return `<input class="form-control" type="text" id="replace-${context.sn}"
+                                    placeholder="Enter replace URL here" />
+                <button type="button" class="btn btn-info action-replace-link" data-url="${context.url}" data-replace-element="replace-${context.sn}">Replace URL</button>`;
+    };
 
     const registerActionButtons = () => {
         $('.action-convert-to-https').click(function () {
@@ -310,6 +316,14 @@ layout: post
             Page.request.validated.add(link);
             handleConvertClick();
         });
+        $('.action-replace-link').click(function () {
+            const toReplace = $(this).attr("data-url");
+            const replaceElementId = $(this).attr("data-replace-element");
+            const newValue = $(`#${replaceElementId}`).val();
+            if(newValue) {
+                replace(toReplace, '#');
+            }
+        });
     };
 
     const createLinkRow = (context) => {
@@ -320,6 +334,7 @@ layout: post
                                     <td>${context.text || '-'}</td>
                                     <td>${isHttpsLink(context.url) ? '<span class="badge bg-green">HTTPS</span>' : '<span class="badge bg-red">HTTP</span>'}</td>
                                     <td>${getEligibleActions(context)}</td>
+                                    <td>${getReplaceAction(context)}</td>
                                     <td><span class="label label-${context.relStyle}">${context.rel}</span></td>
                                     <td>${UrlUtils.extractDomain(context.url) || '-'}</td>
                                     <td>${context.title}</td>
