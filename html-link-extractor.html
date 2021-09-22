@@ -321,7 +321,7 @@ layout: post
             const replaceElementId = $(this).attr("data-replace-element");
             const newValue = $(`#${replaceElementId}`).val();
             if(newValue) {
-                replace(toReplace, '#');
+                replace(toReplace, newValue);
             }
         });
     };
