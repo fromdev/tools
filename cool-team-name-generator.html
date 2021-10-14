@@ -1,0 +1,206 @@
+---
+title: Cool Team Name Generator | Team Tools
+layout: post
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description"
+        content="This is easy to use open source tool to generate cool team names for your team." />
+    <meta name="keywords" content="online,tool,team,easy,cool,name,opensource" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="box box-danger">
+                            <div class="box-header with-border">
+                                <h1 class="box-title">Cool Team Name Generator - That Everyone Loves
+                                </h1>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="result">Team Name</label>
+                                        <div class="input-group margin">
+                                            <input class="form-control" name="result" id="result" type="text"
+                                                placeholder="Copy password from here" readonly="readonly" />
+                                            <span class="input-group-btn">
+                                                <button type="button" id="copy-result"
+                                                    class="btn btn-default btn-flat"><i class="fa fa-copy"></i> Copy
+                                                    Team Name</button>
+                                            </span>
+                                        </div>
+                                        <span class="label label-success" id="confirm-result" style="display:none"><i
+                                                class="fa fa-check"></i> Copied</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="strength">Password Strength </label>
+                                        <div id="strength"><span class="label"></span></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="words">One Word (e.g. Awesome, Orange, Shining)</label>
+                                        <input class="form-control" type="text" id="words" name="words" value=""
+                                            placeholder="Enter a word that describe your team" autofocus="true" />
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-xs-1">
+                                        <button type="button" class="btn btn-success" id="submit">Generate Team Name</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box box-danger">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Tips To Remember This Password Easily</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div id="memory-tips"></div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About Cool Team Name Generator Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <img class="img-responsive" src="images/security.jpg"
+                            alt="Easy To Remember Secure Password Generator Tool"
+                            title="Easy To Remember Secure Password Generator Tool">
+                        <p>This is a free online tool to do simple password generation that you can easily remember.
+                            Generally coming up with a secured password is not easy. Even if you create a secure
+                            password it become hard to remember. This password tool
+                            can suggest a complex password based on your choice of words or sentences. </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why Password Generator Is Needed?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Complex password is essential to keep your data secure online. All complex passwords may not
+                            be easy to remember. We use simple simple well known techniques to suggest relatively secure
+                            passwords. This helps you stay secure at
+                            the same time remember your password.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">How To Remember This Password?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Since the password is based on your input it may be easy to remember. We do minor noticeable
+                            changes in your words to generate a complex looking password. Some techniques are obvious
+                            and some you can learn as you see them.</p>
+                        <p>We randomly replace the alphabets with their similar looking characters. This will make it
+                            easy to remember but partly random password. For example letter lowercase <code>s</code> can
+                            be replaced with any one of these <code>S, 5, $</code></p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">How Secure is This Password?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Since this password is based on your input its complexity mainly depends on your inputs. We
+                            are just doing some random replacements in your words to me make it little complex. It is
+                            also well known fact that no password is secure.
+                            However, as the complexity is high there is a low risk of compromise.</p>
+                        <p>Please note that we are using a randomization logic to generate these passwords and sometimes
+                            you may end up with not very complex password. We recommend you to retry generation and do
+                            it until you think it is complex enough.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What Should I Enter In Memorable Words Field?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>You can enter a word or sentence that you can remember easily. For example, you can use a
+                            street address, or favorite movie title, or anything that you can remember in future.</p>
+                        <p>Note: Do not enter any sensitive informaiton on this page.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+            {% include addthis %}
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="javascripts/fromdev-ux-addon.js"></script>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script src="plugins/copyText/jquery.copyText.min.js"></script>
+
+<script>
+    const generateAndShowTeamName = () => {
+        const inputString = $("#words").val();
+        $("#result").val(`${inputString} Warriors`);
+    };
+    $(document).ready(function () {
+        $("#submit").click(generateAndShowTeamName);
+        $("#result").selectOnFocus();
+        $('#words').keypress(function (e) {
+            var key = e.which;
+            if (key == 13) {
+                generateAndShowTeamName();
+                return false;
+            }
+        });
+        CopyTextAddon.register('result');
+        $('#security-category').addClass('active');
+        $('.markdown-body').attr('style', 'max-width:100%;');
+    });
+</script>
+
+</html>

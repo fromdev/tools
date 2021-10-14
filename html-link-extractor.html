@@ -367,7 +367,7 @@ layout: post
         }
         let $html;
         try {
-            $html = $(Page.request.originalText)
+            $html = $(Page.request.originalText);
         } catch(e) {
             $('#error').text('Invalid HTML, Please input valid HTML data');
             return;
