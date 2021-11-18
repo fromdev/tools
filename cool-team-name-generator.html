@@ -384,6 +384,7 @@ layout: post
     ];
     const generateAndShowTeamName = () => {
         const inputString = $("#words").val();
+        if(!inputString) return;
         $("#result").val(`${inputString} ${ArrayUtils.nextRandomItem(suffixes)}`);
     };
     $(document).ready(function () {
