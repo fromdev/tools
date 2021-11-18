@@ -181,8 +181,28 @@ layout: post
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script src="plugins/copyText/jquery.copyText.min.js"></script>
 <script src="javascripts/fromdev-utils.js"></script>
+<script src="/javascripts/history.js"></script>
 
 <script>
+    const Page = {
+    request: {},
+    context: {
+      tableName: 'COOL-TEAM-NAME-GENERATOR',
+      containerId: '#history',
+      createTableHeader: () => {
+        return `<thead><tr><th>Input Word</th><th>Team Name</th>
+                <th>Date Created</th></tr></thead>`;
+      },
+      createRow: (context) => {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+        return `<tr>
+                      <td>${context.input}</td>
+                      <td>${context.teamName}</td>
+                      <td>${(new Date(context.timestamp).toLocaleDateString(undefined, options))}</td>
+                  </tr>`;
+      }
+    }    
+  };
     const suffixes = [
         'Warriors',
         'Champions',
@@ -395,9 +415,11 @@ layout: post
         'Zeniths'
     ];
     const generateAndShowTeamName = () => {
-        const inputString = $("#words").val();
-        if(!inputString) return;
-        $("#result").val(`${inputString} ${ArrayUtils.nextRandomItem(suffixes)}`);
+        Page.request.input = $("#words").val();
+        if(!Page.request.input) return;
+        Page.request.teamName = `${Page.request.input} ${ArrayUtils.nextRandomItem(suffixes)}`;
+        $("#result").val(Page.request.teamName);
+        History.collectAndShow(Page);
     };
     $(document).ready(function () {
         $("#submit").click(generateAndShowTeamName);
@@ -412,6 +434,7 @@ layout: post
         CopyTextAddon.register('result');
         $('#generators-category').addClass('active');
         $('.markdown-body').attr('style', 'max-width:100%;');
+        History.showHistory(Page.context);
     });
 </script>
 
