@@ -39,56 +39,72 @@ layout: post
                     </div>
                     <div class="box-body" id="tx-input-container">
                         <div class="row">
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <label for="quantity-1">Quantity Bought</label>
                             </div>
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <label for="price-1">Amount Paid</label>
                             </div>
+                            <div class="col-xs-4">
+                                <label for="average-price-1">Average Price</label>
+                            </div>
                         </div>
                         <br/>
                         <div class="row">
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <input class="form-control tx-input-field" id="quantity-1" value="" />
                             </div>
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <input class="form-control tx-input-field" id="price-1" value="" />
                             </div>
+                            <div class="col-xs-4">
+                                <p class="text-aqua" id="average-price-1"></p>
+                            </div>
                         </div>
                         <br/>
                         <div class="row">
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <input class="form-control tx-input-field" id="quantity-2" value="" />
                             </div>
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <input class="form-control tx-input-field" id="price-2" value="" />
                             </div>
-                        </div>
+                            <div class="col-xs-4">
+                                <p class="text-aqua" id="average-price-2"></p>
+                            </div>                        </div>
                         <br/>
                         <div class="row">
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <input class="form-control tx-input-field" id="quantity-3" value="" />
                             </div>
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <input class="form-control tx-input-field" id="price-3" value="" />
                             </div>
-                        </div>
+                            <div class="col-xs-4">
+                                <p class="text-aqua" id="average-price-3"></p>
+                            </div>                        </div>
                         <br/>
                         <div class="row">
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <input class="form-control tx-input-field" id="quantity-4" value="" />
                             </div>
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <input class="form-control tx-input-field" id="price-4" value="" />
+                            </div>
+                            <div class="col-xs-4">
+                                <p class="text-aqua" id="average-price-4"></p>
                             </div>
                         </div>
                         <br/>
                         <div class="row">
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <input class="form-control tx-input-field" id="quantity-5" value="" />
                             </div>
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <input class="form-control tx-input-field" id="price-5" value="" />
+                            </div>
+                            <div class="col-xs-4">
+                                <p class="text-aqua" id="average-price-5"></p>
                             </div>
                         </div>
                     </div>
@@ -109,17 +125,17 @@ layout: post
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <p class="lead">Average Price/Unit</p>
                             </div>
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <input class="form-control" id="averagePrice" value="" disabled/>
                             </div>
                         </div>                        <div class="row">
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <p class="lead">Total Quantity</p>
                             </div>
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <input class="form-control" id="totalQuantity" value="" disabled/>
                             </div>
                         </div>
@@ -211,11 +227,14 @@ layout: post
 
 <script>
     const inputTemplate = (id) => `<br/><div class="row">
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <input class="form-control tx-input-field" id="quantity-${id}"/>
                             </div>
-                            <div class="col-xs-5">
+                            <div class="col-xs-4">
                                 <input class="form-control tx-input-field" id="price-${id}"/>
+                            </div>
+                            <div class="col-xs-4">
+                                <p class="text-aqua" id="average-price-${id}"></p>
                             </div>
                         </div>`;
     const caculate = () => {
@@ -225,10 +244,14 @@ layout: post
             const q = $(`#quantity-${index}`).val();
             const p = $(`#price-${index}`).val();
             if(q && p) {
+                const pFloat = Number.parseFloat(p);
+                const qFloat = Number.parseFloat(q);
                 priceQuantityPairs.push({
-                    price: Number.parseFloat(p),
-                    quantity: Number.parseFloat(q)
+                    price: pFloat,
+                    quantity: qFloat
                 });
+                const avg = (qFloat > 0) ? pFloat/qFloat : 0;
+                $(`#average-price-${index}`).val(avg);
             }
         }
         console.log(`TX#: ${priceQuantityPairs.length}, input #: ${$(".tx-input-field").length}`);
