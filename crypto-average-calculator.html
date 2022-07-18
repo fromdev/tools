@@ -251,11 +251,11 @@ layout: post
             }
         }
         console.log(`Transaction count: ${priceQuantityPairs.length}`);
-        const totalQuantity = 0;
+        let totalQuantity = 0;
         (priceQuantityPairs || []).forEach(pair => {
             totalQuantity+=pair.quantity;
         });
-        const totalPrice = 0;
+        let totalPrice = 0;
         (priceQuantityPairs || []).forEach(pair => {
             totalPrice+=pair.price;
         });
@@ -268,7 +268,6 @@ layout: post
             caculate();
         });
         
-
         $("#averagePrice").selectOnFocus();
         $("#totalQuantity").selectOnFocus();
         $('#calculators-category').addClass('active');
