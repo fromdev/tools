@@ -149,10 +149,7 @@ layout: post
                     <div class="box-footer">
                         <div class="row">
                           <div class="col-xs-3">
-                            <button type="button" class="btn btn-success" id="add">Add More</button>
-                            <a class="btn btn-block btn-social btn-success">
-                            <i class="fa fa-plus"></i> Add More
-                            </a>
+                            <button type="button" class="btn btn-success" id="add"><i class="fa fa-plus"></i>  Add More</button>
                           </div>
                         </div>
                       </div>
@@ -247,6 +244,14 @@ layout: post
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 
 <script>
+    const inputTemplate = (id) => `<div class="row">
+                            <div class="col-xs-5">
+                                <input class="form-control tx-input-field" id="quantity-${id}"/>
+                            </div>
+                            <div class="col-xs-5">
+                                <input class="form-control tx-input-field" id="price-${id}"/>
+                            </div>
+                        </div>`;
     const caculate = () => {
         const priceQuantityPairs = [];
         const inputRows = 10;
@@ -276,6 +281,10 @@ layout: post
     $(document).ready(function () {
         $(".tx-input-field").on("input", function() {
             caculate();
+        });
+
+        $("#add").click(() => {
+            $("#tx-input-container").append(inputTemplate(11));
         });
         
         $("#averagePrice").selectOnFocus();
