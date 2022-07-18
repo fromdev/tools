@@ -243,6 +243,7 @@ layout: post
         for (let index = 1; index < (inputRows + 1); index++) {
             const q = $(`#quantity-${index}`).val();
             const p = $(`#price-${index}`).val();
+            $(`#average-price-${index}`).text('');
             if(q && p) {
                 const pFloat = Number.parseFloat(p);
                 const qFloat = Number.parseFloat(q);
