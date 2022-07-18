@@ -37,7 +37,7 @@ layout: post
                     <div class="box-header with-border">
                         <h3 class="box-title">Calculate Crypto Currency Average Price</h3>
                     </div>
-                    <div class="box-body">
+                    <div class="box-body" id="tx-input-container">
                         <div class="row">
                             <div class="col-xs-5">
                                 <label for="quantity-1">Quantity Bought</label>
@@ -259,7 +259,7 @@ layout: post
         (priceQuantityPairs || []).forEach(pair => {
             totalPrice+=pair.price;
         });
-        const average = totalPrice/totalQuantity;
+        const average = (totalQuantity > 0) ? totalPrice/totalQuantity : 0;
         $('#averagePrice').val(average);
         $('#totalQuantity').val(totalQuantity);
     };
