@@ -200,7 +200,7 @@ layout: post
                         </div>`;
     const caculate = () => {
         const priceQuantityPairs = [];
-        const inputRows = 10;
+        const inputRows = $(".tx-input-field").length;
         for (let index = 1; index < (inputRows + 1); index++) {
             const q = $(`#quantity-${index}`).val();
             const p = $(`#price-${index}`).val();
@@ -233,7 +233,8 @@ layout: post
         registerInputs();
 
         $("#add").click(() => {
-            $("#tx-input-container").append(inputTemplate(11));
+            const nextIndex = $(".tx-input-field").length + 1;
+            $("#tx-input-container").append(inputTemplate(nextIndex));
             registerInputs();
         });
         
