@@ -251,7 +251,7 @@ layout: post
                     quantity: qFloat
                 });
                 const avg = (qFloat > 0) ? pFloat/qFloat : 0;
-                $(`#average-price-${index}`).val(avg);
+                $(`#average-price-${index}`).text(avg);
             }
         }
         console.log(`TX#: ${priceQuantityPairs.length}, input #: ${$(".tx-input-field").length}`);
