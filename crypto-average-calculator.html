@@ -146,7 +146,13 @@ layout: post
                             </div>
                         </div>
                     </div>
-
+                    <div class="box-footer">
+                        <div class="row">
+                          <div class="col-xs-3">
+                            <button type="button" class="btn btn-success" id="add">Add More</button>
+                          </div>
+                        </div>
+                      </div>
                 </div>
             </section>
             <section class="content">
@@ -240,7 +246,8 @@ layout: post
 <script>
     const caculate = () => {
         const priceQuantityPairs = [];
-        for (let index = 1; index < 11; index++) {
+        const inputRows = 10;
+        for (let index = 1; index < (inputRows + 1); index++) {
             const q = $(`#quantity-${index}`).val();
             const p = $(`#price-${index}`).val();
             if(q && p) {
