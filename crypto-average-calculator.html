@@ -1,0 +1,130 @@
+---
+title: Crypto Average Calculator|  Calculation Tools
+layout: post
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to use open source tool to calculate average price of crypto currency and token purchase" />
+    <meta name="keywords" content="online,tool,calculator, crypto, bitcoin, currency, average, price" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h1 class="box-title">Calculate Crypto Currency Average Price</h1>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <form role="form">
+                                    <div class="row">
+                                        <div class="form-group" class="col-xs-3">
+                                            <label for="background-color">Shares Bought</label>
+                                            <input class="form-control background-color colorpicker-element" id="quantity-1" value="" />
+                                        </div>
+                                        <div class="form-group" class="col-xs-3">
+                                            <label for="background-color">Price Paid</label>
+                                            <input class="form-control background-color colorpicker-element" id="price-1" value="" />
+                                        </div>    
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Average Price</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div id="result">
+                                        <button>Button</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                       
+
+                    </div>
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About Average Crypto Currency Price Calculator Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <img class="img-responsive" src="images/css-button.jpg" alt="Online CSS Button Generator Tool for website" title="Online CSS Button Generator Tool for website">
+                        <p>This is a free online tool to calculate average price of cryptos purchased. Can be really handy tool when you have a dollar cost averaging investment and want to know what is your average purchase price.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is a average price?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Average price is calculated using total quantity purchased and total price paid. This tool can also take care of fractional quantity.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Can I use this to calculate average Bitcoin or Ethereum Price?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Yes, you can use this tool to calcualte out the average bitcoin or ethereum price you have paid. This is a general purpose tool that can be used to caculate average price of anything including stocks, crypto currencies like Algorand, Solana, Cardano, Avalanche, Polygon, Loopring, Shiba Inu, Dodge Coin and more.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+         </section>
+            {% include addthis %}
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#calculators-category').addClass('active');
+    });
+</script>
+
+</html>

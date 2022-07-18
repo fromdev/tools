@@ -103,6 +103,17 @@
                             
                         </ul>
                     </li>
+                    <li class="treeview" id="calculators-category">
+                        <a href="#">
+                            <i class="fa fa-calculator"></i> <span>Calculators</span>
+                            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/stock-average-calculator.html"><i class="fa fa-circle-o"></i> Stock Average Calculator</a></li>                            
+                        </ul>
+                    </li>
                     <li><a href="/contact.html"><i class="fa fa-circle-o text-aqua"></i> <span>Feedback</span></a></li>
                 </ul>
             </section>
