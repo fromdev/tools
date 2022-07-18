@@ -1,5 +1,5 @@
 ---
-title: Crypto Currency Average Calculator|  Calculation Tools
+title: Crypto Currency Average Calculator| Calculation Tools
 layout: post
 ---
 <html>
@@ -10,7 +10,8 @@ layout: post
     <title>{{ page.title }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="description" content="This is easy to use open source tool to calculate average price of crypto currency and token purchase" />
+    <meta name="description"
+        content="This is easy to use open source tool to calculate average price of crypto currency and token purchase" />
     <meta name="keywords" content="online,tool,calculator, crypto, bitcoin, currency, average, price" />
     <!-- CSS for the site theme -->
     {% include theme-css %}
@@ -33,46 +34,24 @@ layout: post
             <section class="content">
                 <div class="row">
                     <!-- left column -->
-                    <div>
-                        <div class="box box-success">
-                            <div class="box-header with-border">
-                                <h1 class="box-title">Calculate Crypto Currency Average Price</h1>
-                            </div>
-                            <!-- /.box-header -->
-                            <!-- form start -->
-                            <div class="box-body">
-                                <form role="form">
-                                    <div class="row">
-                                        <div class="form-group col-xs-5">
-                                            <label for="background-color">Quantity Bought</label>
-                                            <input class="form-control background-color colorpicker-element" id="quantity-1" value="" />
-                                        </div>
-                                        <div class="form-group col-xs-5">
-                                            <label for="background-color">Price Paid</label>
-                                            <input class="form-control background-color colorpicker-element" id="price-1" value="" />
-                                        </div>    
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- /.box-body -->
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Calculate Crypto Currency Average Price</h3>
                         </div>
-                    </div>
-                    <div>
-                        <div class="box box-success">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Average Price</h3>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <div id="result">
-                                        <button>Button</button>
-                                    </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <label for="quantity-1">Quantity Bought</label>
+                                    <input class="form-control"
+                                                id="quantity-1" value="" />
+                                </div>
+                                <div class="col-xs-5">
+                                    <label for="price-1">Price Paid</label>
+                                    <input class="form-control"
+                                        id="price-1" value="" />
                                 </div>
                             </div>
-                            <!-- /.box-body -->
                         </div>
-                       
 
                     </div>
                 </div>
@@ -84,8 +63,12 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <img class="img-responsive" src="images/css-button.jpg" alt="Online CSS Button Generator Tool for website" title="Online CSS Button Generator Tool for website">
-                        <p>This is a free online tool to calculate average price of cryptos purchased. Can be really handy tool when you have a dollar cost averaging investment and want to know what is your average purchase price.</p>
+                        <img class="img-responsive" src="images/css-button.jpg"
+                            alt="Online CSS Button Generator Tool for website"
+                            title="Online CSS Button Generator Tool for website">
+                        <p>This is a free online tool to calculate average price of cryptos purchased. Can be really
+                            handy tool when you have a dollar cost averaging investment and want to know what is your
+                            average purchase price.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -95,7 +78,8 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>Average price is calculated using total quantity purchased and total price paid. This tool can also take care of fractional quantity.</p>
+                        <p>Average price is calculated using total quantity purchased and total price paid. This tool
+                            can also take care of fractional quantity.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -105,11 +89,14 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>Yes, you can use this tool to calcualte out the average bitcoin or ethereum price you have paid. This is a general purpose tool that can be used to caculate average price of anything including stocks, crypto currencies like Algorand, Solana, Cardano, Avalanche, Polygon, Loopring, Shiba Inu, Dodge Coin and more.</p>
+                        <p>Yes, you can use this tool to calcualte out the average bitcoin or ethereum price you have
+                            paid. This is a general purpose tool that can be used to caculate average price of anything
+                            including stocks, crypto currencies like Algorand, Solana, Cardano, Avalanche, Polygon,
+                            Loopring, Shiba Inu, Dodge Coin and more.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
-         </section>
+            </section>
             {% include addthis %}
         </div>
         <!-- /.content-wrapper -->
@@ -122,7 +109,7 @@ layout: post
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#calculators-category').addClass('active');
     });
 </script>
