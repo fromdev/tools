@@ -211,7 +211,7 @@ layout: post
                 });
             }
         }
-        console.log(`Transaction count: ${priceQuantityPairs.length}`);
+        console.log(`Transaction count: ${priceQuantityPairs.length}, input fields: ${$(".tx-input-field").length}`);
         let totalQuantity = 0;
         (priceQuantityPairs || []).forEach(pair => {
             totalQuantity+=pair.quantity;
