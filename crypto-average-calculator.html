@@ -239,6 +239,30 @@ layout: post
 
 <script>
     $(document).ready(function () {
+        const priceQuantityPairs = [];
+        for (let index = 1; index < 11; index++) {
+            const q = $(`#quantity-${index}`).val();
+            const p = $(`#price-${index}`).val();
+            if(q && p) {
+                priceQuantityPairs.push({
+                    price: Number.parseFloat(p),
+                    quantity: Number.parseFloat(q)
+                });
+            }
+        }
+        console.log(`Transaction count: ${priceQuantityPairs.length}`);
+        const totalQuantity = 0;
+        (priceQuantityPairs || []).forEach(pair => {
+            totalQuantity+=pair.quantity;
+        });
+        const totalPrice = 0;
+        (priceQuantityPairs || []).forEach(pair => {
+            totalPrice+=pair.price;
+        });
+        const average = totalPrice/totalQuantity;
+        $('#averagePrice').val(average);
+        $('#totalQuantity').val(totalQuantity);
+        
         $('#calculators-category').addClass('active');
     });
 </script>
