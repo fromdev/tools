@@ -278,13 +278,17 @@ layout: post
         $('#averagePrice').val(average);
         $('#totalQuantity').val(totalQuantity);
     };
-    $(document).ready(function () {
+    const registerInputs = () => {
         $(".tx-input-field").on("input", function() {
             caculate();
         });
+    }
+    $(document).ready(function () {
+        registerInputs();
 
         $("#add").click(() => {
             $("#tx-input-container").append(inputTemplate(11));
+            registerInputs();
         });
         
         $("#averagePrice").selectOnFocus();
