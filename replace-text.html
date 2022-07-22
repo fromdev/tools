@@ -87,6 +87,19 @@ layout: post
                             </div>
                             <!-- /.box-body -->
                         </div>
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Replace Summary</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                  <label for="matchcount">Text Occurrance Found: </label>
+                                    <span id="matchcount"></span>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
                     </div>
                 </div>
             </section>
@@ -164,6 +177,10 @@ layout: post
             const replaced = (ignoreCase) ? (input || '').replaceAll(new RegExp(RegextUtils.escapeRegex(findText), 'ig'), replaceText)
                 : (input || '').replaceAll(findText, replaceText);
             $("#output").val(replaced);
+            //match counts
+            const matches = (ignoreCase) ? (input || '').matchAll(new RegExp(RegextUtils.escapeRegex(findText), 'ig'), replaceText)
+                : (input || '').matchAll(findText, replaceText);
+            $("#matchcount").text((matches||[]).length);
         }
     };
 	 $(document).ready(function() {
