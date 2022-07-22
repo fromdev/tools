@@ -62,6 +62,8 @@ layout: post
                                     <div class="col-xs-3">
                                         <button type="button" class="btn btn-success" id="replace">Find & Replace<i class="fa fa-fw fa-arrow-right"></i></button>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-xs-3">
                                         <button type="button" class="btn btn-info" id="replaceIgnorecase">Find & Replace (Ignore Case)<i class="fa fa-fw fa-arrow-right"></i></button>
                                     </div>
@@ -153,27 +155,23 @@ layout: post
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script src="javascripts/fromdev-utils.js"></script>
 <script>
-    
+    const doReplace = (ignoreCase) => {
+        const input = $("#intext").val();
+        const findText = $("#findtext").val();
+        const replaceText = $("#replacetext").val() || '';
+        if(input && findText) {
+            const replaced = (ignoreCase) ? (input || '').replaceAll(new RegExp(RegextUtils.escapeRegex(findText), 'ig'), replaceText)
+                : (input || '').replaceAll(findText, replaceText);
+            $("#output").val(replaced);
+        }
+    };
 	 $(document).ready(function() {
       $("#replace").click(function(){
-          const input = $("#intext").val();
-          const findText = $("#findtext").val();
-          const replaceText = $("#replacetext").val() || '';
-          if(input && findText) {
-            const replaced = (input || '').replaceAll(findText, replaceText);
-            $("#output").val(replaced);
-          }
+        doReplace();
       });
       
       $("#replaceIgnorecase").click(function(){
-          const input = $("#intext").val();
-          const findText = $("#findtext").val();
-          const replaceText = $("#replacetext").val() || '';
-          if(input && findText) {
-            const reg = new RegExp(RegextUtils.escapeRegex(findText), 'ig');
-            const replaced = (input || '').replaceAll(reg, replaceText);
-            $("#output").val(replaced);
-          }
+        doReplace(true);
       });
 
       $("#intext").selectOnFocus();
