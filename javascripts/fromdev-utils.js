@@ -282,6 +282,12 @@ Utils.wordutil = {
 
 };
 
+Utils.regex = {
+    escapeRegex: (string) => {
+        return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    }
+};
+
 const AmazonUtils = Utils.amazon;
 const StorageUtils = Utils.storage;
 const ArrayUtils = Utils.arrayutil;
@@ -292,3 +298,4 @@ const MathUtils = Utils.mathutil;
 const TextUtils = Utils.textutil;
 const WordUtils = Utils.wordutil;
 const HistoryUtils = Utils.history;
+const RegextUtils = Utils.regex;

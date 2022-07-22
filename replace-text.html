@@ -60,7 +60,10 @@ layout: post
                             <div class="box-footer">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <button type="button" class="btn btn-info" id="replace">Find and Replace<i class="fa fa-fw fa-arrow-right"></i></button>
+                                        <button type="button" class="btn btn-success" id="replace">Find & Replace<i class="fa fa-fw fa-arrow-right"></i></button>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <button type="button" class="btn btn-info" id="replaceIgnorecase">Find & Replace (Ignore Case)<i class="fa fa-fw fa-arrow-right"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -150,7 +153,7 @@ layout: post
 <script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 <script src="javascripts/fromdev-utils.js"></script>
 <script>
-
+    
 	 $(document).ready(function() {
       $("#replace").click(function(){
           const input = $("#intext").val();
@@ -162,6 +165,17 @@ layout: post
           }
       });
       
+      $("#replaceIgnorecase").click(function(){
+          const input = $("#intext").val();
+          const findText = $("#findtext").val();
+          const replaceText = $("#replacetext").val() || '';
+          if(input && findText) {
+            const reg = new RegExp(RegextUtils.escapeRegex(findText), 'ig');
+            const replaced = (input || '').replaceAll(reg, replaceText);
+            $("#output").val(replaced);
+          }
+      });
+
       $("#intext").selectOnFocus();
       $("#output").selectOnFocus();
       $('#string-utility-category').addClass('active');
