@@ -95,7 +95,7 @@ layout: post
                             <div class="box-body">
                                 <div class="form-group">
                                   <label for="matchcount">Text Occurrance Found: </label>
-                                    <span id="matchcount"></span>
+                                    <span id="matchcount">0</span>
                                 </div>
                             </div>
                             <!-- /.box-body -->
@@ -180,7 +180,7 @@ layout: post
             //match counts
             const matches = (ignoreCase) ? (input || '').matchAll(new RegExp(RegextUtils.escapeRegex(findText), 'ig'), replaceText)
                 : (input || '').matchAll(findText, replaceText);
-            $("#matchcount").text((matches||[]).length);
+            $("#matchcount").text(([...matches]).length);
         }
     };
 	 $(document).ready(function() {
