@@ -1,0 +1,170 @@
+---
+title: Replace Text Online | Developer Tools
+layout: post
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to use open source tool to find and replace any text or string in a large text." />
+    <meta name="keywords" content="online,tool,find,replace,online,substitute,web,opensource" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h1 class="box-title">Replace Text Tool: Substitute Text</h1>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="intext">Your Text</label>
+                                        <textarea class="form-control" rows="10" id="intext" placeholder="Enter your text here" autofocus></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="customstopwords">Find Text</label>
+                                        <textarea class="form-control" rows="5" id="findtext" placeholder="Enter string to find here"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="customstopwords">Replace with</label>
+                                        <textarea class="form-control" rows="5" id="replacetext" placeholder="Enter text to replace with"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <button type="button" class="btn btn-info" id="replace">Find and Replace<i class="fa fa-fw fa-arrow-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Copy Your Clean Text From Here</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                  <label for="output">Cleansed / Filtered Text</label>
+                                    <textarea class="form-control" id="output" rows="10" placeholder="Copy updated text from here"></textarea>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About Find and Replace Text Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <img class="img-responsive" src="images/stopwords-word-cloud.png" alt="Online Stopwords removal tool" title="Online Stopwords removal tool">
+                        <p>This is a free online tool to find and replace any text. The tool finds all occurance of a string and replaces it. The output text is available for you to quickly copy/paste anywhere you like. The tool is opensource and free to use. It works in any modern browser. This tool uses a a simple browser based JavaScript code to replace text in any language.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Can I replace any non-English text?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Yes, this tool supports any language your browser can support. You can replace text in English, German, French, Spanish and Many other languages supported by modern browsers.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Can I Replace large text?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Yes, you can use the tool to find and replace any string in a very large text input. The size of text may be limited by the browser limits and the amount you can copy comfortable. Many times you may see slowness in copy/paste due to text being very large e.g. hudnreds of megabyte text in clipboard can be hard to handle on computer with small RAM. The tool will work as long as you can copy/paste some text here.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What are common uses of this tool?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Find and replace is a commonly used functionaly available in all modern text editors. This is absolutely required for updating a large document. This tool gives you access to this functionality in your browser so you can use it even on your mobile phone. </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why do we replace strings?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Replace string a common way to fix typo or other mistakes in any document or text. Using a replace all function you can easily and quickly change the text. This saves time and effort when the string to replace has thousands of occurance.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+            {% include addthis %}
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script src="javascripts/fromdev-utils.js"></script>
+<script>
+
+	 $(document).ready(function() {
+      $("#replace").click(function(){
+          const input = $("#intext").val();
+          const findText = $("#findtext").val();
+          const replaceText = $("#replacetext").val() || '';
+          if(input && findText) {
+            const replaced = (input || '').replaceAll(findText, replaceText);
+            $("#output").val(replaced);
+          }
+      });
+      
+      $("#intext").selectOnFocus();
+      $("#output").selectOnFocus();
+      $('#string-utility-category').addClass('active');
+
+   	});
+</script>
+</html>
