@@ -117,7 +117,7 @@ layout: post
       tableName: 'TODO-LIST-MAKER',
       containerId: '#history',
       createTableHeader: () => {
-        return `<thead><tr><th>Item</th><th>Date Created</th></tr></thead>`;
+        return `<thead><tr><th>To Do Item</th><th>Date Created</th></tr></thead>`;
       },
       createRow: (context) => {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
@@ -138,6 +138,7 @@ layout: post
     const addItem = () => {
       clear();
       Page.request.item = $('#input').val();
+      Page.request.timestamp = Date.now();
       Page.list.push(Page.request.item);
       History.collectAndShow(Page);
     };
