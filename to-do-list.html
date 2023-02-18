@@ -141,9 +141,11 @@ layout: post
       clear();
       Page.request.item = $('#input').val();
       Page.request.timestamp = Date.now();
-      Page.list.push(Page.request.item);
+      Page.request.status = 'Open';
+      Page.list.push(Page.request);
       History.collectAndShow(Page);
     };
+    
     $('#add-item').click(function () {
       try {
         addItem();
