@@ -6,7 +6,7 @@ const property2json = function(propkeyarr, value, json) {
     for(let i = 0; i < propkeyarr.length; i++ ) {
         let name = cleanse(propkeyarr[i]);
         if(i === propkeyarr.length-1) {
-            parent[name] = value;
+            parent[name] = value.trimStart();
         } else {
             parent[name] = parent[name] || {};
             parent = parent[name];
