@@ -72,14 +72,14 @@ layout: post
               <!-- /.box-header -->
               <div class="box-body">
                 <div class="form-group">
-                  <label for="base64">Converted PDF File</label>
+                  <label for="base64">Conversion Status</label>
                   <div id="target"></div>
                 </div>
 
               </div>
               <div class="box-footer" id="download-div" style="display:none">
                 <div class="btn-group">
-                  <a class="btn btn-info" target="_blank" id="download" href="#"> <i class="fa fa-download"></i> Download Converted File</a>
+                  <a class="btn btn-info" target="_blank" id="download" href="#"> <i class="fa fa-download"></i> Download Converted PDF File</a>
                 </div>
               </div>
             </div>
@@ -242,7 +242,7 @@ layout: post
 };
 
 const showPDF = (context) => {
-  $("#target").html(`<a target="_blank" download="${context.filename}" href="${context.url}">Download PDF File</a>`);
+  $("#target").html("<i class='fa fa-refresh fa-spin'></i> <p>Conversion Completed</p>");
   $('#download').attr('download', context.filename);
   $('#download').attr('href', context.url);
   $('#download-div').show();
