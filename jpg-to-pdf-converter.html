@@ -258,7 +258,7 @@ layout: post
 };
 
 const showPDF = (context) => {
-  $("#target").html("<i class='fa fa-refresh fa-spin'></i> <p>Conversion Completed</p>");
+  $("#target").html("<i class='fa fa-refresh fa-done'></i> <p>Conversion Completed</p>");
   $('#download').attr('download', context.filename);
   $('#download').attr('href', context.url);
   $('#download-div').show();
