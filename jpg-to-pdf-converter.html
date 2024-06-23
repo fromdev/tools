@@ -1,0 +1,239 @@
+---
+title: JPEG / JPG Image to PDF Converter | Developer Tools
+layout: post
+---
+<html>
+
+<head>
+  <!-- Meta tags common for website -->
+  {% include common-meta %}
+  <title>{{ page.title }}</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta name="description"
+    content="This is easy to use open source tool to convert JPEG Image to PDF online." />
+  <meta name="keywords" content="online,tool,JPG,JPEG,PDF,convert,converter,web,opensource" />
+  <!-- CSS for the site theme -->
+  {% include theme-css %}
+  <!-- Annoying IE fixes -->
+  {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+
+    <!-- header tag from theme -->
+    {% include theme-header %}
+    <!-- Sidebar for the whole website -->
+    {% include theme-sidebar %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-6">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h1 class="box-title">Convert JPG / JPEG Image To PDF Format</h1>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+              <div class="box-body">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="myFile">Upload Image File From Your Computer</label>
+                    <input type="file" id="myFile" name="filename">
+                  </div>
+                  <div class="form-group">
+                    <p id="error" class="text-red"></p>
+                  </div>
+                </form>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <button type="button" class="btn btn-info" id="convert">Convert<i
+                        class="fa fa-fw fa-arrow-right"></i></button>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-footer -->
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title">Download Your Converted PDF From Here</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="base64">Converted PDF File</label>
+                  <div id="target"></div>
+                </div>
+
+              </div>
+              <div class="box-footer" id="download-div" style="display:none">
+                <div class="btn-group">
+                  <a class="btn btn-info" target="_blank" id="download" href="#"> <i class="fa fa-download"></i> Download Converted File</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="content">
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">About HEIC Image to JPG, JPEG, PNG and GIF Converter Tool</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <img class="img-responsive" src="images/heic-jpg.png"
+              alt="HEIC Image to JPG / JPEG / PNG / GIF Encoding format converter tool"
+              title="HEIC Image to JPG / JPEG / PNG / GIF Encoding format converter tool">
+            <p>This is a free online tool to convert a HEIC format image file into JPG format and other popular formats including JPEG and PNG. You can also use it to
+              convert to GIF formats.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">What Is HEIC Encoding Format?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>HEIC is a popular encoding format for images. It stands for High Efficiency Image Container. This format is used by recent iOS devices to store pictures.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Why Convert From HEIC Image to Other Format Encoding?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>HEIC image format is not commonly supported by browsers. Therefore it needs to be converted into a browswer friendly format before it can be displayed on a browser. </p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Can I convert a Live Photo to GIF?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>The iOS live phots are stored as HEIC format images. HEIC image format can easily be converted to GIF using this tool. Please select GIF format option in the tool. This is ideal option for LIVE photos from iOS devices. </p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Can I download converted photos?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>Yes, this tool is completely free to use. You can download converted images using the download button that appears after conversion.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Are my photos converted on client side or server side?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>This tool uses a client side only library to do conversion. Therefore the photos you upload never get transfered over internet.</p>
+            <p>This tool is a free to use and open source therefore we are not using any server side technology to convert or store photos.</p>
+            <p>Photos are not stored anywhere, so you need to convert them everytime you require it. </p>
+            <p>Only one conveted photo stays in browser memory so everytime you convert a photo the last photo will be lost.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Why is the image size so high after conversion?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>The HEIC image format quality is usually very high. This format is very efficient in storing images. However, when we convert it to other lower efficient formats the image size increases drastically.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">How to reduce converted image size?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>To reduce the size of image you must chose to lowe the quality. Please select quality option from menu to reduce the quality of converted image. Lower quality ==> Lower file size of image.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </section>
+      {% include addthis %}
+    </div>
+    <!-- /.content-wrapper -->
+    {% include theme-footer %}
+  </div>
+  <!-- ./wrapper -->
+  {% include theme-bottom-js %}
+
+</body>
+<script src="/plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script src="/plugins/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+<script>
+  async function convertToPDF() {
+    const { jsPDF } = window.jspdf;
+
+    // Get the uploaded file
+    const input = document.getElementById('myFile');
+    const file = input.files[0];
+    if (!file) {
+        alert('Please upload a JPG file.');
+        return;
+    }
+    const fileName = file.name.split('.').slice(0, -1).join('.');
+
+    // Read the file as a data URL
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = function(event) {
+        const imgData = event.target.result;
+        // Create a new PDF document
+        const pdf = new jsPDF();
+        const pdfDataUrl = pdf.output('dataurlstring');
+        // Save the PDF
+        pdf.save(`${fileName}.pdf`);
+        const downloadLink = document.getElementById('download');
+        downloadLink.href = pdfDataUrl;
+        downloadLink.download = `${fileName}.pdf`;
+        downloadLink.textContent = 'Download PDF';
+        downloadLinkContainer.appendChild(downloadLink);
+    };
+
+    reader.onerror = function() {
+        alert('Failed to read file.');
+    };
+};
+
+  $(document).ready(function () {
+
+    $("#convert").click(function () {
+      convertToPDF();
+    });
+
+    $("#myFile").selectOnFocus();
+    $("#base64").selectOnFocus();
+    $('#converters-category').addClass('active');
+
+  });
+</script>
+
+</html>
