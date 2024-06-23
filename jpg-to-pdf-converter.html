@@ -209,8 +209,9 @@ layout: post
         // Create a new PDF document
         const pdf = new jsPDF();
         const pdfDataUrl = pdf.output('dataurlstring');
+        pdf.addImage(imgData, 'JPEG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
         // Save the PDF
-        pdf.save(`${fileName}.pdf`);
+//        pdf.save(`${fileName}.pdf`);
         const downloadLink = document.getElementById('download');
         downloadLink.href = pdfDataUrl;
         downloadLink.download = `${fileName}.pdf`;
