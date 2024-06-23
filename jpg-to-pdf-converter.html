@@ -102,41 +102,61 @@ layout: post
         </div>
         <div class="box box-success">
           <div class="box-header with-border">
-            <h3 class="box-title">What Is HEIC Encoding Format?</h3>
+            <h3 class="box-title">What Is JPEG Encoding Format?</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <p>HEIC is a popular encoding format for images. It stands for High Efficiency Image Container. This format is used by recent iOS devices to store pictures.</p>
+            <p>The JPEG (Joint Photographic Experts Group) encoding format is a widely-used method of compressing digital images, particularly for photographs and web graphics. JPEG uses lossy compression, which reduces file size by selectively discarding data, resulting in some loss of image quality that is often imperceptible to the human eye. The compression process involves converting the image from the RGB color space to the YCbCr color space, then performing discrete cosine transform (DCT) on 8x8 pixel blocks to identify frequency components. High-frequency details are then reduced or eliminated, and the remaining data is further compressed using entropy coding techniques like Huffman coding.</p>
           </div>
           <!-- /.box-body -->
         </div>
         <div class="box box-success">
           <div class="box-header with-border">
-            <h3 class="box-title">Why Convert From HEIC Image to Other Format Encoding?</h3>
+            <h3 class="box-title">Why should we convert JPG to  PDF?</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <p>HEIC image format is not commonly supported by browsers. Therefore it needs to be converted into a browswer friendly format before it can be displayed on a browser. </p>
+            <p>Converting JPG to PDF can be beneficial for several reasons:</p>
+          <ol>
+          <li>Preservation of Image Quality: PDF files can embed images without further compression, preserving the original quality of the JPG.</li>
+          <li>Document Integration: PDFs can combine multiple images and other document elements (text, vector graphics) into a single file, making it easier to manage and share comprehensive documents.</li>
+          <li>Standardization: PDF is a widely accepted standard for sharing and printing documents, ensuring consistent display across different devices and platforms.</li>
+          <li>Security and Access Control: PDFs offer features like password protection, encryption, and restricted access, providing better control over document security.</li>
+          <li>Annotation and Markup: PDFs support annotations, comments, and form fields, which can be useful for collaboration and feedback.</li>
+          <li>Portability and Compatibility: PDFs maintain consistent formatting and layout, ensuring that the document looks the same on any device or operating system.</li>
+          </ol>
           </div>
           <!-- /.box-body -->
         </div>
         <div class="box box-success">
           <div class="box-header with-border">
-            <h3 class="box-title">Can I convert a Live Photo to GIF?</h3>
+            <h3 class="box-title">What is the difference between .JPG and .JPEG file?</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <p>The iOS live phots are stored as HEIC format images. HEIC image format can easily be converted to GIF using this tool. Please select GIF format option in the tool. This is ideal option for LIVE photos from iOS devices. </p>
+          <p>The terms <strong>"JPG"</strong> and <strong>"JPEG"</strong> refer to the same image file format and are essentially interchangeable. Here are the key points about their differences and similarities:</p>
+          <ul>
+              <li><strong>Origin:</strong> Both terms stand for the same format developed by the Joint Photographic Experts Group. The format's full name is JPEG (Joint Photographic Experts Group).</li>
+              <li><strong>File Extension:</strong>
+                  <ul>
+                      <li><strong>JPEG:</strong> The original file extension for images in this format.</li>
+                      <li><strong>JPG:</strong> A shortened version of the extension used primarily due to the limitations of early Windows versions, which required three-letter file extensions.</li>
+                  </ul>
+              </li>
+              <li><strong>Compatibility:</strong> Both extensions are widely supported across various devices and platforms. Modern operating systems and software recognize and handle both .jpg and .jpeg files without any issues.</li>
+              <li><strong>Interchangeability:</strong> You can rename a file from .jpg to .jpeg and vice versa without affecting the file's integrity or functionality.</li>
+          </ul>
+          <p>In summary, there is no difference in the actual format or functionality between JPG and JPEG; the distinction is purely in the file extension.</p>
           </div>
           <!-- /.box-body -->
         </div>
         <div class="box box-success">
           <div class="box-header with-border">
-            <h3 class="box-title">Can I download converted photos?</h3>
+            <h3 class="box-title">Can I download converted PDF File?</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <p>Yes, this tool is completely free to use. You can download converted images using the download button that appears after conversion.</p>
+            <p>Yes, this tool is completely free to use. You can download converted PDF file using the download button that appears after conversion.</p>
           </div>
           <!-- /.box-body -->
         </div>
@@ -209,11 +229,11 @@ layout: post
         const pdf = new jsPDF();
         pdf.addImage(imgData, 'JPEG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
         const pdfDataUrl = pdf.output('dataurlstring');
-        const downloadLink = document.getElementById('download');
-        downloadLink.href = pdfDataUrl;
-        downloadLink.download = `${fileName}.pdf`;
-        downloadLink.textContent = 'Download PDF';
-        downloadLinkContainer.appendChild(downloadLink);
+        const context = {
+          filename: `${fileName}.pdf`,
+          url: pdfDataUrl,
+        };
+        showPDF(context);
     };
 
     reader.onerror = function() {
@@ -221,9 +241,23 @@ layout: post
     };
 };
 
+const showPDF = (context) => {
+  $("#target").html(`<a target="_blank" download="${context.filename}" href="${context.url}"><img src="${context.url}"></a>`);
+  $('#download').attr('download', context.filename);
+  $('#download').attr('href', context.url);
+  $('#download-div').show();
+};
+
+const showInProgress = () => {
+  $('#error').text('');
+  $("#target").html("<i class='fa fa-refresh fa-spin'></i> <p>Converting...</p>");
+  $('#download-div').hide();
+};
+
   $(document).ready(function () {
 
     $("#convert").click(function () {
+      showInProgress();
       convertToPDF();
     });
 
