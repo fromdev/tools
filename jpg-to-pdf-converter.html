@@ -242,7 +242,7 @@ layout: post
 };
 
 const showPDF = (context) => {
-  $("#target").html(`<a target="_blank" download="${context.filename}" href="${context.url}"><img src="${context.url}"></a>`);
+  $("#target").html(`<a target="_blank" download="${context.filename}" href="${context.url}">Download PDF File</a>`);
   $('#download').attr('download', context.filename);
   $('#download').attr('href', context.url);
   $('#download-div').show();
