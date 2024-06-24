@@ -242,7 +242,6 @@ layout: post
 <script>
   async function convertToPDF() {
     const { jsPDF } = window.jspdf;
-
     // Get the uploaded file
     const input = document.getElementById('myFile');
     const file = input.files[0];
@@ -250,6 +249,7 @@ layout: post
         alert('Please upload a WEBP file.');
         return;
     }
+    showInProgress();
     const fileName = file.name.split('.').slice(0, -1).join('.');
 
     // Read the file as a data URL
@@ -290,7 +290,6 @@ const showInProgress = () => {
   $(document).ready(function () {
 
     $("#convert").click(function () {
-      showInProgress();
       convertToPDF();
     });
 

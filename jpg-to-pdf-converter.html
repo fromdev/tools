@@ -264,6 +264,7 @@ layout: post
         alert('Please upload a JPG file.');
         return;
     }
+    showInProgress();
     const fileName = file.name.split('.').slice(0, -1).join('.');
 
     // Read the file as a data URL
@@ -304,7 +305,6 @@ const showInProgress = () => {
   $(document).ready(function () {
 
     $("#convert").click(function () {
-      showInProgress();
       convertToPDF();
     });
 
