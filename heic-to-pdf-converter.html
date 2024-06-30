@@ -1,0 +1,292 @@
+---
+title: HEIC Image to PDF Converter | Developer Tools
+layout: post
+---
+<html>
+
+<head>
+  <!-- Meta tags common for website -->
+  {% include common-meta %}
+  <title>{{ page.title }}</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta name="description"
+    content="This is easy to use open source tool to convert HEIC Image to PDF online." />
+  <meta name="keywords" content="online,tool,HEIC,PDF,convert,converter,web,opensource" />
+  <!-- CSS for the site theme -->
+  {% include theme-css %}
+  <!-- Annoying IE fixes -->
+  {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+
+    <!-- header tag from theme -->
+    {% include theme-header %}
+    <!-- Sidebar for the whole website -->
+    {% include theme-sidebar %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-6">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h1 class="box-title">Convert HEIC Image To PDF Format</h1>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+              <div class="box-body">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="myFile">Upload Image File From Your Computer</label>
+                    <input type="file" id="myFile" name="filename">
+                  </div>
+                  <div class="form-group">
+                    <p id="error" class="text-red"></p>
+                  </div>
+                </form>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <button type="button" class="btn btn-info" id="convert">Convert<i
+                        class="fa fa-fw fa-arrow-right"></i></button>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-footer -->
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title">Download Your Converted PDF From Here</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="form-group">
+                  <div id="target"></div>
+                </div>
+
+              </div>
+              <div class="box-footer" id="download-div" style="display:none">
+                <div class="btn-group">
+                  <a class="btn btn-info" target="_blank" id="download" href="#"> <i class="fa fa-download"></i> Download Converted PDF File</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="content">
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">About HEIC Image to PDF Converter Tool</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <img class="img-responsive" src="images/heic-pdf.png"
+              alt="HEIC Image to PDF format converter tool"
+              title="HEIC Image to PDF format converter tool">
+            <p>This is a free online tool to convert a HEIC format image file into PDF format.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">What Is HEIC Encoding Format?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>HEIC (High Efficiency Image Coding) is a file format used for storing images and image sequences. It was developed by the Moving Picture Experts Group (MPEG) and is part of the High Efficiency Image File Format (HEIF) standard. Here are some key points about the HEIC format:</p>
+            <ul>
+                <li><strong>Compression Efficiency:</strong> HEIC is known for its superior compression efficiency compared to older formats like JPEG. It can store images at a much smaller file size without compromising quality.</li>
+                <li><strong>Image Quality:</strong> Despite the smaller file sizes, HEIC images maintain high quality. This is because HEIC uses advanced compression techniques similar to those used in the H.265 video compression standard (also known as HEVC - High Efficiency Video Coding).</li>
+                <li><strong>Multiple Images and Sequences:</strong> HEIC can store multiple images in a single file. This makes it suitable for burst photography and live photos (such as those used in Apple devices), where a series of images or short video clips are captured.</li>
+                <li><strong>Support for Advanced Features:</strong> HEIC supports a range of features including transparency, 16-bit color depth, and HDR (High Dynamic Range) imaging. This allows for more detailed and vibrant images.</li>
+                <li><strong>Adoption:</strong> HEIC is widely adopted in the Apple ecosystem, with iOS and macOS using it as the default image format for photos. However, support on other platforms and devices can vary. Windows 10 and later versions have support for HEIC, but it may require additional codecs to be installed. Android's support has been increasing but also depends on the specific device and OS version.</li>
+                <li><strong>Conversion:</strong> Given its relatively new introduction and varied support across platforms, converting HEIC files to more universally accepted formats like JPEG or PNG is often necessary for compatibility. Various tools and libraries are available to facilitate this conversion.</li>
+            </ul>
+            <p>In summary, HEIC is a modern image format that offers significant benefits in terms of file size and image quality but may require conversion for compatibility with all devices and platforms.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Why should we convert HEIC to  PDF?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>Converting HEIC to PDF is often necessary for compatibility and sharing purposes. HEIC is a modern format with limited support across all devices and platforms, while PDF is widely recognized and accessible. PDFs preserve image quality, are ideal for document management, and can be easily viewed, printed, and shared across various systems. This conversion ensures that images are accessible to a broader audience without compatibility issues.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">What is the difference between HEIC and PDF file?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>HEIC (High Efficiency Image Coding) is an image format known for its superior compression and high quality, used mainly for storing photos and image sequences. PDF (Portable Document Format), on the other hand, is a versatile document format that can include text, images, and other multimedia elements. PDFs are used for creating, viewing, and sharing documents across different platforms. While HEIC is optimized for images, PDF is designed for documents, offering features like text searchability, annotations, and fixed formatting.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Can I download converted PDF File?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>Yes, this tool is completely free to use. You can download converted PDF file using the download button that appears after conversion.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Are my photos converted on client side or server side?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>In this tool, photos are converted on the client side. The HEIC to PNG conversion is done directly in the user's web browser using the heic2any library. The converted image is then processed by the jsPDF library to create a PDF, all without needing to upload the file to a server. This approach ensures user privacy and reduces server load but relies on the user's device capabilities for processing.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">How HEIC image file is converted to PDF file?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <h4>Steps to Convert HEIC to PDF</h4>
+    <ol>
+        <li>The user selects a HEIC file using an input element.</li>
+        <li>The heic2any library converts the HEIC file to a PNG Blob.</li>
+        <li>A FileReader reads the PNG Blob and loads it into an HTML Image element.</li>
+        <li>The jsPDF library creates a new PDF document.</li>
+        <li>The image is added to the PDF using pdf.addImage().</li>
+        <li>The PDF is saved and downloaded using pdf.save().</li>
+    </ol>
+    <p>All processing occurs on the client side in the browser.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">What is PDF Format?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>PDF (Portable Document Format) is a versatile file format used for creating, viewing, and sharing documents independent of software, hardware, or operating systems. It preserves document formatting, including text, images, fonts, and layouts, ensuring consistency across devices. PDFs support interactive elements like forms and hyperlinks, are secure with encryption options, and can be easily printed or viewed using free PDF readers, making them ideal for digital documents, reports, forms, and eBooks.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Can HEIC to PDF Conversion Work on Mobile Browser (mweb)?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>Yes, the conversion from HEIC to PDF as demonstrated in the client-side JavaScript example can work on a mobile browser, provided that:</p>
+    <ol>
+        <li><strong>Browser Support:</strong> The mobile browser supports the necessary JavaScript APIs used in the example (FileReader and handling Blob objects).</li>
+        <li><strong>Library Compatibility:</strong> The libraries used (heic2any for HEIC to PNG conversion and jsPDF for PDF creation) should be compatible with mobile browsers.</li>
+        <li><strong>Device Performance:</strong> Mobile devices should have sufficient processing power and memory to handle the conversion, especially for large HEIC files.</li>
+        <li><strong>User Interaction:</strong> Mobile browsers typically allow users to select files from their device, enabling them to initiate the conversion process as shown in the example.</li>
+    </ol>
+    <p>Overall, with these conditions met, the conversion from HEIC to PDF can work seamlessly on a mobile browser, offering flexibility and convenience for users on the go.</p>
+
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </section>
+      {% include addthis %}
+    </div>
+    <!-- /.content-wrapper -->
+    {% include theme-footer %}
+  </div>
+  <!-- ./wrapper -->
+  {% include theme-bottom-js %}
+
+</body>
+<script src="/plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script src="/plugins/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+<script>
+  async function convertHeicToPdf() {
+    showInProgress();
+      const fileInput = document.getElementById('myFile');
+      const file = fileInput.files[0];
+
+      if (!file) {
+          alert('Please select a HEIC file.');
+          return;
+      }
+      const fileName = file.name.split('.').slice(0, -1).join('.');
+
+      try {
+          // Convert HEIC to PNG using heic2any
+          const convertedBlob = await heic2any({
+              blob: file,
+              toType: 'image/png',
+          });
+
+          const reader = new FileReader();
+          reader.onload = function(event) {
+              const img = new Image();
+              img.onload = function() {
+                  // Create PDF using jsPDF
+                  const { jsPDF } = window.jspdf;
+                  const pdf = new jsPDF();
+
+                  // Add the image to the PDF
+                  pdf.addImage(img, 'PNG', 10, 10, img.width / 5, img.height / 5); // Adjust the width and height as necessary
+
+                  const context = {
+                    filename: `${fileName}.pdf`,
+                    url: pdfDataUrl,
+                  };
+                  showPDF(context);
+              };
+              img.src = event.target.result;
+          };
+          reader.readAsDataURL(convertedBlob);
+      } catch (error) {
+          console.error('Error converting HEIC to PNG:', error);
+          alert('There was an error converting the HEIC file.');
+      }
+  };
+
+const showPDF = (context) => {
+  $("#target").html("<i class='fa fa-check'> Conversion Completed</i>");
+  $('#download').attr('download', context.filename);
+  $('#download').attr('href', context.url);
+  $('#download-div').show();
+};
+
+const showInProgress = () => {
+  $('#error').text('');
+  $("#target").html("<i class='fa fa-refresh fa-spin'> Converting...</i>");
+  $('#download-div').hide();
+};
+
+  $(document).ready(function () {
+
+    $("#convert").click(function () {
+      convertHeicToPdf();
+    });
+
+    $("#myFile").selectOnFocus();
+    $("#base64").selectOnFocus();
+    $('#converters-category').addClass('active');
+    $('.markdown-body').attr('style', 'max-width:100%;');
+  });
+</script>
+
+</html>
