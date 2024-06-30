@@ -1,0 +1,196 @@
+---
+title: Binary Code to Text Translator | Developer Tools
+layout: post
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to use open source tool to convert binary input to text online. Use this tool to convert plain text from the binary." />
+    <meta name="keywords" content="online,tool,binary,text,convert,converter,web,opensource, translator" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h1 class="box-title">Binary Code To Text Translator</h1>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label for="htm">Binary Data</label>
+                                        <textarea class="form-control" rows="15" id="binary" placeholder="Enter your Binary data here" autofocus></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <button type="button" class="btn btn-info" id="convert2text">Convert to Text <i class="fa fa-fw fa-arrow-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Copy Your Text Data From Here</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                  <label for="txt">Text Data</label>
+                                    <textarea class="form-control" id="txt" rows="15" placeholder="Copy your text data from here"></textarea>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About Binary Code to Text Converter Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <img class="img-responsive" src="images/binary-code-translator.jpg"
+                        alt="Binary to text converter tool : translator"
+                        title="Binary to text converter tool : translator">
+                        <p>This is a free online tool to convert a raw binary input data into plain text. This is a simple and free way to translate any binary string to plain text.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is Binary code?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Binary is a base-2 numeral system used by computers and digital systems to represent data. It consists of only two digits, 0 and 1. Each binary digit (bit) represents a power of 2, and combinations of bits are used to encode information, including numbers, text, and instructions. Binary is the fundamental language of computers, enabling efficient and reliable data processing and storage.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What Is Plain Text Format?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Plain text format is a simple and straightforward text file format that contains only basic text characters without any complex formatting, such as bold, italics, or special fonts. Plain text files typically have a .txt extension and can be created and edited with any text editor. They are widely used for their simplicity, compatibility, and ease of processing by various software applications and operating systems.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why Convert From Binary to Text?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <ul>
+                          <li><strong>Readability</strong>: Binary code (composed of 0s and 1s) is difficult for humans to read and interpret. Converting it to text makes the information understandable.</li>
+                          <li><strong>Communication</strong>: Text is the primary way humans communicate information. Converting binary to text allows data to be displayed, read, and shared effectively.</li>
+                          <li><strong>Debugging</strong>: In programming and debugging, converting binary data to text helps developers understand and diagnose issues within code or data streams.</li>
+                          <li><strong>Data Storage</strong>: Text is often used to store information in a format that is easy to edit and manage. Converting binary data to text makes it easier to handle and store in text files.</li>
+                          <li><strong>Interoperability</strong>: Different systems and applications often need to exchange data. Text is a universal format, so converting binary data to text ensures compatibility across diverse platforms and software.</li>
+                      </ul>
+                      <p>By converting binary to text, data becomes more accessible and usable in various contexts.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">How binary is converted to text?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Binary is converted to text by grouping binary digits into 8-bit segments, converting each segment to its decimal equivalent, and mapping these decimal values to characters using the ASCII table. For example, the binary 01001000 converts to the decimal 72, which corresponds to the character 'H' in ASCII. This process makes binary data human-readable.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why am I getting error 'Invalid binary input length'?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>The error occurs because the function is designed to work with binary strings whose lengths are multiples of 8 (1 byte per character). For example: A 17-character binary string isn't a multiple of 8, which is why the function returns "Invalid binary input length. Please check the input is not missing any charsters or has any special characters.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+            {% include addthis %}
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script>
+  function binaryToText(binaryStr) {
+      // Remove any spaces from the input string
+      let cleanedBinaryStr = binaryStr.replace(/\s+/g, '');
+
+      // Ensure the length of the binary string is a multiple of 8
+      if (cleanedBinaryStr.length % 8 !== 0) {
+          return "Invalid binary input length";
+      }
+
+      // Split the cleaned binary string into chunks of 8 bits
+      let binaryArray = cleanedBinaryStr.match(/.{1,8}/g);
+
+      // Convert each binary chunk to a character
+      let text = binaryArray.map(bin => {
+          return String.fromCharCode(parseInt(bin, 2));
+      }).join('');
+
+      return text;
+  }
+   $(document).ready(function() {
+      $("#convert2text").click(function(){
+          $("#txt").val('');
+          const binaryVal = $("#binary").val();
+          const textVal = binaryToText(binaryVal);
+          $("#txt").val(textVal);
+      });
+
+      $("#txt").selectOnFocus();
+      $("#binary").selectOnFocus();
+      $('#converters-category').addClass('active');
+      $('.markdown-body').attr('style', 'max-width:100%;');
+   	});
+</script>
+</html>
