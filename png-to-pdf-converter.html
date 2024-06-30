@@ -1,0 +1,276 @@
+---
+title: PNG Image to PDF Converter | Developer Tools
+layout: post
+---
+<html>
+
+<head>
+  <!-- Meta tags common for website -->
+  {% include common-meta %}
+  <title>{{ page.title }}</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta name="description"
+    content="This is easy to use open source tool to convert PNG Image to PDF online." />
+  <meta name="keywords" content="online,tool,PNG,PDF,convert,converter,web,opensource" />
+  <!-- CSS for the site theme -->
+  {% include theme-css %}
+  <!-- Annoying IE fixes -->
+  {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+
+    <!-- header tag from theme -->
+    {% include theme-header %}
+    <!-- Sidebar for the whole website -->
+    {% include theme-sidebar %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-6">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h1 class="box-title">Convert PNG Image To PDF Format</h1>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+              <div class="box-body">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="myFile">Upload Image File From Your Computer</label>
+                    <input type="file" id="myFile" name="filename" accept=".png">
+                  </div>
+                  <div class="form-group">
+                    <p id="error" class="text-red"></p>
+                  </div>
+                </form>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <button type="button" class="btn btn-info" id="convert">Convert<i
+                        class="fa fa-fw fa-arrow-right"></i></button>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-footer -->
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title">Download Your Converted PDF From Here</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="form-group">
+                  <div id="target"></div>
+                </div>
+
+              </div>
+              <div class="box-footer" id="download-div" style="display:none">
+                <div class="btn-group">
+                  <a class="btn btn-info" target="_blank" id="download" href="#"> <i class="fa fa-download"></i> Download Converted PDF File</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="content">
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">About PNG Image to PDF Converter Tool</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <img class="img-responsive" src="images/jpg-to-pdf.png"
+              alt="PNG Image to PDF format converter tool"
+              title="PNG Image to PDF format converter tool">
+            <p>This is a free online tool to convert a PNG format image file into PDF format.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">What Is PNG Encoding Format?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>PNG (Portable Network Graphics) encoding format is a raster graphics file format that uses lossless compression. It supports transparency and a wide range of colors, making it ideal for web graphics. PNG uses the Deflate compression algorithm to reduce file sizes without losing image quality. It supports various color depths, including grayscale, indexed color, and truecolor, and can store metadata like gamma correction and color profiles. PNG is widely used for its balance of quality and file size.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Why should we convert PNG to  PDF?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>Converting PNG to PDF is beneficial because PDF files maintain consistent formatting across devices, support multiple images or pages in a single document, and offer advanced features like text search, annotations, and encryption. PDFs are widely used for sharing and printing due to their portability and reliability, while PNG files are better suited for individual images with transparency. Converting to PDF enhances document management and presentation.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">What is the difference between .PNG and .PDF file?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>PNG (Portable Network Graphics) is a raster image format known for lossless compression, supporting transparency and various color depths. It's ideal for individual images with high quality and no compression artifacts.</p>
+            <p>PDF (Portable Document Format) is a versatile file format used to present documents consistently across devices. PDFs can contain text, images, vectors, and interactive elements like links and forms. They support multiple pages, advanced features like encryption, and are optimized for sharing and printing.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Can I download converted PDF File?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>Yes, this tool is completely free to use. You can download converted PDF file using the download button that appears after conversion.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Are my photos converted on client side or server side?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>The tool converts a PNG to PDF on the client side using the jsPDF library. Here's how it works:</p>
+    <ol>
+        <li><strong>File Selection:</strong> User selects a PNG file via an HTML file input.</li>
+        <li><strong>File Reading:</strong> A FileReader object reads the file and converts it to a data URL.</li>
+        <li><strong>PDF Creation:</strong> jsPDF creates a new PDF document and adds the PNG image using the <code>addImage</code> method.</li>
+        <li><strong>Download:</strong> The PDF is generated and automatically downloaded.</li>
+    </ol>
+    <h2>Benefits:</h2>
+    <ul>
+        <li><strong>Privacy:</strong> No need to upload files to a server, preserving user privacy.</li>
+        <li><strong>Speed:</strong> Immediate conversion without server communication.</li>
+        <li><strong>Simplicity:</strong> Easy to implement and use directly in the browser.</li>
+    </ul>
+    <h2>Limitations:</h2>
+    <ul>
+        <li><strong>Browser Dependency:</strong> Relies on browser capabilities, may not work on all browsers.</li>
+        <li><strong>Performance:</strong> Large files can cause performance issues or browser crashes.</li>
+        <li><strong>Functionality:</strong> Limited to basic conversions without advanced PDF features like text extraction or complex formatting.</li>
+    </ul>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">How PNG image file is converted to PDF file?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>PNG to PDF conversion involves reading a PNG file, embedding it into a new PDF document using a library like jsPDF, specifying image dimensions and position, then saving the resulting PDF. This process retains image quality and supports multiple pages or annotations in the PDF output.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">What is PDF Format?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>PDF (Portable Document Format) is a versatile file format used for documents. It preserves layout, fonts, images, and can embed text, graphics, and interactive elements. PDFs are platform-independent, secure, and support features like annotations, forms, and digital signatures, ideal for sharing and archiving documents.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Can this tool work on a mobile browser?</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <p>Yes, the conversion from PNG to PDF using libraries like jsPDF can work on mobile browsers that support JavaScript and the necessary APIs (like FileReader). However, performance and memory limitations on mobile devices might affect larger file conversions. It's important to test across different mobile browsers and consider optimizing for performance where necessary.</p>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </section>
+      {% include addthis %}
+    </div>
+    <!-- /.content-wrapper -->
+    {% include theme-footer %}
+  </div>
+  <!-- ./wrapper -->
+  {% include theme-bottom-js %}
+
+</body>
+<script src="/plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script src="/plugins/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+<script>
+  async function convertToPDF() {
+    const { jsPDF } = window.jspdf;
+
+    // Get the uploaded file
+    const input = document.getElementById('myFile');
+    const file = input.files[0];
+    if (!file) {
+        alert('Please upload a PNG file.');
+        return;
+    }
+    showInProgress();
+    const fileName = file.name.split('.').slice(0, -1).join('.');
+
+    // Read the file as a data URL
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = function(event) {
+        const imgData = event.target.result;
+        // Create a new PDF document
+        const pdf = new jsPDF();
+        pdf.addImage(imgData, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
+        const pdfDataUrl = pdf.output('dataurlstring');
+        const context = {
+          filename: `${fileName}.pdf`,
+          url: pdfDataUrl,
+        };
+        showPDF(context);
+    };
+
+    reader.onerror = function() {
+        alert('Failed to read file.');
+    };
+};
+
+const showPDF = (context) => {
+  $("#target").html("<i class='fa fa-check'> Conversion Completed</i>");
+  $('#download').attr('download', context.filename);
+  $('#download').attr('href', context.url);
+  $('#download-div').show();
+};
+
+const showInProgress = () => {
+  $('#error').text('');
+  $("#target").html("<i class='fa fa-refresh fa-spin'> Converting...</i>");
+  $('#download-div').hide();
+};
+
+  $(document).ready(function () {
+
+    $("#convert").click(function () {
+      convertToPDF();
+    });
+
+    $("#myFile").selectOnFocus();
+    $("#base64").selectOnFocus();
+    $('#converters-category').addClass('active');
+    $('.markdown-body').attr('style', 'max-width:100%;');
+  });
+</script>
+
+</html>
