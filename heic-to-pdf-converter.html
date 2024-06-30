@@ -245,9 +245,12 @@ layout: post
                   // Create PDF using jsPDF
                   const { jsPDF } = window.jspdf;
                   const pdf = new jsPDF();
-
+                  // Calculate aspect ratio to fit the page width
+                  const aspectRatio = img.width / img.height;
+                  const maxWidth = pdf.internal.pageSize.getWidth() - 20; // Adjust margin as necessary
+                  const maxHeight = maxWidth / aspectRatio;
                   // Add the image to the PDF
-                  pdf.addImage(img, 'PNG', 10, 10, img.width / 5, img.height / 5); // Adjust the width and height as necessary
+                  pdf.addImage(img, 'PNG', 10, 10, maxWidth, maxHeight); // Adjust the width and height as necessary
                   const pdfDataUrl = pdf.output('dataurlstring');
                   const context = {
                     filename: `${fileName}.pdf`,
