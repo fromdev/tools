@@ -248,7 +248,7 @@ layout: post
 
                   // Add the image to the PDF
                   pdf.addImage(img, 'PNG', 10, 10, img.width / 5, img.height / 5); // Adjust the width and height as necessary
-
+                  const pdfDataUrl = pdf.output('dataurlstring');
                   const context = {
                     filename: `${fileName}.pdf`,
                     url: pdfDataUrl,
