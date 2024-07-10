@@ -98,7 +98,7 @@ layout: post
                   <label for="base64">Converted Image</label>
                   <div id="target"></div>
                 </div>
-                
+
               </div>
               <div class="box-footer" id="download-div" style="display:none">
                 <div class="btn-group">
@@ -246,10 +246,10 @@ layout: post
     showInProgress();
     const filesSelected = document.getElementById('myFile').files;
     context.convertedFileExtension = findExtension(context);
-    if (filesSelected 
-          && filesSelected.length > 0 
-          && context.originalFileMeta 
-          && context.originalFileMeta.fileExtension 
+    if (filesSelected
+          && filesSelected.length > 0
+          && context.originalFileMeta
+          && context.originalFileMeta.fileExtension
           && context.originalFileMeta.fileExtension.toUpperCase() === 'HEIC'
           && context.format
           && context.convertedFileExtension) {
@@ -290,7 +290,7 @@ layout: post
     $("#myFile").selectOnFocus();
     $("#base64").selectOnFocus();
     $('#converters-category').addClass('active');
-
+    $('.markdown-body').attr('style', 'max-width:100%;');
   });
 </script>
 
