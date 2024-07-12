@@ -1,0 +1,395 @@
+---
+title: Play Tic Tac Toe | Online Games
+layout: post
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is easy to grab jQuery code snippet for doing a quickstart of your project. Helpful for occasional jQuery users to start using it quickly." />
+    <meta name="keywords" content="online,jquery,code,snippet,quickstart,web,opensource" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h1 class="box-title">Tic Tac Toe</h1>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                              <div class="message" id="message"></div>
+                              <button type="button" class="btn btn-info" onclick="newGame()">New Game</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h1 class="box-title">Play Game</h1>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <div class="box-body">
+                      <div class="board" id="board">
+                        <div class="row">
+                            <div class="cell" onclick="cellClicked(0, 0)"></div>
+                            <div class="cell" onclick="cellClicked(0, 1)"></div>
+                            <div class="cell" onclick="cellClicked(0, 2)"></div>
+                        </div>
+                        <div class="row">
+                            <div class="cell" onclick="cellClicked(1, 0)"></div>
+                            <div class="cell" onclick="cellClicked(1, 1)"></div>
+                            <div class="cell" onclick="cellClicked(1, 2)"></div>
+                        </div>
+                        <div class="row">
+                            <div class="cell" onclick="cellClicked(2, 0)"></div>
+                            <div class="cell" onclick="cellClicked(2, 1)"></div>
+                            <div class="cell" onclick="cellClicked(2, 2)"></div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About jQuery Quickstart Code Snippet</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This is a free online page to grab a jQuery quickstart code. It is just for copy and paste in a javascript or HTML file where you want to add jQuery library.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why is this needed?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>The purpose of this page is to provide a quickstart snippet for irregular jQuery developers. It is usually difficult to remember the url and starting syntax. I use it a lot of times to develop more tools for this project itself.
+                            </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Where Can I run it?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>You can run it in a online javascript editor like jsfiddle and other free <a href="http://www.fromdev.com/2015/01/websites-to-test-javascript-code.html">Javascript editors</a>. </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">How to use jQuery Plugin snippet?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This snippet can be used to write a jquery plugin from scratch. Follow below steps to get this working.</p>
+                        <ul>
+                            <li>Enter the name of plugin function in plugin name text box. This will automatically change the code snippet.</li>
+                            <li>Copy the code snippet and save it in a .js file.</li>
+                            <li>Include this .js file in your HTML page after jQuery include. </li>
+                        </ul>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+            {% include addthis %}
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+<script src="plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script>
+  let board = [
+          ['', '', ''],
+          ['', '', ''],
+          ['', '', '']
+      ];
+
+      let currentPlayer = 'X';
+      let gameOver = false;
+
+      function cellClicked(row, col) {
+          if (!gameOver && board[row][col] === '') {
+              board[row][col] = currentPlayer;
+              let cell = document.getElementsByClassName('cell')[row * 3 + col];
+              cell.innerText = currentPlayer;
+              cell.classList.add(currentPlayer === 'X' ? 'cell-x' : 'cell-o');
+              checkGameStatus();
+              currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+              if (currentPlayer === 'O') {
+                  // Simulate computer move after a short delay
+                  setTimeout(computerMove, 500);
+              }
+          }
+      }
+
+      function computerMove() {
+  if (!gameOver) {
+      // Check for a winning move
+      let move = findWinningMove();
+      if (move) {
+          makeMove(move.row, move.col);
+          return;
+      }
+
+      // Check for a blocking move
+      move = findBlockingMove();
+      if (move) {
+          makeMove(move.row, move.col);
+          return;
+      }
+
+      // Fallback: Choose the first available cell
+      for (let i = 0; i < 3; i++) {
+          for (let j = 0; j < 3; j++) {
+              if (board[i][j] === '') {
+                  makeMove(i, j);
+                  return;
+              }
+          }
+      }
+  }
+}
+
+function findWinningMove() {
+  // Check rows
+  for (let i = 0; i < 3; i++) {
+      if (board[i][0] === currentPlayer && board[i][1] === currentPlayer && board[i][2] === '') {
+          return { row: i, col: 2 };
+      }
+      if (board[i][0] === currentPlayer && board[i][2] === currentPlayer && board[i][1] === '') {
+          return { row: i, col: 1 };
+      }
+      if (board[i][1] === currentPlayer && board[i][2] === currentPlayer && board[i][0] === '') {
+          return { row: i, col: 0 };
+      }
+  }
+
+  // Check columns
+  for (let j = 0; j < 3; j++) {
+      if (board[0][j] === currentPlayer && board[1][j] === currentPlayer && board[2][j] === '') {
+          return { row: 2, col: j };
+      }
+      if (board[0][j] === currentPlayer && board[2][j] === currentPlayer && board[1][j] === '') {
+          return { row: 1, col: j };
+      }
+      if (board[1][j] === currentPlayer && board[2][j] === currentPlayer && board[0][j] === '') {
+          return { row: 0, col: j };
+      }
+  }
+
+  // Check diagonals
+  if (board[0][0] === currentPlayer && board[1][1] === currentPlayer && board[2][2] === '') {
+      return { row: 2, col: 2 };
+  }
+  if (board[0][0] === currentPlayer && board[2][2] === currentPlayer && board[1][1] === '') {
+      return { row: 1, col: 1 };
+  }
+  if (board[1][1] === currentPlayer && board[2][2] === currentPlayer && board[0][0] === '') {
+      return { row: 0, col: 0 };
+  }
+  if (board[0][2] === currentPlayer && board[1][1] === currentPlayer && board[2][0] === '') {
+      return { row: 2, col: 0 };
+  }
+  if (board[0][2] === currentPlayer && board[2][0] === currentPlayer && board[1][1] === '') {
+      return { row: 1, col: 1 };
+  }
+  if (board[1][1] === currentPlayer && board[2][0] === currentPlayer && board[0][2] === '') {
+      return { row: 0, col: 2 };
+  }
+
+  return null;
+}
+
+function findBlockingMove() {
+  // Check rows
+  for (let i = 0; i < 3; i++) {
+      if (board[i][0] !== '' && board[i][0] !== currentPlayer && board[i][1] === board[i][0] && board[i][2] === '') {
+          return { row: i, col: 2 };
+      }
+      if (board[i][0] !== '' && board[i][0] !== currentPlayer && board[i][2] === board[i][0] && board[i][1] === '') {
+          return { row: i, col: 1 };
+      }
+      if (board[i][1] !== '' && board[i][1] !== currentPlayer && board[i][1] === board[i][2] && board[i][0] === '') {
+          return { row: i, col: 0 };
+      }
+  }
+
+  // Check columns
+  for (let j = 0; j < 3; j++) {
+      if (board[0][j] !== '' && board[0][j] !== currentPlayer && board[1][j] === board[0][j] && board[2][j] === '') {
+          return { row: 2, col: j };
+      }
+      if (board[0][j] !== '' && board[0][j] !== currentPlayer && board[2][j] === board[0][j] && board[1][j] === '') {
+          return { row: 1, col: j };
+      }
+      if (board[1][j] !== '' && board[1][j] !== currentPlayer && board[1][j] === board[2][j] && board[0][j] === '') {
+          return { row: 0, col: j };
+      }
+  }
+
+  // Check diagonals
+  if (board[0][0] !== '' && board[0][0] !== currentPlayer && board[1][1] === board[0][0] && board[2][2] === '') {
+      return { row: 2, col: 2 };
+  }
+  if (board[0][0] !== '' && board[0][0] !== currentPlayer && board[2][2] === board[0][0] && board[1][1] === '') {
+      return { row: 1, col: 1 };
+  }
+  if (board[1][1] !== '' && board[1][1] !== currentPlayer && board[1][1] === board[2][2] && board[0][0] === '') {
+      return { row: 0, col: 0 };
+  }
+  if (board[0][2] !== '' && board[0][2] !== currentPlayer && board[1][1] === board[0][2] && board[2][0] === '') {
+      return { row: 2, col: 0 };
+  }
+  if (board[0][2] !== '' && board[0][2] !== currentPlayer && board[2][0] === board[0][2] && board[1][1] === '') {
+      return { row: 1, col: 1 };
+  }
+  if (board[1][1] !== '' && board[1][1] !== currentPlayer && board[1][1] === board[2][0] && board[0][2] === '') {
+      return { row: 0, col: 2 };
+  }
+
+  return null;
+}
+
+function makeMove(row, col) {
+  board[row][col] = currentPlayer;
+  let cell = document.getElementsByClassName('cell')[row * 3 + col];
+  cell.innerText = currentPlayer;
+  cell.classList.add(currentPlayer === 'X' ? 'cell-x' : 'cell-o');
+  checkGameStatus();
+  currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+}
+
+
+      function checkGameStatus() {
+          // Check rows, columns, and diagonals for a winner
+          for (let i = 0; i < 3; i++) {
+              if (board[i][0] !== '' && board[i][0] === board[i][1] && board[i][1] === board[i][2]) {
+                  displayWinner(board[i][0]);
+                  return;
+              }
+              if (board[0][i] !== '' && board[0][i] === board[1][i] && board[1][i] === board[2][i]) {
+                  displayWinner(board[0][i]);
+                  return;
+              }
+          }
+          if (board[0][0] !== '' && board[0][0] === board[1][1] && board[1][1] === board[2][2]) {
+              displayWinner(board[0][0]);
+              return;
+          }
+          if (board[0][2] !== '' && board[0][2] === board[1][1] && board[1][1] === board[2][0]) {
+              displayWinner(board[0][2]);
+              return;
+          }
+          // Check if the board is full (tie)
+          let boardFull = true;
+          for (let i = 0; i < 3; i++) {
+              for (let j = 0; j < 3; j++) {
+                  if (board[i][j] === '') {
+                      boardFull = false;
+                      break;
+                  }
+              }
+              if (!boardFull) {
+                  break;
+              }
+          }
+          if (boardFull) {
+              displayWinner('tie');
+          }
+      }
+
+      function displayWinner(winner) {
+          let message = '';
+          if (winner === 'tie') {
+              message = "It's a tie!";
+          } else {
+              message = `${winner} wins!`;
+          }
+          document.getElementById('message').innerText = message;
+          gameOver = true;
+      }
+
+      function newGame() {
+          // Clear the board and reset variables
+          board = [
+              ['', '', ''],
+              ['', '', ''],
+              ['', '', '']
+          ];
+          currentPlayer = 'X';
+          gameOver = false;
+          document.getElementById('message').innerText = '';
+          let cells = document.getElementsByClassName('cell');
+          for (let cell of cells) {
+              cell.innerText = '';
+              cell.classList.remove('cell-x', 'cell-o');
+              cell.onclick = function() {
+                  let index = Array.from(cells).indexOf(cell);
+                  let row = Math.floor(index / 3);
+                  let col = index % 3;
+                  cellClicked(row, col);
+              };
+          }
+          if (currentPlayer === 'O') {
+              // Start with computer move if it's the computer's turn
+              setTimeout(computerMove, 500);
+          }
+      }
+
+      // Adjust cell size based on viewport dimensions
+      function adjustCellSize() {
+          let board = document.getElementById('board');
+          let width = board.offsetWidth;
+          let cellSize = (width - 0.2 * width) / 3; // Calculate cell size with 10% margin
+          let cells = document.getElementsByClassName('cell');
+          for (let cell of cells) {
+              cell.style.width = cellSize + 'px';
+              cell.style.height = cellSize + 'px';
+          }
+      }
+
+      // Call adjustCellSize initially and on window resize
+      adjustCellSize();
+      window.addEventListener('resize', adjustCellSize);
+
+    $(document).ready(function() {
+        $('#generators-category').addClass('active');
+        $('.markdown-body').attr('style', 'max-width:100%;');
+    });
+</script>
+
+</html>
