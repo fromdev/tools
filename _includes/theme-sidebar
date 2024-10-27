@@ -102,6 +102,7 @@
                             <li><a href="/bar-code-generator.html"><i class="fa fa-circle-o"></i> Bar Code Generator</a></li>
                             <li><a href="/jquery-quickstart-snippet.html"><i class="fa fa-circle-o"></i> jQuery Code Grabber</a></li>
                             <li><a href="/amazon-affiliate-link-maker.html"><i class="fa fa-circle-o"></i> Amazon Link Maker</a></li>
+                            <li><a href="/amazon-affiliate-link-maker.html?=ref=audible"><i class="fa fa-circle-o"></i> Audible Link Maker</a></li>
                             <li><a href="/amazon-feedback-generator.html"><i class="fa fa-circle-o"></i> Amazon Feedback Maker</a></li>
                             <li><a href="/ebay-feedback-generator.html"><i class="fa fa-circle-o"></i> eBay Feedback Maker</a></li>
                             <li><a href="/fiverr-feedback-generator.html"><i class="fa fa-circle-o"></i> Fiverr Feedback Maker</a></li>
