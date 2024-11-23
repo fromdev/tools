@@ -396,16 +396,11 @@ layout: post
     popularProductsContext: {
       containerId: '#popular',
       createTableHeader: () => {
-        return `<thead><tr><th>Image</th><th>Title</th></tr></thead>`;
+        return `<thead><tr><th>Product</th></tr></thead>`;
       },
       createRow: (context) => {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
         return `<tr>
-                      <td>
-                        <a target='_blank' rel="nofollow" title="${context.name}" name="${context.name}" href="http://www.amazon.com/dp/${context.asin}?tag=fromdevtools-20">
-                          <img title="${context.name}" class="img-responsive" alt="${context.name}" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=${context.asin}&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1"/>
-                          </a>
-                      </td>
                       <td>
                         <a target='_blank' rel="nofollow" title="${context.name}" name="${context.name}" href="http://www.amazon.com/dp/${context.asin}?tag=fromdevtools-20">
                         ${context.name}
