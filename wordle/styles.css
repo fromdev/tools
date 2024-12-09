@@ -1,0 +1,130 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121213;
+  color: white;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tile {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #3a3a3c;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 60px;
+  text-transform: uppercase;
+  background-color: #121213;
+  color: white;
+  animation: flip 0.5s ease;
+}
+
+.tile.correct {
+  background-color: #6aaa64;
+  border-color: #6aaa64;
+}
+
+.tile.present {
+  background-color: #c9b458;
+  border-color: #c9b458;
+}
+
+.tile.absent {
+  background-color: #3a3a3c;
+  border-color: #3a3a3c;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0);
+  }
+  50% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0);
+  }
+}
+
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 5px;
+}
+
+.key {
+  padding: 10px;
+  background-color: #818384;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.key.used {
+  background-color: #3a3a3c;
+  pointer-events: none;
+}
+
+.key {
+  background-color: #d3d6da; /* Default key color */
+  border: 1px solid #888;
+  padding: 10px;
+  margin: 5px;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.key.correct {
+  background-color: #6aaa64; /* Green for correct letters */
+  color: white;
+}
+
+.key.present {
+  background-color: #c9b458; /* Yellow for present letters */
+  color: white;
+}
+
+.key.absent {
+  background-color: #787c7e; /* Gray for absent letters */
+  color: white;
+}
+
+
+.message {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  height: 24px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #6aaa64;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
