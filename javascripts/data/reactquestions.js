@@ -448,5 +448,86 @@ const list = [
         "text": "Both are used for performance optimization."
         }
     ]
+  },
+  {
+    "question": "What is the purpose of `shouldComponentUpdate()` in a class component?",
+    "answers": [
+      { "text": "To control whether the component should re-render.", "correct": true },
+      { "text": "To handle side effects." },
+      { "text": "To define the component's initial state." },
+      { "text": "To fetch data from an API." }
+    ]
+  },
+  {
+    "question": "Explain the concept of reconciliation in React.",
+    "answers": [
+      { "text": "The process of comparing the previous and next virtual DOM to determine the minimal set of changes needed to update the actual DOM.", "correct": true },
+      { "text": "The process of merging two React components." },
+      { "text": "The process of fetching data from an API." },
+      { "text": "The process of creating a new React component." }
+    ]
+  },
+  {
+    "question": "What are the different ways to pass data between components in React?",
+    "answers": [
+      { "text": "Props, Context API, Redux (or other state management libraries)", "correct": true },
+      { "text": "Only through props." },
+      { "text": "Only through Context API." },
+      { "text": "Only through global variables." }
+    ]
+  },
+  {
+    "question": "What are the key differences between functional and class components in React?",
+    "answers": [
+      { "text": "Functional components use hooks, while class components use lifecycle methods.", "correct": true },
+      { "text": "Functional components are always stateless." },
+      { "text": "Class components are more performant." },
+      { "text": "Functional components cannot access props." }
+    ]
+  },
+  {
+    "question": "Explain the concept of memoization in React.",
+    "answers": [
+      { "text": "A technique to avoid re-rendering components unnecessarily by caching their results.", "correct": true },
+      { "text": "A way to optimize state updates." },
+      { "text": "A method for handling side effects." },
+      { "text": "A way to improve component reusability." }
+    ]
+  },
+  {
+    "question": "What is the purpose of the `useReducer` hook?",
+    "answers": [
+      { "text": "To manage complex state logic that involves multiple sub-values or object trees.", "correct": true },
+      { "text": "To fetch data from an API." },
+      { "text": "To handle user events." },
+      { "text": "To create custom hooks." }
+    ]
+  },
+  {
+    "question": "What are the benefits of using a library like Redux or Zustand in a React application?",
+    "answers": [
+      { "text": "Improved state management, better code organization, and easier to test and debug.", "correct": true },
+      { "text": "Faster rendering performance." },
+      { "text": "Smaller bundle size." },
+      { "text": "Reduced complexity." }
+    ]
+  },
+  {
+    "question": "Explain the concept of lazy loading in React.",
+    "answers": [
+      { "text": "Loading components only when they are needed, improving initial load time.", "correct": true },
+      { "text": "Preloading all components in advance." },
+      { "text": "Loading all data at once." },
+      { "text": "A technique for optimizing state updates." }
+    ]
+  },
+  {
+    "question": "What is the role of `context` in React?",
+    "answers": [
+      { "text": "To share data among components without passing props down through the component tree.", "correct": true },
+      { "text": "To handle user input events." },
+      { "text": "To define the component's style." },
+      { "text": "To improve component performance." }
+    ]
   }
-];
+]
