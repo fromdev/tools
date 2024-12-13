@@ -121,7 +121,19 @@
                             <li><a href="/crypto-average-calculator.html"><i class="fa fa-circle-o"></i> Crypto Average Calculator</a></li>
                         </ul>
                     </li>
-                    <li><a href="/wordle/wordle.html"><i class="fa fa-circle-o text-aqua"></i> <span>Play Wordle</span></a></li>
+                    <li class="treeview" id="calculators-category">
+                        <a href="#">
+                            <i class="fa fa-calculator"></i> <span>Play Games</span>
+                            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/wordle/wordle.html"><i class="fa fa-circle-o text-aqua"></i> <span>Play Wordle</span></a></li>
+                            <li><a href="/tic-tac-toe/play-against-ai.html"><i class="fa fa-circle-o text-aqua"></i> <span>Play TicTacToe</span></a></li>
+                        </ul>
+                    </li>
+
                     <li><a href="/contact.html"><i class="fa fa-circle-o text-aqua"></i> <span>Feedback</span></a></li>
                 </ul>
             </section>
