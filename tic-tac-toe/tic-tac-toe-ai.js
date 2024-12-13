@@ -65,7 +65,7 @@ function handleCellClick(e) {
         highlightWinningCells();
         disableBoard();
     } else if (boardState.every(cell => cell)) {
-        updateInstructions("It's a tie!");
+        updateInstructions("It's a tie! You are awesome at this game. Let's play again.");
     } else {
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
         const moveMessage = getMoveMessage(currentPlayer);
