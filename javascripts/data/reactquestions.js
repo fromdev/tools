@@ -178,5 +178,275 @@ const list = [
             { "text": "updateState" },
             { "text": "changeState" }
         ]
-    }
+    },
+  {
+    "question": "What is the purpose of the `key` prop in React lists?",
+    "answers": [
+      {
+        "text": "Helps React efficiently update the DOM when items in the list change.",
+        "correct": true
+      },
+      {
+        "text": "Styles the list items."
+        },
+      {
+        "text": "Provides a unique identifier for each item in the database."
+        },
+      {
+        "text": "Is required for all lists in React."
+        }
+    ]
+  },
+  {
+    "question": "What is the difference between state and props in React?",
+    "answers": [
+      {
+        "text": "State is internal to a component, while props are passed from parent to child components.",
+        "correct": true
+      },
+      {
+        "text": "State is immutable, while props are mutable."
+        },
+      {
+        "text": "State is used for styling, while props are used for data."
+        },
+      {
+        "text": "There is no difference between state and props."
+        }
+    ]
+  },
+  {
+    "question": "What is JSX?",
+    "answers": [
+      {
+        "text": "A syntax extension to JavaScript that allows you to write HTML-like code within JavaScript.",
+        "correct": true
+      },
+      {
+        "text": "A JavaScript library for building user interfaces."
+        },
+      {
+        "text": "A CSS preprocessor."
+        },
+      {
+        "text": "A framework for building backend APIs."
+        }
+    ]
+  },
+  {
+    "question": "What is the purpose of the `useEffect` hook in React?",
+    "answers": [
+      {
+        "text": "To perform side effects, such as fetching data or setting up subscriptions.",
+        "correct": true
+      },
+      {
+        "text": "To define the component's initial state."
+        },
+      {
+        "text": "To render the component to the DOM."
+        },
+      {
+        "text": "To handle user input events."
+        }
+    ]
+  },
+  {
+    "question": "What is the purpose of `useContext` in React?",
+    "answers": [
+      {
+        "text": "To share data across components without passing props down through the component tree.",
+        "correct": true
+      },
+      {
+        "text": "To manage the component's state."
+        },
+      {
+        "text": "To handle asynchronous operations."
+        },
+      {
+        "text": "To create custom hooks."
+        }
+    ]
+  },
+  {
+    "question": "What is the difference between `setState` and `forceUpdate`?",
+    "answers": [
+      {
+        "text": "`setState` is used for most state updates, while `forceUpdate` should be used sparingly as it bypasses React's optimizations.",
+        "correct": true
+      },
+      {
+        "text": "`setState` is asynchronous, while `forceUpdate` is synchronous."
+        },
+      {
+        "text": "`setState` is used for props, while `forceUpdate` is used for state."
+        },
+      {
+        "text": "There is no significant difference between them."
+        }
+    ]
+  },
+  {
+    "question": "What is a higher-order component (HOC) in React?",
+    "answers": [
+      {
+        "text": "A function that takes a component as an argument and returns a new, enhanced component.",
+        "correct": true
+      },
+      {
+        "text": "A component that renders other components."
+        },
+      {
+        "text": "A component that manages the state of other components."
+        },
+      {
+        "text": "A component that is reused throughout the application."
+        }
+    ]
+  },
+  {
+    "question": "What is the purpose of `ref` in React?",
+    "answers": [
+      {
+        "text": "To create a reference to a DOM element or a React component.",
+        "correct": true
+      },
+      {
+        "text": "To define the component's initial state."
+        },
+      {
+        "text": "To handle user input events."
+        },
+      {
+        "text": "To style the component."
+        }
+    ]
+  },
+  {
+    "question": "What is the purpose of `propTypes`?",
+    "answers": [
+      {
+        "text": "To define the types of props that a component expects to receive.",
+        "correct": true
+      },
+      {
+        "text": "To define the styles of the component."
+        },
+      {
+        "text": "To handle errors within the component."
+        },
+      {
+        "text": "To improve the component's performance."
+        }
+    ]
+  },
+  {
+    "question": "What is the difference between a controlled and an uncontrolled component?",
+    "answers": [
+      {
+        "text": "A controlled component's value is handled by React state, while an uncontrolled component's value is handled by the DOM.",
+        "correct": true
+      },
+      {
+        "text": "A controlled component is a class component, while an uncontrolled component is a functional component."
+        },
+      {
+        "text": "A controlled component uses props, while an uncontrolled component uses state."
+        },
+      {
+        "text": "There is no significant difference between them."
+        }
+    ]
+  },
+  {
+    "question": "What is the purpose of `memo` in React?",
+    "answers": [
+      {
+        "text": "To prevent a component from re-rendering unnecessarily.",
+        "correct": true
+      },
+      {
+        "text": "To improve the component's performance."
+        },
+      {
+        "text": "To create a reusable component."
+        },
+      {
+        "text": "To handle side effects."
+        }
+    ]
+  },
+  {
+    "question": "What is the purpose of `useReducer` in React?",
+    "answers": [
+      {
+        "text": "To manage complex state logic that involves multiple sub-values or object trees.",
+        "correct": true
+      },
+      {
+        "text": "To handle asynchronous operations."
+        },
+      {
+        "text": "To create custom hooks."
+        },
+      {
+        "text": "To render the component to the DOM."
+        }
+    ]
+  },
+  {
+    "question": "What is the purpose of `key` prop when rendering lists?",
+    "answers": [
+      {
+        "text": "Helps React identify which items have changed, moved, or been removed.",
+        "correct": true
+      },
+      {
+        "text": "Styles the list items."
+        },
+      {
+        "text": "Provides a unique identifier for each item in the database."
+        },
+      {
+        "text": "Is required for all lists in React."
+        }
+    ]
+  },
+  {
+    "question": "What are React's synthetic events?",
+    "answers": [
+      {
+        "text": "Cross-browser compatible event objects that normalize event properties and methods.",
+        "correct": true
+      },
+      {
+        "text": "Events that are triggered by the user interacting with the DOM."
+        },
+      {
+        "text": "Events that are triggered by the browser."
+        },
+      {
+        "text": "Events that are created by the developer."
+        }
+    ]
+  },
+  {
+    "question": "What is the purpose of `propTypes` and `defaultProps`?",
+    "answers": [
+      {
+        "text": "`propTypes` define the expected types of props, while `defaultProps` provide default values if props are not provided.",
+        "correct": true
+      },
+      {
+        "text": "Both are used for styling components."
+        },
+      {
+        "text": "Both are used for handling errors within the component."
+        },
+      {
+        "text": "Both are used for performance optimization."
+        }
+    ]
+  }
 ];
