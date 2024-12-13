@@ -1,0 +1,110 @@
+#fromdev-game-container {
+  margin: 10px;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent; /* Transparent background */
+  color: #222; /* Darker text color */
+  width: 100%;
+  height: 100%;
+}
+
+#fromdev-game-header, #fromdev-game-footer {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#fromdev-game-header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  color: #222; /* Dark text color */
+}
+
+#instructions {
+  font-size: 1.2rem;
+  color: #555; /* Slightly lighter gray for instructions */
+}
+
+#game-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  width: 80%;
+  max-width: min(600px, 90vw);
+  max-height: min(600px, 90vh);
+  min-width: min(250px, 50vw);
+  min-height: min(250px, 50vh);
+  aspect-ratio: 1 / 1;
+  background: transparent;
+  border-radius: 10px;
+  border: 2px solid #333;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff; /* Light background for cells */
+  border: 2px solid #ddd;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #222; /* Dark text color for cells */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+.cell[data-player='X'] {
+  background-color: #ffe6e6;
+}
+
+.cell[data-player='O'] {
+  background-color: #e6f7ff;
+}
+
+.cell:hover {
+  background-color: #dfdfdf; /* Slightly darker hover color */
+  transform: scale(1.05);
+}
+#restart-btn {
+  background-color: #4CAF50; /* Vibrant green for an eye-catching button */
+  color: white; /* White text for high contrast */
+  border: none; /* No border for a clean look */
+  padding: 15px 30px; /* Sufficient padding for a clickable size */
+  font-size: 18px; /* Larger font for readability */
+  font-weight: bold; /* Bold text for emphasis */
+  border-radius: 50px; /* Rounded corners for a smooth, modern look */
+  cursor: pointer; /* Pointer cursor to indicate it's clickable */
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions for hover effects */
+  box-shadow: 0 6px 12px rgba(0, 128, 0, 0.2); /* Subtle shadow for depth */
+}
+
+#restart-btn:hover {
+  background-color: #45a049; /* Darker green on hover for interactivity */
+  transform: translateY(-4px); /* Button slightly rises on hover for a "pressing" effect */
+  box-shadow: 0 8px 16px rgba(0, 128, 0, 0.3); /* Stronger shadow on hover for emphasis */
+}
+
+#restart-btn:focus {
+  outline: none; /* Remove outline when focused */
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5); /* Soft glow effect when focused */
+}
+
+#restart-btn:active {
+  transform: translateY(2px); /* Button appears pressed when clicked */
+  box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2); /* Slightly reduced shadow when clicked */
+}
