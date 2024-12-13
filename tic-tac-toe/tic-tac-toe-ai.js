@@ -7,6 +7,21 @@ const instructions = document.getElementById('instructions');
 let currentPlayer = 'X';
 let boardState = Array(9).fill(null);
 
+function getWinMessage(winner)  {
+  if (winner === 'O') {
+    return 'AI Wins, please try again.';
+  } else {
+    return 'Congratualtions! You win.'
+  }
+};
+
+function getMoveMessage(player)  {
+  if (player === 'O') {
+    return 'AI turn, thinking...';
+  } else {
+    return 'Your turn. Pick a box for your next move.'
+  }
+};
 // Winning combinations
 const winningCombos = [
     [0, 1, 2],
@@ -31,7 +46,7 @@ function createBoard() {
         board.appendChild(cell);
     }
     currentPlayer = 'X';
-    updateInstructions(`${currentPlayer}'s turn`);
+    updateInstructions(`Your turn`);
 }
 
 // Handle cell click
@@ -45,14 +60,16 @@ function handleCellClick(e) {
     cell.textContent = currentPlayer;
 
     if (checkWin(currentPlayer)) {
-        updateInstructions(`${currentPlayer} wins!`);
+       const winMessage = getWinMessage(currentPlayer);
+        updateInstructions(winMessage);
         highlightWinningCells();
         disableBoard();
     } else if (boardState.every(cell => cell)) {
         updateInstructions("It's a tie!");
     } else {
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        updateInstructions(`${currentPlayer}'s turn`);
+        const moveMessage = getMoveMessage(currentPlayer);
+        updateInstructions(moveMessage);
 
         if (currentPlayer === 'O') {
             makeComputerMove();
