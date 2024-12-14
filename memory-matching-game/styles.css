@@ -1,4 +1,4 @@
-body {
+.fromdev-game-container {
   margin: 0;
   font-family: Arial, sans-serif;
   display: flex;
@@ -83,7 +83,7 @@ body {
 .card .front {
   background: white;
   color: #333;
-  font-size: 2rem;
+  font-size: 4rem;
 }
 
 .card .back {
