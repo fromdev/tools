@@ -111,8 +111,8 @@ body {
     height: 80vh; /* Ensure grid still takes up most of the screen height */
   }
   .grid.large {
-    grid-template-columns: repeat(8, 1fr); /* For larger screens, more cards */
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: repeat(6, 1fr); /* For larger screens, more cards */
+    grid-template-rows: repeat(6, 1fr);
   }
 }
 
