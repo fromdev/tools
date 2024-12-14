@@ -29,7 +29,8 @@ function shuffleArray(array) {
 
 function createCards() {
   const numPairs = window.innerWidth > 768 ? 24 : 8;
-  const cardValues = shuffleArray([...colors, ...colors].slice(0, numPairs));
+  const selectFew = shuffleArray([...colors]).slice(0, numPairs);
+  const cardValues = shuffleArray([...selectFew, ...selectFew]);
   grid.innerHTML = '';
   cardValues.forEach(value => {
     const card = document.createElement('div');
@@ -95,7 +96,7 @@ function resetGame() {
   startTimer();
 }
 
-restartBtn.addEventListener('click', resetGame);
+//restartBtn.addEventListener('click', resetGame);
 window.addEventListener('resize', createCards);
 
 resetGame();
