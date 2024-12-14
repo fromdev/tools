@@ -28,8 +28,8 @@ function shuffleArray(array) {
 }
 
 function createCards() {
-  const numPairs = window.innerWidth > 768 ? 24 : 8;
-  const selectFew = shuffleArray([...colors]).slice(0, numPairs);
+  const numPairs = window.innerWidth > 768 ? 36 : 16;
+  const selectFew = shuffleArray([...colors]).slice(0, (numPairs/2));
   const cardValues = shuffleArray([...selectFew, ...selectFew]);
   grid.innerHTML = '';
   cardValues.forEach(value => {
