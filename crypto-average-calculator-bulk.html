@@ -1,0 +1,458 @@
+---
+title: Crypto Currency Average Calculator| Calculation Tools
+layout: post
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description"
+        content="This is easy to use open source tool to calculate average price of crypto currency and token purchase" />
+    <meta name="keywords" content="online,tool,calculator, crypto, bitcoin, currency, average, price" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <!-- left column -->
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Calculate Crypto Currency Average Price</h3>
+                    </div>
+                    <div class="box-body" id="tx-input-container">
+                        <div class="row">
+                            <h2>Step 1: Upload CSV File</h2>
+        <input type="file" id="csv-file" accept=".csv">
+        <p>Please upload a CSV file with your cryptocurrency purchase data.</p>
+        <div id="error-message" class="error"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+            <section class="content">
+                <div id="csv-preview">
+                    <h3>CSV Preview (First 5 rows)</h3>
+                    <table id="preview-table"></table>
+                </div>
+            </section>
+            <section class="content">
+                <div id="mapping-container" class="mapping-container">
+                    <h2>Step 2: Map CSV Columns</h2>
+                    <div id="column-mapping"></div>
+                    <button id="calculate-button">Calculate Averages</button>
+                </div>
+            </section>
+            <section class="content">
+                <div id="results-container" class="results-container">
+                    <h2>Results: Average Prices</h2>
+                    <table id="results-table">
+                        <thead>
+                            <tr>
+                                <th>Crypto Pair</th>
+                                <th>Total Quantity</th>
+                                <th>Average Price</th>
+                                <th>Total Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-body"></tbody>
+                    </table>
+                    <button id="download-button">Download Results as CSV</button>
+                </div>
+            </section>
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About Average Crypto Currency Price Calculator Tool</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <img class="img-responsive" src="images/cryptocurrency-average-calculator.jpg"
+                            alt="Online  Average Crypto Currency Price Calculator Tool"
+                            title="Online  Average Crypto Currency Price Calculator Tool">
+                        <p>This is a free online tool to calculate average price of cryptos purchased. Can be really
+                            handy tool when you have a dollar cost averaging investment and want to know what is your
+                            average purchase price.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Can I use this to calculate fractional quantity average price?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Yes, you can use this tool to calcualte on fractional quantity that is usually the case in all cryptocurrencies and also common in stock market for fractional shares.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">What is a average price?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Average price is calculated using total quantity purchased and total price paid. This tool
+                            can also take care of fractional quantity.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Can I use this to calculate average Bitcoin or Ethereum Price?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Yes, you can use this tool to calcualte  the average bitcoin or ethereum price you have
+                            paid. This is a general purpose tool that can be used to caculate average price of anything
+                            including stocks, crypto currencies like Algorand, Solana, Cardano, Avalanche, Polygon,
+                            Loopring, Shiba Inu, Dodge Coin and more.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">How Can I calculate average for more than 5 transactions in this tool?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>You can use add more button to add as many transactions you like. The calculations are automatically updated as you make more entries.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Why do you need this tool to calculate average price?</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>This tool is a simple way to calculate few transactions average. It can be handy when you are deciding to sell your crypto currencies. I use them to calculate my average price for crypto trading bots manual safety orders on 3commas. It can also be handy to decide buying at a price when you want to bring down the average purchase price.</p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </section>
+            {% include addthis %}
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+            const csvFileInput = document.getElementById('csv-file');
+            const csvPreview = document.getElementById('csv-preview');
+            const previewTable = document.getElementById('preview-table');
+            const columnMapping = document.getElementById('column-mapping');
+            const mappingContainer = document.getElementById('mapping-container');
+            const calculateButton = document.getElementById('calculate-button');
+            const resultsContainer = document.getElementById('results-container');
+            const resultsBody = document.getElementById('results-body');
+            const downloadButton = document.getElementById('download-button');
+            const errorMessage = document.getElementById('error-message');
+            
+            let csvData = [];
+            let headers = [];
+            
+            // Handle file upload
+            csvFileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                // Clear previous data
+                csvData = [];
+                headers = [];
+                previewTable.innerHTML = '';
+                columnMapping.innerHTML = '';
+                resultsBody.innerHTML = '';
+                errorMessage.textContent = '';
+                mappingContainer.style.display = 'none';
+                resultsContainer.style.display = 'none';
+                csvPreview.style.display = 'none';
+                
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    try {
+                        const csvText = event.target.result;
+                        parseCSV(csvText);
+                        
+                        if (csvData.length > 0) {
+                            displayPreview();
+                            createColumnMapping();
+                            mappingContainer.style.display = 'block';
+                            csvPreview.style.display = 'block';
+                        } else {
+                            throw new Error('No data found in CSV file');
+                        }
+                    } catch (error) {
+                        errorMessage.textContent = 'Error processing CSV file: ' + error.message;
+                    }
+                };
+                reader.onerror = function() {
+                    errorMessage.textContent = 'Error reading the file';
+                };
+                reader.readAsText(file);
+            });
+            
+            // Parse CSV data
+            function parseCSV(text) {
+                const lines = text.split(/\r\n|\n|\r/).filter(line => line.trim() !== '');
+                if (lines.length === 0) {
+                    throw new Error('CSV file is empty');
+                }
+                
+                // Parse headers
+                headers = parseCSVLine(lines[0]);
+                
+                // Parse data rows
+                for (let i = 1; i < lines.length; i++) {
+                    const row = parseCSVLine(lines[i]);
+                    if (row.length === headers.length) {
+                        csvData.push(row);
+                    }
+                }
+            }
+            
+            // Parse a single CSV line, handling quoted values
+            function parseCSVLine(line) {
+                const result = [];
+                let current = '';
+                let inQuotes = false;
+                
+                for (let i = 0; i < line.length; i++) {
+                    const char = line[i];
+                    
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        result.push(current.trim());
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+                
+                // Don't forget the last field
+                result.push(current.trim());
+                return result;
+            }
+            
+            // Display preview of CSV data
+            function displayPreview() {
+                // Create header row
+                let headerRow = '<tr>';
+                headers.forEach(header => {
+                    headerRow += `<th>${header}</th>`;
+                });
+                headerRow += '</tr>';
+                previewTable.innerHTML = headerRow;
+                
+                // Create data rows (up to 5)
+                const rowsToShow = Math.min(5, csvData.length);
+                for (let i = 0; i < rowsToShow; i++) {
+                    let row = '<tr>';
+                    csvData[i].forEach(cell => {
+                        row += `<td>${cell}</td>`;
+                    });
+                    row += '</tr>';
+                    previewTable.innerHTML += row;
+                }
+            }
+            
+            // Create column mapping interface
+            function createColumnMapping() {
+                columnMapping.innerHTML = '';
+                
+                // Create mapping for Crypto Pair
+                createMappingRow('pair', 'Crypto Pair (e.g., BTC/USD, ETH/USD)');
+                
+                // Create mapping for Quantity
+                createMappingRow('quantity', 'Quantity Bought');
+                
+                // Create mapping for Price per unit
+                createMappingRow('price', 'Price per Unit');
+            }
+            
+            function createMappingRow(id, label) {
+                const row = document.createElement('div');
+                row.className = 'mapping-row';
+                
+                const labelElement = document.createElement('label');
+                labelElement.textContent = `Select column for ${label}: `;
+                labelElement.setAttribute('for', `map-${id}`);
+                
+                const select = document.createElement('select');
+                select.id = `map-${id}`;
+                
+                // Add empty option
+                const emptyOption = document.createElement('option');
+                emptyOption.value = '';
+                emptyOption.textContent = '-- Select Column --';
+                select.appendChild(emptyOption);
+                
+                // Add options for each header
+                headers.forEach((header, index) => {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = header;
+                    select.appendChild(option);
+                });
+                
+                row.appendChild(labelElement);
+                row.appendChild(select);
+                columnMapping.appendChild(row);
+            }
+            
+            // Calculate average prices when button is clicked
+            calculateButton.addEventListener('click', function() {
+                const pairIndex = parseInt(document.getElementById('map-pair').value);
+                const quantityIndex = parseInt(document.getElementById('map-quantity').value);
+                const priceIndex = parseInt(document.getElementById('map-price').value);
+                
+                // Validate that all fields are selected
+                if (isNaN(pairIndex) || isNaN(quantityIndex) || isNaN(priceIndex)) {
+                    errorMessage.textContent = 'Please map all required columns';
+                    return;
+                }
+                
+                try {
+                    const results = calculateAverages(pairIndex, quantityIndex, priceIndex);
+                    displayResults(results);
+                    resultsContainer.style.display = 'block';
+                } catch (error) {
+                    errorMessage.textContent = 'Error calculating averages: ' + error.message;
+                }
+            });
+            
+            // Calculate average prices for each crypto pair
+            function calculateAverages(pairIndex, quantityIndex, priceIndex) {
+                const cryptoData = {};
+                
+                csvData.forEach(row => {
+                    const pair = row[pairIndex].trim();
+                    const quantity = parseFloat(row[quantityIndex]);
+                    const price = parseFloat(row[priceIndex]);
+                    
+                    if (isNaN(quantity) || isNaN(price)) {
+                        throw new Error('Invalid numeric data in quantity or price columns');
+                    }
+                    
+                    if (!cryptoData[pair]) {
+                        cryptoData[pair] = {
+                            totalQuantity: 0,
+                            totalCost: 0
+                        };
+                    }
+                    
+                    cryptoData[pair].totalQuantity += quantity;
+                    cryptoData[pair].totalCost += quantity * price;
+                });
+                
+                // Calculate averages
+                const results = [];
+                for (const pair in cryptoData) {
+                    const data = cryptoData[pair];
+                    const averagePrice = data.totalCost / data.totalQuantity;
+                    
+                    results.push({
+                        pair: pair,
+                        totalQuantity: data.totalQuantity,
+                        averagePrice: averagePrice,
+                        totalValue: data.totalCost
+                    });
+                }
+                
+                return results;
+            }
+            
+            // Display results in the table
+            function displayResults(results) {
+                resultsBody.innerHTML = '';
+                
+                results.forEach(result => {
+                    const row = document.createElement('tr');
+                    
+                    const pairCell = document.createElement('td');
+                    pairCell.textContent = result.pair;
+                    
+                    const quantityCell = document.createElement('td');
+                    quantityCell.textContent = result.totalQuantity.toFixed(8);
+                    
+                    const priceCell = document.createElement('td');
+                    priceCell.textContent = result.averagePrice.toFixed(8);
+                    
+                    const valueCell = document.createElement('td');
+                    valueCell.textContent = result.totalValue.toFixed(8);
+                    
+                    row.appendChild(pairCell);
+                    row.appendChild(quantityCell);
+                    row.appendChild(priceCell);
+                    row.appendChild(valueCell);
+                    
+                    resultsBody.appendChild(row);
+                });
+            }
+            
+            // Download results as CSV
+            downloadButton.addEventListener('click', function() {
+                if (resultsBody.rows.length === 0) {
+                    errorMessage.textContent = 'No results to download';
+                    return;
+                }
+                
+                const csvContent = ['Crypto Pair,Total Quantity,Average Price,Total Value'];
+                
+                for (let i = 0; i < resultsBody.rows.length; i++) {
+                    const row = resultsBody.rows[i];
+                    const rowData = [];
+                    
+                    for (let j = 0; j < row.cells.length; j++) {
+                        // Wrap in quotes if the cell contains a comma
+                        let cellText = row.cells[j].textContent;
+                        if (cellText.includes(',')) {
+                            cellText = `"${cellText}"`;
+                        }
+                        rowData.push(cellText);
+                    }
+                    
+                    csvContent.push(rowData.join(','));
+                }
+                
+                const blob = new Blob([csvContent.join('\n')], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'crypto_averages.csv';
+                
+                document.body.appendChild(a);
+                a.click();
+                
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            });
+        });
+</script>
+
+</html>
