@@ -57,27 +57,35 @@ layout: post
                 
             </section>
             <section class="content">
-                <div id="mapping-container" class="mapping-container">
-                    <h2>Step 2: Map CSV Columns</h2>
-                    <div id="column-mapping"></div>
-                    <button id="calculate-button">Calculate Averages</button>
+                <div class="box box-success">
+                    <div class="box-header with-border" id="csv-preview">
+                        <h3 class="box-title">Step 2: Map CSV Columns</h3>
+                    </div>
+                    <div class="box-body" id="tx-input-container">
+                        <div id="column-mapping"></div>
+                        <button id="calculate-button">Calculate Averages</button>
+                    </div>
                 </div>
             </section>
             <section class="content">
-                <div id="results-container" class="results-container">
-                    <h2>Results: Average Prices</h2>
-                    <table id="results-table">
-                        <thead>
-                            <tr>
-                                <th>Crypto Pair</th>
-                                <th>Total Quantity</th>
-                                <th>Average Price</th>
-                                <th>Total Value</th>
-                            </tr>
-                        </thead>
-                        <tbody id="results-body"></tbody>
-                    </table>
-                    <button id="download-button">Download Results as CSV</button>
+                <div class="box box-success">
+                    <div class="box-header with-border" id="csv-preview">
+                        <h3 class="box-title">Results: Average Prices</h3>
+                    </div>
+                    <div class="box-body" id="tx-input-container">
+                        <table id="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Crypto Pair</th>
+                                    <th>Total Quantity</th>
+                                    <th>Average Price</th>
+                                    <th>Total Value</th>
+                                </tr>
+                            </thead>
+                            <tbody id="results-body"></tbody>
+                        </table>
+                        <button id="download-button">Download Results as CSV</button>
+                    </div>
                 </div>
             </section>
             <section class="content">
