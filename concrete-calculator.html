@@ -1,0 +1,153 @@
+---
+title: Crypto Currency Average Calculator| Calculation Tools
+layout: post
+---
+<html>
+
+<head>
+    <!-- Meta tags common for website -->
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description"
+        content="This is easy to use open source tool to calculate average price of crypto currency and token purchase" />
+    <meta name="keywords" content="online,tool,calculator, crypto, bitcoin, currency, average, price" />
+    <!-- CSS for the site theme -->
+    {% include theme-css %}
+    <!-- Annoying IE fixes -->
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <!-- header tag from theme -->
+        {% include theme-header %}
+        <!-- Sidebar for the whole website -->
+        {% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Concrete Calculator</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <label for="shape">Select Shape:</label>
+                            <select id="shape">
+                                <option value="slab">Rectangular Slab</option>
+                                <option value="column">Column</option>
+                                <option value="circular">Circular Slab</option>
+                                <option value="stairs">Stairs</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <label for="length">Length:</label>
+                            <input type="number" id="length" placeholder="Enter length">
+                        </div>
+                        <div class="row">
+                            <label for="width">Width:</label>
+                            <input type="number" id="width" placeholder="Enter width">
+                        </div>
+                        <div class="row">
+                            <label for="thickness">Thickness:</label>
+                            <input type="number" id="thickness" placeholder="Enter thickness">
+                        </div>
+                        <div class="row">
+                            <label for="unit">Unit:</label>
+                            <select id="unit">
+                                <option value="metric">Metric (m³)</option>
+                                <option value="imperial">Imperial (ft³)</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <label for="cost">Cost per unit:</label>
+                            <input type="number" id="cost" placeholder="Enter cost per unit">
+                        </div>
+                        <div class="row">
+                            <button id="calculate" onclick="calculateConcrete()">Calculate</button>
+                            <button id="clear" onclick="clearFields()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Calculated Results</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <p id="volumeResult">Volume: </p>
+                        </div>
+                        <div class="row">
+                            <p id="costResult">Estimated Cost: </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <section class="content">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Usage Guidelines</h3>
+                    </div>
+                    <div class="box-body">
+                        <p>- Enter all required dimensions accurately.</p>
+                        <p>- Select the appropriate unit of measurement.</p>
+                        <p>- Include a wastage factor if necessary.</p>
+                        <p>- Use the save option to store your calculations for later.</p>
+                    </div>
+                </div>
+            </section>
+            {% include addthis %}
+        </div>
+        <!-- /.content-wrapper -->
+        {% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+    {% include theme-bottom-js %}
+
+</body>
+
+<script>
+    function calculateConcrete() {
+            let shape = document.getElementById('shape').value;
+            let length = parseFloat(document.getElementById('length').value) || 0;
+            let width = parseFloat(document.getElementById('width').value) || 0;
+            let thickness = parseFloat(document.getElementById('thickness').value) || 0;
+            let costPerUnit = parseFloat(document.getElementById('cost').value) || 0;
+            let volume = 0;
+
+            if (shape === 'slab') {
+                volume = length * width * thickness;
+            } else if (shape === 'column') {
+                volume = Math.PI * Math.pow((width / 2), 2) * length;
+            } else if (shape === 'circular') {
+                volume = Math.PI * Math.pow((width / 2), 2) * thickness;
+            } else if (shape === 'stairs') {
+                volume = length * width * thickness * 0.5;
+            }
+
+            let cost = volume * costPerUnit;
+            document.getElementById('volumeResult').textContent = `Volume: ${volume.toFixed(2)} m³`;
+            document.getElementById('costResult').textContent = `Estimated Cost: $${cost.toFixed(2)}`;
+        }
+
+        function clearFields() {
+            document.getElementById('length').value = '';
+            document.getElementById('width').value = '';
+            document.getElementById('thickness').value = '';
+            document.getElementById('cost').value = '';
+            document.getElementById('volumeResult').textContent = 'Volume: ';
+            document.getElementById('costResult').textContent = 'Estimated Cost: ';
+        }
+</script>
+
+</html>
