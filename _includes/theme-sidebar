@@ -118,9 +118,10 @@
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="/crypto-average-calculator.html"><i class="fa fa-circle-o"></i> Crypto Average Calculator</a></li>
-                            <li><a href="/crypto-average-calculator-bulk.html"><i class="fa fa-circle-o"></i>CSV Crypto Average Calculator</a></li>
-                            <li><a href="https://www.fromdev.com/hour-counter-for-work"><i class="fa fa-circle-o"></i>Work Hour Calculator</a></li>                            
+                            <li><a href="/crypto-average-calculator.html"><i class="fa fa-circle-o"></i> Crypto Avg Calculator</a></li>
+                            <li><a href="/crypto-average-calculator-bulk.html"><i class="fa fa-circle-o"></i>CSV Crypto Avg Calculator</a></li>
+                            <li><a href="https://www.fromdev.com/hour-counter-for-work"><i class="fa fa-circle-o"></i>Work Hour Calculator</a></li>
+                            <li><a href="/concrete-calculator.html"><i class="fa fa-circle-o"></i> Concrete Calculator</a></li>                            
                         </ul>
                     </li>
                     <li class="treeview" id="calculators-category">
