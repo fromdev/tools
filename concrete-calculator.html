@@ -32,66 +32,68 @@ layout: post
         <div class="content-wrapper">
             <!-- Main content -->
             <section class="content">
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Concrete Calculator</h3>
-                    </div>
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label for="shape">Select Shape:</label>
-                            <select id="shape">
-                                <option value="slab">Rectangular Slab</option>
-                                <option value="column">Column</option>
-                                <option value="circular">Circular Slab</option>
-                                <option value="stairs">Stairs</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="length">Length:</label>
-                            <input type="number" id="length" placeholder="Enter length">
-                        </div>
-                        <div class="form-group">
-                            <label for="width">Width:</label>
-                            <input type="number" id="width" placeholder="Enter width">
-                        </div>
-                        <div class="form-group">
-                            <label for="thickness">Thickness:</label>
-                            <input type="number" id="thickness" placeholder="Enter thickness">
-                        </div>
-                        <div class="form-group">
-                            <label for="unit">Unit:</label>
-
-                            <select id="unit">
-                                <option value="metric">Metric (m³)</option>
-                                <option value="imperial">Imperial (ft³)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="cost">Cost per unit:</label>
-                            <input type="number" id="cost" placeholder="Enter cost per unit">
-
-                        </div>
-                        <div class="form-group">
-                            <button type="button" class="btn btn-success" id="calculate"
-                                onclick="calculateConcrete()">Calculate</button>
-                            <button type="button" class="btn btn-default" id="clear"
-                                onclick="clearFields()">Clear</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="content">
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Calculated Results</h3>
-                    </div>
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <p id="volumeResult">Volume: </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Concrete Calculator</h3>
                             </div>
-                            <div class="col-xs-6">
-                                <p id="costResult">Estimated Cost: </p>
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="shape">Select Shape:</label>
+                                    <select id="shape">
+                                        <option value="slab">Rectangular Slab</option>
+                                        <option value="column">Column</option>
+                                        <option value="circular">Circular Slab</option>
+                                        <option value="stairs">Stairs</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="length">Length:</label>
+                                    <input type="number" id="length" placeholder="Enter length">
+                                </div>
+                                <div class="form-group">
+                                    <label for="width">Width:</label>
+                                    <input type="number" id="width" placeholder="Enter width">
+                                </div>
+                                <div class="form-group">
+                                    <label for="thickness">Thickness:</label>
+                                    <input type="number" id="thickness" placeholder="Enter thickness">
+                                </div>
+                                <div class="form-group">
+                                    <label for="unit">Unit:</label>
+
+                                    <select id="unit">
+                                        <option value="metric">Metric (m³)</option>
+                                        <option value="imperial">Imperial (ft³)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cost">Cost per unit:</label>
+                                    <input type="number" id="cost" placeholder="Enter cost per unit">
+
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-success" id="calculate"
+                                        onclick="calculateConcrete()">Calculate</button>
+                                    <button type="button" class="btn btn-default" id="clear"
+                                        onclick="clearFields()">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Calculated Results</h3>
+                            </div>
+                            <div class="box-body">
+                                <div class="row">
+                                    <p id="volumeResult">Volume: </p>
+                                </div>
+                                <div class="row">
+                                    <p id="costResult">Estimated Cost: </p>
+                                </div>
                             </div>
                         </div>
                     </div>
