@@ -323,37 +323,65 @@ layout: post
 </body>
 
 <script>
-    function calculateConcrete() {
-        let shape = document.getElementById('shape').value;
-        let length = parseFloat(document.getElementById('length').value) || 0;
-        let width = parseFloat(document.getElementById('width').value) || 0;
-        let thickness = parseFloat(document.getElementById('thickness').value) || 0;
-        let costPerUnit = parseFloat(document.getElementById('cost').value) || 0;
-        let volume = 0;
-
-        if (shape === 'slab') {
-            volume = length * width * thickness;
-        } else if (shape === 'column') {
-            volume = Math.PI * Math.pow((width / 2), 2) * length;
-        } else if (shape === 'circular') {
-            volume = Math.PI * Math.pow((width / 2), 2) * thickness;
-        } else if (shape === 'stairs') {
-            volume = length * width * thickness * 0.5;
+     function updateUnits() {
+            let unit = document.getElementById('unit').value;
+            let lengthUnit = document.getElementById('lengthUnit');
+            let widthUnit = document.getElementById('widthUnit');
+            let thicknessUnit = document.getElementById('thicknessUnit');
+            
+            if (unit === 'metric') {
+                lengthUnit.textContent = 'm';
+                widthUnit.textContent = 'm';
+                thicknessUnit.textContent = 'm';
+            } else {
+                lengthUnit.textContent = 'ft';
+                widthUnit.textContent = 'ft';
+                thicknessUnit.textContent = 'ft';
+            }
         }
 
-        let cost = volume * costPerUnit;
-        document.getElementById('volumeResult').textContent = `Volume: ${volume.toFixed(2)} m³`;
-        document.getElementById('costResult').textContent = `Estimated Cost: $${cost.toFixed(2)}`;
-    }
+        function calculateConcrete() {
+            let shape = document.getElementById('shape').value;
+            let length = parseFloat(document.getElementById('length').value) || 0;
+            let width = parseFloat(document.getElementById('width').value) || 0;
+            let thickness = parseFloat(document.getElementById('thickness').value) || 0;
+            let costPerUnit = parseFloat(document.getElementById('cost').value) || 0;
+            let unit = document.getElementById('unit').value;
+            let volume = 0;
 
-    function clearFields() {
-        document.getElementById('length').value = '';
-        document.getElementById('width').value = '';
-        document.getElementById('thickness').value = '';
-        document.getElementById('cost').value = '';
-        document.getElementById('volumeResult').textContent = 'Volume: ';
-        document.getElementById('costResult').textContent = 'Estimated Cost: ';
-    }
+            if (unit === 'imperial') {
+                length /= 3.281;
+                width /= 3.281;
+                thickness /= 3.281;
+            }
+
+            if (shape === 'slab') {
+                volume = length * width * thickness;
+            } else if (shape === 'column') {
+                volume = Math.PI * Math.pow((width / 2), 2) * length;
+            } else if (shape === 'circular') {
+                volume = Math.PI * Math.pow((width / 2), 2) * thickness;
+            } else if (shape === 'stairs') {
+                volume = length * width * thickness * 0.5;
+            }
+
+            let cost = volume * costPerUnit;
+            let volumeYards = volume * 1.30795;
+
+            document.getElementById('volumeResult').textContent = `Volume: ${volume.toFixed(2)} m³`;
+            document.getElementById('volumeYardsResult').textContent = `Volume in Yards: ${volumeYards.toFixed(2)} yd³`;
+            document.getElementById('costResult').textContent = `Estimated Cost: $${cost.toFixed(2)}`;
+        }
+
+        function clearFields() {
+            document.getElementById('length').value = '';
+            document.getElementById('width').value = '';
+            document.getElementById('thickness').value = '';
+            document.getElementById('cost').value = '';
+            document.getElementById('volumeResult').textContent = 'Volume: ';
+            document.getElementById('volumeYardsResult').textContent = 'Volume in Yards: ';
+            document.getElementById('costResult').textContent = 'Estimated Cost: ';
+        }
 </script>
 
 </html>
