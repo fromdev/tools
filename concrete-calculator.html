@@ -12,7 +12,7 @@ layout: post
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="description"
         content="This is easy to use open source tool to calculate average price of crypto currency and token purchase" />
-    <meta name="keywords" content="online,tool,calculator, crypto, bitcoin, currency, average, price" />
+    <meta name="keywords" content="online,tool,calculator, concrete, price, slab, stairs" />
     <!-- CSS for the site theme -->
     {% include theme-css %}
     <!-- Annoying IE fixes -->
@@ -38,45 +38,58 @@ layout: post
                     </div>
                     <div class="box-body">
                         <div class="row">
-                            <label for="shape">Select Shape:</label>
-                            <select id="shape">
-                                <option value="slab">Rectangular Slab</option>
-                                <option value="column">Column</option>
-                                <option value="circular">Circular Slab</option>
-                                <option value="stairs">Stairs</option>
-                            </select>
+                            <div class="col-xs-4">
+                                <label for="shape">Select Shape:</label>
+                            </div>
+                            <div class="col-xs-8">
+                                <select id="shape">
+                                    <option value="slab">Rectangular Slab</option>
+                                    <option value="column">Column</option>
+                                    <option value="circular">Circular Slab</option>
+                                    <option value="stairs">Stairs</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="row">
-                            <label for="length">Length:</label>
-                            <input type="number" id="length" placeholder="Enter length">
+                            <div class="col-xs-4"><label for="length">Length:</label></div>
+                            <div class="col-xs-8"> <input type="number" id="length" placeholder="Enter length"> </div>
                         </div>
                         <div class="row">
-                            <label for="width">Width:</label>
-                            <input type="number" id="width" placeholder="Enter width">
+                            <div class="col-xs-4"><label for="width">Width:</label></div>
+                            <div class="col-xs-8"> <input type="number" id="width" placeholder="Enter width"> </div>
                         </div>
                         <div class="row">
-                            <label for="thickness">Thickness:</label>
-                            <input type="number" id="thickness" placeholder="Enter thickness">
+                            <div class="col-xs-4"><label for="thickness">Thickness:</label></div>
+                            <div class="col-xs-8"> <input type="number" id="thickness" placeholder="Enter thickness">
+                            </div>
                         </div>
                         <div class="row">
-                            <label for="unit">Unit:</label>
-                            <select id="unit">
-                                <option value="metric">Metric (m³)</option>
-                                <option value="imperial">Imperial (ft³)</option>
-                            </select>
+                            <div class="col-xs-4"><label for="unit">Unit:</label></div>
+                            <div class="col-xs-8">
+                                <select id="unit">
+                                    <option value="metric">Metric (m³)</option>
+                                    <option value="imperial">Imperial (ft³)</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="row">
-                            <label for="cost">Cost per unit:</label>
-                            <input type="number" id="cost" placeholder="Enter cost per unit">
+                            <div class="col-xs-4"><label for="cost">Cost per unit:</label></div>
+                            <div class="col-xs-8"><input type="number" id="cost" placeholder="Enter cost per unit">
+                            </div>
                         </div>
                         <div class="row">
-                            <button id="calculate" onclick="calculateConcrete()">Calculate</button>
-                            <button id="clear" onclick="clearFields()">Clear</button>
+                            <div class="col-xs-6">
+                                <button type="button" class="btn btn-success" id="calculate"
+                                    onclick="calculateConcrete()">Calculate</button>
+                            </div>
+                            <div class="col-xs-6"><button type="button" class="btn btn-default" id="clear"
+                                    onclick="clearFields()">Clear</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
-        
+
             <section class="content">
                 <div class="box box-success">
                     <div class="box-header with-border">
@@ -92,7 +105,7 @@ layout: post
                     </div>
                 </div>
             </section>
-        
+
             <section class="content">
                 <div class="box box-success">
                     <div class="box-header with-border">
@@ -118,36 +131,36 @@ layout: post
 
 <script>
     function calculateConcrete() {
-            let shape = document.getElementById('shape').value;
-            let length = parseFloat(document.getElementById('length').value) || 0;
-            let width = parseFloat(document.getElementById('width').value) || 0;
-            let thickness = parseFloat(document.getElementById('thickness').value) || 0;
-            let costPerUnit = parseFloat(document.getElementById('cost').value) || 0;
-            let volume = 0;
+        let shape = document.getElementById('shape').value;
+        let length = parseFloat(document.getElementById('length').value) || 0;
+        let width = parseFloat(document.getElementById('width').value) || 0;
+        let thickness = parseFloat(document.getElementById('thickness').value) || 0;
+        let costPerUnit = parseFloat(document.getElementById('cost').value) || 0;
+        let volume = 0;
 
-            if (shape === 'slab') {
-                volume = length * width * thickness;
-            } else if (shape === 'column') {
-                volume = Math.PI * Math.pow((width / 2), 2) * length;
-            } else if (shape === 'circular') {
-                volume = Math.PI * Math.pow((width / 2), 2) * thickness;
-            } else if (shape === 'stairs') {
-                volume = length * width * thickness * 0.5;
-            }
-
-            let cost = volume * costPerUnit;
-            document.getElementById('volumeResult').textContent = `Volume: ${volume.toFixed(2)} m³`;
-            document.getElementById('costResult').textContent = `Estimated Cost: $${cost.toFixed(2)}`;
+        if (shape === 'slab') {
+            volume = length * width * thickness;
+        } else if (shape === 'column') {
+            volume = Math.PI * Math.pow((width / 2), 2) * length;
+        } else if (shape === 'circular') {
+            volume = Math.PI * Math.pow((width / 2), 2) * thickness;
+        } else if (shape === 'stairs') {
+            volume = length * width * thickness * 0.5;
         }
 
-        function clearFields() {
-            document.getElementById('length').value = '';
-            document.getElementById('width').value = '';
-            document.getElementById('thickness').value = '';
-            document.getElementById('cost').value = '';
-            document.getElementById('volumeResult').textContent = 'Volume: ';
-            document.getElementById('costResult').textContent = 'Estimated Cost: ';
-        }
+        let cost = volume * costPerUnit;
+        document.getElementById('volumeResult').textContent = `Volume: ${volume.toFixed(2)} m³`;
+        document.getElementById('costResult').textContent = `Estimated Cost: $${cost.toFixed(2)}`;
+    }
+
+    function clearFields() {
+        document.getElementById('length').value = '';
+        document.getElementById('width').value = '';
+        document.getElementById('thickness').value = '';
+        document.getElementById('cost').value = '';
+        document.getElementById('volumeResult').textContent = 'Volume: ';
+        document.getElementById('costResult').textContent = 'Estimated Cost: ';
+    }
 </script>
 
 </html>
