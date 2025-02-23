@@ -1,148 +1,190 @@
-        <!-- =============================================== -->
+<!-- =============================================== -->
 
-        <!-- Left side column. contains the sidebar -->
-        <aside class="main-sidebar">
-            <!-- sidebar: style can be found in sidebar.less -->
-            <section class="sidebar">
-            <form action="/search.html" method="get" class="sidebar-form">
-                <div class="input-group">
+<!-- Left side column. contains the sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <form action="/search.html" method="get" class="sidebar-form">
+            <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="Search...">
                 <span class="input-group-btn">
-                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                        </button>
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i
+                            class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            <li class="treeview" id="string-utility-category">
+                <a href="/string-utility-tools.html">
+                    <i class="fa fa-edit text-aqua"></i> <span>String Utility</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
                     </span>
-                </div>
-            </form>
-                <!-- sidebar menu: : style can be found in sidebar.less -->
-                <ul class="sidebar-menu">
-                    <li class="treeview" id="string-utility-category">
-                        <a href="#">
-                            <i class="fa fa-edit text-aqua"></i> <span>String Utility</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/html-escape-unescape.html"><i class="fa fa-circle-o text-aqua"></i> HTML Escape</a></li>
-                            <li><a href="/javascript-escape-unescape.html"><i class="fa fa-circle-o text-aqua"></i> JavaScript Escape</a></li>
-                            <li><a href="/xml-escape-unescape.html"><i class="fa fa-circle-o text-aqua"></i> XML Escape</a></li>
-                            <li><a href="/url-encode-decode.html"><i class="fa fa-circle-o text-aqua"></i> URL Encode | Decode</a></li>
-                            <li><a href="/string-util.html"><i class="fa fa-circle-o text-aqua"></i> Change Case</a></li>
-                            <li><a href="/replace-text.html"><i class="fa fa-circle-o text-aqua"></i> Replace Text</a></li>
-                            <li><a href="/word-counter.html"><i class="fa fa-circle-o text-aqua"></i> Word Counter</a></li>
-                            <li><a href="/remove-stopwords-online.html"><i class="fa fa-circle-o text-aqua"></i>Remove Stopwords</a></li>
-                        </ul>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/html-escape-unescape.html"><i class="fa fa-circle-o text-aqua"></i> HTML Escape</a>
                     </li>
-
-                <li class="treeview" id="security-category">
-                        <a href="#">
-                            <i class="fa fa-shield text-red"></i> <span>Security &amp Privacy</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/secure-password-generator.html"><i class="fa fa-circle-o text-red"></i> Password Generator</a></li>
-                            <li><a href="/memorable-secure-password-generator.html"><i class="fa fa-circle-o text-red"></i> Memorable Password</a></li>
-                            <li><a href="/md5.html"><i class="fa fa-circle-o text-red"></i> Calculate MD5</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview" id="seo-category">
-                        <a href="#">
-                            <i class="fa fa-bullseye text-yellow"></i> <span>SEO</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/title-maker.html"><i class="fa fa-circle-o text-yellow"></i> Title Maker</a></li>
-                            <li><a href="/meta-tag-generator.html"><i class="fa fa-circle-o text-yellow"></i> Meta Tags</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview" id="converters-category">
-                        <a href="#">
-                            <i class="fa fa-exchange text-green"></i> <span>Converters</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/csv-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> CSV To JSON</a></li>
-                            <li><a href="/json-to-csv-converter.html"><i class="fa fa-circle-o text-green"></i> JSON To CSV</a></li>
-                            <li><a href="/csv-to-table-converter.html"><i class="fa fa-circle-o text-green"></i> CSV To HTML Table</a></li>
-                            <li><a href="/table-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> HTML Table To JSON</a></li>
-                            <li><a href="/html-to-text-converter.html"><i class="fa fa-circle-o text-green"></i> HTML To Text</a></li>
-                            <li><a href="/html-link-extractor.html"><i class="fa fa-circle-o text-green"></i> HTML Link Extractor</a></li>
-                            <li><a href="/create-html-link.html"><i class="fa fa-circle-o text-green"></i> Create HTML Link</a></li>
-                            <li><a href="/text-to-html-list-converter.html"><i class="fa fa-circle-o text-green"></i> Text To HTML List</a></li>
-                            <li><a href="/xml-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> XML To JSON</a></li>
-                            <li><a href="/json-to-property-converter.html"><i class="fa fa-circle-o text-green"></i> JSON To Property</a></li>
-                            <li><a href="/property-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> Property to JSON</a></li>
-                            <li><a href="/image-to-base64-converter.html"><i class="fa fa-circle-o text-green"></i> Image To Base-64</a></li>
-                            <li><a href="/heic-to-jpg-converter.html"><i class="fa fa-circle-o text-green"></i> HEIC to JPG / PNG / GIF</a></li>
-                            <li><a href="/heic-to-pdf-converter.html"><i class="fa fa-circle-o text-green"></i> HEIC to PDF</a></li>
-                            <li><a href="/jpg-to-pdf-converter.html"><i class="fa fa-circle-o text-green"></i> JPEG to PDF</a></li>
-                            <li><a href="/webp-to-pdf-converter.html"><i class="fa fa-circle-o text-green"></i> WEBP to PDF</a></li>
-                            <li><a href="/png-to-pdf-converter.html"><i class="fa fa-circle-o text-green"></i> PNG to PDF</a></li>
-                            <li><a href="/binary-translator.html"><i class="fa fa-circle-o text-green"></i> Binary Translator</a></li>
-                            <li><a href="/unique-word-extractor.html"><i class="fa fa-circle-o text-green"></i> Unique Word Extractor</a></li>
-                            <li><a href="/to-do-list.html"><i class="fa fa-circle-o"></i>To Do List Maker</a></li>
-                        </ul>
-                    </li>
-                     <li class="treeview" id="generators-category">
-                        <a href="#">
-                            <i class="fa fa-wrench"></i> <span>Code Generators</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/css-button-generator.html"><i class="fa fa-circle-o"></i> CSS Button Generator</a></li>
-                            <li><a href="/qr-code-generator.html"><i class="fa fa-circle-o"></i> QR Code Generator</a></li>
-                            <li><a href="/bar-code-generator.html"><i class="fa fa-circle-o"></i> Bar Code Generator</a></li>
-                            <li><a href="/jquery-quickstart-snippet.html"><i class="fa fa-circle-o"></i> jQuery Code Grabber</a></li>
-                            <li><a href="/amazon-affiliate-link-maker.html"><i class="fa fa-circle-o"></i> Amazon Link Maker</a></li>
-                            <li><a href="/amazon-affiliate-link-maker.html?=ref=audible"><i class="fa fa-circle-o"></i> Audible Link Maker</a></li>
-                            <li><a href="/amazon-feedback-generator.html"><i class="fa fa-circle-o"></i> Amazon Feedback Maker</a></li>
-                            <li><a href="/ebay-feedback-generator.html"><i class="fa fa-circle-o"></i> eBay Feedback Maker</a></li>
-                            <li><a href="/fiverr-feedback-generator.html"><i class="fa fa-circle-o"></i> Fiverr Feedback Maker</a></li>
-                            <li><a href="/cool-team-name-generator.html"><i class="fa fa-circle-o"></i> Cool Team Name Generator</a></li>
-                            <li><a href="/shopify-business-name-generator.html"><i class="fa fa-circle-o"></i> Shopify Business Name Generator</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview" id="calculators-category">
-                        <a href="#">
-                            <i class="fa fa-calculator"></i> <span>Calculators</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/crypto-average-calculator.html"><i class="fa fa-circle-o"></i> Crypto Avg Calculator</a></li>
-                            <li><a href="/crypto-average-calculator-bulk.html"><i class="fa fa-circle-o"></i>CSV Crypto Avg Calculator</a></li>
-                            <li><a href="https://www.fromdev.com/hour-counter-for-work"><i class="fa fa-circle-o"></i>Work Hour Calculator</a></li>
-                            <li><a href="/concrete-calculator.html"><i class="fa fa-circle-o"></i> Concrete Calculator</a></li>
-                            <li><a href="/yards-of-dirt-calculator.html"><i class="fa fa-circle-o"></i> Concrete Calculator</a></li>                              
-                        </ul>
-                    </li>
-                    <li class="treeview" id="calculators-category">
-                        <a href="#">
-                            <i class="fa fa-calculator"></i> <span>Play Games</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/wordle/wordle.html"><i class="fa fa-circle-o text-aqua"></i> <span>Play Wordle</span></a></li>
-                            <li><a href="/tic-tac-toe/play-against-ai.html"><i class="fa fa-circle-o text-aqua"></i> <span>Play TicTacToe</span></a></li>
-                            <li><a href="/memory-matching-game/play.html"><i class="fa fa-circle-o text-aqua"></i> <span>Play MemoryMatch</span></a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href="/contact.html"><i class="fa fa-circle-o text-aqua"></i> <span>Feedback</span></a></li>
+                    <li><a href="/javascript-escape-unescape.html"><i class="fa fa-circle-o text-aqua"></i> JavaScript
+                            Escape</a></li>
+                    <li><a href="/xml-escape-unescape.html"><i class="fa fa-circle-o text-aqua"></i> XML Escape</a></li>
+                    <li><a href="/url-encode-decode.html"><i class="fa fa-circle-o text-aqua"></i> URL Encode |
+                            Decode</a></li>
+                    <li><a href="/string-util.html"><i class="fa fa-circle-o text-aqua"></i> Change Case</a></li>
+                    <li><a href="/replace-text.html"><i class="fa fa-circle-o text-aqua"></i> Replace Text</a></li>
+                    <li><a href="/word-counter.html"><i class="fa fa-circle-o text-aqua"></i> Word Counter</a></li>
+                    <li><a href="/remove-stopwords-online.html"><i class="fa fa-circle-o text-aqua"></i>Remove
+                            Stopwords</a></li>
                 </ul>
-            </section>
-            <!-- /.sidebar -->
-        </aside>
+            </li>
 
-        <!-- =============================================== -->
+            <li class="treeview" id="security-category">
+                <a href="#">
+                    <i class="fa fa-shield text-red"></i> <span>Security &amp Privacy</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/secure-password-generator.html"><i class="fa fa-circle-o text-red"></i> Password
+                            Generator</a></li>
+                    <li><a href="/memorable-secure-password-generator.html"><i class="fa fa-circle-o text-red"></i>
+                            Memorable Password</a></li>
+                    <li><a href="/md5.html"><i class="fa fa-circle-o text-red"></i> Calculate MD5</a></li>
+                </ul>
+            </li>
+            <li class="treeview" id="seo-category">
+                <a href="#">
+                    <i class="fa fa-bullseye text-yellow"></i> <span>SEO</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/title-maker.html"><i class="fa fa-circle-o text-yellow"></i> Title Maker</a></li>
+                    <li><a href="/meta-tag-generator.html"><i class="fa fa-circle-o text-yellow"></i> Meta Tags</a></li>
+                </ul>
+            </li>
+            <li class="treeview" id="converters-category">
+                <a href="#">
+                    <i class="fa fa-exchange text-green"></i> <span>Converters</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/csv-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> CSV To JSON</a>
+                    </li>
+                    <li><a href="/json-to-csv-converter.html"><i class="fa fa-circle-o text-green"></i> JSON To CSV</a>
+                    </li>
+                    <li><a href="/csv-to-table-converter.html"><i class="fa fa-circle-o text-green"></i> CSV To HTML
+                            Table</a></li>
+                    <li><a href="/table-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> HTML Table To
+                            JSON</a></li>
+                    <li><a href="/html-to-text-converter.html"><i class="fa fa-circle-o text-green"></i> HTML To
+                            Text</a></li>
+                    <li><a href="/html-link-extractor.html"><i class="fa fa-circle-o text-green"></i> HTML Link
+                            Extractor</a></li>
+                    <li><a href="/create-html-link.html"><i class="fa fa-circle-o text-green"></i> Create HTML Link</a>
+                    </li>
+                    <li><a href="/text-to-html-list-converter.html"><i class="fa fa-circle-o text-green"></i> Text To
+                            HTML List</a></li>
+                    <li><a href="/xml-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> XML To JSON</a>
+                    </li>
+                    <li><a href="/json-to-property-converter.html"><i class="fa fa-circle-o text-green"></i> JSON To
+                            Property</a></li>
+                    <li><a href="/property-to-json-converter.html"><i class="fa fa-circle-o text-green"></i> Property to
+                            JSON</a></li>
+                    <li><a href="/image-to-base64-converter.html"><i class="fa fa-circle-o text-green"></i> Image To
+                            Base-64</a></li>
+                    <li><a href="/heic-to-jpg-converter.html"><i class="fa fa-circle-o text-green"></i> HEIC to JPG /
+                            PNG / GIF</a></li>
+                    <li><a href="/heic-to-pdf-converter.html"><i class="fa fa-circle-o text-green"></i> HEIC to PDF</a>
+                    </li>
+                    <li><a href="/jpg-to-pdf-converter.html"><i class="fa fa-circle-o text-green"></i> JPEG to PDF</a>
+                    </li>
+                    <li><a href="/webp-to-pdf-converter.html"><i class="fa fa-circle-o text-green"></i> WEBP to PDF</a>
+                    </li>
+                    <li><a href="/png-to-pdf-converter.html"><i class="fa fa-circle-o text-green"></i> PNG to PDF</a>
+                    </li>
+                    <li><a href="/binary-translator.html"><i class="fa fa-circle-o text-green"></i> Binary
+                            Translator</a></li>
+                    <li><a href="/unique-word-extractor.html"><i class="fa fa-circle-o text-green"></i> Unique Word
+                            Extractor</a></li>
+                    <li><a href="/to-do-list.html"><i class="fa fa-circle-o"></i>To Do List Maker</a></li>
+                </ul>
+            </li>
+            <li class="treeview" id="generators-category">
+                <a href="#">
+                    <i class="fa fa-wrench"></i> <span>Code Generators</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/css-button-generator.html"><i class="fa fa-circle-o"></i> CSS Button Generator</a>
+                    </li>
+                    <li><a href="/qr-code-generator.html"><i class="fa fa-circle-o"></i> QR Code Generator</a></li>
+                    <li><a href="/bar-code-generator.html"><i class="fa fa-circle-o"></i> Bar Code Generator</a></li>
+                    <li><a href="/jquery-quickstart-snippet.html"><i class="fa fa-circle-o"></i> jQuery Code Grabber</a>
+                    </li>
+                    <li><a href="/amazon-affiliate-link-maker.html"><i class="fa fa-circle-o"></i> Amazon Link Maker</a>
+                    </li>
+                    <li><a href="/amazon-affiliate-link-maker.html?=ref=audible"><i class="fa fa-circle-o"></i> Audible
+                            Link Maker</a></li>
+                    <li><a href="/amazon-feedback-generator.html"><i class="fa fa-circle-o"></i> Amazon Feedback
+                            Maker</a></li>
+                    <li><a href="/ebay-feedback-generator.html"><i class="fa fa-circle-o"></i> eBay Feedback Maker</a>
+                    </li>
+                    <li><a href="/fiverr-feedback-generator.html"><i class="fa fa-circle-o"></i> Fiverr Feedback
+                            Maker</a></li>
+                    <li><a href="/cool-team-name-generator.html"><i class="fa fa-circle-o"></i> Cool Team Name
+                            Generator</a></li>
+                    <li><a href="/shopify-business-name-generator.html"><i class="fa fa-circle-o"></i> Shopify Business
+                            Name Generator</a></li>
+                </ul>
+            </li>
+            <li class="treeview" id="calculators-category">
+                <a href="#">
+                    <i class="fa fa-calculator"></i> <span>Calculators</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/crypto-average-calculator.html"><i class="fa fa-circle-o"></i> Crypto Avg
+                            Calculator</a></li>
+                    <li><a href="/crypto-average-calculator-bulk.html"><i class="fa fa-circle-o"></i>CSV Crypto Avg
+                            Calculator</a></li>
+                    <li><a href="https://www.fromdev.com/hour-counter-for-work"><i class="fa fa-circle-o"></i>Work Hour
+                            Calculator</a></li>
+                    <li><a href="/concrete-calculator.html"><i class="fa fa-circle-o"></i> Concrete Calculator</a></li>
+                    <li><a href="/yards-of-dirt-calculator.html"><i class="fa fa-circle-o"></i> Concrete Calculator</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview" id="calculators-category">
+                <a href="#">
+                    <i class="fa fa-calculator"></i> <span>Play Games</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/wordle/wordle.html"><i class="fa fa-circle-o text-aqua"></i> <span>Play
+                                Wordle</span></a></li>
+                    <li><a href="/tic-tac-toe/play-against-ai.html"><i class="fa fa-circle-o text-aqua"></i> <span>Play
+                                TicTacToe</span></a></li>
+                    <li><a href="/memory-matching-game/play.html"><i class="fa fa-circle-o text-aqua"></i> <span>Play
+                                MemoryMatch</span></a></li>
+                </ul>
+            </li>
+
+            <li><a href="/contact.html"><i class="fa fa-circle-o text-aqua"></i> <span>Feedback</span></a></li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+<!-- =============================================== -->
