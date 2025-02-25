@@ -10,8 +10,42 @@ layout: post
     <title>{{ page.title }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="description" content="This is easy to use open source tool to generate meta tags for HTML pages. This can help you add SEO boost in search engine rankings." />
+    <meta name="description"
+        content="This is easy to use open source tool to generate meta tags for HTML pages. This can help you add SEO boost in search engine rankings." />
     <meta name="keywords" content="online,tool,meta,tags,seo,blog,web,opensource" />
+    <meta property="og:description"
+        content="Create free QR codes for any text online. Our easy-to-use tool instantly generates scannable QR codes. No signup or software download required. Try it now!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="YOUR_PAGE_URL">
+    <meta property="og:image" content="URL_TO_YOUR_SOCIAL_SHARE_IMAGE">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Online QR Code Generator for Text | Instantly Create QR Codes">
+    <meta name="twitter:description"
+        content="Create free QR codes for any text online. Our easy-to-use tool instantly generates scannable QR codes. No signup or software download required. Try it now!">
+    <meta name="twitter:image" content="URL_TO_YOUR_SOCIAL_SHARE_IMAGE">
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Free Online QR Code Generator for Text",
+          "description": "Create free QR codes for any text online. Our easy-to-use tool instantly generates scannable QR codes. No signup or software download required.",
+          "url": "https://tools.fromdev.com/qr-code-generator.html",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "browser",
+          "featureList": [
+            "Generate QR codes from text",
+            "Free and online",
+            "No signup required",
+            "Instant QR code generation"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        }
+        </script>
     <!-- CSS for the site theme -->
     {% include theme-css %}
     <!-- Annoying IE fixes -->
@@ -44,7 +78,8 @@ layout: post
                                 <form role="form">
                                     <div class="form-group">
                                         <label for="title">Text for QR Code</label>
-                                        <textarea class="form-control"  rows="10" id="inputText" placeholder="Enter your text here" autofocus></textarea>
+                                        <textarea class="form-control" rows="10" id="inputText"
+                                            placeholder="Enter your text here" autofocus></textarea>
                                     </div>
                                 </form>
                             </div>
@@ -52,7 +87,8 @@ layout: post
                             <div class="box-footer">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <button type="button" class="btn btn-success" id="generate">Generate QR Code</button>
+                                        <button type="button" class="btn btn-success" id="generate">Generate QR
+                                            Code</button>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +112,8 @@ layout: post
                             <div class="box-footer">
                                 <div class="row">
                                     <div class="col-xs-1">
-                                        <button type="button" class="btn btn-info" id="download">Download QR Code</button>
+                                        <button type="button" class="btn btn-info" id="download">Download QR
+                                            Code</button>
                                     </div>
                                 </div>
                             </div>
@@ -92,8 +129,11 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <img class="img-responsive" src="images/qr-code.png" alt="Online Open Source QR Code Generator Tool" title="Online Open Source QR Code Generator Tool">
-                        <p>This is a free online tool to generate QR code for any text. You can copy/paste your desired text/string in above text field and hit Generate QR Code button.</p>
+                        <img class="img-responsive" src="images/qr-code.png"
+                            alt="Online Open Source QR Code Generator Tool"
+                            title="Online Open Source QR Code Generator Tool">
+                        <p>This is a free online tool to generate QR code for any text. You can copy/paste your desired
+                            text/string in above text field and hit Generate QR Code button.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -103,7 +143,9 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>QR code stands for quick response code. It is a visual code that can be read by machines using camera. It is commonly used in mobile phones to read the URL from a printed media like message board or visiting card.</p>
+                        <p>QR code stands for quick response code. It is a visual code that can be read by machines
+                            using camera. It is commonly used in mobile phones to read the URL from a printed media like
+                            message board or visiting card.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -113,7 +155,8 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>That is easy. Just type the character or a full string in the text box above and hit Generate QR Code button. You should be able to see the QR Code Image on right side.</p>
+                        <p>That is easy. Just type the character or a full string in the text box above and hit Generate
+                            QR Code button. You should be able to see the QR Code Image on right side.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -123,7 +166,9 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>The QR code generated on this page can be downloaded using Download QR code button. You can also download it (on most browsers except safari) by doing right click on image and choosing save image menu option.</p>
+                        <p>The QR code generated on this page can be downloaded using Download QR code button. You can
+                            also download it (on most browsers except safari) by doing right click on image and choosing
+                            save image menu option.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -133,7 +178,8 @@ layout: post
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>Yes, the generated QR code is absolutely free to use for personal or business purposes. You can print it on a paper, visiting card, t-shirt or anywhere you like.</p>
+                        <p>Yes, the generated QR code is absolutely free to use for personal or business purposes. You
+                            can print it on a paper, visiting card, t-shirt or anywhere you like.</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -153,19 +199,19 @@ layout: post
 <script>
     var resultDiv = $("#result");
 
-    var clearResultDiv = function(d) {
+    var clearResultDiv = function (d) {
         d.empty();
         d.text("QR code will be displayed here!");
     };
-    $(document).ready(function() {
-        $("#generate").click(function() {
+    $(document).ready(function () {
+        $("#generate").click(function () {
             resultDiv.empty();
             resultDiv.qrcode({
                 text: $("#inputText").val()
             });
         });
 
-        $("#download").click(function() {
+        $("#download").click(function () {
             resultDiv.empty();
             var txt = $("#inputText").val();
             resultDiv.qrcode({
@@ -174,7 +220,7 @@ layout: post
             ReImg.fromCanvas($("#result canvas")[0]).downloadPng("qrcode.png")
         });
 
-        $('#inputText').on('input', function(e) {
+        $('#inputText').on('input', function (e) {
             clearResultDiv(resultDiv);
         });
         // clearResultDiv(resultDiv);
