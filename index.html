@@ -5,13 +5,14 @@ layout: post
 <html>
 
 <head>
-   <link rel="canonical" href="https://tools.fromdev.com">
-   {% include common-meta %}
-   {% feed_meta %}
+    <link rel="canonical" href="https://tools.fromdev.com">
+    {% include common-meta %}
+    {% feed_meta %}
     <title>{{ page.title }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="description" content="This is open source collection of online tools for developers and programmers to stay productive on their job." />
+    <meta name="description"
+        content="This is open source collection of online tools for developers and programmers to stay productive on their job." />
     <meta name="keywords" content="online,tool,developer,programming,web,opensource" />
 
     {% include theme-css %}
@@ -22,8 +23,8 @@ layout: post
     <!-- Site wrapper -->
     <div class="wrapper">
 
-{% include theme-header %}
-{% include theme-sidebar %}
+        {% include theme-header %}
+        {% include theme-sidebar %}
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -32,14 +33,16 @@ layout: post
                 <h1>Online Developer Tools Website By Fromdev.</h1>
             </section>
             <!-- Main content -->
-              <section class="content">
+            <section class="content">
                 <!-- Default box -->
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Welcome</h3>
                     </div>
                     <div class="box-body">
-                        <p>This website is dedicated to online tools for developer. There are many small tools that can be used everyday by developers. Having them online makes it more convenient. These tools are not extraordinary however, they can help
+                        <p>This website is dedicated to online tools for developer. There are many small tools that can
+                            be used everyday by developers. Having them online makes it more convenient. These tools are
+                            not extraordinary however, they can help
                             you stay productive by speeding up small repeatitive tasks that are often required. </p>
                     </div>
                     <!-- /.box-body -->
@@ -52,94 +55,193 @@ layout: post
                 <div class="row">
                     <div class="col-md-4">
                         <div class="box box-info">
-                    <div class="box-header with-border">
-                        <h3 class="box-title"><a href="/string-utility-tools.html">String Utility Tools</a></h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p>These are set of tools related to string and text manipulation. These tools can really useful in everyday text editing and changes.</p>
-                       <p>I use the CamelCase tool a lot of times for formatting the blog headings. I am sure you will often find other string utilities useful. </p>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><a href="/string-utility-tools.html">String Utility Tools</a></h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <p>These are set of tools related to string and text manipulation. These tools can
+                                    really useful in everyday text editing and changes.</p>
+                                <p>I use the CamelCase tool a lot of times for formatting the blog headings. I am sure
+                                    you will often find other string utilities useful. </p>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
 
                     </div>
                     <!-- /.col -->
-                   <div class="col-md-4">
+                    <div class="col-md-4">
                         <div class="box box-danger">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Security and Cryptography Tools</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p>These are set of tools related to information security and cryptography. </p>
-                       <p>I use the memorable password generator tool a lot of times for picking a secure yet memorable password. </p>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Security and Cryptography Tools</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <p>These are set of tools related to information security and cryptography. </p>
+                                <p>I use the memorable password generator tool a lot of times for picking a secure yet
+                                    memorable password. </p>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
 
                     </div>
                     <!-- /.col -->
-                   <div class="col-md-4">
+                    <div class="col-md-4">
                         <div class="box box-warning">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Search Engine Optimization Tools</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p>These are set of tools related to SEO for any website. Search engine optimization is essential for many websites to gain organic search traffic. </p>
-                       <p>This tools website uses the meta tag generator for all pages. I find the title suggesion tool very useful for casual blogging and articles sharing on social networks. </p>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Search Engine Optimization Tools</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <p>These are set of tools related to SEO for any website. Search engine optimization is
+                                    essential for many websites to gain organic search traffic. </p>
+                                <p>This tools website uses the meta tag generator for all pages. I find the title
+                                    suggesion tool very useful for casual blogging and articles sharing on social
+                                    networks. </p>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
 
                     </div>
                     <!-- /.col -->
                 </div>
                 <div class="row">
-                <div class="col-md-4">
+                    <div class="col-md-4">
                         <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Converter Tools</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <p>These are set of tools related to data and format conversion. These will help you quicly convert a popular format of data into antoher popular format. </p>
-                       <p>I use the CSV to HTML table converter a lot of time. This is one of the easiest way to convert your Google spreadsheet data in to a HTML table and display on a web page. </p>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Converter Tools</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <p>These are set of tools related to data and format conversion. These will help you
+                                    quicly convert a popular format of data into antoher popular format. </p>
+                                <p>I use the CSV to HTML table converter a lot of time. This is one of the easiest way
+                                    to convert your Google spreadsheet data in to a HTML table and display on a web
+                                    page. </p>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
 
                     </div>
                     <!-- /.col -->
-                   <div class="col-md-4">
+                    <div class="col-md-4">
                         <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Generation Tools</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <p>These are set of tools related to code or data generation for common needs. </p>
+                                <p>I use the CSS button generator for creating simple yet beautiful looking buttons on
+                                    HTML pages. </p>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-4">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Powerful Calculators for Every Need</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <p>Welcome to our comprehensive suite of specialized calculators designed to simplify
+                                    complex calculations and save you valuable time. Whether you're managing
+                                    cryptocurrency investments, tracking work hours, or planning construction projects,
+                                    our user-friendly tools provide instant, accurate results.</p>
+
+                                <p>Our collection includes the <strong>Crypto Average Calculator</strong> for
+                                    determining cryptocurrency investment values, a <strong>CSV Bulk Calculator</strong>
+                                    for processing multiple crypto entries simultaneously, a convenient <strong>Work
+                                        Hour Calculator</strong> for precise time tracking, and essential construction
+                                    tools including our <strong>Concrete Calculator</strong> and <strong>Yards of Dirt
+                                        Calculator</strong> to accurately estimate materials for your projects.</p>
+
+                                <p>Each calculator features an intuitive interface, making complex calculations
+                                    accessible to everyone. Start optimizing your workflow and making data-driven
+                                    decisions today with our free online calculators!</p>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="box box-success">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Generation Tools</h3>
+                        <h3 class="box-title">Unleash Your Mind with Our Interactive Game Collection </h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>These are set of tools related to code or data generation for common needs. </p>
-                       <p>I use the CSS button generator for creating simple yet beautiful looking buttons on HTML pages. </p>
+                        <div class="game-collection-intro">
+                            <h1>Unleash Your Mind with Our Interactive Game Collection</h1>
+
+                            <p>Looking for a quick mental break or a fun challenge to sharpen your cognitive skills? Our
+                                carefully curated collection of classic games provides the perfect digital playground
+                                for players of all ages. Take a moment to relax, recharge, and exercise your brain with
+                                these engaging options.</p>
+
+                            <div class="game-highlights">
+                                <div class="game-item">
+                                    <h2>Wordle</h2>
+                                    <p>Challenges your vocabulary and deductive reasoning as you attempt to guess a
+                                        five-letter word in six tries or less. With each guess, you'll receive
+                                        color-coded feedback to help narrow down the possibilities - making this word
+                                        puzzle both addictive and mentally stimulating.</p>
+                                    <a href="/wordle/wordle.html" class="game-link">Play Wordle</a>
+                                </div>
+
+                                <div class="game-item">
+                                    <h2>TicTacToe</h2>
+                                    <p>Brings the timeless paper-and-pencil game to your screen with an AI opponent
+                                        ready to test your strategic thinking. Perfect your X and O placement tactics as
+                                        you attempt to outsmart our artificial intelligence in this classic game of
+                                        alignment and foresight.</p>
+                                    <a href="/tic-tac-toe/play-against-ai.html" class="game-link">Play TicTacToe</a>
+                                </div>
+
+                                <div class="game-item">
+                                    <h2>MemoryMatch</h2>
+                                    <p>Exercises your recall abilities and concentration as you flip cards to find
+                                        matching pairs. This visually engaging memory game improves focus and short-term
+                                        memory while providing a delightful challenge suitable for quick play sessions.
+                                    </p>
+                                    <a href="/memory-matching-game/play.html" class="game-link">Play MemoryMatch</a>
+                                </div>
+                            </div>
+
+                            <div class="collection-footer">
+                                <p>Our games collection offers more than just entertainment - each game is designed to
+                                    exercise different cognitive skills while providing an enjoyable break from your
+                                    daily routine. Whether you have five minutes or fifty, these games adapt to your
+                                    schedule and provide the perfect mental workout.</p>
+
+                                <p>Access any game with a single click through our intuitive navigation menu. No
+                                    downloads required - just instant gameplay whenever you need a moment of fun or
+                                    mental exercise.</p>
+
+                                <p class="cta">Start playing now and discover your new favorite digital diversion!</p>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>
 
-                    </div>
-                    <!-- /.col -->
-                </div>
             </section>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-{% include theme-footer %}
+        {% include theme-footer %}
     </div>
     <!-- ./wrapper -->
-{% include theme-bottom-js %}
-<script>
-  $(document).ready(function () {
-    $('.markdown-body').attr('style', 'max-width:100%;');
-  });
-</script>
+    {% include theme-bottom-js %}
+    <script>
+        $(document).ready(function () {
+            $('.markdown-body').attr('style', 'max-width:100%;');
+        });
+    </script>
 </body>
+
 </html>
