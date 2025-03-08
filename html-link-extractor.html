@@ -63,6 +63,11 @@ layout: post
                                         <button type="button" class="btn btn-info" id="extracturl">Extract URLs <i
                                                 class="fa fa-fw fa-arrow-right"></i></button>
                                     </div>
+                                    <div class="col-xs-3">
+                                        <a class="btn btn-info" target="_blank"
+                                            href="https://www.fromdev.com/html-link-extractor"> <i
+                                                class="fa fa-download"></i>Use Bulk Tool (Export CSV File)</a>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /.box-footer -->
@@ -320,7 +325,7 @@ layout: post
             const toReplace = $(this).attr("data-url");
             const replaceElementId = $(this).attr("data-replace-element");
             const newValue = $(`#${replaceElementId}`).val();
-            if(newValue) {
+            if (newValue) {
                 replace(toReplace, newValue);
             }
         });
@@ -361,14 +366,14 @@ layout: post
         var links = [];
         const linkAttributes = [];
         Page.request.originalText = $("#htm").val();
-        if(!Page.request.originalText) {
+        if (!Page.request.originalText) {
             $('#error').text('HTML data required');
             return;
         }
         let $html;
         try {
             $html = $(Page.request.originalText);
-        } catch(e) {
+        } catch (e) {
             $('#error').text('Invalid HTML, Please input valid HTML data');
             return;
         }
