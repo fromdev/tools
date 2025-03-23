@@ -176,8 +176,7 @@
                 <ul class="treeview-menu">
                     <li><a href="/wordle/wordle.html"><i class="fa fa-circle-o text-aqua"></i> <span>Play
                                 Wordle</span></a></li>
-                    <li><a href="/tic-tac-toe/play-against-ai.html"><i class="fa fa-circle-o text-aqua"></i> <span>Play
-                                TicTacToe</span></a></li>
+                    <li><a href="https://www.fromdev.com/tic-tac-toe#play"><i class="fa fa-circle-o text-aqua"></i> <span>Play TicTacToe</span></a></li>
                     <li><a href="/memory-matching-game/play.html"><i class="fa fa-circle-o text-aqua"></i> <span>Play
                                 MemoryMatch</span></a></li>
                 </ul>
