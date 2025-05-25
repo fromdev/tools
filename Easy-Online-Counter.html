@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Easy Online Counter - Simple, Free Web Counter Tool</title>
+  <meta name="description" content="Easy Online Counter is a free, mobile-optimized digital tally counter. Count anything instantly with a beautiful modern design and smooth animations." />
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      touch-action: manipulation;
+    }
+
+    .app {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .counter-display {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-weight: bold;
+      font-size: clamp(4rem, 20vw, 10rem);
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .counter-display.animate {
+      transform: scale(1.2);
+    }
+
+    .controls {
+      display: flex;
+      height: 50%;
+    }
+
+    .btn {
+      flex: 1;
+      font-size: clamp(2rem, 5vw, 4rem);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      outline: none;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      color: white;
+      font-weight: bold;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.15s ease-in-out, background 0.3s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+    }
+
+    .btn.plus {
+      background: rgba(0, 255, 128, 0.15);
+    }
+
+    .btn.minus {
+      background: rgba(255, 0, 64, 0.15);
+    }
+
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(0);
+      animation: ripple 0.6s linear;
+      pointer-events: none;
+    }
+
+    @keyframes ripple {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    @media (orientation: landscape) {
+      .controls {
+        height: 40%;
+      }
+    }
+
+    footer {
+      padding: 2rem 1rem;
+      background: #f5f5f5;
+      color: #333;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    footer h2 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    footer h3 {
+      margin-top: 1.2rem;
+      font-size: 1.2rem;
+    }
+
+    footer p, footer li {
+      margin-bottom: 0.8rem;
+    }
+
+    footer ul {
+      list-style-type: disc;
+      margin-left: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="counter-display" id="counter">0</div>
+    <div class="controls">
+      <button class="btn minus" id="minus">-</button>
+      <button class="btn plus" id="plus">+</button>
+    </div>
+  </div>
+
+  <footer>
+    <h2>Easy Online Counter - Free, Instant Tally Counter</h2>
+    <p>
+      Welcome to <strong>Easy Online Counter</strong> — your free, fast, and user-friendly digital tally counter tool. Whether you're counting reps at the gym, keeping score in a game, or tracking event attendance, this simple web app helps you stay organized with just a tap.
+    </p>
+    <p>
+      Designed for mobile and desktop use, our online counter is touch-optimized, highly responsive, and completely free to use. No login, no setup — just launch and count.
+    </p>
+
+    <h2>Frequently Asked Questions (FAQ)</h2>
+
+    <h3>How do I use the Easy Online Counter?</h3>
+    <ul>
+      <li>Press the <strong>+</strong> button to increase the count.</li>
+      <li>Press the <strong>-</strong> button to decrease the count.</li>
+      <li>Use your keyboard's <strong>arrow keys</strong> or <strong>+ / -</strong> keys as shortcuts.</li>
+      <li>Enjoy smooth animations and visual feedback for every tap.</li>
+    </ul>
+
+    <h3>Why use this online counter?</h3>
+    <ul>
+      <li><strong>Mobile-friendly:</strong> Optimized for all screen sizes with a modern, app-like interface.</li>
+      <li><strong>Fast and lightweight:</strong> Loads instantly without distractions.</li>
+      <li><strong>Free and private:</strong> No tracking, no account needed, and no saved data.</li>
+      <li><strong>Useful anywhere:</strong> Great for workouts, inventory counts, classroom activities, and more.</li>
+    </ul>
+
+    <h3>Can I use this counter offline?</h3>
+    <p>Currently, this tool works best with an internet connection. For offline support, consider bookmarking the page or installing it as a PWA in a future update.</p>
+  </footer>
+
+  <script>
+    const counterEl = document.getElementById('counter');
+    const plusBtn = document.getElementById('plus');
+    const minusBtn = document.getElementById('minus');
+
+    let count = 0;
+
+    function updateCounter(value) {
+      count += value;
+      counterEl.textContent = count;
+      counterEl.classList.add('animate');
+      setTimeout(() => counterEl.classList.remove('animate'), 200);
+    }
+
+    function createRipple(e, button) {
+      const ripple = document.createElement('span');
+      const rect = button.getBoundingClientRect();
+      const size = Math.max(button.clientWidth, button.clientHeight);
+      ripple.className = 'ripple';
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+      button.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    }
+
+    plusBtn.addEventListener('click', (e) => {
+      updateCounter(1);
+      createRipple(e, plusBtn);
+    });
+
+    minusBtn.addEventListener('click', (e) => {
+      updateCounter(-1);
+      createRipple(e, minusBtn);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === '+' || e.key === '=' || e.key === 'ArrowUp') {
+        updateCounter(1);
+      } else if (e.key === '-' || e.key === 'ArrowDown') {
+        updateCounter(-1);
+      }
+    });
+
+    let lastTouch = 0;
+    document.addEventListener('touchend', (e) => {
+      const now = new Date().getTime();
+      if (now - lastTouch <= 300) {
+        e.preventDefault();
+      }
+      lastTouch = now;
+    }, { passive: false });
+  </script>
+</body>
+</html>
