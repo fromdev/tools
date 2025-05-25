@@ -6,7 +6,6 @@
   <title>Easy Online Counter - Simple, Free Web Counter Tool</title>
   <meta name="description" content="Easy Online Counter is a free, mobile-optimized digital tally counter. Count anything instantly with a beautiful modern design and smooth animations." />
   <style>
-    /* Reset and base */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -18,14 +17,13 @@
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #667eea, #764ba2);
-      display: flex;
-      flex-direction: column;
       overflow-x: hidden;
+      overflow-y: auto;
       touch-action: manipulation;
     }
 
     .app {
-      flex: 1;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -136,6 +134,7 @@
   </style>
 </head>
 <body>
+  <!-- Full-screen counter app -->
   <div class="app">
     <div class="counter-display" id="counter">0</div>
     <div class="controls">
@@ -144,6 +143,7 @@
     </div>
   </div>
 
+  <!-- Scrollable SEO content below the fold -->
   <footer>
     <h2>Easy Online Counter - Free, Instant Tally Counter</h2>
     <p>
