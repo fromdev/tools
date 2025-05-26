@@ -82,6 +82,16 @@
       background: rgba(255, 0, 64, 0.15);
     }
 
+    .btn.reset {
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 1.2rem;
+      height: 3rem;
+      margin: 0.5rem auto;
+      padding: 0 2rem;
+      border-radius: 999px;
+      width: fit-content;
+    }
+
     .ripple {
       position: absolute;
       border-radius: 50%;
@@ -134,16 +144,15 @@
   </style>
 </head>
 <body>
-  <!-- Full-screen counter app -->
   <div class="app">
     <div class="counter-display" id="counter">0</div>
     <div class="controls">
       <button class="btn minus" id="minus">-</button>
       <button class="btn plus" id="plus">+</button>
     </div>
+    <button class="btn reset" id="reset">Reset</button>
   </div>
 
-  <!-- Scrollable SEO content below the fold -->
   <footer>
     <h2>Easy Online Counter - Free, Instant Tally Counter</h2>
     <p>
@@ -155,37 +164,71 @@
 
     <h2>Frequently Asked Questions (FAQ)</h2>
 
-    <h3>How do I use the Easy Online Counter?</h3>
+    <h3>1. How do I use the Easy Online Counter?</h3>
+    <p>Simply tap the <strong>+</strong> or <strong>−</strong> buttons to increment or decrement the counter. You can also use keyboard keys (+, −, arrow keys) or reset with the reset button.</p>
+
+    <h3>2. Will the counter remember my value?</h3>
+    <p>Yes! Your current count is saved automatically in your browser using localStorage and restored on your next visit.</p>
+
+    <h3>3. Can I use this counter on my phone?</h3>
+    <p>Absolutely. The app is fully optimized for mobile devices with large touch targets and smooth animations.</p>
+
+    <h3>4. What are some uses for this tool?</h3>
     <ul>
-      <li>Press the <strong>+</strong> button to increase the count.</li>
-      <li>Press the <strong>-</strong> button to decrease the count.</li>
-      <li>Use your keyboard's <strong>arrow keys</strong> or <strong>+ / -</strong> keys as shortcuts.</li>
-      <li>Enjoy smooth animations and visual feedback for every tap.</li>
+      <li><strong>Workout tracking:</strong> Count sets, reps, or rounds in a workout.</li>
+      <li><strong>Inventory management:</strong> Tally stock items quickly.</li>
+      <li><strong>Event headcounts:</strong> Track people entering a venue.</li>
+      <li><strong>Classroom participation:</strong> Teachers can count student responses.</li>
+      <li><strong>Game scoring:</strong> Keep score for simple games or team competitions.</li>
+      <li><strong>Habit building:</strong> Count streaks or progress in a challenge.</li>
+      <li><strong>Prayer/chant counting:</strong> A quiet tool for meditation or repetition.</li>
+      <li><strong>Queue management:</strong> Tally customers or clients served.</li>
+      <li><strong>Research studies:</strong> Track behavior counts or occurrences.</li>
+      <li><strong>Presentation timing:</strong> Count down activities or sections.</li>
     </ul>
 
-    <h3>Why use this online counter?</h3>
-    <ul>
-      <li><strong>Mobile-friendly:</strong> Optimized for all screen sizes with a modern, app-like interface.</li>
-      <li><strong>Fast and lightweight:</strong> Loads instantly without distractions.</li>
-      <li><strong>Free and private:</strong> No tracking, no account needed, and no saved data.</li>
-      <li><strong>Useful anywhere:</strong> Great for workouts, inventory counts, classroom activities, and more.</li>
-    </ul>
+    <h3>5. Is it free to use?</h3>
+    <p>Yes, 100% free. No ads, no account, no data collection.</p>
 
-    <h3>Can I use this counter offline?</h3>
-    <p>Currently, this tool works best with an internet connection. For offline support, consider bookmarking the page or installing it as a PWA in a future update.</p>
+    <h3>6. Can I use it offline?</h3>
+    <p>Currently, the app requires internet for initial load. Future updates may support offline use.</p>
+
+    <h3>7. Does this counter work on tablets?</h3>
+    <p>Yes! It's designed to scale beautifully on phones, tablets, and desktops.</p>
+
+    <h3>8. Can I reset the counter?</h3>
+    <p>Yes. Use the Reset button to clear the count back to zero instantly.</p>
+
+    <h3>9. Will it count negative numbers?</h3>
+    <p>Yes, you can decrement below zero with the minus button or arrow keys.</p>
+
+    <h3>10. Is my data secure?</h3>
+    <p>Your count is stored locally in your browser and never shared or uploaded.</p>
   </footer>
 
   <script>
     const counterEl = document.getElementById('counter');
     const plusBtn = document.getElementById('plus');
     const minusBtn = document.getElementById('minus');
+    const resetBtn = document.getElementById('reset');
 
     let count = 0;
+
+    function loadCounter() {
+      const saved = localStorage.getItem('easyCounterValue');
+      count = saved ? parseInt(saved, 10) : 0;
+      counterEl.textContent = count;
+    }
+
+    function saveCounter() {
+      localStorage.setItem('easyCounterValue', count);
+    }
 
     function updateCounter(value) {
       count += value;
       counterEl.textContent = count;
       counterEl.classList.add('animate');
+      saveCounter();
       setTimeout(() => counterEl.classList.remove('animate'), 200);
     }
 
@@ -211,6 +254,14 @@
       createRipple(e, minusBtn);
     });
 
+    resetBtn.addEventListener('click', () => {
+      count = 0;
+      counterEl.textContent = count;
+      saveCounter();
+      counterEl.classList.add('animate');
+      setTimeout(() => counterEl.classList.remove('animate'), 200);
+    });
+
     document.addEventListener('keydown', (e) => {
       if (e.key === '+' || e.key === '=' || e.key === 'ArrowUp') {
         updateCounter(1);
@@ -227,6 +278,9 @@
       }
       lastTouch = now;
     }, { passive: false });
+
+    // Initialize
+    loadCounter();
   </script>
 </body>
 </html>
