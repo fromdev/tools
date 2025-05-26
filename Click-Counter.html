@@ -1,5 +1,141 @@
-<!-- HTML HEAD and styles remain unchanged... -->
-<!-- BODY below with changes marked inline -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Click Counter - Simple, Free Online Button Click Tracker</title>
+  <meta name="description" content="Click Counter is a free, mobile-friendly digital tool that tracks button clicks instantly. Count anything with smooth animations and a beautiful modern UI." />
+  <meta name="keywords" content="Click Counter, online click tracker, button click counter, digital clicker, web click tally, click count tool" />
+  <style>
+    /* Styles unchanged for modern look and feel */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      overflow-x: hidden;
+      overflow-y: auto;
+      touch-action: manipulation;
+    }
+
+    .app {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .click-display {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-weight: bold;
+      font-size: clamp(4rem, 20vw, 10rem);
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .click-display.animate {
+      transform: scale(1.2);
+    }
+
+    .controls {
+      display: flex;
+      height: 50%;
+    }
+
+    .btn {
+      flex: 1;
+      font-size: clamp(2rem, 5vw, 4rem);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      outline: none;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      color: white;
+      font-weight: bold;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.15s ease-in-out, background 0.3s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+    }
+
+    .btn.plus {
+      background: rgba(0, 255, 128, 0.15);
+    }
+
+    .btn.minus {
+      background: rgba(255, 0, 64, 0.15);
+    }
+
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(0);
+      animation: ripple 0.6s linear;
+      pointer-events: none;
+    }
+
+    @keyframes ripple {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    @media (orientation: landscape) {
+      .controls {
+        height: 40%;
+      }
+    }
+
+    footer {
+      padding: 2rem 1rem;
+      background: #f5f5f5;
+      color: #333;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    footer h2 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    footer h3 {
+      margin-top: 1.2rem;
+      font-size: 1.2rem;
+    }
+
+    footer p, footer li {
+      margin-bottom: 0.8rem;
+    }
+
+    footer ul {
+      list-style-type: disc;
+      margin-left: 1.5rem;
+    }
+  </style>
+</head>
 
 <body>
   <div class="app">
