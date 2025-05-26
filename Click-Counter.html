@@ -1,0 +1,139 @@
+<!-- HTML HEAD and styles remain unchanged... -->
+<!-- BODY below with changes marked inline -->
+
+<body>
+  <div class="app">
+    <div class="click-display" id="clickCount">0</div>
+    <div class="controls">
+      <button class="btn minus" id="decrementClick">-</button>
+      <button class="btn reset" id="resetClick">Reset</button>
+      <button class="btn plus" id="incrementClick">+</button>
+    </div>
+  </div>
+
+  <footer>
+    <h2>Click Counter - Free, Instant Online Click Tracker</h2>
+    <p>
+      Welcome to <strong>Click Counter</strong> — the fastest and simplest way to count button clicks online. Whether you're testing, training, or just tracking anything, this tool keeps it easy and accurate.
+    </p>
+    <p>
+      It's mobile-responsive, private, and doesn't require downloads or sign-ins. Your count is now saved automatically, even if you close your browser.
+    </p>
+
+    <h2>Top 10 Uses for Click Counter (FAQ)</h2>
+
+    <h3>1. What is Click Counter used for?</h3>
+    <p>Click Counter is perfect for counting button presses in real-time for any task—training, tallying, or tracking events.</p>
+
+    <h3>2. Can I use this for reps at the gym?</h3>
+    <p>Yes! It’s great for counting reps, sets, or circuits during fitness routines.</p>
+
+    <h3>3. Is Click Counter useful for testing CPS (Clicks Per Second)?</h3>
+    <p>Absolutely. You can use it alongside a stopwatch to test CPS manually.</p>
+
+    <h3>4. Can teachers use it in classrooms?</h3>
+    <p>Yes, teachers use it to track student participation, group responses, or attendance.</p>
+
+    <h3>5. Is it good for board games?</h3>
+    <p>Definitely. Use it to keep score or track turns in board and card games.</p>
+
+    <h3>6. Can I use it for inventory counting?</h3>
+    <p>Yes. Warehouse teams use it for fast manual stock tallies without a clipboard.</p>
+
+    <h3>7. Is it safe for kids?</h3>
+    <p>It’s completely safe — no ads, no tracking, no downloads. A fun counting tool for all ages.</p>
+
+    <h3>8. Does it work offline?</h3>
+    <p>Once loaded, yes — and future versions may fully support offline progressive web app (PWA) mode.</p>
+
+    <h3>9. Can I bookmark it for daily use?</h3>
+    <p>Yes, you can bookmark it or add it to your mobile home screen for quick access.</p>
+
+    <h3>10. What makes Click Counter better than physical clickers?</h3>
+    <p>It’s free, stylish, and always with you — on any phone, tablet, or computer, with local save support.</p>
+  </footer>
+
+  <script>
+    const clickCountEl = document.getElementById('clickCount');
+    const incrementClickBtn = document.getElementById('incrementClick');
+    const decrementClickBtn = document.getElementById('decrementClick');
+    const resetClickBtn = document.getElementById('resetClick');
+
+    let clickCount = 0;
+
+    function loadClickCount() {
+      const saved = localStorage.getItem('clickCounterValue');
+      if (saved !== null) {
+        clickCount = parseInt(saved);
+        clickCountEl.textContent = clickCount;
+      }
+    }
+
+    function saveClickCount() {
+      localStorage.setItem('clickCounterValue', clickCount);
+    }
+
+    function updateClickCount(value) {
+      clickCount += value;
+      clickCountEl.textContent = clickCount;
+      clickCountEl.classList.add('animate');
+      saveClickCount();
+      setTimeout(() => clickCountEl.classList.remove('animate'), 200);
+    }
+
+    function resetClickCount() {
+      clickCount = 0;
+      clickCountEl.textContent = clickCount;
+      saveClickCount();
+    }
+
+    function createRipple(e, btn) {
+      const ripple = document.createElement('span');
+      const rect = btn.getBoundingClientRect();
+      const size = Math.max(btn.clientWidth, btn.clientHeight);
+      ripple.className = 'ripple';
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+      btn.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    }
+
+    incrementClickBtn.addEventListener('click', (e) => {
+      updateClickCount(1);
+      createRipple(e, incrementClickBtn);
+    });
+
+    decrementClickBtn.addEventListener('click', (e) => {
+      updateClickCount(-1);
+      createRipple(e, decrementClickBtn);
+    });
+
+    resetClickBtn.addEventListener('click', (e) => {
+      resetClickCount();
+      createRipple(e, resetClickBtn);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === '+' || e.key === '=' || e.key === 'ArrowUp') {
+        updateClickCount(1);
+      } else if (e.key === '-' || e.key === 'ArrowDown') {
+        updateClickCount(-1);
+      } else if (e.key.toLowerCase() === 'r') {
+        resetClickCount();
+      }
+    });
+
+    document.addEventListener('touchend', (e) => {
+      const now = new Date().getTime();
+      if (now - lastTap <= 300) {
+        e.preventDefault();
+      }
+      lastTap = now;
+    }, { passive: false });
+
+    let lastTap = 0;
+    loadClickCount();
+  </script>
+</body>
+</html>
