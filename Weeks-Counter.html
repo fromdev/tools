@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weeks Calculator</title>
+    <title>Weeks Calculator - Free Online Weeks Counter Tool</title>
+    <meta name="description" content="Free weeks calculator and weeks counter online tool. Calculate weeks between dates, add or subtract weeks from any date. Perfect for project planning and scheduling.">
     <style>
         * {
             margin: 0;
@@ -13,14 +14,10 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            min-height: 100vh;
         }
 
         @keyframes gradientShift {
@@ -29,19 +26,28 @@
             100% { background-position: 0% 50%; }
         }
 
-        .container {
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .calculator-wrapper {
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             backdrop-filter: blur(20px);
             background: rgba(255, 255, 255, 0.1);
             border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             padding: 40px;
+            margin-bottom: 40px;
             transition: all 0.3s ease;
         }
 
-        .container:hover {
+        .calculator-wrapper:hover {
             transform: translateY(-5px);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
         }
@@ -49,14 +55,22 @@
         h1 {
             text-align: center;
             color: white;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-weight: 900;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(45deg, #fff, #f0f0f0);
+            background: linear-gradient(45deg, #fff, #f0f8ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 40px;
+            font-weight: 400;
         }
 
         .calculator-grid {
@@ -67,36 +81,40 @@
 
         .section {
             background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 25px;
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
             border: 1px solid rgba(255, 255, 255, 0.15);
             transition: all 0.3s ease;
         }
 
         .section:hover {
             background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .section h2 {
             color: white;
-            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .input-group {
             display: grid;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 20px;
+            margin-bottom: 25px;
         }
 
         .input-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 20px;
         }
 
         .input-container {
@@ -107,14 +125,15 @@
         label {
             color: rgba(255, 255, 255, 0.9);
             font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         input[type="date"], input[type="number"] {
-            padding: 15px;
+            padding: 16px 20px;
             border: none;
-            border-radius: 12px;
+            border-radius: 15px;
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             color: white;
@@ -129,7 +148,7 @@
             background: rgba(255, 255, 255, 0.25);
             border-color: rgba(255, 255, 255, 0.4);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
         }
 
         input::placeholder {
@@ -140,15 +159,15 @@
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             border: none;
-            padding: 15px 30px;
-            border-radius: 12px;
+            padding: 16px 32px;
+            border-radius: 15px;
             font-size: 16px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         .button:hover {
@@ -164,11 +183,11 @@
         .result {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(15px);
-            border-radius: 16px;
-            padding: 25px;
-            margin-top: 20px;
+            border-radius: 18px;
+            padding: 30px;
+            margin-top: 25px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            min-height: 80px;
+            min-height: 90px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -177,7 +196,7 @@
 
         .result-text {
             color: white;
-            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-size: clamp(1.5rem, 4vw, 3.5rem);
             font-weight: 900;
             text-align: center;
             text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -190,23 +209,29 @@
         }
 
         .number-highlight {
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-size: clamp(2rem, 5vw, 4rem);
+            font-size: clamp(2.2rem, 5vw, 4.5rem);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.3)); }
+            to { filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.6)); }
         }
 
         .add-subtract-controls {
             display: grid;
-            grid-template-columns: 1fr auto auto;
-            gap: 10px;
+            grid-template-columns: 1fr auto;
+            gap: 20px;
             align-items: end;
         }
 
         .button-group {
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
 
         .button.add {
@@ -225,8 +250,110 @@
             background: linear-gradient(135deg, #da190b, #f44336);
         }
 
+        .example-text {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+            margin-top: 15px;
+            font-style: italic;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* SEO Content Styles */
+        .seo-content {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 50px 40px;
+            margin-top: 40px;
+        }
+
+        .seo-section {
+            margin-bottom: 50px;
+        }
+
+        .seo-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .seo-section h2 {
+            color: white;
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            background: linear-gradient(45deg, #fff, #f0f8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .seo-section h3 {
+            color: white;
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-weight: 600;
+            margin: 30px 0 20px 0;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .seo-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .seo-section ul {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 25px 0;
+            padding-left: 30px;
+        }
+
+        .seo-section li {
+            margin-bottom: 12px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item h3 {
+            color: white;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
         @media (max-width: 768px) {
-            .container {
+            .calculator-wrapper, .seo-content {
                 padding: 25px;
                 margin: 10px;
             }
@@ -237,75 +364,164 @@
 
             .add-subtract-controls {
                 grid-template-columns: 1fr;
-                gap: 15px;
+                gap: 20px;
             }
 
             .button-group {
                 justify-content: center;
             }
+
+            .seo-section {
+                margin-bottom: 40px;
+            }
         }
 
-        .example-text {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-            margin-top: 10px;
-            font-style: italic;
+        .keyword-highlight {
+            background: linear-gradient(45deg, #feca57, #ff9ff3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Weeks Calculator</h1>
-        
-        <div class="calculator-grid">
-            <!-- Calculate Weeks Between Dates -->
-            <div class="section">
-                <h2>📅 Calculate Weeks Between Dates</h2>
-                <div class="input-group">
-                    <div class="input-row">
-                        <div class="input-container">
-                            <label for="startDate">Start Date</label>
-                            <input type="date" id="startDate">
+    <div class="main-container">
+        <!-- Calculator Section -->
+        <div class="calculator-wrapper">
+            <h1>Weeks Calculator</h1>
+            <p class="subtitle">Professional online weeks counter tool for precise date calculations</p>
+            
+            <div class="calculator-grid">
+                <!-- Calculate Weeks Between Dates -->
+                <div class="section">
+                    <h2>📅 Calculate Weeks Between Dates</h2>
+                    <div class="input-group">
+                        <div class="input-row">
+                            <div class="input-container">
+                                <label for="startDate">Start Date</label>
+                                <input type="date" id="startDate">
+                            </div>
+                            <div class="input-container">
+                                <label for="endDate">End Date</label>
+                                <input type="date" id="endDate">
+                            </div>
                         </div>
+                        <button class="button" onclick="calculateWeeksBetween()">Calculate Weeks</button>
+                    </div>
+                    <div class="result" id="weeksResult">
+                        <div class="result-text">Select dates to calculate weeks</div>
+                    </div>
+                    <div class="example-text">
+                        💡 Example: December 1, 2022 to December 25, 2024 = 108 weeks and 2 days
+                    </div>
+                </div>
+
+                <!-- Add/Subtract Weeks -->
+                <div class="section">
+                    <h2>➕➖ Add or Subtract Weeks</h2>
+                    <div class="input-group">
                         <div class="input-container">
-                            <label for="endDate">End Date</label>
-                            <input type="date" id="endDate">
+                            <label for="baseDate">Starting Date</label>
+                            <input type="date" id="baseDate">
+                        </div>
+                        <div class="add-subtract-controls">
+                            <div class="input-container">
+                                <label for="weeksInput">Number of Weeks</label>
+                                <input type="number" id="weeksInput" placeholder="Enter weeks" min="0">
+                            </div>
+                            <div class="button-group">
+                                <button class="button add" onclick="addWeeks()">+ Add</button>
+                                <button class="button subtract" onclick="subtractWeeks()">- Subtract</button>
+                            </div>
                         </div>
                     </div>
-                    <button class="button" onclick="calculateWeeksBetween()">Calculate Weeks</button>
-                </div>
-                <div class="result" id="weeksResult">
-                    <div class="result-text">Select dates to calculate weeks</div>
-                </div>
-                <div class="example-text">
-                    Example: December 1, 2022 to December 25, 2024 = 108 weeks
+                    <div class="result" id="dateResult">
+                        <div class="result-text">Select a date and enter weeks</div>
+                    </div>
+                    <div class="example-text">
+                        💡 Example: Add 7 weeks to today, or subtract 14 weeks from any date
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Add/Subtract Weeks -->
-            <div class="section">
-                <h2>➕➖ Add or Subtract Weeks</h2>
-                <div class="input-group">
-                    <div class="input-container">
-                        <label for="baseDate">Starting Date</label>
-                        <input type="date" id="baseDate">
-                    </div>
-                    <div class="add-subtract-controls">
-                        <div class="input-container">
-                            <label for="weeksInput">Number of Weeks</label>
-                            <input type="number" id="weeksInput" placeholder="Enter weeks" min="0">
-                        </div>
-                        <div class="button-group">
-                            <button class="button add" onclick="addWeeks()">+ Add</button>
-                            <button class="button subtract" onclick="subtractWeeks()">- Subtract</button>
-                        </div>
-                    </div>
+        <!-- SEO Content Section -->
+        <div class="seo-content">
+            <!-- Tool Overview Section -->
+            <div class="seo-section">
+                <h2>What is the Weeks Calculator Tool?</h2>
+                <p>The <span class="keyword-highlight">Weeks Calculator</span> is a comprehensive <span class="keyword-highlight">weeks counter online</span> tool designed to handle all your week-based date calculations with precision and ease. Whether you're managing projects, planning events, tracking pregnancies, or organizing personal schedules, this powerful <span class="keyword-highlight">weeks calculator</span> delivers instant, accurate results.</p>
+                
+                <p>Our advanced <span class="keyword-highlight">weeks counter online</span> provides two essential functions: calculating the exact number of weeks between any two dates, and adding or subtracting weeks from a specific starting date. This versatility makes it an indispensable tool for professionals, students, parents, and anyone who works with weekly timeframes.</p>
+                
+                <h3>Why Choose Our Weeks Calculator?</h3>
+                <ul>
+                    <li><strong>Instant Calculations:</strong> Get immediate results for weeks between dates</li>
+                    <li><strong>Dual Functionality:</strong> Calculate date ranges and perform week arithmetic</li>
+                    <li><strong>Precision Accuracy:</strong> Includes exact weeks plus remaining days</li>
+                    <li><strong>Mobile Responsive:</strong> Works perfectly on all devices and screen sizes</li>
+                    <li><strong>No Registration:</strong> Use our <span class="keyword-highlight">weeks counter online</span> immediately</li>
+                    <li><strong>Modern Interface:</strong> Beautiful, intuitive design with smooth animations</li>
+                    <li><strong>Free Forever:</strong> Complete functionality at absolutely no cost</li>
+                    <li><strong>Leap Year Smart:</strong> Automatically handles leap years and calendar variations</li>
+                </ul>
+                
+                <p>This professional <span class="keyword-highlight">weeks calculator</span> excels in business planning, academic scheduling, pregnancy tracking, fitness programs, project management, and personal organization. Simply input your dates and let our sophisticated algorithm handle all the complex calculations instantly.</p>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="seo-section">
+                <h2>Frequently Asked Questions - Weeks Calculator</h2>
+                
+                <div class="faq-item">
+                    <h3>How do I use this weeks counter online to calculate weeks between dates?</h3>
+                    <p>Using our <span class="keyword-highlight">weeks calculator</span> is simple: enter your start date and end date in the "Calculate Weeks Between Dates" section, then click "Calculate Weeks". The tool instantly displays the exact number of weeks and any remaining days between your selected dates.</p>
                 </div>
-                <div class="result" id="dateResult">
-                    <div class="result-text">Select a date and enter weeks</div>
+
+                <div class="faq-item">
+                    <h3>Can I add or subtract weeks from a specific date using this weeks calculator?</h3>
+                    <p>Absolutely! Our <span class="keyword-highlight">weeks counter online</span> includes a powerful add/subtract feature. Enter your starting date, specify the number of weeks, then click either "Add" or "Subtract" to see the resulting date calculated automatically.</p>
                 </div>
-                <div class="example-text">
-                    Example: Add 7 weeks to today, or subtract 14 weeks from any date
+
+                <div class="faq-item">
+                    <h3>Is this weeks calculator accurate for leap years and different calendar years?</h3>
+                    <p>Yes! Our <span class="keyword-highlight">weeks counter online</span> automatically accounts for leap years, different month lengths, and calendar variations, ensuring 100% accurate calculations regardless of the years or dates involved in your calculation.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What's the maximum date range this weeks calculator can handle?</h3>
+                    <p>Our <span class="keyword-highlight">weeks calculator</span> can process virtually unlimited date ranges, from just a few days to several decades. Whether calculating short-term project durations or long-term planning horizons, the tool provides reliable results.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How can I use this weeks counter online for project planning and management?</h3>
+                    <p>This <span class="keyword-highlight">weeks calculator</span> is perfect for project management. Calculate total project durations, set milestone dates by adding weeks to start dates, determine time remaining until deadlines, or plan sprint cycles and development phases with precision.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Does this weeks calculator work on smartphones and tablets?</h3>
+                    <p>Our <span class="keyword-highlight">weeks counter online</span> features a fully responsive design that adapts seamlessly to smartphones, tablets, and desktop computers. The interface maintains full functionality and visual appeal across all device types and screen sizes.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Can I use this weeks calculator for pregnancy and health tracking?</h3>
+                    <p>Yes! Our <span class="keyword-highlight">weeks calculator</span> is highly accurate for pregnancy tracking. Calculate how many weeks pregnant you are, determine due dates, track weekly progress, or plan medical appointments with precise week calculations.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Is this weeks counter online suitable for business and fiscal calculations?</h3>
+                    <p>Absolutely! This <span class="keyword-highlight">weeks calculator</span> excels in business applications. Calculate fiscal quarters (13-week periods), business cycles, payroll periods, quarterly reports, or any professional timeline involving weekly intervals.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How does this weeks calculator handle weekends and business days?</h3>
+                    <p>Our <span class="keyword-highlight">weeks counter online</span> calculates standard calendar weeks (7-day periods) including weekends and holidays. For business-specific calculations, use the total weeks result and apply your organization's specific business day requirements.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Are there any usage limits or costs for this weeks calculator?</h3>
+                    <p>No limits, no costs! Our <span class="keyword-highlight">weeks calculator</span> is completely free to use with unlimited calculations. Bookmark this page and access our <span class="keyword-highlight">weeks counter online</span> whenever you need quick, accurate week-based calculations.</p>
                 </div>
             </div>
         </div>
@@ -346,7 +562,7 @@
 
             let resultText = `<span class="number-highlight">${diffWeeks}</span> weeks`;
             if (remainingDays > 0) {
-                resultText += ` and ${remainingDays} day${remainingDays > 1 ? 's' : ''}`;
+                resultText += ` and <span class="number-highlight">${remainingDays}</span> day${remainingDays > 1 ? 's' : ''}`;
             }
 
             showResult(resultDiv, resultText, true);
@@ -407,7 +623,7 @@
         function showResult(element, text, isSuccess) {
             element.style.background = isSuccess ? 
                 'linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(69, 160, 73, 0.2))' : 
-                'rgba(255, 255, 255, 0.1)';
+                'rgba(255, 107, 107, 0.15)';
             
             element.innerHTML = `<div class="result-text">${text}</div>`;
             
@@ -428,6 +644,16 @@
                     addWeeks();
                 }
             }
+        });
+
+        // Add smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
