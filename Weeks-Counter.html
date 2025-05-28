@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weeks Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 30px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .calculator-grid {
+            display: grid;
+            gap: 30px;
+            grid-template-columns: 1fr;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .section h2 {
+            color: white;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .input-group {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        input[type="date"], input[type="number"] {
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        input[type="date"]:focus, input[type="number"]:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+
+        .button:active {
+            transform: translateY(-1px);
+        }
+
+        .result {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s ease;
+        }
+
+        .result-text {
+            color: white;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 900;
+            text-align: center;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .number-highlight {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: clamp(2rem, 5vw, 4rem);
+        }
+
+        .add-subtract-controls {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 10px;
+            align-items: end;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .button.add {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+        }
+
+        .button.subtract {
+            background: linear-gradient(135deg, #f44336, #da190b);
+        }
+
+        .button.add:hover {
+            background: linear-gradient(135deg, #45a049, #4CAF50);
+        }
+
+        .button.subtract:hover {
+            background: linear-gradient(135deg, #da190b, #f44336);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+                margin: 10px;
+            }
+
+            .input-row {
+                grid-template-columns: 1fr;
+            }
+
+            .add-subtract-controls {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .button-group {
+                justify-content: center;
+            }
+        }
+
+        .example-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weeks Calculator</h1>
+        
+        <div class="calculator-grid">
+            <!-- Calculate Weeks Between Dates -->
+            <div class="section">
+                <h2>📅 Calculate Weeks Between Dates</h2>
+                <div class="input-group">
+                    <div class="input-row">
+                        <div class="input-container">
+                            <label for="startDate">Start Date</label>
+                            <input type="date" id="startDate">
+                        </div>
+                        <div class="input-container">
+                            <label for="endDate">End Date</label>
+                            <input type="date" id="endDate">
+                        </div>
+                    </div>
+                    <button class="button" onclick="calculateWeeksBetween()">Calculate Weeks</button>
+                </div>
+                <div class="result" id="weeksResult">
+                    <div class="result-text">Select dates to calculate weeks</div>
+                </div>
+                <div class="example-text">
+                    Example: December 1, 2022 to December 25, 2024 = 108 weeks
+                </div>
+            </div>
+
+            <!-- Add/Subtract Weeks -->
+            <div class="section">
+                <h2>➕➖ Add or Subtract Weeks</h2>
+                <div class="input-group">
+                    <div class="input-container">
+                        <label for="baseDate">Starting Date</label>
+                        <input type="date" id="baseDate">
+                    </div>
+                    <div class="add-subtract-controls">
+                        <div class="input-container">
+                            <label for="weeksInput">Number of Weeks</label>
+                            <input type="number" id="weeksInput" placeholder="Enter weeks" min="0">
+                        </div>
+                        <div class="button-group">
+                            <button class="button add" onclick="addWeeks()">+ Add</button>
+                            <button class="button subtract" onclick="subtractWeeks()">- Subtract</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="result" id="dateResult">
+                    <div class="result-text">Select a date and enter weeks</div>
+                </div>
+                <div class="example-text">
+                    Example: Add 7 weeks to today, or subtract 14 weeks from any date
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set today's date as default
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('startDate').value = today;
+            document.getElementById('baseDate').value = today;
+        });
+
+        function calculateWeeksBetween() {
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            const resultDiv = document.getElementById('weeksResult');
+
+            if (!startDate || !endDate) {
+                showResult(resultDiv, 'Please select both dates', false);
+                return;
+            }
+
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            
+            if (start > end) {
+                showResult(resultDiv, 'Start date must be before end date', false);
+                return;
+            }
+
+            // Calculate difference in milliseconds
+            const diffTime = Math.abs(end - start);
+            // Convert to weeks (1 week = 7 days = 7 * 24 * 60 * 60 * 1000 milliseconds)
+            const diffWeeks = Math.floor(diffTime / (7 * 24 * 60 * 60 * 1000));
+            const diffDays = Math.floor(diffTime / (24 * 60 * 60 * 1000));
+            const remainingDays = diffDays % 7;
+
+            let resultText = `<span class="number-highlight">${diffWeeks}</span> weeks`;
+            if (remainingDays > 0) {
+                resultText += ` and ${remainingDays} day${remainingDays > 1 ? 's' : ''}`;
+            }
+
+            showResult(resultDiv, resultText, true);
+        }
+
+        function addWeeks() {
+            const baseDate = document.getElementById('baseDate').value;
+            const weeks = parseInt(document.getElementById('weeksInput').value);
+            const resultDiv = document.getElementById('dateResult');
+
+            if (!baseDate || !weeks) {
+                showResult(resultDiv, 'Please select a date and enter weeks', false);
+                return;
+            }
+
+            const date = new Date(baseDate);
+            date.setDate(date.getDate() + (weeks * 7));
+
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            
+            const formattedDate = date.toLocaleDateString('en-US', options);
+            const resultText = `<span class="number-highlight">${formattedDate}</span>`;
+            
+            showResult(resultDiv, resultText, true);
+        }
+
+        function subtractWeeks() {
+            const baseDate = document.getElementById('baseDate').value;
+            const weeks = parseInt(document.getElementById('weeksInput').value);
+            const resultDiv = document.getElementById('dateResult');
+
+            if (!baseDate || !weeks) {
+                showResult(resultDiv, 'Please select a date and enter weeks', false);
+                return;
+            }
+
+            const date = new Date(baseDate);
+            date.setDate(date.getDate() - (weeks * 7));
+
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            
+            const formattedDate = date.toLocaleDateString('en-US', options);
+            const resultText = `<span class="number-highlight">${formattedDate}</span>`;
+            
+            showResult(resultDiv, resultText, true);
+        }
+
+        function showResult(element, text, isSuccess) {
+            element.style.background = isSuccess ? 
+                'linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(69, 160, 73, 0.2))' : 
+                'rgba(255, 255, 255, 0.1)';
+            
+            element.innerHTML = `<div class="result-text">${text}</div>`;
+            
+            // Add animation effect
+            element.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                element.style.transform = 'scale(1)';
+            }, 100);
+        }
+
+        // Add enter key support
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const focusedElement = document.activeElement;
+                if (focusedElement.id === 'startDate' || focusedElement.id === 'endDate') {
+                    calculateWeeksBetween();
+                } else if (focusedElement.id === 'baseDate' || focusedElement.id === 'weeksInput') {
+                    addWeeks();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
