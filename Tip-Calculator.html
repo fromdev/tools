@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tip Calculator</title>
+    <title>Tip Calculator Online - Free Tip Calculator Tool</title>
+    <meta name="description" content="Free tip calculator online to calculate tip amounts and split bills. Easy-to-use tip calculator for restaurants, services, and group dining.">
     <style>
         * {
             margin: 0;
@@ -13,20 +14,24 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
         }
 
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
+        }
+
+        /* Above the fold - Calculator section */
+        .calculator-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
 
         .calculator {
@@ -130,6 +135,46 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
+        .people-section {
+            display: flex;
+            align-items: center;
+            gap: clamp(8px, 2vw, 12px);
+            margin-bottom: clamp(16px, 3vw, 20px);
+        }
+
+        .people-btn {
+            width: clamp(36px, 8vw, 44px);
+            height: clamp(36px, 8vw, 44px);
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .people-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .people-btn:active {
+            transform: scale(0.95);
+        }
+
+        .people-display {
+            flex: 1;
+            text-align: center;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
         .results {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(15px);
@@ -190,46 +235,6 @@
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
 
-        .people-section {
-            display: flex;
-            align-items: center;
-            gap: clamp(8px, 2vw, 12px);
-            margin-bottom: clamp(16px, 3vw, 20px);
-        }
-
-        .people-btn {
-            width: clamp(36px, 8vw, 44px);
-            height: clamp(36px, 8vw, 44px);
-            border: none;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: clamp(1.2rem, 3vw, 1.6rem);
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .people-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-
-        .people-btn:active {
-            transform: scale(0.95);
-        }
-
-        .people-display {
-            flex: 1;
-            text-align: center;
-            font-size: clamp(1.1rem, 3vw, 1.4rem);
-            font-weight: 600;
-            color: white;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        }
-
         .per-person {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
@@ -237,6 +242,88 @@
             padding: clamp(16px, 3vw, 20px);
             margin-top: clamp(12px, 2vw, 16px);
             border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Below the fold - Content sections */
+        .content-wrapper {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            padding: 60px 20px;
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: clamp(24px, 5vw, 40px);
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-text {
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 16px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-item {
+            margin-bottom: 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-weight: 600;
+            color: white;
+            margin-bottom: 12px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-answer {
+            font-size: clamp(0.9rem, 2.2vw, 1rem);
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.85);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .keyword-highlight {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
         }
 
         @media (max-width: 480px) {
@@ -256,52 +343,129 @@
     </style>
 </head>
 <body>
-    <div class="calculator">
-        <h1 class="title">Tip Calculator</h1>
-        
-        <div class="input-group">
-            <label class="label" for="billAmount">Bill Amount</label>
-            <input type="number" id="billAmount" class="input" placeholder="$0.00" step="0.01" min="0">
-        </div>
-
-        <div class="input-group">
-            <label class="label">Tip Percentage</label>
-            <div class="tip-buttons">
-                <button class="tip-btn" data-tip="15">15%</button>
-                <button class="tip-btn" data-tip="18">18%</button>
-                <button class="tip-btn" data-tip="20">20%</button>
-                <button class="tip-btn" data-tip="22">22%</button>
-                <button class="tip-btn" data-tip="25">25%</button>
-                <button class="tip-btn" data-tip="30">30%</button>
+    <!-- Above the fold - Calculator Tool -->
+    <div class="calculator-section">
+        <div class="calculator">
+            <h1 class="title">Tip Calculator Online</h1>
+            
+            <div class="input-group">
+                <label class="label" for="billAmount">Bill Amount</label>
+                <input type="number" id="billAmount" class="input" placeholder="$0.00" step="0.01" min="0">
             </div>
-        </div>
 
-        <div class="input-group">
-            <label class="label" for="customTip">Custom Tip %</label>
-            <input type="number" id="customTip" class="input" placeholder="0%" step="0.1" min="0" max="100">
-        </div>
+            <div class="input-group">
+                <label class="label">Tip Percentage</label>
+                <div class="tip-buttons">
+                    <button class="tip-btn" data-tip="15">15%</button>
+                    <button class="tip-btn" data-tip="18">18%</button>
+                    <button class="tip-btn" data-tip="20">20%</button>
+                    <button class="tip-btn" data-tip="22">22%</button>
+                    <button class="tip-btn" data-tip="25">25%</button>
+                    <button class="tip-btn" data-tip="30">30%</button>
+                </div>
+            </div>
 
-        <div class="people-section">
-            <button class="people-btn" onclick="changePeople(-1)">−</button>
-            <div class="people-display">
-                <span id="peopleCount">1</span> Person
+            <div class="input-group">
+                <label class="label" for="customTip">Custom Tip %</label>
+                <input type="number" id="customTip" class="input" placeholder="0%" step="0.1" min="0" max="100">
             </div>
-            <button class="people-btn" onclick="changePeople(1)">+</button>
-        </div>
 
-        <div class="results">
-            <div class="result-row">
-                <span class="result-label">Tip Amount:</span>
-                <span class="result-value" id="tipAmount">$0.00</span>
+            <div class="people-section">
+                <button class="people-btn" onclick="changePeople(-1)">−</button>
+                <div class="people-display">
+                    <span id="peopleCount">1</span> Person
+                </div>
+                <button class="people-btn" onclick="changePeople(1)">+</button>
             </div>
-            <div class="result-row total">
-                <span class="result-label">Total Amount:</span>
-                <span class="result-value" id="totalAmount">$0.00</span>
-            </div>
-            <div class="per-person" id="perPersonSection" style="display: none;">
+
+            <div class="results">
                 <div class="result-row">
-                    <span class="result-label">Per Person:</span>
-                    <span class="result-value" id="perPersonAmount">$0.00</span>
+                    <span class="result-label">Tip Amount:</span>
+                    <span class="result-value" id="tipAmount">$0.00</span>
+                </div>
+                <div class="result-row total">
+                    <span class="result-label">Total Amount:</span>
+                    <span class="result-value" id="totalAmount">$0.00</span>
+                </div>
+                <div class="per-person" id="perPersonSection" style="display: none;">
+                    <div class="result-row">
+                        <span class="result-label">Per Person:</span>
+                        <span class="result-value" id="perPersonAmount">$0.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Below the fold - SEO Content -->
+    <div class="content-wrapper">
+        <div class="content-container">
+            <!-- Overview Section -->
+            <div class="content-section">
+                <h2 class="section-title">What is a Tip Calculator Online?</h2>
+                <p class="section-text">
+                    Our <span class="keyword-highlight">tip calculator online</span> is a free, easy-to-use tool designed to help you calculate the appropriate tip amount for various services. Whether you're dining at a restaurant, getting a haircut, or using any service where tipping is customary, this <span class="keyword-highlight">tip calculator</span> ensures you never have to do mental math again.
+                </p>
+                <p class="section-text">
+                    The tool automatically calculates both the tip amount and total bill including tip, based on your bill total and desired tip percentage. You can choose from common tip percentages (15%, 18%, 20%, 22%, 25%, 30%) or enter a custom percentage. Additionally, our tip calculator can split the total among multiple people, making it perfect for group dining situations.
+                </p>
+                <p class="section-text">
+                    In the United States, a 15% tip is typically the minimum expected for restaurant service, with 18-20% being standard for good service. Our <span class="keyword-highlight">tip calculator online</span> helps you quickly determine the right amount while ensuring fair compensation for service providers.
+                </p>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="content-section">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">How do I use this tip calculator online?</h3>
+                    <p class="faq-answer">Simply enter your bill amount, select or enter your desired tip percentage, and the calculator will instantly show your tip amount and total bill. You can also adjust the number of people to split the bill among multiple diners.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">What is the standard tip percentage in restaurants?</h3>
+                    <p class="faq-answer">In the US, 15-20% is standard for restaurant service. 15% is typically the minimum for adequate service, 18-20% for good service, and 20%+ for exceptional service. Our tip calculator includes these common percentages for easy selection.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Should I tip on the pre-tax or post-tax amount?</h3>
+                    <p class="faq-answer">It's generally acceptable to tip on either the pre-tax or post-tax amount. Many people prefer to tip on the pre-tax amount since tax isn't part of the service cost. Our tip calculator works with whatever amount you enter.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Can this tip calculator split bills among multiple people?</h3>
+                    <p class="faq-answer">Yes! Our tip calculator includes a people counter feature. Simply adjust the number of people, and it will automatically calculate how much each person owes, including their share of the tip.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Is this tip calculator free to use?</h3>
+                    <p class="faq-answer">Absolutely! Our tip calculator online is completely free to use with no registration required. You can use it as many times as you need on any device with internet access.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">What tip percentage should I use for different services?</h3>
+                    <p class="faq-answer">Restaurant servers: 15-20%, Bartenders: 15-20% or $1-2 per drink, Hair stylists: 15-20%, Taxi/rideshare: 10-15%, Hotel housekeeping: $2-5 per night, Food delivery: 15-20%. Use our tip calculator to quickly calculate the appropriate amount.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I enter a custom tip percentage?</h3>
+                    <p class="faq-answer">Yes! While our tip calculator provides common percentages (15%, 18%, 20%, 22%, 25%, 30%), you can also enter any custom percentage in the "Custom Tip %" field for situations requiring different amounts.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Does the tip calculator work on mobile devices?</h3>
+                    <p class="faq-answer">Yes! Our tip calculator online is fully responsive and works perfectly on smartphones, tablets, and desktop computers. The interface adapts to your screen size for optimal usability on any device.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">How accurate are the calculations?</h3>
+                    <p class="faq-answer">Our tip calculator provides precise calculations down to the cent. All amounts are properly rounded to the nearest penny and displayed in standard currency format for easy reading and payment.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I use this tip calculator for international tipping?</h3>
+                    <p class="faq-answer">While our tip calculator works with any currency amount you enter, tipping customs vary significantly by country. This tool is optimized for US tipping standards, but you can adjust the percentages for local customs in other countries.</p>
                 </div>
             </div>
         </div>
