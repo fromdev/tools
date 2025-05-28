@@ -330,12 +330,12 @@
             .tip-buttons {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .people-section {
                 flex-direction: column;
                 gap: 12px;
             }
-            
+
             .people-display {
                 order: -1;
             }
@@ -347,7 +347,7 @@
     <div class="calculator-section">
         <div class="calculator">
             <h1 class="title">Tip Calculator Online</h1>
-            
+
             <div class="input-group">
                 <label class="label" for="billAmount">Bill Amount</label>
                 <input type="number" id="billAmount" class="input" placeholder="$0.00" step="0.01" min="0">
@@ -356,6 +356,9 @@
             <div class="input-group">
                 <label class="label">Tip Percentage</label>
                 <div class="tip-buttons">
+                    <button class="tip-btn" data-tip="5">5%</button>
+                    <button class="tip-btn" data-tip="7">7%</button>
+                    <button class="tip-btn" data-tip="10">10%</button>
                     <button class="tip-btn" data-tip="15">15%</button>
                     <button class="tip-btn" data-tip="18">18%</button>
                     <button class="tip-btn" data-tip="20">20%</button>
@@ -417,7 +420,7 @@
             <!-- FAQ Section -->
             <div class="content-section">
                 <h2 class="section-title">Frequently Asked Questions</h2>
-                
+
                 <div class="faq-item">
                     <h3 class="faq-question">How do I use this tip calculator online?</h3>
                     <p class="faq-answer">Simply enter your bill amount, select or enter your desired tip percentage, and the calculator will instantly show your tip amount and total bill. You can also adjust the number of people to split the bill among multiple diners.</p>
@@ -497,7 +500,7 @@
         function calculateTip() {
             const billAmount = parseFloat(billInput.value) || 0;
             const tipPercentage = currentTip;
-            
+
             if (billAmount <= 0) {
                 tipAmountEl.textContent = '$0.00';
                 totalAmountEl.textContent = '$0.00';
@@ -525,37 +528,37 @@
         function animateValue(element, start, end) {
             const duration = 600;
             const startTime = performance.now();
-            
+
             function update(currentTime) {
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / duration, 1);
-                
+
                 // Easing function
                 const easedProgress = 1 - Math.pow(1 - progress, 3);
                 const current = start + (end - start) * easedProgress;
-                
+
                 element.textContent = formatCurrency(current);
-                
+
                 if (progress < 1) {
                     requestAnimationFrame(update);
                 }
             }
-            
+
             requestAnimationFrame(update);
         }
 
         function setTipPercentage(percentage) {
             currentTip = percentage;
-            
+
             // Update button states
             tipButtons.forEach(btn => btn.classList.remove('active'));
             document.querySelector(`[data-tip="${percentage}"]`)?.classList.add('active');
-            
+
             // Clear custom tip if using preset
             if (customTipInput.value && parseFloat(customTipInput.value) !== percentage) {
                 customTipInput.value = '';
             }
-            
+
             calculateTip();
         }
 
@@ -592,7 +595,7 @@
             input.addEventListener('focus', function() {
                 this.parentElement.style.transform = 'scale(1.02)';
             });
-            
+
             input.addEventListener('blur', function() {
                 this.parentElement.style.transform = 'scale(1)';
             });
