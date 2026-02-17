@@ -1,0 +1,259 @@
+---
+title: Cap Rate Calculator | Real Estate Investment & Rental Property ROI Tool
+layout: post
+---
+
+<html>
+<head>
+
+    {% include common-meta %}
+    <title>{{ page.title }}</title>
+
+    <!-- Primary SEO Meta Tags -->
+    <meta name="title" content="Cap Rate Calculator - Real Estate Investment Property ROI Tool">
+    <meta name="keywords" content="cap rate calculator, real estate investment calculator, rental property ROI calculator, cash on cash return calculator, investment property analysis tool">
+    <meta name="description" content="Free Cap Rate Calculator with mortgage and cash flow analysis. Calculate NOI, cap rate, rental property ROI, and cash-on-cash return for real estate investments.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Cap Rate Calculator - Real Estate Investment ROI Tool">
+    <meta property="og:description" content="Analyze rental property returns including NOI, cap rate, and mortgage cash flow.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Cap Rate Calculator">
+    <meta property="twitter:description" content="Free rental property investment calculator with mortgage analysis.">
+
+    {% include theme-css %}
+    {% include ie-fixes %}
+
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+<div class="wrapper">
+
+{% include theme-header %}
+{% include theme-sidebar %}
+
+<div class="content-wrapper">
+
+<section class="content">
+
+<div class="row">
+
+<!-- INPUT COLUMN -->
+<div class="col-md-6">
+<div class="box box-success">
+<div class="box-header with-border">
+<h3 class="box-title">Cap Rate Calculator - Property Inputs</h3>
+</div>
+<div class="box-body">
+
+<div class="form-group"><label>Purchase Price ($)</label>
+<input type="number" id="price" class="form-control"></div>
+
+<div class="form-group"><label>Down Payment (%)</label>
+<input type="number" id="down" class="form-control" value="20"></div>
+
+<div class="form-group"><label>Mortgage Interest Rate (%)</label>
+<input type="number" id="interest" class="form-control" value="7"></div>
+
+<div class="form-group"><label>Loan Term (Years)</label>
+<input type="number" id="term" class="form-control" value="30"></div>
+
+<div class="form-group"><label>Monthly Rental Income ($)</label>
+<input type="number" id="rent" class="form-control"></div>
+
+<div class="form-group"><label>Vacancy Rate (%)</label>
+<input type="number" id="vacancy" class="form-control" value="5"></div>
+
+<div class="form-group"><label>Annual Property Tax ($)</label>
+<input type="number" id="tax" class="form-control"></div>
+
+<div class="form-group"><label>Annual Insurance ($)</label>
+<input type="number" id="insurance" class="form-control"></div>
+
+<div class="form-group"><label>Annual Maintenance ($)</label>
+<input type="number" id="maintenance" class="form-control"></div>
+
+<div class="form-group"><label>Annual Property Management ($)</label>
+<input type="number" id="management" class="form-control"></div>
+
+<div class="form-group"><label>Annual HOA ($)</label>
+<input type="number" id="hoa" class="form-control"></div>
+
+<div class="form-group"><label>Other Annual Expenses ($)</label>
+<input type="number" id="other" class="form-control"></div>
+
+<button class="btn btn-success" onclick="calculate()">Calculate</button>
+<button class="btn btn-default" onclick="saveProperty()">Save Property</button>
+
+</div>
+</div>
+</div>
+
+<!-- RESULTS COLUMN -->
+<div class="col-md-6">
+<div class="box box-success">
+<div class="box-header with-border">
+<h3 class="box-title">Investment Results</h3>
+</div>
+<div class="box-body">
+<p id="noiResult">NOI:</p>
+<p id="capRateResult">Cap Rate:</p>
+<p id="cashFlowResult">Annual Cash Flow:</p>
+<p id="cocResult">Cash-on-Cash Return:</p>
+</div>
+</div>
+
+<div class="box box-success">
+<div class="box-header with-border">
+<h3 class="box-title">Saved Properties</h3>
+</div>
+<div class="box-body">
+<div id="savedProperties"></div>
+</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- SEO CONTENT SECTION -->
+<section class="content">
+<div class="box box-success">
+<div class="box-header with-border">
+<h3 class="box-title">About This Cap Rate Calculator</h3>
+</div>
+<div class="box-body">
+<p>This cap rate calculator helps real estate investors analyze rental property performance quickly and accurately. It calculates Net Operating Income (NOI), capitalization rate, annual cash flow, and cash-on-cash return while accounting for mortgage financing, vacancy rate, and operating expenses.</p>
+<p>Unlike basic rental calculators, this real estate investment calculator includes financing variables such as down payment, interest rate, and loan term. This allows investors to evaluate leveraged returns and true ROI before purchasing an investment property.</p>
+<p>Use this rental property ROI calculator to compare multiple properties, estimate profitability, and make data-driven investment decisions.</p>
+</div>
+</div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="content">
+
+<div class="box box-success"><div class="box-header with-border">
+<h3 class="box-title">What is cap rate in real estate?</h3></div>
+<div class="box-body"><p>Cap rate measures investment property return by dividing Net Operating Income by property value.</p></div></div>
+
+<div class="box box-success"><div class="box-header with-border">
+<h3 class="box-title">How is cap rate calculated?</h3></div>
+<div class="box-body"><p>Cap rate equals NOI divided by purchase price multiplied by 100.</p></div></div>
+
+<div class="box box-success"><div class="box-header with-border">
+<h3 class="box-title">What is a good cap rate?</h3></div>
+<div class="box-body"><p>Most investors target 6% to 10% depending on market and risk profile.</p></div></div>
+
+<div class="box box-success"><div class="box-header with-border">
+<h3 class="box-title">Does cap rate include mortgage payments?</h3></div>
+<div class="box-body"><p>No. Cap rate excludes financing, but this calculator also computes cash flow including mortgage.</p></div></div>
+
+<div class="box box-success"><div class="box-header with-border">
+<h3 class="box-title">What is NOI?</h3></div>
+<div class="box-body"><p>Net Operating Income is annual rental income minus operating expenses.</p></div></div>
+
+<div class="box box-success"><div class="box-header with-border">
+<h3 class="box-title">What is cash-on-cash return?</h3></div>
+<div class="box-body"><p>Cash-on-cash return measures annual cash flow compared to your invested down payment.</p></div></div>
+
+<div class="box box-success"><div class="box-header with-border">
+<h3 class="box-title">Can I save properties?</h3></div>
+<div class="box-body"><p>Yes. The calculator stores property data locally in your browser for future comparison.</p></div></div>
+
+</section>
+
+</div>
+
+{% include theme-footer %}
+</div>
+{% include theme-bottom-js %}
+
+<script>
+
+function calculate(){
+const v=id=>parseFloat(document.getElementById(id).value)||0;
+const price=v("price"),down=v("down")/100,interest=v("interest")/100;
+const term=v("term"),rent=v("rent"),vacancy=v("vacancy")/100;
+const tax=v("tax"),insurance=v("insurance"),maintenance=v("maintenance");
+const management=v("management"),hoa=v("hoa"),other=v("other");
+
+const downPay=price*down,loan=price-downPay;
+const mRate=interest/12,payments=term*12;
+
+let mortgage=0;
+if(mRate>0){
+mortgage=loan*(mRate*Math.pow(1+mRate,payments))/(Math.pow(1+mRate,payments)-1);
+}
+
+const annualRent=rent*12;
+const effective=annualRent-(annualRent*vacancy);
+const expenses=tax+insurance+maintenance+management+hoa+other;
+
+const NOI=effective-expenses;
+const capRate=(NOI/price)*100;
+const annualMortgage=mortgage*12;
+const cashFlow=NOI-annualMortgage;
+const coc=downPay>0?(cashFlow/downPay)*100:0;
+
+function color(v){return v>0?"green":v<0?"red":"orange";}
+
+document.getElementById("noiResult").innerHTML=`NOI: <span style="color:${color(NOI)}">$${NOI.toFixed(2)}</span>`;
+document.getElementById("capRateResult").innerHTML=`Cap Rate: <span style="color:${capRate>=6?'green':'orange'}">${capRate.toFixed(2)}%</span>`;
+document.getElementById("cashFlowResult").innerHTML=`Annual Cash Flow: <span style="color:${color(cashFlow)}">$${cashFlow.toFixed(2)}</span>`;
+document.getElementById("cocResult").innerHTML=`Cash-on-Cash Return: <span style="color:${color(coc)}">${coc.toFixed(2)}%</span>`;
+
+return {inputs:{price,down:v("down"),interest:v("interest"),term,rent,vacancy:v("vacancy"),tax,insurance,maintenance,management,hoa,other}};
+}
+
+function saveProperty(){
+const address=prompt("Enter Property Address:");
+if(!address)return;
+const data=calculate();
+data.id=Date.now();
+data.address=address;
+let saved=JSON.parse(localStorage.getItem("properties"))||[];
+saved.push(data);
+localStorage.setItem("properties",JSON.stringify(saved));
+loadSaved();
+}
+
+function loadSaved(){
+let saved=JSON.parse(localStorage.getItem("properties"))||[];
+let html="";
+saved.forEach(p=>{
+html+=`<div style="margin-bottom:5px;">
+<button class="btn btn-success btn-xs" onclick="selectProperty(${p.id})">${p.address}</button>
+<button class="btn btn-danger btn-xs" onclick="deleteProperty(${p.id})">X</button>
+</div>`;
+});
+document.getElementById("savedProperties").innerHTML=html;
+}
+
+function selectProperty(id){
+let saved=JSON.parse(localStorage.getItem("properties"))||[];
+let p=saved.find(x=>x.id===id);
+if(!p)return;
+Object.keys(p.inputs).forEach(k=>{
+if(document.getElementById(k))document.getElementById(k).value=p.inputs[k];
+});
+calculate();
+}
+
+function deleteProperty(id){
+let saved=JSON.parse(localStorage.getItem("properties"))||[];
+saved=saved.filter(p=>p.id!==id);
+localStorage.setItem("properties",JSON.stringify(saved));
+loadSaved();
+}
+
+loadSaved();
+
+</script>
+
+</body>
+</html>
