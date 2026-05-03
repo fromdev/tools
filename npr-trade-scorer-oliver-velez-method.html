@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPR Trade Scorer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c0f;
+    --surface: #111418;
+    --surface2: #181c22;
+    --border: #252b35;
+    --text: #e8edf5;
+    --muted: #5a6475;
+    --green: #00e676;
+    --green-dim: #00c85a22;
+    --yellow: #ffd740;
+    --yellow-dim: #ffd74022;
+    --red: #ff4d6d;
+    --red-dim: #ff4d6d22;
+    --blue: #4fc3f7;
+    --blue-dim: #4fc3f722;
+    --accent: #00e676;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px 16px 60px;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .header-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 10vw, 80px);
+    letter-spacing: 6px;
+    line-height: 1;
+    background: linear-gradient(135deg, #00e676, #4fc3f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .header-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 8px;
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+
+  /* LAYOUT */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto 24px;
+  }
+
+  @media (max-width: 800px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  /* SECTION CARD */
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .section.name-section::before { background: linear-gradient(90deg, #00e676, #00c85a); }
+  .section.position-section::before { background: linear-gradient(90deg, #4fc3f7, #0288d1); }
+  .section.risk-section::before { background: linear-gradient(90deg, #ffd740, #ff9800); }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .section-letter {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    line-height: 1;
+  }
+  .name-section .section-letter { color: var(--green); }
+  .position-section .section-letter { color: var(--blue); }
+  .risk-section .section-letter { color: var(--yellow); }
+
+  .section-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+  }
+  .section-desc {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* OPTION BUTTONS */
+  .option-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 8px;
+    margin-top: 14px;
+  }
+  .options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .opt-btn {
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    background: var(--surface2);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .opt-btn:hover { border-color: #3a4555; background: #1e232c; }
+  .opt-btn.selected { background: var(--green-dim); border-color: var(--green); color: var(--green); }
+  .opt-btn.selected .opt-badge { background: var(--green); color: #000; }
+  .opt-btn.selected-short { background: var(--red-dim); border-color: var(--red); color: var(--red); }
+  .opt-btn.selected-short .opt-badge { background: var(--red); color: #fff; }
+  .opt-btn.ma-selected { background: var(--blue-dim); border-color: var(--blue); color: var(--blue); }
+  .opt-btn.ma-selected .opt-badge { background: var(--blue); color: #000; }
+
+  /* Position zone buttons */
+  .pos-zone-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .pos-zone-btn {
+    background: var(--surface2);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 10px;
+    cursor: pointer;
+    transition: all 0.18s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .pos-zone-btn:hover { border-color: #3a4555; background: #1e232c; }
+  .pos-zone-btn.selected {
+    background: var(--blue-dim);
+    border-color: var(--blue);
+  }
+  .pos-zone-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--muted);
+    transition: color 0.18s;
+  }
+  .pos-zone-btn.selected .pos-zone-num { color: var(--blue); }
+  .pos-zone-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .pos-zone-btn.selected .pos-zone-label { color: var(--blue); }
+  .pos-zone-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+  .opt-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    background: var(--border);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .ev-label {
+    font-size: 13px;
+    font-weight: 500;
+    flex: 1;
+  }
+  .ev-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .bar-svg {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  /* RISK SECTION INPUTS */
+  .risk-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .risk-input-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .risk-input-wrap label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    text-transform: uppercase;
+  }
+  .risk-input {
+    background: var(--surface2);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    padding: 12px 14px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .risk-input:focus { border-color: var(--yellow); }
+  .risk-input::placeholder { color: var(--muted); }
+
+  .risk-status {
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-family: 'Space Mono', monospace;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+  }
+  .risk-status.ok { background: var(--green-dim); color: var(--green); border: 1px solid var(--green)44; }
+  .risk-status.warn { background: var(--yellow-dim); color: var(--yellow); border: 1px solid var(--yellow)44; }
+  .risk-status.bad { background: var(--red-dim); color: var(--red); border: 1px solid var(--red)44; }
+  .risk-status.idle { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+
+  /* SCORE PANEL */
+  .score-panel {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 32px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .score-panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    pointer-events: none;
+    transition: box-shadow 0.5s;
+  }
+  .score-panel.grade-a-plus::after { box-shadow: 0 0 0 2px #00e676, 0 0 60px #00e67622 inset; }
+  .score-panel.grade-a::after { box-shadow: 0 0 0 2px #4fc3f7, 0 0 60px #4fc3f722 inset; }
+  .score-panel.grade-b::after { box-shadow: 0 0 0 2px #ffd740, 0 0 60px #ffd74022 inset; }
+  .score-panel.grade-c::after { box-shadow: 0 0 0 2px #ff4d6d, 0 0 60px #ff4d6d22 inset; }
+
+  .score-inner {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  @media (max-width: 600px) {
+    .score-inner { grid-template-columns: 1fr; text-align: center; }
+  }
+
+  .score-grade-wrap {
+    text-align: center;
+  }
+  .score-grade {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 96px;
+    line-height: 1;
+    transition: color 0.4s;
+  }
+  .grade-a-plus .score-grade { color: var(--green); }
+  .grade-a .score-grade { color: var(--blue); }
+  .grade-b .score-grade { color: var(--yellow); }
+  .grade-c .score-grade { color: var(--red); }
+  .idle .score-grade { color: var(--muted); }
+
+  .score-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: -4px;
+  }
+
+  .score-details {
+    flex: 1;
+  }
+  .score-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    transition: color 0.4s;
+  }
+  .grade-a-plus .score-headline { color: var(--green); }
+  .grade-a .score-headline { color: var(--blue); }
+  .grade-b .score-headline { color: var(--yellow); }
+  .grade-c .score-headline { color: var(--red); }
+  .idle .score-headline { color: var(--muted); }
+
+  .score-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .checks-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .check-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-family: 'Space Mono', monospace;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--muted);
+    transition: all 0.3s;
+  }
+  .check-chip.active {
+    background: var(--green-dim);
+    border-color: var(--green)66;
+    color: var(--green);
+  }
+  .check-chip.warn {
+    background: var(--yellow-dim);
+    border-color: var(--yellow)66;
+    color: var(--yellow);
+  }
+  .check-chip.fail {
+    background: var(--red-dim);
+    border-color: var(--red)66;
+    color: var(--red);
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    display: inline-block;
+  }
+
+  .follow-rate {
+    margin-top: 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+  .follow-rate span {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  .grade-a-plus .follow-rate span { color: var(--green); }
+  .grade-a .follow-rate span { color: var(--blue); }
+  .grade-b .follow-rate span { color: var(--yellow); }
+  .grade-c .follow-rate span { color: var(--red); }
+
+  /* RESET */
+  .reset-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 12px 32px;
+    background: transparent;
+    border: 1.5px solid var(--border);
+    border-radius: 30px;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .reset-btn:hover { border-color: var(--text); color: var(--text); }
+
+  /* Progress dots */
+  .progress-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+  .pdot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: all 0.3s;
+  }
+  .pdot.done { background: var(--green); box-shadow: 0 0 8px var(--green)88; }
+  .pdot.partial { background: var(--yellow); }
+  /* TRADE SUMMARY PANEL */
+  .summary-panel {
+    max-width: 1100px;
+    margin: 16px auto 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .summary-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4fc3f7 0%, #00e676 50%, #ffd740 100%);
+  }
+  .summary-header {
+    margin-bottom: 20px;
+  }
+  .summary-title-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .summary-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--text);
+  }
+  .summary-dir-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    color: var(--muted);
+    background: var(--surface2);
+    transition: all 0.3s;
+  }
+  .summary-dir-badge.long {
+    border-color: var(--green);
+    color: var(--green);
+    background: var(--green-dim);
+  }
+  .summary-dir-badge.short {
+    border-color: var(--red);
+    color: var(--red);
+    background: var(--red-dim);
+  }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 800px) {
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .summary-grid { grid-template-columns: 1fr; }
+  }
+  .summary-item {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .summary-item-wide {
+    grid-column: span 2;
+  }
+  .summary-item-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .summary-item-value {
+    font-family: 'Space Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .summary-item-value.long  { color: var(--green); }
+  .summary-item-value.short { color: var(--red); }
+  .summary-item-value.muted { color: var(--muted); font-weight: 400; font-size: 12px; }
+  .summary-item-value.warn  { color: var(--yellow); }
+  .summary-rule {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    padding: 12px 16px;
+    background: var(--surface2);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    line-height: 1.7;
+    transition: all 0.3s;
+  }
+  .summary-rule.good { color: var(--green); border-color: var(--green)44; background: var(--green-dim); }
+  .summary-rule.warn { color: var(--yellow); border-color: var(--yellow)44; background: var(--yellow-dim); }
+  .summary-rule.bad  { color: var(--red);   border-color: var(--red)44;   background: var(--red-dim); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">Oliver Velez Method</div>
+  <h1>NPR SCORER</h1>
+  <div class="header-sub">Name · Position · Risk — Your 3-Check Trade Validator</div>
+</div>
+
+<div class="progress-dots">
+  <div class="pdot" id="pd-n"></div>
+  <div class="pdot" id="pd-p"></div>
+  <div class="pdot" id="pd-r"></div>
+</div>
+
+<div class="grid">
+
+  <!-- N: NAME IT -->
+  <div class="section name-section">
+    <div class="section-header">
+      <div class="section-letter">N</div>
+      <div>
+        <div class="section-title">Name It</div>
+        <div class="section-desc">Identify the event</div>
+      </div>
+    </div>
+
+    <div class="option-label">Event Type <span style="color:var(--muted);font-size:10px;letter-spacing:1px;">(direction auto-set)</span></div>
+    <div class="options-grid" id="event-options-grid">
+
+      <!-- Bull Elephant Bar -->
+      <button class="opt-btn ev-opt" onclick="selectEvent('bull-elephant')" id="ev-bull-elephant">
+        <span class="ev-label">Bull Elephant Bar</span>
+        <span class="ev-right">
+          <svg class="bar-svg" viewBox="0 0 36 48" width="36" height="48">
+            <rect x="17" y="0" width="2" height="8" fill="#3a4555"/>
+            <rect x="8" y="8" width="20" height="36" rx="2" fill="#00e676"/>
+            <rect x="17" y="44" width="2" height="4" fill="#3a4555"/>
+          </svg>
+          <span class="opt-badge">60% · LONG</span>
+        </span>
+      </button>
+
+      <!-- Bear Elephant Bar -->
+      <button class="opt-btn ev-opt" onclick="selectEvent('bear-elephant')" id="ev-bear-elephant">
+        <span class="ev-label">Bear Elephant Bar</span>
+        <span class="ev-right">
+          <svg class="bar-svg" viewBox="0 0 36 48" width="36" height="48">
+            <rect x="17" y="0" width="2" height="8" fill="#3a4555"/>
+            <rect x="8" y="8" width="20" height="36" rx="2" fill="#ff4d6d"/>
+            <rect x="17" y="44" width="2" height="4" fill="#3a4555"/>
+          </svg>
+          <span class="opt-badge">60% · SHORT</span>
+        </span>
+      </button>
+
+      <!-- Bull 180 -->
+      <button class="opt-btn ev-opt" onclick="selectEvent('bull-180')" id="ev-bull-180">
+        <span class="ev-label">Bull 180</span>
+        <span class="ev-right">
+          <svg class="bar-svg" viewBox="0 0 56 48" width="56" height="48">
+            <!-- red bar first -->
+            <rect x="16" y="0" width="2" height="6" fill="#3a4555"/>
+            <rect x="8" y="6" width="16" height="24" rx="2" fill="#ff4d6d"/>
+            <rect x="16" y="30" width="2" height="4" fill="#3a4555"/>
+            <!-- green bar overtaking -->
+            <rect x="37" y="0" width="2" height="4" fill="#3a4555"/>
+            <rect x="29" y="4" width="18" height="30" rx="2" fill="#00e676"/>
+            <rect x="37" y="34" width="2" height="6" fill="#3a4555"/>
+            <!-- overtake indicator line -->
+            <line x1="6" y1="6" x2="50" y2="6" stroke="#00e676" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.5"/>
+          </svg>
+          <span class="opt-badge">10% · LONG</span>
+        </span>
+      </button>
+
+      <!-- Bear 180 -->
+      <button class="opt-btn ev-opt" onclick="selectEvent('bear-180')" id="ev-bear-180">
+        <span class="ev-label">Bear 180</span>
+        <span class="ev-right">
+          <svg class="bar-svg" viewBox="0 0 56 48" width="56" height="48">
+            <!-- green bar first -->
+            <rect x="16" y="0" width="2" height="6" fill="#3a4555"/>
+            <rect x="8" y="6" width="16" height="24" rx="2" fill="#00e676"/>
+            <rect x="16" y="30" width="2" height="4" fill="#3a4555"/>
+            <!-- red bar overtaking -->
+            <rect x="37" y="0" width="2" height="4" fill="#3a4555"/>
+            <rect x="29" y="4" width="18" height="30" rx="2" fill="#ff4d6d"/>
+            <rect x="37" y="34" width="2" height="6" fill="#3a4555"/>
+            <!-- overtake indicator line -->
+            <line x1="6" y1="6" x2="50" y2="6" stroke="#ff4d6d" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.5"/>
+          </svg>
+          <span class="opt-badge">10% · SHORT</span>
+        </span>
+      </button>
+
+      <!-- Topping Tail Bar -->
+      <button class="opt-btn ev-opt" onclick="selectEvent('topping-tail')" id="ev-topping-tail">
+        <span class="ev-label">Topping Tail Bar</span>
+        <span class="ev-right">
+          <svg class="bar-svg" viewBox="0 0 36 48" width="36" height="48">
+            <!-- long wick above -->
+            <rect x="17" y="0" width="2" height="28" fill="#3a4555"/>
+            <!-- small body -->
+            <rect x="10" y="28" width="16" height="10" rx="2" fill="#ff4d6d"/>
+            <!-- short wick below -->
+            <rect x="17" y="38" width="2" height="6" fill="#3a4555"/>
+          </svg>
+          <span class="opt-badge">15% · SHORT</span>
+        </span>
+      </button>
+
+      <!-- Bottoming Tail Bar -->
+      <button class="opt-btn ev-opt" onclick="selectEvent('bottoming-tail')" id="ev-bottoming-tail">
+        <span class="ev-label">Bottoming Tail Bar</span>
+        <span class="ev-right">
+          <svg class="bar-svg" viewBox="0 0 36 48" width="36" height="48">
+            <!-- short wick above -->
+            <rect x="17" y="0" width="2" height="6" fill="#3a4555"/>
+            <!-- small body -->
+            <rect x="10" y="6" width="16" height="10" rx="2" fill="#00e676"/>
+            <!-- long wick below -->
+            <rect x="17" y="16" width="2" height="28" fill="#3a4555"/>
+          </svg>
+          <span class="opt-badge">15% · LONG</span>
+        </span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- P: POSITION IT -->
+  <div class="section position-section">
+    <div class="section-header">
+      <div class="section-letter">P</div>
+      <div>
+        <div class="section-title">Position It</div>
+        <div class="section-desc">Location of the event</div>
+      </div>
+    </div>
+
+    <div class="option-label">Price Zone</div>
+    <div class="pos-zone-grid">
+      <button class="pos-zone-btn" onclick="selectPosZone('pos1')" id="pos-pos1">
+        <div class="pos-zone-num">1</div>
+        <div class="pos-zone-label">Just above / below MAs</div>
+        <div class="pos-zone-sub">Power zone · best odds</div>
+      </button>
+      <button class="pos-zone-btn" onclick="selectPosZone('pos2')" id="pos-pos2">
+        <div class="pos-zone-num">2</div>
+        <div class="pos-zone-label">Mid zone</div>
+        <div class="pos-zone-sub">Long or short by event</div>
+      </button>
+      <button class="pos-zone-btn" onclick="selectPosZone('pos3')" id="pos-pos3">
+        <div class="pos-zone-num">3</div>
+        <div class="pos-zone-label">Pluto land — far out</div>
+        <div class="pos-zone-sub">Extreme zone · reversal</div>
+      </button>
+    </div>
+
+    <div class="option-label" style="margin-top:16px;">MA Context</div>
+    <div class="options-grid">
+      <button class="opt-btn pos-opt" onclick="selectMAContext('ma200')" id="pos-ma200">
+        <span class="ev-label">Off Flat 200 MA</span>
+        <span class="ev-right">
+          <svg viewBox="0 0 60 32" width="60" height="32">
+            <line x1="2" y1="16" x2="58" y2="16" stroke="#4fc3f7" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="25" y="5" width="10" height="22" rx="2" fill="#00e676" opacity="0.9"/>
+            <rect x="29" y="2" width="2" height="3" fill="#3a4555"/>
+            <rect x="29" y="27" width="2" height="3" fill="#3a4555"/>
+          </svg>
+          <span class="opt-badge">+10% power</span>
+        </span>
+      </button>
+      <button class="opt-btn pos-opt" onclick="selectMAContext('ma20-rising')" id="pos-ma20-rising">
+        <span class="ev-label">Off Rising 20 MA</span>
+        <span class="ev-right">
+          <svg viewBox="0 0 60 32" width="60" height="32">
+            <polyline points="2,24 20,18 40,12 58,6" fill="none" stroke="#00e676" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="25" y="8" width="10" height="16" rx="2" fill="#00e676" opacity="0.9"/>
+            <rect x="29" y="4" width="2" height="4" fill="#3a4555"/>
+            <rect x="29" y="24" width="2" height="4" fill="#3a4555"/>
+          </svg>
+          <span class="opt-badge">+boost</span>
+        </span>
+      </button>
+      <button class="opt-btn pos-opt" onclick="selectMAContext('ma20-falling')" id="pos-ma20-falling">
+        <span class="ev-label">Off Falling 20 MA</span>
+        <span class="ev-right">
+          <svg viewBox="0 0 60 32" width="60" height="32">
+            <polyline points="2,6 20,12 40,18 58,24" fill="none" stroke="#ff4d6d" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="25" y="10" width="10" height="16" rx="2" fill="#ff4d6d" opacity="0.9"/>
+            <rect x="29" y="6" width="2" height="4" fill="#3a4555"/>
+            <rect x="29" y="26" width="2" height="4" fill="#3a4555"/>
+          </svg>
+          <span class="opt-badge">+boost</span>
+        </span>
+      </button>
+    </div>
+
+    <div id="position-warning" style="display:none; margin-top:12px; padding:10px 14px; border-radius:10px; background:var(--red-dim); border:1px solid var(--red)44; color:var(--red); font-size:12px; font-family:'Space Mono',monospace;">
+      ⚠ Check direction vs. position
+    </div>
+  </div>
+
+  <!-- R: RISK IT -->
+  <div class="section risk-section">
+    <div class="section-header">
+      <div class="section-letter">R</div>
+      <div>
+        <div class="section-title">Risk It Out</div>
+        <div class="section-desc">Validate your sizing</div>
+      </div>
+    </div>
+
+    <div class="risk-row">
+      <div class="risk-input-wrap">
+        <label>Max Loss / Day ($)</label>
+        <input class="risk-input" type="number" id="max-day" placeholder="300" oninput="calcRisk()">
+      </div>
+      <div class="risk-input-wrap">
+        <label>Divide By</label>
+        <select class="risk-input" id="divide-by" onchange="calcRisk()" style="cursor:pointer;">
+          <option value="2">÷ 2 (more room)</option>
+          <option value="3">÷ 3 (tighter)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="risk-row">
+      <div class="risk-input-wrap">
+        <label>Entry Price ($)</label>
+        <input class="risk-input" type="number" id="entry-price" placeholder="150.00" step="0.01" oninput="calcRisk()">
+      </div>
+      <div class="risk-input-wrap">
+        <label>Stop Price ($)</label>
+        <input class="risk-input" type="number" id="stop-price" placeholder="149.50" step="0.01" oninput="calcRisk()">
+      </div>
+    </div>
+
+    <div class="risk-input-wrap" style="margin-bottom:8px;">
+      <label>Shares / Lots</label>
+      <input class="risk-input" type="number" id="shares" placeholder="100" oninput="calcRisk()">
+    </div>
+
+    <div class="risk-status idle" id="risk-status">
+      <span>Enter values to validate risk</span>
+    </div>
+
+    <div id="max-loss-display" style="margin-top:8px; font-family:'Space Mono',monospace; font-size:11px; color:var(--muted);"></div>
+  </div>
+
+</div>
+
+<!-- SCORE PANEL -->
+<div class="score-panel idle" id="score-panel">
+  <div class="score-inner">
+    <div class="score-grade-wrap">
+      <div class="score-grade" id="score-grade">—</div>
+      <div class="score-label">TRADE GRADE</div>
+    </div>
+    <div class="score-details">
+      <div class="score-headline" id="score-headline">Awaiting your selections</div>
+      <div class="score-desc" id="score-desc">Complete N, P, and R to get your trade score. Three checks = maximum confidence.</div>
+      <div class="checks-row" id="checks-row">
+        <div class="check-chip" id="chip-n"><span class="dot"></span> NAME</div>
+        <div class="check-chip" id="chip-p"><span class="dot"></span> POSITION</div>
+        <div class="check-chip" id="chip-r"><span class="dot"></span> RISK</div>
+        <div class="check-chip" id="chip-dir"><span class="dot"></span> DIRECTION</div>
+      </div>
+      <div class="follow-rate" id="follow-rate" style="display:none">
+        Estimated follow-through rate: <span id="fr-value">—</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRADE SUMMARY -->
+<div class="summary-panel" id="summary-panel">
+  <div class="summary-header">
+    <div class="summary-title-row">
+      <span class="summary-title">Trade Setup Summary</span>
+      <span class="summary-dir-badge" id="summary-dir-badge">—</span>
+    </div>
+  </div>
+  <div class="summary-grid">
+
+    <div class="summary-item">
+      <div class="summary-item-label">Event</div>
+      <div class="summary-item-value" id="sum-event">—</div>
+    </div>
+
+    <div class="summary-item">
+      <div class="summary-item-label">Price Zone</div>
+      <div class="summary-item-value" id="sum-zone">—</div>
+    </div>
+
+    <div class="summary-item">
+      <div class="summary-item-label">MA Context</div>
+      <div class="summary-item-value" id="sum-ma">—</div>
+    </div>
+
+    <div class="summary-item">
+      <div class="summary-item-label">Follow-Through Rate</div>
+      <div class="summary-item-value" id="sum-rate">—</div>
+    </div>
+
+    <div class="summary-item">
+      <div class="summary-item-label">Entry Price</div>
+      <div class="summary-item-value" id="sum-entry">—</div>
+    </div>
+
+    <div class="summary-item">
+      <div class="summary-item-label">Stop Price</div>
+      <div class="summary-item-value" id="sum-stop">—</div>
+    </div>
+
+    <div class="summary-item">
+      <div class="summary-item-label">Stop Distance</div>
+      <div class="summary-item-value" id="sum-dist">—</div>
+    </div>
+
+    <div class="summary-item">
+      <div class="summary-item-label">Shares / Lots</div>
+      <div class="summary-item-value" id="sum-shares">—</div>
+    </div>
+
+    <div class="summary-item summary-item-wide">
+      <div class="summary-item-label">Max Loss / Trade</div>
+      <div class="summary-item-value" id="sum-maxloss">—</div>
+    </div>
+
+    <div class="summary-item summary-item-wide">
+      <div class="summary-item-label">Actual Risk Exposure</div>
+      <div class="summary-item-value" id="sum-actual">—</div>
+    </div>
+
+  </div>
+
+  <div class="summary-rule" id="summary-rule">
+    Awaiting trade setup — fill in N, P, and R above.
+  </div>
+</div>
+
+<button class="reset-btn" onclick="resetAll()">↺ Reset</button>
+
+<script>
+  const state = {
+    direction: null,    // 'long' | 'short'
+    event: null,        // e.g. 'bull-elephant'
+    maContext: null,    // 'ma200' | 'ma20-rising' | 'ma20-falling'
+    posZone: null,      // 'pos1' | 'pos2' | 'pos3'
+    riskOk: false,
+    riskActualLoss: null,
+    maxLossPerTrade: null,
+  };
+
+  // Base follow-through rates by event type
+  const baseRates = { elephant: 70, tail: 70, '180': 80 };
+
+  function getEventType() {
+    if (!state.event) return null;
+    return EVENT_META[state.event]?.type || null;
+  }
+
+  // Map event id → direction and base type
+  const EVENT_META = {
+    'bull-elephant': { dir: 'long',  type: 'elephant', label: 'Bull Elephant Bar' },
+    'bear-elephant': { dir: 'short', type: 'elephant', label: 'Bear Elephant Bar' },
+    'bull-180':      { dir: 'long',  type: '180',      label: 'Bull 180' },
+    'bear-180':      { dir: 'short', type: '180',      label: 'Bear 180' },
+    'topping-tail':  { dir: 'short', type: 'tail',     label: 'Topping Tail Bar' },
+    'bottoming-tail':{ dir: 'long',  type: 'tail',     label: 'Bottoming Tail Bar' },
+  };
+
+  function selectEvent(ev) {
+    state.event = ev;
+    const meta = EVENT_META[ev];
+    state.direction = meta.dir;
+
+    const allIds = Object.keys(EVENT_META);
+    allIds.forEach(id => {
+      const btn = document.getElementById('ev-' + id);
+      btn.classList.remove('selected', 'selected-short');
+    });
+
+    const btn = document.getElementById('ev-' + ev);
+    if (meta.dir === 'long') btn.classList.add('selected');
+    else btn.classList.add('selected-short');
+
+    checkPositionWarning();
+    updateProgress('n', true);
+    updateScore();
+  }
+
+  function selectMAContext(ctx) {
+    state.maContext = ctx;
+    ['ma200','ma20-rising','ma20-falling'].forEach(id => {
+      document.getElementById('pos-' + id).classList.toggle('ma-selected', id === ctx);
+    });
+    checkPositionWarning();
+    updatePositionProgress();
+    updateScore();
+  }
+
+  function selectPosZone(zone) {
+    state.posZone = zone;
+    ['pos1','pos2','pos3'].forEach(id => {
+      document.getElementById('pos-' + id).classList.toggle('selected', id === zone);
+    });
+    checkPositionWarning();
+    updatePositionProgress();
+    updateScore();
+  }
+
+  function updatePositionProgress() {
+    // Position check is satisfied when at least posZone is chosen (maContext optional bonus)
+    updateProgress('p', !!state.posZone);
+  }
+
+  function checkPositionWarning() {
+    const warn = document.getElementById('position-warning');
+    if (!state.direction || !state.posZone) { warn.style.display='none'; return; }
+    const bad = (state.posZone === 'pos1' && state.direction === 'short') ||
+                (state.posZone === 'pos3' && state.direction === 'long');
+    warn.style.display = bad ? 'block' : 'none';
+    warn.textContent = bad
+      ? (state.posZone === 'pos1'
+          ? '⚠ Never short from Position 1 — longs only here'
+          : '⚠ Never go long from Position 3 — shorts only here')
+      : '';
+  }
+
+  // ── localStorage persistence for Max Loss / Day ──────────────────
+  function saveMaxDay() {
+    const val = document.getElementById('max-day').value;
+    if (val) {
+      localStorage.setItem('npr_max_day', val);
+      showMemoryBadge(val, false);
+    }
+  }
+
+  function loadMaxDay() {
+    const saved = localStorage.getItem('npr_max_day');
+    if (saved) {
+      document.getElementById('max-day').value = saved;
+      showMemoryBadge(saved, true);
+      calcRisk(); // auto-run with restored value
+    }
+  }
+
+  function showMemoryBadge(val, isRestored) {
+    let badge = document.getElementById('memory-badge');
+    if (!badge) {
+      badge = document.createElement('div');
+      badge.id = 'memory-badge';
+      badge.style.cssText = 'font-family:"Space Mono",monospace;font-size:10px;margin-top:5px;letter-spacing:1px;transition:opacity 0.4s;';
+      document.getElementById('max-day').parentNode.appendChild(badge);
+    }
+    badge.style.color = isRestored ? 'var(--blue)' : 'var(--green)';
+    badge.style.opacity = '1';
+    badge.textContent = isRestored ? `↩ Remembered $${val}/day` : `✓ Saved $${val}/day`;
+  }
+  // ─────────────────────────────────────────────────────────────────
+
+  function calcRisk() {
+    const maxDay = parseFloat(document.getElementById('max-day').value);
+    const divBy = parseInt(document.getElementById('divide-by').value);
+    const entry = parseFloat(document.getElementById('entry-price').value);
+    const stop = parseFloat(document.getElementById('stop-price').value);
+    const shares = parseInt(document.getElementById('shares').value);
+
+    const statusEl = document.getElementById('risk-status');
+    const displayEl = document.getElementById('max-loss-display');
+
+    if (!maxDay || !entry || !stop || !shares) {
+      statusEl.className = 'risk-status idle';
+      statusEl.innerHTML = '<span>Enter values to validate risk</span>';
+      displayEl.innerHTML = '';
+      state.riskOk = false;
+      updateScore();
+      return;
+    }
+
+    if (maxDay) saveMaxDay(); // persist whenever valid
+    const maxPerTrade = maxDay / divBy;
+    state.maxLossPerTrade = maxPerTrade;
+    const stopDist = Math.abs(entry - stop);
+    const actualLoss = stopDist * shares;
+    state.riskActualLoss = actualLoss;
+
+    displayEl.innerHTML = `Max loss/trade: <strong style="color:var(--yellow)">$${maxPerTrade.toFixed(0)}</strong> &nbsp;|&nbsp; Stop distance: <strong style="color:var(--text)">$${stopDist.toFixed(2)}</strong> &nbsp;|&nbsp; Max shares: <strong style="color:var(--text)">${Math.floor(maxPerTrade / stopDist)}</strong>`;
+
+    if (stopDist < 0.05) {
+      statusEl.className = 'risk-status warn';
+      statusEl.innerHTML = '<span>⚠ Stop too tight — risk of death by 1000 cuts</span>';
+      state.riskOk = false;
+    } else if (actualLoss <= maxPerTrade) {
+      const pct = Math.round((actualLoss / maxPerTrade) * 100);
+      statusEl.className = 'risk-status ok';
+      statusEl.innerHTML = `<span>✓ Risk OK — $${actualLoss.toFixed(0)} / $${maxPerTrade.toFixed(0)} (${pct}% of max)</span>`;
+      state.riskOk = true;
+    } else {
+      const excess = actualLoss - maxPerTrade;
+      statusEl.className = 'risk-status bad';
+      statusEl.innerHTML = `<span>✗ VIOLATES max loss — $${actualLoss.toFixed(0)} exceeds $${maxPerTrade.toFixed(0)} by $${excess.toFixed(0)}</span>`;
+      state.riskOk = false;
+    }
+
+    updateProgress('r', state.riskOk);
+    updateScore();
+    updateSummary();
+  }
+
+  function updateProgress(section, done) {
+    document.getElementById('pd-' + section).className = 'pdot ' + (done ? 'done' : 'partial');
+  }
+
+  function getFollowThroughRate() {
+    if (!state.event || !state.posZone || !state.direction) return null;
+
+    const type = getEventType();
+    let rate = baseRates[type] || 70;
+
+    const badDir = (state.posZone === 'pos1' && state.direction === 'short') ||
+                   (state.posZone === 'pos3' && state.direction === 'long');
+    if (badDir) return null;
+
+    // Zone modifiers
+    if (state.posZone === 'pos1') rate = Math.min(rate + 10, 90);
+    if (state.posZone === 'pos3') rate = Math.min(rate + 5, 88);
+    if (state.posZone === 'pos2') rate = Math.max(rate - 5, 60);
+
+    // MA context bonus
+    if (state.maContext === 'ma200')       rate = Math.min(rate + 10, 92);
+    if (state.maContext === 'ma20-rising' || state.maContext === 'ma20-falling') rate = Math.min(rate + 5, 90);
+
+    return rate;
+  }
+
+  function getChecks() {
+    const badDir = state.posZone && state.direction && (
+      (state.posZone === 'pos1' && state.direction === 'short') ||
+      (state.posZone === 'pos3' && state.direction === 'long')
+    );
+
+    return {
+      name: !!state.event,
+      position: !!state.posZone && !badDir,
+      risk: state.riskOk,
+      direction: !!state.direction && !badDir,
+    };
+  }
+
+  function updateScore() {
+    const checks = getChecks();
+    const checkCount = [checks.name, checks.position, checks.risk, checks.direction].filter(Boolean).length;
+    const rate = getFollowThroughRate();
+
+    // Update chips
+    setChip('chip-n', checks.name, 'NAME');
+    setChip('chip-p', checks.position, 'POSITION');
+    setChip('chip-r', checks.risk, 'RISK');
+    setChip('chip-dir', checks.direction, 'DIRECTION');
+
+    // Update progress dots
+    if (!state.event) document.getElementById('pd-n').className = 'pdot';
+    if (!state.posZone) document.getElementById('pd-p').className = 'pdot';
+    if (!state.riskOk) document.getElementById('pd-r').className = 'pdot';
+
+    const panel = document.getElementById('score-panel');
+    const gradeEl = document.getElementById('score-grade');
+    const headlineEl = document.getElementById('score-headline');
+    const descEl = document.getElementById('score-desc');
+    const frEl = document.getElementById('follow-rate');
+    const frVal = document.getElementById('fr-value');
+
+    // Check for direction conflict
+    const badDir = state.posZone && state.direction && (
+      (state.posZone === 'pos1' && state.direction === 'short') ||
+      (state.posZone === 'pos3' && state.direction === 'long')
+    );
+
+    if (badDir) {
+      panel.className = 'score-panel grade-c';
+      gradeEl.textContent = 'SKIP';
+      headlineEl.textContent = 'Invalid Direction for This Position';
+      descEl.textContent = 'Position 1 = LONG only. Position 3 = SHORT only. Never fight the location.';
+      frEl.style.display = 'none';
+      return;
+    }
+
+    if (checkCount === 0) {
+      panel.className = 'score-panel idle';
+      gradeEl.textContent = '—';
+      headlineEl.textContent = 'Awaiting your selections';
+      descEl.textContent = 'Complete N, P, and R to get your trade score. Three checks = maximum confidence.';
+      frEl.style.display = 'none';
+      return;
+    }
+
+    frEl.style.display = rate ? 'block' : 'none';
+    if (rate) frVal.textContent = rate + '%';
+
+    // Grade logic
+    const allChecks = checks.name && checks.position && checks.risk && checks.direction;
+    const threeChecks = checkCount >= 3;
+    const isPowerPos = state.posZone === 'pos1' || state.maContext === 'ma200';
+    const isPower180 = getEventType() === '180';
+
+    if (allChecks && isPowerPos && isPower180) {
+      panel.className = 'score-panel grade-a-plus';
+      gradeEl.textContent = 'A+';
+      headlineEl.textContent = '🔥 God-Tier Setup — Take It Now';
+      descEl.textContent = '3-check trade with a powerful 180 in an elite position. No thinking. No doubting. Hit the button. The universe is telling you this is ordained.';
+    } else if (allChecks && isPowerPos) {
+      panel.className = 'score-panel grade-a-plus';
+      gradeEl.textContent = 'A+';
+      headlineEl.textContent = '✅ Three-Check Trade — High Conviction';
+      descEl.textContent = 'All checks satisfied in a power position. This is your best setup. No hesitation — strike.';
+    } else if (allChecks) {
+      panel.className = 'score-panel grade-a';
+      gradeEl.textContent = 'A';
+      headlineEl.textContent = '✓ Strong Setup — Take It';
+      descEl.textContent = 'Three checks confirmed. Good setup. Risk is controlled, position is valid. Execute with confidence.';
+    } else if (threeChecks) {
+      panel.className = 'score-panel grade-a';
+      gradeEl.textContent = 'A';
+      headlineEl.textContent = 'Near-Complete — Almost There';
+      descEl.textContent = 'Strong trade developing. Finish validating all criteria before pulling the trigger.';
+    } else if (checkCount === 2) {
+      panel.className = 'score-panel grade-b';
+      gradeEl.textContent = 'B+';
+      headlineEl.textContent = '⚠ Two-Check Trade — Acceptable, Track It';
+      descEl.textContent = 'Two-check trade. Acceptable but not ideal. Keep score: if two-checks underperform, eliminate them. Risk must always be confirmed.';
+    } else {
+      panel.className = 'score-panel grade-c';
+      gradeEl.textContent = 'C';
+      headlineEl.textContent = '✗ Incomplete — Do Not Trade';
+      descEl.textContent = 'Too many unknowns. Do not trade a hunch. Do not trade a feeling. Name it. Position it. Risk it out first.';
+    }
+
+    updateSummary();
+  }
+
+  function setChip(id, active, label) {
+    const chip = document.getElementById(id);
+    chip.className = 'check-chip ' + (active ? 'active' : '');
+    chip.innerHTML = `<span class="dot"></span> ${label}`;
+  }
+
+  function updateSummary() {
+    const maLabels = {
+      'ma200': 'Off Flat 200 MA',
+      'ma20-rising': 'Off Rising 20 MA',
+      'ma20-falling': 'Off Falling 20 MA',
+    };
+    const zoneLabels = {
+      'pos1': 'Position 1 — Power Zone',
+      'pos2': 'Position 2 — Mid Zone',
+      'pos3': 'Position 3 — Pluto Land',
+    };
+
+    // Direction badge
+    const badge = document.getElementById('summary-dir-badge');
+    if (state.direction === 'long') {
+      badge.textContent = '▲ LONG';
+      badge.className = 'summary-dir-badge long';
+    } else if (state.direction === 'short') {
+      badge.textContent = '▼ SHORT';
+      badge.className = 'summary-dir-badge short';
+    } else {
+      badge.textContent = '—';
+      badge.className = 'summary-dir-badge';
+    }
+
+    // Event
+    const evEl = document.getElementById('sum-event');
+    if (state.event) {
+      const meta = EVENT_META[state.event];
+      evEl.textContent = meta.label;
+      evEl.className = 'summary-item-value ' + meta.dir;
+    } else {
+      evEl.textContent = '—'; evEl.className = 'summary-item-value muted';
+    }
+
+    // Zone
+    const zoneEl = document.getElementById('sum-zone');
+    if (state.posZone) {
+      zoneEl.textContent = zoneLabels[state.posZone];
+      zoneEl.className = 'summary-item-value';
+    } else {
+      zoneEl.textContent = '—'; zoneEl.className = 'summary-item-value muted';
+    }
+
+    // MA Context
+    const maEl = document.getElementById('sum-ma');
+    if (state.maContext) {
+      maEl.textContent = maLabels[state.maContext];
+      maEl.className = 'summary-item-value';
+    } else {
+      maEl.textContent = 'None selected'; maEl.className = 'summary-item-value muted';
+    }
+
+    // Follow-through rate
+    const rateEl = document.getElementById('sum-rate');
+    const rate = getFollowThroughRate();
+    if (rate) {
+      rateEl.textContent = rate + '%';
+      rateEl.className = 'summary-item-value ' + (rate >= 80 ? 'long' : rate >= 70 ? '' : 'warn');
+    } else {
+      rateEl.textContent = '—'; rateEl.className = 'summary-item-value muted';
+    }
+
+    // Risk fields
+    const entry  = parseFloat(document.getElementById('entry-price').value);
+    const stop   = parseFloat(document.getElementById('stop-price').value);
+    const shares = parseInt(document.getElementById('shares').value);
+
+    const entryEl  = document.getElementById('sum-entry');
+    const stopEl   = document.getElementById('sum-stop');
+    const distEl   = document.getElementById('sum-dist');
+    const sharesEl = document.getElementById('sum-shares');
+    const maxEl    = document.getElementById('sum-maxloss');
+    const actEl    = document.getElementById('sum-actual');
+
+    entryEl.textContent  = entry  ? '$' + entry.toFixed(2)  : '—';
+    entryEl.className    = entry  ? 'summary-item-value' : 'summary-item-value muted';
+    stopEl.textContent   = stop   ? '$' + stop.toFixed(2)   : '—';
+    stopEl.className     = stop   ? 'summary-item-value' : 'summary-item-value muted';
+    sharesEl.textContent = shares ? shares + ' shares'       : '—';
+    sharesEl.className   = shares ? 'summary-item-value' : 'summary-item-value muted';
+
+    if (entry && stop) {
+      const dist = Math.abs(entry - stop);
+      distEl.textContent  = '$' + dist.toFixed(2) + ' / share';
+      distEl.className    = dist < 0.05 ? 'summary-item-value warn' : 'summary-item-value';
+    } else {
+      distEl.textContent = '—'; distEl.className = 'summary-item-value muted';
+    }
+
+    if (state.maxLossPerTrade) {
+      maxEl.textContent = '$' + state.maxLossPerTrade.toFixed(0) + ' max per trade';
+      maxEl.className = 'summary-item-value';
+    } else {
+      maxEl.textContent = '—'; maxEl.className = 'summary-item-value muted';
+    }
+
+    if (state.riskActualLoss !== null && state.maxLossPerTrade) {
+      const over = state.riskActualLoss > state.maxLossPerTrade;
+      actEl.textContent = '$' + state.riskActualLoss.toFixed(0) + (over ? ' ✗ OVER MAX' : ' ✓ within max');
+      actEl.className = 'summary-item-value ' + (over ? 'short' : 'long');
+    } else {
+      actEl.textContent = '—'; actEl.className = 'summary-item-value muted';
+    }
+
+    // Summary rule sentence
+    const ruleEl = document.getElementById('summary-rule');
+    const checks = getChecks();
+    const checkCount = [checks.name, checks.position, checks.risk, checks.direction].filter(Boolean).length;
+    const badDir = state.posZone && state.direction && (
+      (state.posZone === 'pos1' && state.direction === 'short') ||
+      (state.posZone === 'pos3' && state.direction === 'long')
+    );
+
+    if (badDir) {
+      ruleEl.className = 'summary-rule bad';
+      ruleEl.textContent = '✗ Invalid setup — direction conflicts with zone. ' +
+        (state.posZone === 'pos1' ? 'Position 1 is LONG only.' : 'Position 3 is SHORT only.');
+    } else if (checkCount === 4 && state.riskOk) {
+      const dir = state.direction === 'long' ? '▲ LONG' : '▼ SHORT';
+      const evLabel = state.event ? EVENT_META[state.event].label : '';
+      const zone = state.posZone ? zoneLabels[state.posZone] : '';
+      const ma = state.maContext ? ' · ' + maLabels[state.maContext] : '';
+      ruleEl.className = 'summary-rule good';
+      ruleEl.textContent = `${dir} · ${evLabel} · ${zone}${ma} · Risk $${(state.riskActualLoss||0).toFixed(0)} of $${(state.maxLossPerTrade||0).toFixed(0)} max · ${rate}% follow-through`;
+    } else if (checkCount >= 2) {
+      ruleEl.className = 'summary-rule warn';
+      ruleEl.textContent = 'Incomplete setup — ' + (4 - checkCount) + ' check(s) remaining before this trade is validated.';
+    } else {
+      ruleEl.className = 'summary-rule';
+      ruleEl.textContent = 'Awaiting trade setup — fill in N, P, and R above.';
+    }
+  }
+
+  function resetAll() {
+    state.direction = null;
+    state.event = null;
+    state.maContext = null;
+    state.posZone = null;
+    state.riskOk = false;
+    state.riskActualLoss = null;
+    state.maxLossPerTrade = null;
+
+    Object.keys(EVENT_META).forEach(id => {
+      const btn = document.getElementById('ev-' + id);
+      if (btn) btn.classList.remove('selected', 'selected-short');
+    });
+    ['pos1','pos2','pos3'].forEach(p => document.getElementById('pos-' + p).classList.remove('selected'));
+    ['ma200','ma20-rising','ma20-falling'].forEach(p => document.getElementById('pos-' + p).classList.remove('ma-selected'));
+
+    // Keep max-day — it's a persistent preference, not a per-trade value
+    document.getElementById('entry-price').value = '';
+    document.getElementById('stop-price').value = '';
+    document.getElementById('shares').value = '';
+    document.getElementById('risk-status').className = 'risk-status idle';
+    document.getElementById('risk-status').innerHTML = '<span>Enter values to validate risk</span>';
+    document.getElementById('max-loss-display').innerHTML = '';
+    document.getElementById('position-warning').style.display = 'none';
+
+    ['pd-n','pd-p','pd-r'].forEach(id => document.getElementById(id).className = 'pdot');
+
+    // Re-show saved badge if max-day is still populated
+    const savedMax = document.getElementById('max-day').value;
+    if (savedMax) showMemoryBadge(savedMax, true);
+
+    updateScore();
+    updateSummary();
+  }
+
+  // Restore saved max loss on page load
+  document.addEventListener('DOMContentLoaded', loadMaxDay);
+</script>
+</body>
+</html>
