@@ -165,6 +165,34 @@
   .opt-btn.ma-selected { background: var(--blue-dim); border-color: var(--blue); color: var(--blue); }
   .opt-btn.ma-selected .opt-badge { background: var(--blue); color: #000; }
 
+  /* 20 MA Trend Toggle */
+  .ma-trend-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .ma-trend-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 14px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    background: var(--surface2);
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+  .ma-trend-btn:hover { border-color: #3a4555; color: var(--text); }
+  .ma-trend-btn.up.active   { border-color: var(--green); color: var(--green); background: var(--green-dim); }
+  .ma-trend-btn.down.active { border-color: var(--red);   color: var(--red);   background: var(--red-dim); }
+
   /* Position zone buttons */
   .pos-zone-grid {
     display: grid;
@@ -708,7 +736,25 @@
       </div>
     </div>
 
-    <div class="option-label">Price Zone</div>
+    <div class="option-label">20 MA Trend Direction</div>
+    <div class="ma-trend-row">
+      <button class="ma-trend-btn up" onclick="selectMA20Trend('up')" id="trend-up">
+        <svg viewBox="0 0 40 28" width="40" height="28">
+          <polyline points="4,22 14,14 26,8 36,2" fill="none" stroke="#00e676" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon points="36,2 28,4 34,10" fill="#00e676"/>
+        </svg>
+        <span>Trending Up</span>
+      </button>
+      <button class="ma-trend-btn down" onclick="selectMA20Trend('down')" id="trend-down">
+        <svg viewBox="0 0 40 28" width="40" height="28">
+          <polyline points="4,2 14,10 26,16 36,22" fill="none" stroke="#ff4d6d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon points="36,22 28,20 34,14" fill="#ff4d6d"/>
+        </svg>
+        <span>Trending Down</span>
+      </button>
+    </div>
+
+    <div class="option-label" style="margin-top:16px;">Price Zone</div>
     <div class="pos-zone-grid">
       <button class="pos-zone-btn" onclick="selectPosZone('pos1')" id="pos-pos1">
         <div class="pos-zone-num">1</div>
@@ -855,6 +901,11 @@
   <div class="summary-grid">
 
     <div class="summary-item">
+      <div class="summary-item-label">20 MA Trend</div>
+      <div class="summary-item-value" id="sum-trend">—</div>
+    </div>
+
+    <div class="summary-item">
       <div class="summary-item-label">Event</div>
       <div class="summary-item-value" id="sum-event">—</div>
     </div>
@@ -919,6 +970,7 @@
     event: null,        // e.g. 'bull-elephant'
     maContext: null,    // 'ma200' | 'ma20-rising' | 'ma20-falling'
     posZone: null,      // 'pos1' | 'pos2' | 'pos3'
+    ma20trend: null,    // 'up' | 'down'
     riskOk: false,
     riskActualLoss: null,
     maxLossPerTrade: null,
@@ -962,6 +1014,41 @@
     updateScore();
   }
 
+  function selectMA20Trend(trend) {
+    state.ma20trend = trend;
+    document.getElementById('trend-up').classList.toggle('active', trend === 'up');
+    document.getElementById('trend-down').classList.toggle('active', trend === 'down');
+    updateZoneLabels();
+    checkPositionWarning();
+    updatePositionProgress();
+    updateScore();
+  }
+
+  // Dynamically update zone button sub-labels based on 20 MA trend
+  function updateZoneLabels() {
+    const t = state.ma20trend;
+    const zones = {
+      pos1: {
+        label: 'Just above / below MAs',
+        sub: t === 'up'   ? '✓ Long only · power zone'
+           : t === 'down' ? '✓ Short only · power zone'
+           : 'Power zone · best odds'
+      },
+      pos2: { label: 'Mid zone', sub: 'Long or short by event' },
+      pos3: {
+        label: 'Pluto land — far out',
+        sub: t === 'up'   ? '✓ Short only · reversal'
+           : t === 'down' ? '✓ Long only · reversal'
+           : 'Extreme zone · reversal'
+      },
+    };
+    ['pos1','pos2','pos3'].forEach(id => {
+      const btn = document.getElementById('pos-' + id);
+      btn.querySelector('.pos-zone-label').textContent = zones[id].label;
+      btn.querySelector('.pos-zone-sub').textContent   = zones[id].sub;
+    });
+  }
+
   function selectMAContext(ctx) {
     state.maContext = ctx;
     ['ma200','ma20-rising','ma20-falling'].forEach(id => {
@@ -989,15 +1076,44 @@
 
   function checkPositionWarning() {
     const warn = document.getElementById('position-warning');
-    if (!state.direction || !state.posZone) { warn.style.display='none'; return; }
-    const bad = (state.posZone === 'pos1' && state.direction === 'short') ||
-                (state.posZone === 'pos3' && state.direction === 'long');
-    warn.style.display = bad ? 'block' : 'none';
-    warn.textContent = bad
-      ? (state.posZone === 'pos1'
-          ? '⚠ Never short from Position 1 — longs only here'
-          : '⚠ Never go long from Position 3 — shorts only here')
-      : '';
+    if (!state.direction || !state.posZone || !state.ma20trend) {
+      warn.style.display = 'none';
+      return;
+    }
+
+    const dir = state.direction;   // 'long' | 'short'
+    const zone = state.posZone;    // 'pos1' | 'pos2' | 'pos3'
+    const trend = state.ma20trend; // 'up' | 'down'
+
+    let msg = null;
+
+    if (trend === 'up') {
+      // Trending up: pos1 = long only, pos3 = short only
+      if (zone === 'pos1' && dir === 'short') msg = '⚠ 20 MA trending UP — Position 1 is Long trades only here';
+      if (zone === 'pos3' && dir === 'long')  msg = '⚠ 20 MA trending UP — Position 3 is Short trades only (reversal)';
+    } else if (trend === 'down') {
+      // Trending down: pos1 = short only, pos3 = long only
+      if (zone === 'pos1' && dir === 'long')  msg = '⚠ 20 MA trending DOWN — Position 1 is Short trades only here';
+      if (zone === 'pos3' && dir === 'short') msg = '⚠ 20 MA trending DOWN — Position 3 is Long trades only (reversal)';
+    }
+
+    warn.style.display = msg ? 'block' : 'none';
+    warn.textContent = msg || '';
+  }
+
+  // Returns true when direction conflicts with zone given 20 MA trend
+  function isConflict() {
+    if (!state.direction || !state.posZone || !state.ma20trend) return false;
+    const dir = state.direction;
+    const zone = state.posZone;
+    const trend = state.ma20trend;
+    if (trend === 'up') {
+      return (zone === 'pos1' && dir === 'short') || (zone === 'pos3' && dir === 'long');
+    }
+    if (trend === 'down') {
+      return (zone === 'pos1' && dir === 'long') || (zone === 'pos3' && dir === 'short');
+    }
+    return false;
   }
 
   // ── localStorage persistence for Max Loss / Day ──────────────────
@@ -1086,14 +1202,11 @@
   }
 
   function getFollowThroughRate() {
-    if (!state.event || !state.posZone || !state.direction) return null;
+    if (!state.event || !state.posZone || !state.direction || !state.ma20trend) return null;
+    if (isConflict()) return null;
 
     const type = getEventType();
     let rate = baseRates[type] || 70;
-
-    const badDir = (state.posZone === 'pos1' && state.direction === 'short') ||
-                   (state.posZone === 'pos3' && state.direction === 'long');
-    if (badDir) return null;
 
     // Zone modifiers
     if (state.posZone === 'pos1') rate = Math.min(rate + 10, 90);
@@ -1108,16 +1221,12 @@
   }
 
   function getChecks() {
-    const badDir = state.posZone && state.direction && (
-      (state.posZone === 'pos1' && state.direction === 'short') ||
-      (state.posZone === 'pos3' && state.direction === 'long')
-    );
-
+    const conflict = isConflict();
     return {
-      name: !!state.event,
-      position: !!state.posZone && !badDir,
-      risk: state.riskOk,
-      direction: !!state.direction && !badDir,
+      name:      !!state.event,
+      position:  !!state.posZone && !!state.ma20trend && !conflict,
+      risk:      state.riskOk,
+      direction: !!state.direction && !!state.ma20trend && !conflict,
     };
   }
 
@@ -1145,10 +1254,7 @@
     const frVal = document.getElementById('fr-value');
 
     // Check for direction conflict
-    const badDir = state.posZone && state.direction && (
-      (state.posZone === 'pos1' && state.direction === 'short') ||
-      (state.posZone === 'pos3' && state.direction === 'long')
-    );
+    const badDir = isConflict();
 
     if (badDir) {
       panel.className = 'score-panel grade-c';
@@ -1243,6 +1349,19 @@
       badge.className = 'summary-dir-badge';
     }
 
+    // 20 MA Trend
+    const trendEl = document.getElementById('sum-trend');
+    if (state.ma20trend === 'up') {
+      trendEl.textContent = '▲ Trending Up';
+      trendEl.className = 'summary-item-value long';
+    } else if (state.ma20trend === 'down') {
+      trendEl.textContent = '▼ Trending Down';
+      trendEl.className = 'summary-item-value short';
+    } else {
+      trendEl.textContent = '—';
+      trendEl.className = 'summary-item-value muted';
+    }
+
     // Event
     const evEl = document.getElementById('sum-event');
     if (state.event) {
@@ -1327,10 +1446,7 @@
     const ruleEl = document.getElementById('summary-rule');
     const checks = getChecks();
     const checkCount = [checks.name, checks.position, checks.risk, checks.direction].filter(Boolean).length;
-    const badDir = state.posZone && state.direction && (
-      (state.posZone === 'pos1' && state.direction === 'short') ||
-      (state.posZone === 'pos3' && state.direction === 'long')
-    );
+    const badDir = isConflict();
 
     if (badDir) {
       ruleEl.className = 'summary-rule bad';
@@ -1357,6 +1473,7 @@
     state.event = null;
     state.maContext = null;
     state.posZone = null;
+    state.ma20trend = null;
     state.riskOk = false;
     state.riskActualLoss = null;
     state.maxLossPerTrade = null;
@@ -1367,6 +1484,9 @@
     });
     ['pos1','pos2','pos3'].forEach(p => document.getElementById('pos-' + p).classList.remove('selected'));
     ['ma200','ma20-rising','ma20-falling'].forEach(p => document.getElementById('pos-' + p).classList.remove('ma-selected'));
+    document.getElementById('trend-up').classList.remove('active');
+    document.getElementById('trend-down').classList.remove('active');
+    updateZoneLabels();
 
     // Keep max-day — it's a persistent preference, not a per-trade value
     document.getElementById('entry-price').value = '';
